@@ -1,16 +1,11 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>APCAP · QA HML</title><link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <main>
-    <header><div><p class="eyebrow">AUTOMAÇÃO QA · HML</p><h1>APCAP — painel de execução</h1><p id="meta">Carregando resultado sanitizado…</p></div><a class="button" href="data/latest.json">JSON sanitizado</a></header>
-    <section class="notice"><strong>Escopo público:</strong> este painel só usa resultado sanitizado. Não publica CPF, senha, token, payload/QR/URL Pix, vídeo, trace ou evidência financeira.</section>
-    <section class="cards" aria-label="Resumo"><article><span>Total</span><b id="total">—</b></article><article class="pass"><span>Passou</span><b id="passed">—</b></article><article class="fail"><span>Falhou</span><b id="failed">—</b></article><article class="skip"><span>Bloqueado/skip</span><b id="skipped">—</b></article></section>
-    <section class="filters"><label>Buscar <input id="query" type="search" placeholder="Caso, projeto ou status"></label><label>Status <select id="status"><option value="">Todos</option><option>passed</option><option>failed</option><option>skipped</option><option>timedOut</option><option>not-run</option></select></label><label>Projeto <select id="project"><option value="">Todos</option></select></label><output id="count"></output></section>
-    <section class="table-wrap"><table><thead><tr><th>Caso</th><th>Projeto</th><th>Status</th><th>Duração</th><th>Detalhe sanitizado</th></tr></thead><tbody id="rows"><tr><td colspan="5">Carregando…</td></tr></tbody></table></section>
-    <footer>Resultado de testes é evidência de escopo limitado; <em>skipped</em> significa bloqueio ou fluxo não mapeado, nunca aprovação.</footer>
-  </main><script src="app.js"></script>
-</body></html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>APCAP · QA HML</title><link rel="stylesheet" href="styles.css"></head>
+<body><main>
+  <header><div><p class="eyebrow">AUTOMAÇÃO QA · HML</p><h1>APCAP — catálogo e execução</h1><p id="meta">Carregando relatório sanitizado…</p></div><div class="actions"><a class="button" href="data/latest.json">JSON atual</a><a class="button secondary" href="data/history/index.json">Índice histórico</a></div></header>
+  <section class="notice"><strong>Escopo e privacidade:</strong> cada linha é um caso do catálogo, mesmo que não tenha sido executado. O painel não publica CPF, senha, token, payload/QR/URL Pix, vídeo, trace nem evidência financeira. “Aprovado” é resultado da última execução mapeada, não certificação de motor, RTP ou compliance.</section>
+  <section class="cards" aria-label="Resumo do catálogo"><article><span>Catálogo</span><b id="total">—</b></article><article class="pass"><span>Aprovados</span><b id="passed">—</b></article><article class="fail"><span>Falhas/regressões</span><b id="failed">—</b></article><article class="skip"><span>Bloqueados/manuais</span><b id="blocked">—</b></article><article><span>Não executados</span><b id="notRun">—</b></article></section>
+  <section class="filters"><label>Buscar <input id="query" type="search" placeholder="ID, área, caso ou requisito"></label><label>Status <select id="status"><option value="">Todos</option><option>passed</option><option>failed</option><option>skipped</option><option>blocked</option><option>manual</option><option>not-run</option></select></label><label>Tipo <select id="type"><option value="">Todos</option><option>real</option><option>mocked</option><option>manual</option></select></label><label>Área <select id="area"><option value="">Todas</option></select></label><output id="count"></output></section>
+  <section class="table-wrap"><table><thead><tr><th>ID / Caso</th><th>Área / prioridade</th><th>Tipo / cobertura</th><th>Status atual</th><th>Histórico</th><th>Execução</th><th>Detalhe sanitizado</th></tr></thead><tbody id="rows"><tr><td colspan="7">Carregando…</td></tr></tbody></table></section>
+  <footer>Casos bloqueados/manuais permanecem visíveis até que suas pré-condições sejam entregues. Casos automatizados aprovados continuam no suite em execuções posteriores; “regressão” significa falha atual após aprovação anterior registrada.</footer>
+</main><script src="app.js"></script></body></html>
