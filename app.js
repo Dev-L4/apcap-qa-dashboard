@@ -28,8 +28,7 @@ async function main() {
     const summary = report.summary?.total === state.cases.length ? report.summary : calculated;
     $('total').textContent = summary.total ?? 0; $('passed').textContent = summary.passed ?? 0;
     $('failed').textContent = `${summary.failed ?? 0}/${summary.regressions ?? 0}`;
-    $('blocked').textContent = (summary.blocked ?? 0) + (summary.manual ?? 0);
-    $('notRun').textContent = (summary.notRun ?? 0) + (summary.skipped ?? 0);
+    $('blocked').textContent = summary.blocked ?? 0;
     const run = report.runSummary || {};
     $('meta').textContent = `Ambiente: ${report.environment || 'não informado'} · geração: ${report.generatedAt || '—'} · revisão: ${report.revision || '—'} · ${run.total || 0} instâncias na última execução${report.unmappedRunTests ? ` · ${report.unmappedRunTests} sem ID do catálogo` : ''}${report.note ? ` · ${report.note}` : ''}`;
     [...new Set(state.cases.map(item => item.area).filter(Boolean))].sort().forEach(value => $('area').insertAdjacentHTML('beforeend', `<option>${escapeHtml(value)}</option>`));
