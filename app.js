@@ -66,7 +66,7 @@ function initAccess() {
     const message = $('accessMessage');
     submit.disabled = true;
     message.textContent = 'Verificando…';
-    const valid = await sha256($('accessCode').value) === ACCESS_HASH;
+    const valid = await sha256($('accessCode').value.trim().normalize('NFC')) === ACCESS_HASH;
     if (valid) {
       if ($('rememberAccess').checked) localStorage.setItem(ACCESS_STORAGE_KEY, String(Date.now() + 30 * 24 * 60 * 60 * 1000));
       else sessionStorage.setItem(ACCESS_STORAGE_KEY, 'session');
