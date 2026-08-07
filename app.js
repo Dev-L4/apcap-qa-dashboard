@@ -35,5 +35,8 @@ async function main() {
     render();
   } catch { $('meta').textContent = 'Não foi possível carregar o relatório sanitizado.'; $('rows').innerHTML = '<tr><td colspan="7">Falha ao carregar dados.</td></tr>'; }
 }
+document.querySelector('#accessGate')?.remove();
+$('dashboard').hidden = false;
+document.body.classList.remove('access-open');
 ['query','status','type','area'].forEach(id => $(id).addEventListener('input', render));
 main();
