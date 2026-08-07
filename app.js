@@ -35,8 +35,8 @@ async function main() {
     render();
   } catch { $('meta').textContent = 'Não foi possível carregar o relatório sanitizado.'; $('rows').innerHTML = '<tr><td colspan="7">Falha ao carregar dados.</td></tr>'; }
 }
-const ACCESS_HASH = 'af2d11824bf79c5113fe8d203144312fcd75b44da5916b7f9587adf4c3c18cb8';
-const ACCESS_STORAGE_KEY = 'apcapQaAccessUntil';
+const ACCESS_HASH = '03e95d9576e27e9116885331e99b43b0a4e6051a7b7ccf14e0ed5c86e1c85d26';
+const ACCESS_STORAGE_KEY = 'apcapQaAccessUntil_v2';
 let accessAttempts = 0;
 const sha256 = async (value) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value)))).map(byte => byte.toString(16).padStart(2, '0')).join('');
 function hasAccess() {
