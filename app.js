@@ -34,7 +34,7 @@ async function main() {
     render();
   } catch { $('meta').textContent = 'Não foi possível carregar o relatório sanitizado.'; $('rows').innerHTML = '<tr><td colspan="7">Falha ao carregar dados.</td></tr>'; }
 }
-const ACCESS_HASH = '03e95d9576e27e9116885331e99b43b0a4e6051a7b7ccf14e0ed5c86e1c85d26';
+const ACCESS_HASH = 'fdd85f6651fb815f39d158e5a99b1243121880c92ba5737161aa17d39a09b135';
 const ACCESS_STORAGE_KEY = 'apcapQaAccessUntil_v4';
 let accessAttempts = 0;
 const normalizeAccessCode = (value) => String(value || '')
