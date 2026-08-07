@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-08-07T19:27:21.717Z",
+  "generatedAt": "2026-08-07T18:58:46.180Z",
   "source": "results.json",
   "catalogSource": "test-catalog.json",
   "environment": "https://apcap-v5-hml.web.app",
@@ -10,7 +10,7 @@
     "passed": 6,
     "failed": 1,
     "blocked": 51,
-    "regressions": 0
+    "regressions": 1
   },
   "runSummary": {
     "total": 290,
@@ -387,7 +387,7 @@
         "mobile-pixel"
       ],
       "attempts": 5,
-      "previousStatus": "passed",
+      "previousStatus": "blocked",
       "regression": "none"
     },
     {
@@ -420,10 +420,10 @@
         "mobile-iphone",
         "mobile-pixel"
       ],
-      "error": "O que ocorreu: no viewport Pixel 7, o botão \"Recusar\" do banner de cookies (LGPD) permaneceu visível/clicável mesmo após o clique, quando deveria fechar o modal. Em desktop e iPhone o mesmo fluxo passou nas 5 tentativas. Hipótese de causa raiz: handler lgpdRecusar() provavelmente depende de uma media query ou de timing de transição CSS que não conclui de forma confiável nessa largura de tela; o clique é registrado, mas o modal não recebe o estado \"hidden\" dentro do tempo esperado. Proposta de solução: (1) tornar lgpdRecusar() independente de breakpoint, aplicando a classe/estado de fechamento diretamente no elemento do modal; (2) remover animações/transições condicionadas por media query desse fluxo ou aguardar o fim da transição via evento \"transitionend\" antes de considerar o modal fechado; (3) adicionar teste de regressão fixo para 360×640 (Pixel 7) no pipeline de QA. Rastreado na issue #1 do repositório de automação.",
+      "error": "Error: Recusar deve fechar o modal para não bloquear a navegação.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /^recusar$/i }).first()\nExpected: hidden\nReceived: visible\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Recusar deve fechar o modal para não bloquear a navegação. with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^recusar$/i }).first()\u001b[22m\n\u001b[2m    23 × locator resolved to <button @click=\"lgpdRecusar()\" class=\"lgpd-btn lgpd-btn-recusar\">Recusar</button>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n",
       "attempts": 5,
-      "previousStatus": "failed",
-      "regression": "none"
+      "previousStatus": "passed",
+      "regression": "regression"
     },
     {
       "id": "PUB-03",
@@ -456,7 +456,7 @@
         "mobile-pixel"
       ],
       "attempts": 5,
-      "previousStatus": "passed",
+      "previousStatus": "blocked",
       "regression": "none"
     },
     {
@@ -489,7 +489,7 @@
         "mobile-pixel"
       ],
       "attempts": 5,
-      "previousStatus": "passed",
+      "previousStatus": "blocked",
       "regression": "none"
     },
     {
@@ -521,7 +521,7 @@
         "mobile-pixel"
       ],
       "attempts": 5,
-      "previousStatus": "passed",
+      "previousStatus": "blocked",
       "regression": "none"
     },
     {
@@ -1034,7 +1034,7 @@
         "mobile-pixel"
       ],
       "attempts": 5,
-      "previousStatus": "passed",
+      "previousStatus": "blocked",
       "regression": "none"
     },
     {
@@ -1067,7 +1067,7 @@
         "mobile-pixel"
       ],
       "attempts": 5,
-      "previousStatus": "passed",
+      "previousStatus": "blocked",
       "regression": "none"
     },
     {

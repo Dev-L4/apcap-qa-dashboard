@@ -1,22 +1,22 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-08-07T19:27:21.717Z",
+  "generatedAt": "2026-08-07T18:51:10.660Z",
   "source": "results.json",
   "catalogSource": "test-catalog.json",
   "environment": "https://apcap-v5-hml.web.app",
   "revision": "local",
   "summary": {
     "total": 58,
-    "passed": 6,
-    "failed": 1,
-    "blocked": 51,
+    "passed": 1,
+    "failed": 0,
+    "blocked": 57,
     "regressions": 0
   },
   "runSummary": {
-    "total": 290,
-    "passed": 34,
-    "failed": 1,
-    "blocked": 255
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "blocked": 0
   },
   "cases": [
     {
@@ -39,16 +39,10 @@
       ],
       "title": "Confirmar marca, promoção e grade aplicáveis",
       "status": "blocked",
-      "durationMs": 2,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Decisão escrita e regulamento da edição HML. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: Decisão escrita e regulamento da edição HML.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -73,15 +67,9 @@
       "title": "Conciliar emissora, título e regulamento",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Regulamento publicado e emissora confirmada. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Regulamento publicado e emissora confirmada.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -105,16 +93,10 @@
       ],
       "title": "Definir regra de idade e copy",
       "status": "blocked",
-      "durationMs": 1,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Redação de idade aprovada. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: Redação de idade aprovada.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -139,16 +121,10 @@
       ],
       "title": "Classificar bônus de cadastro",
       "status": "blocked",
-      "durationMs": 3,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Fonte orçamentária do bônus. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: Fonte orçamentária do bônus.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -174,15 +150,9 @@
       "title": "Definir semântica dos três saldos",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Especificação de ledger. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Especificação de ledger.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -208,15 +178,9 @@
       "title": "Definir pagamento combinado e parcela HXC",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Regra de rateio e HXC. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Regra de rateio e HXC.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -240,16 +204,10 @@
       ],
       "title": "Classificar Milzão, Giro e Super Quarta",
       "status": "blocked",
-      "durationMs": 1,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Mapa das mecânicas. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: Mapa das mecânicas.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -274,16 +232,10 @@
       ],
       "title": "Definir moedas achar figura e Estourar",
       "status": "blocked",
-      "durationMs": 1,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: EV, cap e expiração aprovados. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: EV, cap e expiração aprovados.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -308,16 +260,10 @@
       ],
       "title": "Definir comportamento de 2/3",
       "status": "blocked",
-      "durationMs": 4,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: M e cláusula regulatória revisados. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: M e cláusula regulatória revisados.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -343,15 +289,9 @@
       "title": "Aprovar regra de recarga não sacável",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Regulamento e aviso antes da recarga. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Regulamento e aviso antes da recarga.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -377,16 +317,11 @@
         "landing"
       ],
       "title": "Landing responde e comunica acesso responsável",
-      "status": "passed",
-      "durationMs": 19382,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "attempts": 5,
+      "status": "blocked",
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: HML disponível.",
+      "attempts": 0,
       "previousStatus": "passed",
       "regression": "none"
     },
@@ -411,18 +346,13 @@
         "T-32"
       ],
       "title": "Controle de recusa está visível e fecha o modal",
-      "status": "failed",
-      "durationMs": 37670,
+      "status": "passed",
+      "durationMs": 5546,
       "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
         "mobile-pixel"
       ],
-      "error": "O que ocorreu: no viewport Pixel 7, o botão \"Recusar\" do banner de cookies (LGPD) permaneceu visível/clicável mesmo após o clique, quando deveria fechar o modal. Em desktop e iPhone o mesmo fluxo passou nas 5 tentativas. Hipótese de causa raiz: handler lgpdRecusar() provavelmente depende de uma media query ou de timing de transição CSS que não conclui de forma confiável nessa largura de tela; o clique é registrado, mas o modal não recebe o estado \"hidden\" dentro do tempo esperado. Proposta de solução: (1) tornar lgpdRecusar() independente de breakpoint, aplicando a classe/estado de fechamento diretamente no elemento do modal; (2) remover animações/transições condicionadas por media query desse fluxo ou aguardar o fim da transição via evento \"transitionend\" antes de considerar o modal fechado; (3) adicionar teste de regressão fixo para 360×640 (Pixel 7) no pipeline de QA. Rastreado na issue #1 do repositório de automação.",
-      "attempts": 5,
-      "previousStatus": "failed",
+      "attempts": 1,
+      "previousStatus": "passed",
       "regression": "none"
     },
     {
@@ -446,16 +376,11 @@
         "login"
       ],
       "title": "Tela de login expõe CPF e senha",
-      "status": "passed",
-      "durationMs": 30100,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "attempts": 5,
+      "status": "blocked",
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: HML disponível.",
+      "attempts": 0,
       "previousStatus": "passed",
       "regression": "none"
     },
@@ -479,16 +404,11 @@
         "T-31"
       ],
       "title": "Link de regulamento publicado é exposto sem navegação externa",
-      "status": "passed",
-      "durationMs": 19143,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "attempts": 5,
+      "status": "blocked",
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: HML disponível.",
+      "attempts": 0,
       "previousStatus": "passed",
       "regression": "none"
     },
@@ -511,16 +431,11 @@
         "T-32"
       ],
       "title": "Após recusar, não há novo request GA/Clarity observado",
-      "status": "passed",
-      "durationMs": 30571,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "attempts": 5,
+      "status": "blocked",
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: Novo contexto sem consentimento.",
+      "attempts": 0,
       "previousStatus": "passed",
       "regression": "none"
     },
@@ -547,15 +462,9 @@
       "title": "Varredura de vocabulário proibido",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Inventário de telas, e-mails e push. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Inventário de telas, e-mails e push.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -581,15 +490,9 @@
       "title": "Rodapé regulatório correto em todas as telas de venda",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Edição e regulamento confirmados. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Edição e regulamento confirmados.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -614,16 +517,10 @@
       ],
       "title": "Recusar bloqueia GA e Clarity durante todo o ciclo",
       "status": "blocked",
-      "durationMs": 1,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: HAR/rede e política de consentimento. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: HAR/rede e política de consentimento.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -649,15 +546,9 @@
       "title": "Encerramento preserva retenção regulatória necessária",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Jurídico, retenção regulatória e conta sandbox. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Jurídico, retenção regulatória e conta sandbox.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -683,16 +574,10 @@
       ],
       "title": "Instalação, atualização e offline PWA",
       "status": "blocked",
-      "durationMs": 8,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Dispositivos físicos. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: Dispositivos físicos.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -717,15 +602,9 @@
       "title": "Registrar App, Engine, Jogos e Recompensas",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Menu de versões disponível. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Menu de versões disponível.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -751,15 +630,9 @@
       "title": "Validar cadastro e bônus único por CPF",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Contas e CPFs sintéticos válidos. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Contas e CPFs sintéticos válidos.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -786,16 +659,10 @@
       ],
       "title": "Perfil sandbox acessa navegação autenticada",
       "status": "blocked",
-      "durationMs": 2930,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado sem secrets de sandbox: QA_ANA_CPF, QA_PASSWORD.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: QA_ANA_CPF válido e QA_PASSWORD; Contrato de login disponível.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -821,15 +688,9 @@
       "title": "Pagamento combinado preserva rateio e regra HXC",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Pagamento sandbox, D-06 e observabilidade. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Pagamento sandbox, D-06 e observabilidade.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -855,15 +716,9 @@
       "title": "Pix criado, expirado, duplicado e já paguei",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Contrato Pix e sandbox autorizado. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Contrato Pix e sandbox autorizado.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -888,15 +743,9 @@
       "title": "Estorno após prêmio reverte efeitos e título",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Estorno sandbox, ledger e fiscal read-only. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Estorno sandbox, ledger e fiscal read-only.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -923,15 +772,9 @@
       "title": "Saque bloqueia recarga e permite prêmio",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Conta sandbox com saldos. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Conta sandbox com saldos.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -957,15 +800,9 @@
       "title": "Limites e presets de recarga",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Conta sandbox. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Conta sandbox.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -991,16 +828,10 @@
       ],
       "title": "Pix sandbox em dois contextos confirma e app recebe retorno",
       "status": "blocked",
-      "durationMs": 2050,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Pix desabilitado: ENABLE_PIX_PURCHASE=true somente no Environment sandbox autorizado.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: ENABLE_PIX_PURCHASE=true; Secrets Pix e data-testid contratados; Environment sandbox autorizado.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1024,16 +855,11 @@
         "T-11"
       ],
       "title": "Contrato Pix é idempotente e callback liquida uma vez",
-      "status": "passed",
-      "durationMs": 8,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "attempts": 5,
+      "status": "blocked",
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: Nenhuma.",
+      "attempts": 0,
       "previousStatus": "passed",
       "regression": "none"
     },
@@ -1057,16 +883,11 @@
         "T-12"
       ],
       "title": "Contrato Pix rejeita reuso conflitante e estorno fora de ordem",
-      "status": "passed",
-      "durationMs": 5,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "attempts": 5,
+      "status": "blocked",
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: Nenhuma.",
+      "attempts": 0,
       "previousStatus": "passed",
       "regression": "none"
     },
@@ -1091,15 +912,9 @@
       "title": "Cap e expiração de chances",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Contas e relógio controlável. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Contas e relógio controlável.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1124,15 +939,9 @@
       "title": "Sem número exige compra mesmo com bônus",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Conta sandbox. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Conta sandbox.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1159,15 +968,9 @@
       "title": "Cupom/título é único, persistente e rastreável",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Origem de títulos e consulta read-only. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Origem de títulos e consulta read-only.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1192,15 +995,9 @@
       "title": "Trilha sela no desbloqueio e reseta semanalmente",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Clock e conta sandbox. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Clock e conta sandbox.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1226,15 +1023,9 @@
       "title": "Velocidade não altera decisão",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Logs de decisão. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Logs de decisão.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1259,15 +1050,9 @@
       "title": "Caps, silêncio 72h e saída de upsell",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Clock e eventos de oferta. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Clock e eventos de oferta.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1293,15 +1078,9 @@
       "title": "Feed usa dados reais e trata vazio/erro",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Fixtures feed real/vazio/erro. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Fixtures feed real/vazio/erro.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1326,16 +1105,10 @@
       ],
       "title": "Faixa escassa reserva uma única jogada antes do reveal",
       "status": "blocked",
-      "durationMs": 24,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Referência determinística executada; HML integrado permanece bloqueado sem OpenAPI/modelo versionado, logs de decisão e ledger somente leitura.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: Estoque=1, logs e ledger read-only.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1361,15 +1134,9 @@
       "title": "Conservação e RTP reconciliados por faixa",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Modelo, arrecadação, ledger e denominador. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Modelo, arrecadação, ledger e denominador.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1395,15 +1162,9 @@
       "title": "Odds não variam por perfil",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Modelo versionado e amostra controlada. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Modelo versionado e amostra controlada.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1428,16 +1189,10 @@
       ],
       "title": "Esgotamento fecha gate sem 500 ou prêmio descoberto",
       "status": "blocked",
-      "durationMs": 5,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Referência determinística executada; HML integrado permanece bloqueado sem OpenAPI/modelo versionado, logs de decisão e ledger somente leitura.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: Gate e observabilidade.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1463,15 +1218,9 @@
       "title": "M e frequências de figuras obedecem edição vigente",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: D-01 e modelo vigente. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: D-01 e modelo vigente.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1496,16 +1245,10 @@
       ],
       "title": "Selo conserva hash entre decisão, reveal e liquidação",
       "status": "blocked",
-      "durationMs": 5,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Referência determinística executada; HML integrado permanece bloqueado sem OpenAPI/modelo versionado, logs de decisão e ledger somente leitura.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: decisionHash e logs de ciclo.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1530,16 +1273,10 @@
       ],
       "title": "Idempotência integrada de jogada, pagamento e estorno",
       "status": "blocked",
-      "durationMs": 16,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Referência determinística executada; HML integrado permanece bloqueado sem OpenAPI/modelo versionado, logs de decisão e ledger somente leitura.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: Chaves e ledger read-only.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1564,15 +1301,9 @@
       "title": "Medir multiplicador M real",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: D-01 e relatório de números pagos. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: D-01 e relatório de números pagos.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1597,15 +1328,9 @@
       "title": "Medir 3/3, 2/3 e 1/3 versus pagamento",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Regulamento e eventos de figuras. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Regulamento e eventos de figuras.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1631,15 +1356,9 @@
       "title": "Frequência exibida nominal está declarada",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Copy e modelo vigente. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Copy e modelo vigente.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1664,15 +1383,9 @@
       "title": "RTP usa denominador declarado",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Dashboard e denominador documentado. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Dashboard e denominador documentado.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1697,15 +1410,9 @@
       "title": "Acelerador é linha separada do RTP",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Relatórios orgânico/acelerador. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Relatórios orgânico/acelerador.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1729,16 +1436,10 @@
       ],
       "title": "Gatilho e teto do acelerador",
       "status": "blocked",
-      "durationMs": 3,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Clock e faturamento controláveis. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: Clock e faturamento controláveis.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1763,15 +1464,9 @@
       "title": "Dourado não paga após esgotar estoque",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Modelo de estoque e gate. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Modelo de estoque e gate.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1796,15 +1491,9 @@
       "title": "Copy de densidade deriva de feed real",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Feed real e copy aprovada. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Feed real e copy aprovada.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1829,15 +1518,9 @@
       "title": "Hot path sustenta ao menos 100 req/s",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Autorização, ambiente isolado e SLO. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Autorização, ambiente isolado e SLO.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1862,15 +1545,9 @@
       "title": "Pico de referência não degrada decisão/reveal",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Autorização e monitoramento. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Autorização e monitoramento.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1898,15 +1575,9 @@
       "title": "Fluxos P0 sem overflow, com toque, teclado e zoom",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Dispositivos físicos P0. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Dispositivos físicos P0.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1931,15 +1602,9 @@
       "title": "Sessão, autorização e enumeração de CPF",
       "status": "blocked",
       "durationMs": 0,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Bloqueado: Autorização e contas sandbox. Nenhuma aprovação é inferida sem essa evidência.",
-      "attempts": 5,
+      "projects": [],
+      "error": "Bloqueado: Autorização e contas sandbox.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     },
@@ -1963,16 +1628,10 @@
       ],
       "title": "Schemas rejeitam versões, campos e idempotência inválidos",
       "status": "blocked",
-      "durationMs": 5,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "error": "Referência determinística executada; HML integrado permanece bloqueado sem OpenAPI/modelo versionado, logs de decisão e ledger somente leitura.",
-      "attempts": 5,
+      "durationMs": 0,
+      "projects": [],
+      "error": "Bloqueado: OpenAPI/JSON Schema versionado.",
+      "attempts": 0,
       "previousStatus": "blocked",
       "regression": "none"
     }
