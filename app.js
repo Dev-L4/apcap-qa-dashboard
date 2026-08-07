@@ -10,8 +10,11 @@ function render() {
   $('rows').innerHTML = visible.length ? visible.map(item => {
     const history = item.regression === 'regression' ? '<strong class="regression">REGRESSÃO</strong>' : item.previousStatus ? `anterior: ${escapeHtml(item.previousStatus)}` : 'primeira execução';
     const coverage = `${escapeHtml(item.executionType)} · ${escapeHtml(plural(item.viewports))}<br><small>Perfil: ${escapeHtml(plural(item.profiles))}</small>`;
-    const detail = item.error || (item.preconditions || []).join(' · ') || '—';
-    return `<tr><td><strong>${escapeHtml(item.id)}</strong><br>${escapeHtml(item.title)}<br><small>${escapeHtml(plural(item.sourceRefs))}</small></td><td>${escapeHtml(item.area)}<br><small>${escapeHtml(item.priority)}</small></td><td>${coverage}</td><td><span class="status ${escapeHtml(item.status)}">${escapeHtml(item.status)}</span></td><td>${history}</td><td>${item.attempts ? `${escapeHtml(plural(item.projects))}<br><small>${item.attempts} instância(s) · ${duration(item.durationMs)}</small>` : 'não executado'}</td><td>${escapeHtml(detail)}</td></tr>`;
+    const detailRaw = item.error || (item.preconditions || []).join(' · ') || '—';
+    const detail = escapeHtml(detailRaw)
+      .replace(/(Hipótese de causa raiz:)/, '<br><br><strong>Causa raiz:</strong>')
+      .replace(/(Proposta de solução:)/, '<br><br><strong>Correção proposta:</strong>');
+    return `<tr><td><strong>${escapeHtml(item.id)}</strong><br>${escapeHtml(item.title)}<br><small>${escapeHtml(plural(item.sourceRefs))}</small></td><td>${escapeHtml(item.area)}<br><small>${escapeHtml(item.priority)}</small></td><td>${coverage}</td><td><span class="status ${escapeHtml(item.status)}">${escapeHtml(item.status)}</span></td><td>${history}</td><td>${item.attempts ? `${escapeHtml(plural(item.projects))}<br><small>${item.attempts} instância(s) · ${duration(item.durationMs)}</small>` : 'não executado'}</td><td>${detail}</td></tr>`;
   }).join('') : '<tr><td colspan="7">Nenhum caso corresponde aos filtros.</td></tr>';
 }
 async function main() {
