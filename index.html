@@ -2,25 +2,11 @@
 <html lang="pt-BR">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>APCAP · QA HML</title><link rel="stylesheet" href="styles.css?v=20260807-1311"></head>
 <body>
-<section id="accessGate" class="access-gate" aria-labelledby="accessTitle">
-  <form id="accessForm" class="access-card">
-    <div class="access-mark" aria-hidden="true">QA</div>
-    <p class="eyebrow">ACESSO RESTRITO · HOMOLOGAÇÃO</p>
-    <h1 id="accessTitle">Dashboard QA APCAP</h1>
-    <p>Informe o código compartilhado pela equipe responsável.</p>
-    <label for="accessCode">Código de acesso</label>
-    <div class="password-row"><input id="accessCode" type="password" autocomplete="current-password" required autofocus placeholder="Digite o código"><button id="toggleCode" type="button" class="icon-button" aria-label="Mostrar código">Mostrar</button></div>
-    <label class="remember"><input id="rememberAccess" type="checkbox" checked> Lembrar neste dispositivo por 30 dias</label>
-    <button id="accessSubmit" class="button access-submit" type="submit">Entrar no dashboard</button>
-    <p id="accessMessage" class="access-message" role="alert" aria-live="polite"></p>
-    <small>O painel contém somente resultados sanitizados de QA.</small>
-  </form>
-</section>
-<main id="dashboard" hidden>
-  <header><div><p class="eyebrow">AUTOMAÇÃO QA · HML</p><h1>APCAP — catálogo e execução</h1><p id="meta">Carregando relatório sanitizado…</p></div><div class="actions"><a class="button" href="downloads/APCAP_QA_Bloqueios_Plano_Acao.xlsx" download>Exportar Excel</a><a class="button secondary" href="data/latest.json">JSON atual</a><a class="button secondary" href="data/history/index.json">Índice histórico</a><button id="logout" class="button secondary" type="button">Sair</button></div></header>
+<main id="dashboard">
+  <header><div><p class="eyebrow">AUTOMAÇÃO QA · HML</p><h1>APCAP — catálogo e execução</h1><p id="meta">Carregando relatório sanitizado…</p></div><div class="actions"><a class="button" href="downloads/APCAP_QA_Bloqueios_Plano_Acao.xlsx" download>Exportar Excel</a><a class="button secondary" href="data/latest.json">JSON atual</a><a class="button secondary" href="data/history/index.json">Índice histórico</a></div></header>
   <section class="notice"><strong>Escopo e privacidade:</strong> cada linha é um caso do catálogo, mesmo que não tenha sido executado. O painel não publica CPF, senha, token, payload/QR/URL Pix, vídeo, trace nem evidência financeira. “Aprovado” é resultado da última execução mapeada, não certificação de motor, RTP ou compliance.</section>
   <section class="cards" aria-label="Resumo do catálogo"><article><span>Catálogo</span><b id="total">—</b></article><article class="pass"><span>Aprovados</span><b id="passed">—</b></article><article class="fail"><span>Falhas/regressões</span><b id="failed">—</b></article><article class="skip"><span>Bloqueados</span><b id="blocked">—</b></article></section>
   <section class="filters"><label>Buscar <input id="query" type="search" placeholder="ID, área, caso ou requisito"></label><label>Status <select id="status"><option value="">Todos</option><option>passed</option><option>failed</option><option>blocked</option></select></label><label>Tipo <select id="type"><option value="">Todos</option><option>real</option><option>mocked</option><option>manual</option></select></label><label>Área <select id="area"><option value="">Todas</option></select></label><output id="count"></output></section>
   <section class="table-wrap"><table><thead><tr><th>ID / Caso</th><th>Área / prioridade</th><th>Tipo / cobertura</th><th>Status atual</th><th>Histórico</th><th>Execução</th><th>Detalhe sanitizado</th></tr></thead><tbody id="rows"><tr><td colspan="7">Carregando…</td></tr></tbody></table></section>
   <footer>Casos bloqueados/manuais permanecem visíveis até que suas pré-condições sejam entregues. Casos automatizados aprovados continuam no suite em execuções posteriores; “regressão” significa falha atual após aprovação anterior registrada.</footer>
-</main><script src="app.js?v=20260807-1316"></script></body></html>
+</main><script src="app.js?v=20260807-1326"></script></body></html>
