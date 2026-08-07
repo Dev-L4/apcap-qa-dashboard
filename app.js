@@ -35,4 +35,60 @@ async function main() {
     render();
   } catch { $('meta').textContent = 'Não foi possível carregar o relatório sanitizado.'; $('rows').innerHTML = '<tr><td colspan="7">Falha ao carregar dados.</td></tr>'; }
 }
-['query','status','type','area'].forEach(id => $(id).addEventListener('input', render)); main();
+const ACCESS_HASH = 'af2d11824bf79c5113fe8d203144312fcd75b44da5916b7f9587adf4c3c18cb8';
+const ACCESS_STORAGE_KEY = 'apcapQaAccessUntil';
+let accessAttempts = 0;
+const sha256 = async (value) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value)))).map(byte => byte.toString(16).padStart(2, '0')).join('');
+function hasAccess() {
+  if (sessionStorage.getItem(ACCESS_STORAGE_KEY) === 'session') return true;
+  const until = Number(localStorage.getItem(ACCESS_STORAGE_KEY) || 0);
+  if (until > Date.now()) return true;
+  localStorage.removeItem(ACCESS_STORAGE_KEY);
+  return false;
+}
+let dashboardStarted = false;
+function openDashboard() {
+  $('accessGate').hidden = true;
+  $('dashboard').hidden = false;
+  document.body.classList.remove('access-open');
+  if (!dashboardStarted) {
+    dashboardStarted = true;
+    ['query','status','type','area'].forEach(id => $(id).addEventListener('input', render));
+    main();
+  }
+}
+function initAccess() {
+  if (hasAccess()) return openDashboard();
+  document.body.classList.add('access-open');
+  $('accessForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const submit = $('accessSubmit');
+    const message = $('accessMessage');
+    submit.disabled = true;
+    message.textContent = 'Verificando…';
+    const valid = await sha256($('accessCode').value) === ACCESS_HASH;
+    if (valid) {
+      if ($('rememberAccess').checked) localStorage.setItem(ACCESS_STORAGE_KEY, String(Date.now() + 30 * 24 * 60 * 60 * 1000));
+      else sessionStorage.setItem(ACCESS_STORAGE_KEY, 'session');
+      $('accessCode').value = '';
+      message.textContent = '';
+      return openDashboard();
+    }
+    accessAttempts += 1;
+    message.textContent = 'Código incorreto. Confira e tente novamente.';
+    $('accessCode').select();
+    setTimeout(() => { submit.disabled = false; }, Math.min(8000, accessAttempts * 1200));
+  });
+  $('toggleCode').addEventListener('click', () => {
+    const input = $('accessCode');
+    input.type = input.type === 'password' ? 'text' : 'password';
+    $('toggleCode').textContent = input.type === 'password' ? 'Mostrar' : 'Ocultar';
+    input.focus();
+  });
+}
+$('logout').addEventListener('click', () => {
+  localStorage.removeItem(ACCESS_STORAGE_KEY);
+  sessionStorage.removeItem(ACCESS_STORAGE_KEY);
+  location.reload();
+});
+initAccess();
