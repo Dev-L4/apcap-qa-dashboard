@@ -1,9 +1,53 @@
 {
   "schemaVersion": 1,
-  "generatedAt": null,
-  "source": "seed",
+  "generatedAt": "2026-08-07T14:36:21.070Z",
+  "source": "results.json",
   "environment": "https://apcap-v5-hml.web.app",
-  "revision": "not-run",
-  "summary": { "total": 0, "passed": 0, "failed": 0, "skipped": 0, "other": 0 },
-  "tests": []
+  "revision": "local",
+  "summary": {
+    "total": 5,
+    "passed": 3,
+    "failed": 2,
+    "skipped": 0,
+    "other": 0
+  },
+  "tests": [
+    {
+      "id": "mocks/pix-state-machine.spec.ts / Mock determinístico Pix: input → processo → output / criação é idempotente e callback liquida somente uma vez",
+      "title": "mocks/pix-state-machine.spec.ts / Mock determinístico Pix: input → processo → output / criação é idempotente e callback liquida somente uma vez",
+      "project": "desktop-chromium",
+      "status": "passed",
+      "durationMs": 8
+    },
+    {
+      "id": "mocks/pix-state-machine.spec.ts / Mock determinístico Pix: input → processo → output / reuso conflitante e estorno fora de ordem falham",
+      "title": "mocks/pix-state-machine.spec.ts / Mock determinístico Pix: input → processo → output / reuso conflitante e estorno fora de ordem falham",
+      "project": "desktop-chromium",
+      "status": "passed",
+      "durationMs": 4
+    },
+    {
+      "id": "public/smoke.spec.ts / Smoke público — APCAP HML / landing responde e comunica acesso responsável",
+      "title": "public/smoke.spec.ts / Smoke público — APCAP HML / landing responde e comunica acesso responsável",
+      "project": "desktop-chromium",
+      "status": "failed",
+      "durationMs": 30735,
+      "error": "TimeoutError: page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"[URL_REDACTED]\", waiting until \"load\"\u001b[22m\n"
+    },
+    {
+      "id": "public/smoke.spec.ts / Smoke público — APCAP HML / consentimento oferece recusa explícita",
+      "title": "public/smoke.spec.ts / Smoke público — APCAP HML / consentimento oferece recusa explícita",
+      "project": "desktop-chromium",
+      "status": "passed",
+      "durationMs": 27198
+    },
+    {
+      "id": "public/smoke.spec.ts / Smoke público — APCAP HML / rota de login expõe controles de CPF e senha",
+      "title": "public/smoke.spec.ts / Smoke público — APCAP HML / rota de login expõe controles de CPF e senha",
+      "project": "desktop-chromium",
+      "status": "failed",
+      "durationMs": 14381,
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('input[type=\"password\"], input[name=\"password\"], [data-testid=\"password\"]').first()\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('input[type=\"password\"], input[name=\"password\"], [data-testid=\"password\"]').first()\u001b[22m\n\u001b[2m    23 × locator resolved to <input type=\"password\" id=\"login-senha\" x-model=\"senhaLogin\" @input=\"errosLogin.senha = ''\" placeholder=\"Digite sua senha\" autocomplete=\"current-password\" class=\"login-input login-input--com-olho\" :type=\"senhaLoginVisivel ? 'text' : 'password'\" :class=\"{ 'login-input--erro': errosLogin.senha }\"/>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n"
+    }
+  ]
 }
