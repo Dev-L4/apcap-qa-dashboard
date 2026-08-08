@@ -1,21 +1,21 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-08-08T14:46:16.845Z",
+  "generatedAt": "2026-08-07T21:09:55.286Z",
   "source": "results.json",
   "catalogSource": "test-catalog.json",
   "environment": "https://apcap-v5-hml.web.app",
-  "revision": "4acba08d533c",
+  "revision": "3a85392109a8",
   "summary": {
     "total": 58,
-    "passed": 8,
-    "failed": 0,
+    "passed": 7,
+    "failed": 1,
     "blocked": 50,
     "regressions": 0
   },
   "runSummary": {
     "total": 295,
-    "passed": 45,
-    "failed": 0,
+    "passed": 35,
+    "failed": 10,
     "blocked": 250
   },
   "cases": [
@@ -39,7 +39,7 @@
       ],
       "title": "Confirmar marca, promoção e grade aplicáveis",
       "status": "blocked",
-      "durationMs": 14,
+      "durationMs": 48,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -72,7 +72,7 @@
       ],
       "title": "Conciliar emissora, título e regulamento",
       "status": "blocked",
-      "durationMs": 17,
+      "durationMs": 24,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -105,7 +105,7 @@
       ],
       "title": "Definir regra de idade e copy",
       "status": "blocked",
-      "durationMs": 12,
+      "durationMs": 9,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -139,7 +139,7 @@
       ],
       "title": "Classificar bônus de cadastro",
       "status": "blocked",
-      "durationMs": 21,
+      "durationMs": 14,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -173,7 +173,7 @@
       ],
       "title": "Definir semântica dos três saldos",
       "status": "blocked",
-      "durationMs": 21,
+      "durationMs": 5,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -207,7 +207,7 @@
       ],
       "title": "Definir pagamento combinado e parcela HXC",
       "status": "blocked",
-      "durationMs": 13,
+      "durationMs": 8,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -240,7 +240,7 @@
       ],
       "title": "Classificar Milzão, Giro e Super Quarta",
       "status": "blocked",
-      "durationMs": 24,
+      "durationMs": 5,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -274,7 +274,7 @@
       ],
       "title": "Definir moedas achar figura e Estourar",
       "status": "blocked",
-      "durationMs": 15,
+      "durationMs": 7,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -308,7 +308,7 @@
       ],
       "title": "Definir comportamento de 2/3",
       "status": "blocked",
-      "durationMs": 7,
+      "durationMs": 12,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -342,7 +342,7 @@
       ],
       "title": "Aprovar regra de recarga não sacável",
       "status": "blocked",
-      "durationMs": 17,
+      "durationMs": 11,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -378,7 +378,7 @@
       ],
       "title": "Landing responde e comunica acesso responsável",
       "status": "passed",
-      "durationMs": 47414,
+      "durationMs": 57073,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -412,7 +412,7 @@
       ],
       "title": "Controle de recusa está visível e fecha o modal",
       "status": "passed",
-      "durationMs": 63775,
+      "durationMs": 77870,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -447,7 +447,7 @@
       ],
       "title": "Tela de login expõe CPF e senha",
       "status": "passed",
-      "durationMs": 64321,
+      "durationMs": 85545,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -480,7 +480,7 @@
       ],
       "title": "Link de regulamento publicado é exposto sem navegação externa",
       "status": "passed",
-      "durationMs": 43554,
+      "durationMs": 52250,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -512,7 +512,7 @@
       ],
       "title": "Após recusar, não há novo request GA/Clarity observado",
       "status": "passed",
-      "durationMs": 56244,
+      "durationMs": 65228,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -546,7 +546,7 @@
       ],
       "title": "Varredura de vocabulário proibido",
       "status": "blocked",
-      "durationMs": 10,
+      "durationMs": 7,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -580,7 +580,7 @@
       ],
       "title": "Rodapé regulatório correto em todas as telas de venda",
       "status": "blocked",
-      "durationMs": 5,
+      "durationMs": 7,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -614,7 +614,7 @@
       ],
       "title": "Recusar bloqueia GA e Clarity durante todo o ciclo",
       "status": "blocked",
-      "durationMs": 4,
+      "durationMs": 8,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -648,7 +648,7 @@
       ],
       "title": "Encerramento preserva retenção regulatória necessária",
       "status": "blocked",
-      "durationMs": 5,
+      "durationMs": 6,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -716,7 +716,7 @@
       ],
       "title": "Registrar App, Engine, Jogos e Recompensas",
       "status": "blocked",
-      "durationMs": 4,
+      "durationMs": 3,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -750,7 +750,7 @@
       ],
       "title": "Validar cadastro e bônus único por CPF",
       "status": "blocked",
-      "durationMs": 13,
+      "durationMs": 7,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -785,8 +785,8 @@
         "Fase 3"
       ],
       "title": "Perfil sandbox acessa navegação autenticada",
-      "status": "passed",
-      "durationMs": 77902,
+      "status": "failed",
+      "durationMs": 82252,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -794,8 +794,9 @@
         "mobile-iphone",
         "mobile-pixel"
       ],
+      "error": "Error: Contrato de login não mapeado: campos CPF/senha não foram encontrados. Não é seguro inferir seletores.",
       "attempts": 5,
-      "previousStatus": "failed",
+      "previousStatus": "blocked",
       "regression": "none"
     },
     {
@@ -819,7 +820,7 @@
       ],
       "title": "Pagamento combinado preserva rateio e regra HXC",
       "status": "blocked",
-      "durationMs": 7,
+      "durationMs": 4,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -853,7 +854,7 @@
       ],
       "title": "Pix criado, expirado, duplicado e já paguei",
       "status": "blocked",
-      "durationMs": 8,
+      "durationMs": 5,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -886,7 +887,7 @@
       ],
       "title": "Estorno após prêmio reverte efeitos e título",
       "status": "blocked",
-      "durationMs": 12,
+      "durationMs": 4,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -921,7 +922,7 @@
       ],
       "title": "Saque bloqueia recarga e permite prêmio",
       "status": "blocked",
-      "durationMs": 2,
+      "durationMs": 5,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -955,7 +956,7 @@
       ],
       "title": "Limites e presets de recarga",
       "status": "blocked",
-      "durationMs": 3,
+      "durationMs": 7,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -990,7 +991,7 @@
       ],
       "title": "Pix sandbox em dois contextos confirma e app recebe retorno",
       "status": "blocked",
-      "durationMs": 2976,
+      "durationMs": 4753,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1024,7 +1025,7 @@
       ],
       "title": "Contrato Pix é idempotente e callback liquida uma vez",
       "status": "passed",
-      "durationMs": 32,
+      "durationMs": 39,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1057,7 +1058,7 @@
       ],
       "title": "Contrato Pix rejeita reuso conflitante e estorno fora de ordem",
       "status": "passed",
-      "durationMs": 28,
+      "durationMs": 34,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1089,7 +1090,7 @@
       ],
       "title": "Cap e expiração de chances",
       "status": "blocked",
-      "durationMs": 12,
+      "durationMs": 3,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1122,7 +1123,7 @@
       ],
       "title": "Sem número exige compra mesmo com bônus",
       "status": "blocked",
-      "durationMs": 5,
+      "durationMs": 3,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1157,7 +1158,7 @@
       ],
       "title": "Cupom/título é único, persistente e rastreável",
       "status": "blocked",
-      "durationMs": 3,
+      "durationMs": 9,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1190,7 +1191,7 @@
       ],
       "title": "Trilha sela no desbloqueio e reseta semanalmente",
       "status": "blocked",
-      "durationMs": 10,
+      "durationMs": 4,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1257,7 +1258,7 @@
       ],
       "title": "Caps, silêncio 72h e saída de upsell",
       "status": "blocked",
-      "durationMs": 15,
+      "durationMs": 3,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1291,7 +1292,7 @@
       ],
       "title": "Feed usa dados reais e trata vazio/erro",
       "status": "blocked",
-      "durationMs": 10,
+      "durationMs": 7,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1325,7 +1326,7 @@
       ],
       "title": "Faixa escassa reserva uma única jogada antes do reveal",
       "status": "blocked",
-      "durationMs": 25,
+      "durationMs": 56,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1359,7 +1360,7 @@
       ],
       "title": "Conservação e RTP reconciliados por faixa",
       "status": "blocked",
-      "durationMs": 6,
+      "durationMs": 4,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1393,7 +1394,7 @@
       ],
       "title": "Odds não variam por perfil",
       "status": "blocked",
-      "durationMs": 3,
+      "durationMs": 4,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1427,7 +1428,7 @@
       ],
       "title": "Esgotamento fecha gate sem 500 ou prêmio descoberto",
       "status": "blocked",
-      "durationMs": 20,
+      "durationMs": 34,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1461,7 +1462,7 @@
       ],
       "title": "M e frequências de figuras obedecem edição vigente",
       "status": "blocked",
-      "durationMs": 8,
+      "durationMs": 6,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1495,7 +1496,7 @@
       ],
       "title": "Selo conserva hash entre decisão, reveal e liquidação",
       "status": "blocked",
-      "durationMs": 25,
+      "durationMs": 35,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1529,7 +1530,7 @@
       ],
       "title": "Idempotência integrada de jogada, pagamento e estorno",
       "status": "blocked",
-      "durationMs": 55,
+      "durationMs": 52,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1562,7 +1563,7 @@
       ],
       "title": "Medir multiplicador M real",
       "status": "blocked",
-      "durationMs": 6,
+      "durationMs": 5,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1595,7 +1596,7 @@
       ],
       "title": "Medir 3/3, 2/3 e 1/3 versus pagamento",
       "status": "blocked",
-      "durationMs": 12,
+      "durationMs": 4,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1629,7 +1630,7 @@
       ],
       "title": "Frequência exibida nominal está declarada",
       "status": "blocked",
-      "durationMs": 15,
+      "durationMs": 4,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1662,7 +1663,7 @@
       ],
       "title": "RTP usa denominador declarado",
       "status": "blocked",
-      "durationMs": 4,
+      "durationMs": 3,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1695,7 +1696,7 @@
       ],
       "title": "Acelerador é linha separada do RTP",
       "status": "blocked",
-      "durationMs": 6,
+      "durationMs": 8,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1728,7 +1729,7 @@
       ],
       "title": "Gatilho e teto do acelerador",
       "status": "blocked",
-      "durationMs": 14,
+      "durationMs": 4,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1761,7 +1762,7 @@
       ],
       "title": "Dourado não paga após esgotar estoque",
       "status": "blocked",
-      "durationMs": 3,
+      "durationMs": 8,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1794,7 +1795,7 @@
       ],
       "title": "Copy de densidade deriva de feed real",
       "status": "blocked",
-      "durationMs": 7,
+      "durationMs": 4,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1827,7 +1828,7 @@
       ],
       "title": "Hot path sustenta ao menos 100 req/s",
       "status": "blocked",
-      "durationMs": 7,
+      "durationMs": 6,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1860,7 +1861,7 @@
       ],
       "title": "Pico de referência não degrada decisão/reveal",
       "status": "blocked",
-      "durationMs": 11,
+      "durationMs": 6,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1896,7 +1897,7 @@
       ],
       "title": "Fluxos P0 sem overflow, com toque, teclado e zoom",
       "status": "blocked",
-      "durationMs": 6,
+      "durationMs": 4,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1929,7 +1930,7 @@
       ],
       "title": "Sessão, autorização e enumeração de CPF",
       "status": "blocked",
-      "durationMs": 9,
+      "durationMs": 4,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -1962,7 +1963,7 @@
       ],
       "title": "Schemas rejeitam versões, campos e idempotência inválidos",
       "status": "blocked",
-      "durationMs": 36,
+      "durationMs": 41,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
