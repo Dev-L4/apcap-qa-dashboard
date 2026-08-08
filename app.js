@@ -4,9 +4,10 @@ const escapeHtml = (value = '') => String(value).replace(/[&<>"']/g, c => ({'&':
 const duration = (ms) => !ms ? '—' : ms < 1000 ? `${ms} ms` : `${(ms / 1000).toFixed(1)} s`;
 const plural = (items) => Array.isArray(items) && items.length ? items.join(', ') : '—';
 function render() {
-  const term = $('query').value.trim().toLowerCase(), status = $('status').value, type = $('type').value, area = $('area').value;
-  const visible = state.cases.filter(item => (!status || item.status === status) && (!type || item.executionType === type) && (!area || item.area === area) && (!term || `${item.id} ${item.title} ${item.area} ${item.priority} ${(item.sourceRefs || []).join(' ')} ${item.status}`.toLowerCase().includes(term)));
-  $('count').textContent = `${visible.length} de ${state.cases.length} casos`;
+  const term = $('query').value.trim().toLowerCase(), status = $('status').value, type = $('type').value, area = $('area').value, view = $('view').value;
+  const scope = state.cases.filter(item => view === 'execution' ? item.status !== 'blocked' : view === 'backlog' ? item.status === 'blocked' : true);
+  const visible = scope.filter(item => (!status || item.status === status) && (!type || item.executionType === type) && (!area || item.area === area) && (!term || `${item.id} ${item.title} ${item.area} ${item.priority} ${(item.sourceRefs || []).join(' ')} ${item.status}`.toLowerCase().includes(term)));
+  $('count').textContent = `${visible.length} de ${scope.length} casos nesta visão`;
   $('rows').innerHTML = visible.length ? visible.map(item => {
     const history = item.regression === 'regression' ? '<strong class="regression">REGRESSÃO</strong>' : item.previousStatus ? `anterior: ${escapeHtml(item.previousStatus)}` : 'primeira execução';
     const coverage = `${escapeHtml(item.executionType)} · ${escapeHtml(plural(item.viewports))}<br><small>Perfil: ${escapeHtml(plural(item.profiles))}</small>`;
@@ -28,7 +29,7 @@ async function main() {
     }
     const calculated = state.cases.reduce((acc, item) => { acc.total += 1; acc[item.status] = (acc[item.status] || 0) + 1; return acc; }, { total: 0 });
     const summary = report.summary?.total === state.cases.length ? report.summary : calculated;
-    $('total').textContent = summary.total ?? 0; $('passed').textContent = summary.passed ?? 0;
+    $('total').textContent = (summary.passed ?? 0) + (summary.failed ?? 0); $('passed').textContent = summary.passed ?? 0;
     $('failed').textContent = `${summary.failed ?? 0}/${summary.regressions ?? 0}`;
     $('blocked').textContent = summary.blocked ?? 0;
     const run = report.runSummary || {};
@@ -37,5 +38,5 @@ async function main() {
     render();
   } catch { $('meta').textContent = 'Não foi possível carregar o relatório sanitizado.'; $('rows').innerHTML = '<tr><td colspan="7">Falha ao carregar dados.</td></tr>'; }
 }
-['query','status','type','area'].forEach(id => $(id).addEventListener('input', render));
+['view','query','status','type','area'].forEach(id => $(id).addEventListener('input', render));
 main();
