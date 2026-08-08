@@ -1,0 +1,507 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-08",
+  "scope": "50 itens operacionais do catálogo histórico, incluindo o caso de registry executado",
+  "entries": [
+    {
+      "id": "PUB-01",
+      "titulo": "Landing responde e comunica acesso responsável",
+      "area": "Landing",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "PUB-01",
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "PUB-02",
+      "titulo": "Controle de recusa está visível e fecha o modal",
+      "area": "Cookies",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "PUB-02",
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "PUB-03",
+      "titulo": "Tela de login expõe CPF e senha",
+      "area": "Autenticação",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "PUB-03",
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "PUB-04",
+      "titulo": "Link de regulamento publicado é exposto sem navegação externa",
+      "area": "Regulatório",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "PUB-04",
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "PUB-05",
+      "titulo": "Após recusar, não há novo request GA/Clarity observado",
+      "area": "Cookies",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "PUB-05",
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "T-30",
+      "titulo": "Varredura de vocabulário proibido",
+      "area": "Compliance",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "T-31",
+      "titulo": "Rodapé regulatório correto em todas as telas de venda",
+      "area": "Compliance",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "T-32",
+      "titulo": "Recusar bloqueia GA e Clarity durante todo o ciclo",
+      "area": "Privacidade",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "T-33",
+      "titulo": "Encerramento preserva retenção regulatória necessária",
+      "area": "LGPD",
+      "elegibilidade": "parcial",
+      "justificativa": "Há uma superfície de teste possível, mas a confirmação completa exige condição adicional (política, dispositivo, conta ou fixture) ausente no resultado atual.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Obter a condição indicada e executar o cenário; separar evidência de UI de conclusão de integração."
+    },
+    {
+      "id": "T-34",
+      "titulo": "Instalação, atualização e offline PWA",
+      "area": "PWA",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "T-35",
+      "titulo": "Registrar App, Engine, Jogos e Recompensas",
+      "area": "Rastreabilidade",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "T-36",
+      "titulo": "Validar cadastro e bônus único por CPF",
+      "area": "Cadastro",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "AUTH-01",
+      "titulo": "Sessão HML real por conta sandbox autorizada",
+      "area": "Sessão",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "AUTH-01",
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "AUTH-02",
+      "titulo": "Segundo perfil sandbox acessa a navegação autenticada",
+      "area": "Sessão",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "AUTH-02",
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "T-10",
+      "titulo": "Pagamento combinado preserva rateio e regra HXC",
+      "area": "Pagamento",
+      "elegibilidade": "parcial",
+      "justificativa": "Há uma superfície de teste possível, mas a confirmação completa exige condição adicional (política, dispositivo, conta ou fixture) ausente no resultado atual.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "CHECKOUT-STUB-02",
+      "proximaAcao": "Obter a condição indicada e executar o cenário; separar evidência de UI de conclusão de integração."
+    },
+    {
+      "id": "T-11",
+      "titulo": "Pix criado, expirado, duplicado e já paguei",
+      "area": "Pix",
+      "elegibilidade": "parcial",
+      "justificativa": "Há uma superfície de teste possível, mas a confirmação completa exige condição adicional (política, dispositivo, conta ou fixture) ausente no resultado atual.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "PIX-STUB-01",
+      "proximaAcao": "Obter a condição indicada e executar o cenário; separar evidência de UI de conclusão de integração."
+    },
+    {
+      "id": "T-12",
+      "titulo": "Estorno após prêmio reverte efeitos e título",
+      "area": "Pix",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "T-13",
+      "titulo": "Saque bloqueia recarga e permite prêmio",
+      "area": "Carteira",
+      "elegibilidade": "parcial",
+      "justificativa": "Há uma superfície de teste possível, mas a confirmação completa exige condição adicional (política, dispositivo, conta ou fixture) ausente no resultado atual.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "WALLET-STUB-01",
+      "proximaAcao": "Obter a condição indicada e executar o cenário; separar evidência de UI de conclusão de integração."
+    },
+    {
+      "id": "T-14",
+      "titulo": "Limites e presets de recarga",
+      "area": "Carteira",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "WALLET-STUB-01",
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "PIX-E2E-01",
+      "titulo": "Pix sandbox em dois contextos confirma e app recebe retorno",
+      "area": "Pix",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "PIX-E2E-01",
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "PIX-MOCK-01",
+      "titulo": "Contrato Pix é idempotente e callback liquida uma vez",
+      "area": "Pix",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "PIX-MOCK-01",
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "PIX-MOCK-02",
+      "titulo": "Contrato Pix rejeita reuso conflitante e estorno fora de ordem",
+      "area": "Pix",
+      "elegibilidade": "elegivel",
+      "justificativa": "Pode ser exercitado autonomamente com UI pública ou fixture determinística, sem credenciais, PII ou pagamento real; a execução não consta como resultado coberto nesta auditoria.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": "PIX-MOCK-02",
+      "proximaAcao": "Executar o caso automatizado com contexto limpo e registrar evidência sanitizada."
+    },
+    {
+      "id": "T-20",
+      "titulo": "Cap e expiração de chances",
+      "area": "Jogo",
+      "elegibilidade": "parcial",
+      "justificativa": "Há uma superfície de teste possível, mas a confirmação completa exige condição adicional (política, dispositivo, conta ou fixture) ausente no resultado atual.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Obter a condição indicada e executar o cenário; separar evidência de UI de conclusão de integração."
+    },
+    {
+      "id": "T-21",
+      "titulo": "Sem número exige compra mesmo com bônus",
+      "area": "Jogo",
+      "elegibilidade": "parcial",
+      "justificativa": "Há uma superfície de teste possível, mas a confirmação completa exige condição adicional (política, dispositivo, conta ou fixture) ausente no resultado atual.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Obter a condição indicada e executar o cenário; separar evidência de UI de conclusão de integração."
+    },
+    {
+      "id": "T-22",
+      "titulo": "Cupom/título é único, persistente e rastreável",
+      "area": "Título",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "T-23",
+      "titulo": "Trilha sela no desbloqueio e reseta semanalmente",
+      "area": "Trilha",
+      "elegibilidade": "parcial",
+      "justificativa": "Há uma superfície de teste possível, mas a confirmação completa exige condição adicional (política, dispositivo, conta ou fixture) ausente no resultado atual.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Obter a condição indicada e executar o cenário; separar evidência de UI de conclusão de integração."
+    },
+    {
+      "id": "T-24",
+      "titulo": "Velocidade não altera decisão",
+      "area": "Reveal",
+      "elegibilidade": "parcial",
+      "justificativa": "Há uma superfície de teste possível, mas a confirmação completa exige condição adicional (política, dispositivo, conta ou fixture) ausente no resultado atual.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Obter a condição indicada e executar o cenário; separar evidência de UI de conclusão de integração."
+    },
+    {
+      "id": "T-25",
+      "titulo": "Caps, silêncio 72h e saída de upsell",
+      "area": "Upsell",
+      "elegibilidade": "parcial",
+      "justificativa": "Há uma superfície de teste possível, mas a confirmação completa exige condição adicional (política, dispositivo, conta ou fixture) ausente no resultado atual.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Obter a condição indicada e executar o cenário; separar evidência de UI de conclusão de integração."
+    },
+    {
+      "id": "T-26",
+      "titulo": "Feed usa dados reais e trata vazio/erro",
+      "area": "Feed",
+      "elegibilidade": "parcial",
+      "justificativa": "Há uma superfície de teste possível, mas a confirmação completa exige condição adicional (política, dispositivo, conta ou fixture) ausente no resultado atual.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Obter a condição indicada e executar o cenário; separar evidência de UI de conclusão de integração."
+    },
+    {
+      "id": "T-01",
+      "titulo": "Faixa escassa reserva uma única jogada antes do reveal",
+      "area": "Motor",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "T-02",
+      "titulo": "Conservação e RTP reconciliados por faixa",
+      "area": "Motor",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "T-03",
+      "titulo": "Odds não variam por perfil",
+      "area": "Motor",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "T-04",
+      "titulo": "Esgotamento fecha gate sem 500 ou prêmio descoberto",
+      "area": "Motor",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "T-05",
+      "titulo": "M e frequências de figuras obedecem edição vigente",
+      "area": "Motor",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "T-06",
+      "titulo": "Selo conserva hash entre decisão, reveal e liquidação",
+      "area": "Motor",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "T-07",
+      "titulo": "Idempotência integrada de jogada, pagamento e estorno",
+      "area": "Motor",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "QA-MATH-01",
+      "titulo": "Medir multiplicador M real",
+      "area": "Cálculo",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "QA-MATH-02",
+      "titulo": "Medir 3/3, 2/3 e 1/3 versus pagamento",
+      "area": "Cálculo",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "QA-MATH-03",
+      "titulo": "Frequência exibida nominal está declarada",
+      "area": "Cálculo",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "QA-MATH-04",
+      "titulo": "RTP usa denominador declarado",
+      "area": "Cálculo",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "QA-ACEL-01",
+      "titulo": "Acelerador é linha separada do RTP",
+      "area": "Acelerador",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "QA-ACEL-02",
+      "titulo": "Gatilho e teto do acelerador",
+      "area": "Acelerador",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "QA-ACEL-03",
+      "titulo": "Dourado não paga após esgotar estoque",
+      "area": "Acelerador",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "QA-ACEL-04",
+      "titulo": "Copy de densidade deriva de feed real",
+      "area": "Marketing",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "QA-PERF-01",
+      "titulo": "Hot path sustenta ao menos 100 req/s",
+      "area": "Performance",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "QA-PERF-02",
+      "titulo": "Pico de referência não degrada decisão/reveal",
+      "area": "Performance",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "RSP-01",
+      "titulo": "Fluxos P0 sem overflow, com toque, teclado e zoom",
+      "area": "Responsividade",
+      "elegibilidade": "parcial",
+      "justificativa": "Há uma superfície de teste possível, mas a confirmação completa exige condição adicional (política, dispositivo, conta ou fixture) ausente no resultado atual.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Obter a condição indicada e executar o cenário; separar evidência de UI de conclusão de integração."
+    },
+    {
+      "id": "SEC-01",
+      "titulo": "Sessão, autorização e enumeração de CPF",
+      "area": "Segurança",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "CONTRACT-01",
+      "titulo": "Schemas rejeitam versões, campos e idempotência inválidos",
+      "area": "Contrato",
+      "elegibilidade": "dependencia_externa",
+      "justificativa": "A verificação pretendida depende de decisão, serviço, dados, logs, ledger, dispositivo ou sandbox autorizado; bundle/DOM não comprova o comportamento.",
+      "statusAtual": "nao_coberto",
+      "casoAutomatizado": null,
+      "proximaAcao": "Provisionar a dependência autorizada e executar com dados sintéticos e artefatos sanitizados."
+    },
+    {
+      "id": "REGISTRY-MOCK-01",
+      "titulo": "Registry aceita seleção segura de casos",
+      "area": "Automação",
+      "elegibilidade": "elegivel",
+      "justificativa": "A seleção segura do registry foi executada nos cinco projetos; o resultado publicado registra aprovação.",
+      "statusAtual": "coberto",
+      "casoAutomatizado": "REGISTRY-MOCK-01",
+      "proximaAcao": "Manter regressão nos cinco projetos e revisar quando o registry mudar."
+    }
+  ]
+}
