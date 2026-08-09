@@ -3,6 +3,9 @@ const WORKFLOW = 'https://github.com/Dev-L4/apcap-qa-automation/actions/workflow
 const $ = id => document.getElementById(id);
 const escapeHtml = (value = '') => String(value).replace(/[&<>"']/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[char]));
 const duration = ms => !ms ? '—' : ms < 1000 ? `${ms} ms` : `${(ms / 1000).toFixed(1)} s`;
+const evidenceLinks = evidence => Array.isArray(evidence) && evidence.length
+  ? `<div class="evidence-links">${evidence.map((path, index) => `<a class="evidence-link" href="${escapeHtml(path)}" target="_blank" rel="noopener">📷 Evidência ${index + 1}</a>`).join(' ')}</div>`
+  : '<br><small>Evidência visual ainda não publicada</small>';
 
 function render() {
   const term = $('query').value.trim().toLowerCase(), status = $('status').value, type = $('type').value;
@@ -12,7 +15,7 @@ function render() {
     <td><strong>${escapeHtml(item.id)}</strong><br>${escapeHtml(item.title)}</td>
     <td>${escapeHtml(item.execution)}</td>
     <td><span class="status ${escapeHtml(item.status)}">${escapeHtml(item.status)}</span>${item.regression === 'regression' ? '<br><strong class="regression">REGRESSÃO</strong>' : ''}</td>
-    <td>${escapeHtml((item.projects || []).join(', ') || '—')}<br><small>${item.attempts || 0} instância(s) · ${duration(item.durationMs)}</small>${Array.isArray(item.evidence) && item.evidence.length ? `<br><a class="evidence-link" href="${escapeHtml(item.evidence[0])}" target="_blank" rel="noopener">📷 Ver evidência${item.evidence.length > 1 ? ` (${item.evidence.length})` : ''}</a>` : '<br><small>Evidência visual ainda não publicada</small>'}</td>
+    <td>${escapeHtml((item.projects || []).join(', ') || '—')}<br><small>${item.attempts || 0} instância(s) · ${duration(item.durationMs)}</small>${evidenceLinks(item.evidence)}</td>
     <td><a class="button secondary" href="${WORKFLOW}">Rodar este caso</a> <button class="button secondary copy-id" type="button" data-case="${escapeHtml(item.id)}">Copiar ID</button><br><small>GitHub exige confirmação autenticada para <code>${escapeHtml(item.id)}</code>.</small></td>
   </tr>`).join('') : '<tr><td colspan="5">Nenhum resultado corresponde aos filtros.</td></tr>';
 }
