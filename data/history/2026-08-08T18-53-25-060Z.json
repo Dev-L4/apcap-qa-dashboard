@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 5,
+  "generatedAt": "2026-08-08T18:53:25.060Z",
+  "source": "merged-results.json",
+  "environment": "[URL_REDACTED]",
+  "revision": "3b1b3179dcf6",
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1
+  },
+  "browserCoverage": {
+    "desktop-chromium": 1
+  },
+  "currentRunCaseIds": [
+    "PIX-E2E-01"
+  ],
+  "cases": [
+    {
+      "id": "PIX-E2E-01",
+      "title": "PIX sandbox confirma compra em contexto isolado",
+      "execution": "real-hml",
+      "autonomous": true,
+      "sandboxOnly": true,
+      "status": "failed",
+      "durationMs": 29629,
+      "projects": [
+        "desktop-chromium"
+      ],
+      "attempts": 1,
+      "lastRunAt": "2026-08-08T18:53:25.060Z",
+      "regression": "none",
+      "error": "TEST_FAILED"
+    }
+  ]
+}

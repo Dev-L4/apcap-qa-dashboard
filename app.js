@@ -12,7 +12,7 @@ function render() {
     <td><strong>${escapeHtml(item.id)}</strong><br>${escapeHtml(item.title)}</td>
     <td>${escapeHtml(item.execution)}</td>
     <td><span class="status ${escapeHtml(item.status)}">${escapeHtml(item.status)}</span>${item.regression === 'regression' ? '<br><strong class="regression">REGRESSÃO</strong>' : ''}</td>
-    <td>${escapeHtml((item.projects || []).join(', ') || '—')}<br><small>${item.attempts || 0} instância(s) · ${duration(item.durationMs)}</small></td>
+    <td>${escapeHtml((item.projects || []).join(', ') || '—')}<br><small>${item.attempts || 0} instância(s) · ${duration(item.durationMs)}</small>${Array.isArray(item.evidence) && item.evidence.length ? `<br><a class="evidence-link" href="${escapeHtml(item.evidence[0])}" target="_blank" rel="noopener">📷 Ver evidência${item.evidence.length > 1 ? ` (${item.evidence.length})` : ''}</a>` : '<br><small>Evidência visual ainda não publicada</small>'}</td>
     <td><a class="button secondary" href="${WORKFLOW}">Rodar este caso</a> <button class="button secondary copy-id" type="button" data-case="${escapeHtml(item.id)}">Copiar ID</button><br><small>GitHub exige confirmação autenticada para <code>${escapeHtml(item.id)}</code>.</small></td>
   </tr>`).join('') : '<tr><td colspan="5">Nenhum resultado corresponde aos filtros.</td></tr>';
 }

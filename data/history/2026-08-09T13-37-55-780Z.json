@@ -1,13 +1,13 @@
 {
   "schemaVersion": 5,
-  "generatedAt": "2026-08-09T14:23:36.602Z",
+  "generatedAt": "2026-08-09T13:37:55.780Z",
   "source": "merged-results.json",
   "environment": "[URL_REDACTED]",
-  "revision": "945624ffa102",
+  "revision": "e6d9d0314712",
   "summary": {
     "total": 1,
-    "passed": 1,
-    "failed": 0
+    "passed": 0,
+    "failed": 1
   },
   "browserCoverage": {
     "desktop-chromium": 1,
@@ -25,8 +25,8 @@
       "title": "Caminho da Sorte abre pela Home e carrega o catálogo real",
       "execution": "real-hml",
       "autonomous": true,
-      "status": "passed",
-      "durationMs": 196780,
+      "status": "failed",
+      "durationMs": 109961,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -35,15 +35,9 @@
         "mobile-pixel"
       ],
       "attempts": 5,
-      "lastRunAt": "2026-08-09T14:23:36.602Z",
-      "evidence": [
-        "evidence/LUCK-PATH-E2E-01/desktop-chromium-catalogo-carregado.png",
-        "evidence/LUCK-PATH-E2E-01/desktop-firefox-catalogo-carregado.png",
-        "evidence/LUCK-PATH-E2E-01/desktop-webkit-catalogo-carregado.png",
-        "evidence/LUCK-PATH-E2E-01/mobile-iphone-catalogo-carregado.png",
-        "evidence/LUCK-PATH-E2E-01/mobile-pixel-catalogo-carregado.png"
-      ],
-      "regression": "none"
+      "lastRunAt": "2026-08-09T13:37:55.780Z",
+      "regression": "none",
+      "error": "TEST_FAILED"
     }
   ]
 }

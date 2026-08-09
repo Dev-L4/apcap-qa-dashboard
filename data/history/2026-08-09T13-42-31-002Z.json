@@ -1,9 +1,9 @@
 {
   "schemaVersion": 5,
-  "generatedAt": "2026-08-09T14:23:36.602Z",
+  "generatedAt": "2026-08-09T13:42:31.002Z",
   "source": "merged-results.json",
   "environment": "[URL_REDACTED]",
-  "revision": "945624ffa102",
+  "revision": "4fa56b15c517",
   "summary": {
     "total": 1,
     "passed": 1,
@@ -26,7 +26,7 @@
       "execution": "real-hml",
       "autonomous": true,
       "status": "passed",
-      "durationMs": 196780,
+      "durationMs": 166281,
       "projects": [
         "desktop-chromium",
         "desktop-firefox",
@@ -35,14 +35,7 @@
         "mobile-pixel"
       ],
       "attempts": 5,
-      "lastRunAt": "2026-08-09T14:23:36.602Z",
-      "evidence": [
-        "evidence/LUCK-PATH-E2E-01/desktop-chromium-catalogo-carregado.png",
-        "evidence/LUCK-PATH-E2E-01/desktop-firefox-catalogo-carregado.png",
-        "evidence/LUCK-PATH-E2E-01/desktop-webkit-catalogo-carregado.png",
-        "evidence/LUCK-PATH-E2E-01/mobile-iphone-catalogo-carregado.png",
-        "evidence/LUCK-PATH-E2E-01/mobile-pixel-catalogo-carregado.png"
-      ],
+      "lastRunAt": "2026-08-09T13:42:31.002Z",
       "regression": "none"
     }
   ]

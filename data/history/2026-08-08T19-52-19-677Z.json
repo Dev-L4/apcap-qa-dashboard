@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 5,
+  "generatedAt": "2026-08-08T19:52:19.677Z",
+  "source": "merged-results.json",
+  "environment": "[URL_REDACTED]",
+  "revision": "aa4b5988eb5c",
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1
+  },
+  "browserCoverage": {
+    "desktop-chromium": 1
+  },
+  "currentRunCaseIds": [
+    "BALANCE-E2E-01"
+  ],
+  "cases": [
+    {
+      "id": "BALANCE-E2E-01",
+      "title": "Saldo sandbox conclui compra em conta dedicada",
+      "execution": "real-hml",
+      "autonomous": true,
+      "sandboxOnly": true,
+      "status": "failed",
+      "durationMs": 16997,
+      "projects": [
+        "desktop-chromium"
+      ],
+      "attempts": 1,
+      "lastRunAt": "2026-08-08T19:52:19.677Z",
+      "regression": "none",
+      "error": "TEST_FAILED"
+    }
+  ]
+}
