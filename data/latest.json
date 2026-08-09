@@ -1,49 +1,11 @@
 {
   "schemaVersion": 5,
-  "generatedAt": "2026-08-09T14:23:36.602Z",
-  "source": "merged-results.json",
-  "environment": "[URL_REDACTED]",
-  "revision": "945624ffa102",
-  "summary": {
-    "total": 1,
-    "passed": 1,
-    "failed": 0
-  },
-  "browserCoverage": {
-    "desktop-chromium": 1,
-    "desktop-firefox": 1,
-    "desktop-webkit": 1,
-    "mobile-iphone": 1,
-    "mobile-pixel": "[REDACTED]"
-  },
-  "currentRunCaseIds": [
-    "LUCK-PATH-E2E-01"
-  ],
-  "cases": [
-    {
-      "id": "LUCK-PATH-E2E-01",
-      "title": "Caminho da Sorte abre pela Home e carrega o catálogo real",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 196780,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "attempts": 5,
-      "lastRunAt": "2026-08-09T14:23:36.602Z",
-      "evidence": [
-        "evidence/LUCK-PATH-E2E-01/desktop-chromium-catalogo-carregado.png",
-        "evidence/LUCK-PATH-E2E-01/desktop-firefox-catalogo-carregado.png",
-        "evidence/LUCK-PATH-E2E-01/desktop-webkit-catalogo-carregado.png",
-        "evidence/LUCK-PATH-E2E-01/mobile-iphone-catalogo-carregado.png",
-        "evidence/LUCK-PATH-E2E-01/mobile-pixel-catalogo-carregado.png"
-      ],
-      "regression": "none"
-    }
-  ]
+  "generatedAt": "2026-08-09T15:20:00.000Z",
+  "source": "strict-full-flow-audit",
+  "environment": "HML",
+  "revision": "pending",
+  "summary": { "total": 0, "passed": 0, "failed": 0 },
+  "browserCoverage": {},
+  "currentRunCaseIds": [],
+  "cases": []
 }
