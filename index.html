@@ -3,10 +3,10 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex"><meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex"><base href="/apcap-qa-dashboard/"><title>APCAP · QA HML</title><link rel="stylesheet" href="styles.css"></head>
 <body>
 <main id="dashboard">
-  <header><div><p class="eyebrow">AUTOMAÇÃO QA · HML</p><h1>APCAP — fluxos completos autônomos</h1><p id="meta">Carregando relatório sanitizado…</p></div><div class="actions"><a class="button secondary" href="data/latest.json">JSON atual</a></div></header>
-  <section class="notice"><strong>Critério de publicação:</strong> somente entra nesta dashboard um fluxo funcional executado do início ao fim, sem ação manual, com screenshot sanitizado de cada etapa relevante.</section>
-  <section class="notice"><strong>Lista limpa:</strong> no momento não há caso que satisfaça integralmente esse critério. Smoke tests, navegação parcial, mocks, contratos interceptados, dependências externas e o carregamento parcial do Caminho da Sorte foram removidos.</section>
+  <header><div><p class="eyebrow">AUTOMAÇÃO QA · HML</p><h1>APCAP — casos autônomos completos</h1><p id="meta">Carregando relatório sanitizado…</p></div><div class="actions"><a class="button secondary" href="data/latest.json">JSON atual</a></div></header>
+  <section class="notice"><strong>Critério de publicação:</strong> cada caso deve concluir integralmente o objetivo funcional que declara, sem ação manual, com screenshot sanitizado de cada etapa relevante.</section>
+  <section class="notice"><strong>Lista auditada:</strong> somente casos comprovados permanecem abaixo. Fluxos parciais, mocks, dependências externas sem encerramento e jornadas ainda não comprovadas continuam excluídos.</section>
   <section class="cards" aria-label="Resumo"><article><span>Casos elegíveis</span><b id="total">0</b></article><article class="pass"><span>Aprovados</span><b id="passed">0</b></article><article class="fail"><span>Falhas</span><b id="failed">0</b></article></section>
   <section class="table-wrap"><table><thead><tr><th>ID / Caso</th><th>Tipo</th><th>Último estado</th><th>Execução</th><th>Evidências</th></tr></thead><tbody id="rows"><tr><td colspan="5">Carregando…</td></tr></tbody></table></section>
-  <footer>Nenhum controle de execução é exibido enquanto não houver fluxo completo elegível. Dados sensíveis não são publicados.</footer>
-</main><script src="app.js?v=strict-full-flow-v1"></script></body></html>
+  <footer>A execução permanece privada; apenas vereditos e evidências sanitizadas são publicados. Esta página não deve ser indexada.</footer>
+</main><script src="app.js?v=eligible-cases-v2"></script></body></html>
