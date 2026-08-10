@@ -1,12 +1,44 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex"><meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex"><base href="/apcap-qa-dashboard/"><title>APCAP · QA HML</title><link rel="stylesheet" href="styles.css"></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <base href="/apcap-qa-dashboard/">
+  <title>APCAP · Catálogo e resultados de QA</title>
+  <link rel="stylesheet" href="styles.css?v=full-catalog-v1">
+</head>
 <body>
-<main id="dashboard">
-  <header><div><p class="eyebrow">AUTOMAÇÃO QA · HML</p><h1>APCAP — casos autônomos completos</h1><p id="meta">Carregando relatório sanitizado…</p></div><div class="actions"><a class="button secondary" href="data/latest.json">JSON atual</a></div></header>
-  <section class="notice"><strong>Critério de publicação:</strong> cada caso deve concluir integralmente o objetivo funcional que declara, sem ação manual, com screenshot sanitizado de cada etapa relevante.</section>
-  <section class="notice"><strong>Lista auditada:</strong> somente casos comprovados permanecem abaixo. Fluxos parciais, mocks, dependências externas sem encerramento e jornadas ainda não comprovadas continuam excluídos.</section>
-  <section class="cards" aria-label="Resumo"><article><span>Casos elegíveis</span><b id="total">0</b></article><article class="pass"><span>Aprovados</span><b id="passed">0</b></article><article class="fail"><span>Falhas</span><b id="failed">0</b></article></section>
-  <section class="table-wrap"><table><thead><tr><th>ID / Caso</th><th>Tipo</th><th>Último estado</th><th>Execução</th><th>Evidências</th></tr></thead><tbody id="rows"><tr><td colspan="5">Carregando…</td></tr></tbody></table></section>
-  <footer>A execução permanece privada; apenas vereditos e evidências sanitizadas são publicados. Esta página não deve ser indexada.</footer>
-</main><script src="app.js?v=eligible-cases-v2"></script></body></html>
+<main>
+  <header>
+    <div><p class="eyebrow">QA APCAP · HML</p><h1>Catálogo completo e resultados</h1><p id="meta">Carregando dados sanitizados…</p></div>
+    <nav class="tabs" aria-label="Seções"><button class="tab active" data-view="catalog">Catálogo completo</button><button class="tab" data-view="results">Resultados executados</button></nav>
+  </header>
+
+  <section class="notice"><strong>Leitura correta:</strong> o catálogo reúne todos os casos identificados para revisão. Somente itens com status <b>Aprovado</b> possuem execução integral e evidência aceita; os demais são candidatos, condicionais ou bloqueados.</section>
+
+  <section id="catalogView">
+    <section class="stats" id="catalogStats" aria-label="Resumo do catálogo"></section>
+    <section class="toolbar">
+      <label class="search"><span>Buscar</span><input id="search" type="search" placeholder="ID, título ou área"></label>
+      <label><span>Status</span><select id="status"><option value="">Todos</option></select></label>
+      <label><span>Canal</span><select id="channel"><option value="">Todos</option></select></label>
+      <label><span>Prioridade</span><select id="priority"><option value="">Todas</option></select></label>
+      <button id="selectVisible" class="button secondary">Selecionar visíveis</button>
+    </section>
+    <div class="list-meta"><b id="catalogCount">—</b><span>Abra cada caso para ver pré-condições, perfis e notas.</span></div>
+    <section id="catalogRows" class="case-grid"></section>
+  </section>
+
+  <section id="resultsView" hidden>
+    <section class="stats" id="resultStats" aria-label="Resumo de resultados"></section>
+    <section class="table-wrap"><table><thead><tr><th>ID / caso</th><th>Execução</th><th>Veredito</th><th>Perfis</th><th>Evidências</th></tr></thead><tbody id="resultRows"><tr><td colspan="5">Carregando…</td></tr></tbody></table></section>
+  </section>
+
+  <aside id="selection" class="selection" hidden><div><b id="selectionCount"></b><small>Copie os IDs e envie na conversa com o agente para solicitar preparação ou execução.</small></div><button id="clear" class="button secondary">Limpar</button><button id="copy" class="button primary">Copiar solicitação</button></aside>
+  <div id="toast" class="toast" hidden></div>
+  <footer>A execução permanece privada. Esta página pública contém apenas catálogo, vereditos e evidências sanitizadas e não deve ser indexada.</footer>
+</main>
+<script src="app.js?v=full-catalog-v1"></script>
+</body></html>
