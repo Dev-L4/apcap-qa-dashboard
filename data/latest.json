@@ -1,11 +1,119 @@
 {
   "schemaVersion": 5,
-  "generatedAt": "2026-08-09T15:20:00.000Z",
-  "source": "strict-full-flow-audit",
-  "environment": "HML",
-  "revision": "pending",
-  "summary": { "total": 0, "passed": 0, "failed": 0 },
-  "browserCoverage": {},
-  "currentRunCaseIds": [],
-  "cases": []
+  "generatedAt": "2026-08-10T13:06:52.285Z",
+  "source": "results.json",
+  "environment": "[URL_REDACTED]",
+  "revision": "local-202608",
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  },
+  "browserCoverage": {
+    "desktop-chromium": 3,
+    "desktop-firefox": 3,
+    "desktop-webkit": 3,
+    "mobile-pixel": 3,
+    "mobile-iphone": 3
+  },
+  "currentRunCaseIds": [
+    "PUB-01",
+    "PUB-02",
+    "PUB-03"
+  ],
+  "cases": [
+    {
+      "id": "PUB-01",
+      "title": "Landing pública responde e comunica acesso responsável",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "passed",
+      "durationMs": 24812,
+      "projects": [
+        "desktop-chromium",
+        "desktop-firefox",
+        "desktop-webkit",
+        "mobile-iphone",
+        "mobile-pixel"
+      ],
+      "attempts": 5,
+      "lastRunAt": "2026-08-10T13:06:52.285Z",
+      "evidence": [
+        "evidence/PUB-01/desktop-chromium-landing-responsavel.png",
+        "evidence/PUB-01/desktop-firefox-landing-responsavel.png",
+        "evidence/PUB-01/desktop-webkit-landing-responsavel.png",
+        "evidence/PUB-01/mobile-iphone-landing-responsavel.png",
+        "evidence/PUB-01/mobile-pixel-landing-responsavel.png"
+      ],
+      "previousStatus": "passed",
+      "regression": "none"
+    },
+    {
+      "id": "PUB-02",
+      "title": "Consentimento público é recusado e fechado",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "passed",
+      "durationMs": 33948,
+      "projects": [
+        "desktop-chromium",
+        "desktop-firefox",
+        "desktop-webkit",
+        "mobile-iphone",
+        "mobile-pixel"
+      ],
+      "attempts": 5,
+      "lastRunAt": "2026-08-10T13:06:52.285Z",
+      "evidence": [
+        "evidence/PUB-02/desktop-chromium-consentimento-recusado.png",
+        "evidence/PUB-02/desktop-chromium-consentimento-visivel.png",
+        "evidence/PUB-02/desktop-firefox-consentimento-recusado.png",
+        "evidence/PUB-02/desktop-firefox-consentimento-visivel.png",
+        "evidence/PUB-02/desktop-webkit-consentimento-recusado.png",
+        "evidence/PUB-02/desktop-webkit-consentimento-visivel.png",
+        "evidence/PUB-02/mobile-iphone-consentimento-recusado.png",
+        "evidence/PUB-02/mobile-iphone-consentimento-visivel.png",
+        "evidence/PUB-02/mobile-pixel-consentimento-recusado.png",
+        "evidence/PUB-02/mobile-pixel-consentimento-visivel.png"
+      ],
+      "previousStatus": "passed",
+      "regression": "none"
+    },
+    {
+      "id": "PUB-03",
+      "title": "Login vazio é validado e a visibilidade da senha funciona",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "passed",
+      "durationMs": 40336,
+      "projects": [
+        "desktop-chromium",
+        "desktop-firefox",
+        "desktop-webkit",
+        "mobile-iphone",
+        "mobile-pixel"
+      ],
+      "attempts": 5,
+      "lastRunAt": "2026-08-10T13:06:52.285Z",
+      "evidence": [
+        "evidence/PUB-03/desktop-chromium-formulario-login.png",
+        "evidence/PUB-03/desktop-chromium-senha-visivel-sem-valor.png",
+        "evidence/PUB-03/desktop-chromium-validacao-login-vazio.png",
+        "evidence/PUB-03/desktop-firefox-formulario-login.png",
+        "evidence/PUB-03/desktop-firefox-senha-visivel-sem-valor.png",
+        "evidence/PUB-03/desktop-firefox-validacao-login-vazio.png",
+        "evidence/PUB-03/desktop-webkit-formulario-login.png",
+        "evidence/PUB-03/desktop-webkit-senha-visivel-sem-valor.png",
+        "evidence/PUB-03/desktop-webkit-validacao-login-vazio.png",
+        "evidence/PUB-03/mobile-iphone-formulario-login.png",
+        "evidence/PUB-03/mobile-iphone-senha-visivel-sem-valor.png",
+        "evidence/PUB-03/mobile-iphone-validacao-login-vazio.png",
+        "evidence/PUB-03/mobile-pixel-formulario-login.png",
+        "evidence/PUB-03/mobile-pixel-senha-visivel-sem-valor.png",
+        "evidence/PUB-03/mobile-pixel-validacao-login-vazio.png"
+      ],
+      "previousStatus": "passed",
+      "regression": "none"
+    }
+  ]
 }

@@ -1,6 +1,10 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-09T15:20:00.000Z",
-  "policy": "Somente fluxos funcionais completos, autônomos e com screenshot sanitizado de cada etapa relevante.",
-  "cases": []
+  "generatedAt": "2026-08-10T13:05:58.203Z",
+  "policy": "Somente casos cujo objetivo declarado é executado integralmente, de forma autônoma, com evidência sanitizada de cada etapa relevante.",
+  "cases": [
+    { "id": "PUB-01", "title": "Landing pública responde e comunica acesso responsável", "execution": "real-hml", "autonomous": true },
+    { "id": "PUB-02", "title": "Consentimento público é recusado e fechado", "execution": "real-hml", "autonomous": true },
+    { "id": "PUB-03", "title": "Login vazio é validado e a visibilidade da senha funciona", "execution": "real-hml", "autonomous": true }
+  ]
 }
