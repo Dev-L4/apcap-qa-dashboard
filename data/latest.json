@@ -136,10 +136,10 @@
       "attempts": 2,
       "lastRunAt": "2026-08-11T13:23:43.369Z",
       "evidence": [
-        "evidence/UI-AUTH-01/desktop-chromium-feedback-recuperacao-anonima.png",
-        "evidence/UI-AUTH-01/desktop-chromium-login-antes-recuperacao.png",
-        "evidence/UI-AUTH-01/mobile-pixel-feedback-recuperacao-anonima.png",
-        "evidence/UI-AUTH-01/mobile-pixel-login-antes-recuperacao.png"
+        "evidence/desktop-chromium-feedback-recuperacao-anonima.png",
+        "evidence/desktop-chromium-login-antes-recuperacao.png",
+        "evidence/mobile-pixel-feedback-recuperacao-anonima.png",
+        "evidence/mobile-pixel-login-antes-recuperacao.png"
       ],
       "regression": "none"
     },
@@ -157,10 +157,10 @@
       "attempts": 2,
       "lastRunAt": "2026-08-11T13:23:43.369Z",
       "evidence": [
-        "evidence/UI-COOKIE-01/desktop-chromium-consentimento-categorias-acoes.png",
-        "evidence/UI-COOKIE-01/desktop-chromium-preferencias-categorias-acoes.png",
-        "evidence/UI-COOKIE-01/mobile-pixel-consentimento-categorias-acoes.png",
-        "evidence/UI-COOKIE-01/mobile-pixel-preferencias-categorias-acoes.png"
+        "evidence/desktop-chromium-consentimento-categorias-acoes.png",
+        "evidence/desktop-chromium-preferencias-categorias-acoes.png",
+        "evidence/mobile-pixel-consentimento-categorias-acoes.png",
+        "evidence/mobile-pixel-preferencias-categorias-acoes.png"
       ],
       "regression": "none"
     },
@@ -178,10 +178,10 @@
       "attempts": 2,
       "lastRunAt": "2026-08-11T13:23:43.369Z",
       "evidence": [
-        "evidence/UI-COOKIE-03/desktop-chromium-escolha-granular-antes-salvar.png",
-        "evidence/UI-COOKIE-03/desktop-chromium-preferencias-salvas.png",
-        "evidence/UI-COOKIE-03/mobile-pixel-escolha-granular-antes-salvar.png",
-        "evidence/UI-COOKIE-03/mobile-pixel-preferencias-salvas.png"
+        "evidence/desktop-chromium-escolha-granular-antes-salvar.png",
+        "evidence/desktop-chromium-preferencias-salvas.png",
+        "evidence/mobile-pixel-escolha-granular-antes-salvar.png",
+        "evidence/mobile-pixel-preferencias-salvas.png"
       ],
       "regression": "none"
     },
@@ -199,10 +199,10 @@
       "attempts": 2,
       "lastRunAt": "2026-08-11T13:23:43.369Z",
       "evidence": [
-        "evidence/UI-COOKIE-04/desktop-chromium-consentimento-aceito.png",
-        "evidence/UI-COOKIE-04/desktop-chromium-consentimento-antes-aceitar.png",
-        "evidence/UI-COOKIE-04/mobile-pixel-consentimento-aceito.png",
-        "evidence/UI-COOKIE-04/mobile-pixel-consentimento-antes-aceitar.png"
+        "evidence/desktop-chromium-consentimento-aceito.png",
+        "evidence/desktop-chromium-consentimento-antes-aceitar.png",
+        "evidence/mobile-pixel-consentimento-aceito.png",
+        "evidence/mobile-pixel-consentimento-antes-aceitar.png"
       ],
       "regression": "none"
     },
@@ -220,8 +220,8 @@
       "attempts": 2,
       "lastRunAt": "2026-08-11T13:23:43.369Z",
       "evidence": [
-        "evidence/UI-COOKIE-ESSENTIAL-01/desktop-chromium-essenciais-obrigatorios.png",
-        "evidence/UI-COOKIE-ESSENTIAL-01/mobile-pixel-essenciais-obrigatorios.png"
+        "evidence/desktop-chromium-essenciais-obrigatorios.png",
+        "evidence/mobile-pixel-essenciais-obrigatorios.png"
       ],
       "regression": "none"
     },
@@ -239,8 +239,8 @@
       "attempts": 2,
       "lastRunAt": "2026-08-11T13:23:43.369Z",
       "evidence": [
-        "evidence/UI-COOKIE-PRIVACY-LINK-01/desktop-chromium-link-privacidade-visivel.png",
-        "evidence/UI-COOKIE-PRIVACY-LINK-01/mobile-pixel-link-privacidade-visivel.png"
+        "evidence/desktop-chromium-link-privacidade-visivel.png",
+        "evidence/mobile-pixel-link-privacidade-visivel.png"
       ],
       "regression": "none",
       "error": "TEST_FAILED"
@@ -259,10 +259,10 @@
       "attempts": 2,
       "lastRunAt": "2026-08-11T13:23:43.369Z",
       "evidence": [
-        "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-som-ativado.png",
-        "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-som-desativado.png",
-        "evidence/UI-PUBLIC-AUDIO-01/mobile-pixel-som-ativado.png",
-        "evidence/UI-PUBLIC-AUDIO-01/mobile-pixel-som-desativado.png"
+        "evidence/desktop-chromium-som-ativado.png",
+        "evidence/desktop-chromium-som-desativado.png",
+        "evidence/mobile-pixel-som-ativado.png",
+        "evidence/mobile-pixel-som-desativado.png"
       ],
       "regression": "none"
     },
@@ -280,10 +280,10 @@
       "attempts": 2,
       "lastRunAt": "2026-08-11T13:23:43.369Z",
       "evidence": [
-        "evidence/UI-PUBLIC-CTA-01/desktop-chromium-autenticacao-aberta.png",
-        "evidence/UI-PUBLIC-CTA-01/desktop-chromium-cta-publico-visivel.png",
-        "evidence/UI-PUBLIC-CTA-01/mobile-pixel-autenticacao-aberta.png",
-        "evidence/UI-PUBLIC-CTA-01/mobile-pixel-cta-publico-visivel.png"
+        "evidence/desktop-chromium-autenticacao-aberta.png",
+        "evidence/desktop-chromium-cta-publico-visivel.png",
+        "evidence/mobile-pixel-autenticacao-aberta.png",
+        "evidence/mobile-pixel-cta-publico-visivel.png"
       ],
       "regression": "none"
     },
@@ -301,10 +301,10 @@
       "attempts": 2,
       "lastRunAt": "2026-08-11T13:23:43.369Z",
       "evidence": [
-        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/desktop-chromium-senha-mascarada.png",
-        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/desktop-chromium-senha-visivel-mascarada.png",
-        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/mobile-pixel-senha-mascarada.png",
-        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/mobile-pixel-senha-visivel-mascarada.png"
+        "evidence/desktop-chromium-senha-mascarada.png",
+        "evidence/desktop-chromium-senha-visivel-mascarada.png",
+        "evidence/mobile-pixel-senha-mascarada.png",
+        "evidence/mobile-pixel-senha-visivel-mascarada.png"
       ],
       "regression": "none"
     },
@@ -322,10 +322,10 @@
       "attempts": 2,
       "lastRunAt": "2026-08-11T13:23:43.369Z",
       "evidence": [
-        "evidence/UI-REGISTRATION-REQUIRED-01/desktop-chromium-cadastro-vazio.png",
-        "evidence/UI-REGISTRATION-REQUIRED-01/desktop-chromium-obrigatorios-sinalizados.png",
-        "evidence/UI-REGISTRATION-REQUIRED-01/mobile-pixel-cadastro-vazio.png",
-        "evidence/UI-REGISTRATION-REQUIRED-01/mobile-pixel-obrigatorios-sinalizados.png"
+        "evidence/desktop-chromium-cadastro-vazio.png",
+        "evidence/desktop-chromium-obrigatorios-sinalizados.png",
+        "evidence/mobile-pixel-cadastro-vazio.png",
+        "evidence/mobile-pixel-obrigatorios-sinalizados.png"
       ],
       "regression": "none"
     }
