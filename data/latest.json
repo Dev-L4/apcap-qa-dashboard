@@ -1,25 +1,32 @@
 {
   "schemaVersion": 5,
-  "generatedAt": "2026-08-10T13:06:52.285Z",
+  "generatedAt": "2026-08-11T13:24:23.915Z",
   "source": "results.json",
   "environment": "[URL_REDACTED]",
-  "revision": "local-202608",
+  "revision": "local-validated-20260811",
   "summary": {
-    "total": 3,
-    "passed": 3,
-    "failed": 0
+    "total": 13,
+    "passed": 12,
+    "failed": 1
   },
   "browserCoverage": {
-    "desktop-chromium": 3,
+    "desktop-chromium": 13,
     "desktop-firefox": 3,
     "desktop-webkit": 3,
-    "mobile-pixel": 3,
-    "mobile-iphone": 3
+    "mobile-iphone": 3,
+    "mobile-pixel": 13
   },
   "currentRunCaseIds": [
-    "PUB-01",
-    "PUB-02",
-    "PUB-03"
+    "UI-AUTH-01",
+    "UI-COOKIE-01",
+    "UI-COOKIE-03",
+    "UI-COOKIE-04",
+    "UI-COOKIE-ESSENTIAL-01",
+    "UI-COOKIE-PRIVACY-LINK-01",
+    "UI-PUBLIC-AUDIO-01",
+    "UI-PUBLIC-CTA-01",
+    "UI-REGISTRATION-PASSWORD-TOGGLE-01",
+    "UI-REGISTRATION-REQUIRED-01"
   ],
   "cases": [
     {
@@ -113,6 +120,213 @@
         "evidence/PUB-03/mobile-pixel-validacao-login-vazio.png"
       ],
       "previousStatus": "passed",
+      "regression": "none"
+    },
+    {
+      "id": "UI-AUTH-01",
+      "title": "Recuperação de senha pública exibe feedback e não cria sessão",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "passed",
+      "durationMs": 14243,
+      "projects": [
+        "desktop-chromium",
+        "mobile-pixel"
+      ],
+      "attempts": 2,
+      "lastRunAt": "2026-08-11T13:23:43.369Z",
+      "evidence": [
+        "evidence/UI-AUTH-01/desktop-chromium-feedback-recuperacao-anonima.png",
+        "evidence/UI-AUTH-01/desktop-chromium-login-antes-recuperacao.png",
+        "evidence/UI-AUTH-01/mobile-pixel-feedback-recuperacao-anonima.png",
+        "evidence/UI-AUTH-01/mobile-pixel-login-antes-recuperacao.png"
+      ],
+      "regression": "none"
+    },
+    {
+      "id": "UI-COOKIE-01",
+      "title": "Consentimento exibe categorias e ações públicas",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "passed",
+      "durationMs": 11768,
+      "projects": [
+        "desktop-chromium",
+        "mobile-pixel"
+      ],
+      "attempts": 2,
+      "lastRunAt": "2026-08-11T13:23:43.369Z",
+      "evidence": [
+        "evidence/UI-COOKIE-01/desktop-chromium-consentimento-categorias-acoes.png",
+        "evidence/UI-COOKIE-01/desktop-chromium-preferencias-categorias-acoes.png",
+        "evidence/UI-COOKIE-01/mobile-pixel-consentimento-categorias-acoes.png",
+        "evidence/UI-COOKIE-01/mobile-pixel-preferencias-categorias-acoes.png"
+      ],
+      "regression": "none"
+    },
+    {
+      "id": "UI-COOKIE-03",
+      "title": "Preferências granulares de cookies são salvas",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "passed",
+      "durationMs": 20197,
+      "projects": [
+        "desktop-chromium",
+        "mobile-pixel"
+      ],
+      "attempts": 2,
+      "lastRunAt": "2026-08-11T13:23:43.369Z",
+      "evidence": [
+        "evidence/UI-COOKIE-03/desktop-chromium-escolha-granular-antes-salvar.png",
+        "evidence/UI-COOKIE-03/desktop-chromium-preferencias-salvas.png",
+        "evidence/UI-COOKIE-03/mobile-pixel-escolha-granular-antes-salvar.png",
+        "evidence/UI-COOKIE-03/mobile-pixel-preferencias-salvas.png"
+      ],
+      "regression": "none"
+    },
+    {
+      "id": "UI-COOKIE-04",
+      "title": "Aceitar cookies persiste consentimento e não bloqueia navegação",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "passed",
+      "durationMs": 18965,
+      "projects": [
+        "desktop-chromium",
+        "mobile-pixel"
+      ],
+      "attempts": 2,
+      "lastRunAt": "2026-08-11T13:23:43.369Z",
+      "evidence": [
+        "evidence/UI-COOKIE-04/desktop-chromium-consentimento-aceito.png",
+        "evidence/UI-COOKIE-04/desktop-chromium-consentimento-antes-aceitar.png",
+        "evidence/UI-COOKIE-04/mobile-pixel-consentimento-aceito.png",
+        "evidence/UI-COOKIE-04/mobile-pixel-consentimento-antes-aceitar.png"
+      ],
+      "regression": "none"
+    },
+    {
+      "id": "UI-COOKIE-ESSENTIAL-01",
+      "title": "Cookies essenciais permanecem obrigatórios",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "passed",
+      "durationMs": 9967,
+      "projects": [
+        "desktop-chromium",
+        "mobile-pixel"
+      ],
+      "attempts": 2,
+      "lastRunAt": "2026-08-11T13:23:43.369Z",
+      "evidence": [
+        "evidence/UI-COOKIE-ESSENTIAL-01/desktop-chromium-essenciais-obrigatorios.png",
+        "evidence/UI-COOKIE-ESSENTIAL-01/mobile-pixel-essenciais-obrigatorios.png"
+      ],
+      "regression": "none"
+    },
+    {
+      "id": "UI-COOKIE-PRIVACY-LINK-01",
+      "title": "Link público de privacidade abre conteúdo acessível",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "failed",
+      "durationMs": 31709,
+      "projects": [
+        "desktop-chromium",
+        "mobile-pixel"
+      ],
+      "attempts": 2,
+      "lastRunAt": "2026-08-11T13:23:43.369Z",
+      "evidence": [
+        "evidence/UI-COOKIE-PRIVACY-LINK-01/desktop-chromium-link-privacidade-visivel.png",
+        "evidence/UI-COOKIE-PRIVACY-LINK-01/mobile-pixel-link-privacidade-visivel.png"
+      ],
+      "regression": "none",
+      "error": "TEST_FAILED"
+    },
+    {
+      "id": "UI-PUBLIC-AUDIO-01",
+      "title": "Controle de áudio público alterna estado sem navegar",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "passed",
+      "durationMs": 13955,
+      "projects": [
+        "desktop-chromium",
+        "mobile-pixel"
+      ],
+      "attempts": 2,
+      "lastRunAt": "2026-08-11T13:23:43.369Z",
+      "evidence": [
+        "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-som-ativado.png",
+        "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-som-desativado.png",
+        "evidence/UI-PUBLIC-AUDIO-01/mobile-pixel-som-ativado.png",
+        "evidence/UI-PUBLIC-AUDIO-01/mobile-pixel-som-desativado.png"
+      ],
+      "regression": "none"
+    },
+    {
+      "id": "UI-PUBLIC-CTA-01",
+      "title": "CTA público abre autenticação utilizável",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "passed",
+      "durationMs": 12849,
+      "projects": [
+        "desktop-chromium",
+        "mobile-pixel"
+      ],
+      "attempts": 2,
+      "lastRunAt": "2026-08-11T13:23:43.369Z",
+      "evidence": [
+        "evidence/UI-PUBLIC-CTA-01/desktop-chromium-autenticacao-aberta.png",
+        "evidence/UI-PUBLIC-CTA-01/desktop-chromium-cta-publico-visivel.png",
+        "evidence/UI-PUBLIC-CTA-01/mobile-pixel-autenticacao-aberta.png",
+        "evidence/UI-PUBLIC-CTA-01/mobile-pixel-cta-publico-visivel.png"
+      ],
+      "regression": "none"
+    },
+    {
+      "id": "UI-REGISTRATION-PASSWORD-TOGGLE-01",
+      "title": "Senha de cadastro alterna visibilidade sem perder valor local",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "passed",
+      "durationMs": 13847,
+      "projects": [
+        "desktop-chromium",
+        "mobile-pixel"
+      ],
+      "attempts": 2,
+      "lastRunAt": "2026-08-11T13:23:43.369Z",
+      "evidence": [
+        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/desktop-chromium-senha-mascarada.png",
+        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/desktop-chromium-senha-visivel-mascarada.png",
+        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/mobile-pixel-senha-mascarada.png",
+        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/mobile-pixel-senha-visivel-mascarada.png"
+      ],
+      "regression": "none"
+    },
+    {
+      "id": "UI-REGISTRATION-REQUIRED-01",
+      "title": "Cadastro vazio sinaliza obrigatórios sem criar conta",
+      "execution": "real-hml",
+      "autonomous": true,
+      "status": "passed",
+      "durationMs": 13945,
+      "projects": [
+        "desktop-chromium",
+        "mobile-pixel"
+      ],
+      "attempts": 2,
+      "lastRunAt": "2026-08-11T13:23:43.369Z",
+      "evidence": [
+        "evidence/UI-REGISTRATION-REQUIRED-01/desktop-chromium-cadastro-vazio.png",
+        "evidence/UI-REGISTRATION-REQUIRED-01/desktop-chromium-obrigatorios-sinalizados.png",
+        "evidence/UI-REGISTRATION-REQUIRED-01/mobile-pixel-cadastro-vazio.png",
+        "evidence/UI-REGISTRATION-REQUIRED-01/mobile-pixel-obrigatorios-sinalizados.png"
+      ],
       "regression": "none"
     }
   ]
