@@ -1,10 +1,85 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-10T13:05:58.203Z",
-  "policy": "Somente casos cujo objetivo declarado é executado integralmente, de forma autônoma, com evidência sanitizada de cada etapa relevante.",
+  "generatedAt": "2026-08-11T13:24:23.915Z",
+  "policy": "Somente casos integralmente executados de forma autônoma no HML real, com evidência sanitizada; perfis efetivamente cobertos são declarados por resultado.",
   "cases": [
-    { "id": "PUB-01", "title": "Landing pública responde e comunica acesso responsável", "execution": "real-hml", "autonomous": true },
-    { "id": "PUB-02", "title": "Consentimento público é recusado e fechado", "execution": "real-hml", "autonomous": true },
-    { "id": "PUB-03", "title": "Login vazio é validado e a visibilidade da senha funciona", "execution": "real-hml", "autonomous": true }
+    {
+      "id": "PUB-01",
+      "title": "Landing pública responde e comunica acesso responsável",
+      "execution": "real-hml",
+      "autonomous": true
+    },
+    {
+      "id": "PUB-02",
+      "title": "Consentimento público é recusado e fechado",
+      "execution": "real-hml",
+      "autonomous": true
+    },
+    {
+      "id": "PUB-03",
+      "title": "Login vazio é validado e a visibilidade da senha funciona",
+      "execution": "real-hml",
+      "autonomous": true
+    },
+    {
+      "id": "UI-AUTH-01",
+      "title": "Recuperação de senha pública exibe feedback e não cria sessão",
+      "execution": "real-hml",
+      "autonomous": true
+    },
+    {
+      "id": "UI-COOKIE-01",
+      "title": "Consentimento exibe categorias e ações públicas",
+      "execution": "real-hml",
+      "autonomous": true
+    },
+    {
+      "id": "UI-COOKIE-03",
+      "title": "Preferências granulares de cookies são salvas",
+      "execution": "real-hml",
+      "autonomous": true
+    },
+    {
+      "id": "UI-COOKIE-04",
+      "title": "Aceitar cookies persiste consentimento e não bloqueia navegação",
+      "execution": "real-hml",
+      "autonomous": true
+    },
+    {
+      "id": "UI-COOKIE-ESSENTIAL-01",
+      "title": "Cookies essenciais permanecem obrigatórios",
+      "execution": "real-hml",
+      "autonomous": true
+    },
+    {
+      "id": "UI-COOKIE-PRIVACY-LINK-01",
+      "title": "Link público de privacidade abre conteúdo acessível",
+      "execution": "real-hml",
+      "autonomous": true
+    },
+    {
+      "id": "UI-PUBLIC-AUDIO-01",
+      "title": "Controle de áudio público alterna estado sem navegar",
+      "execution": "real-hml",
+      "autonomous": true
+    },
+    {
+      "id": "UI-PUBLIC-CTA-01",
+      "title": "CTA público abre autenticação utilizável",
+      "execution": "real-hml",
+      "autonomous": true
+    },
+    {
+      "id": "UI-REGISTRATION-PASSWORD-TOGGLE-01",
+      "title": "Senha de cadastro alterna visibilidade sem perder valor local",
+      "execution": "real-hml",
+      "autonomous": true
+    },
+    {
+      "id": "UI-REGISTRATION-REQUIRED-01",
+      "title": "Cadastro vazio sinaliza obrigatórios sem criar conta",
+      "execution": "real-hml",
+      "autonomous": true
+    }
   ]
 }

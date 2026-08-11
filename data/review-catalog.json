@@ -1,22 +1,24 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-10T14:03:07Z",
+  "generatedAt": "2026-08-11T13:24:23.915Z",
   "policy": "Catálogo de revisão. Status diferente de approved não representa execução aprovada nem cobertura comprovada do HML.",
   "statusDefinitions": {
     "approved": "Objetivo integralmente executado nos perfis declarados e com evidência sanitizada aceita.",
     "implemented_needs_validation": "Código existe, mas cobertura, estabilidade, seleção no runner ou evidência ainda não foram validadas para aprovação.",
     "candidate_ready_to_automate": "Objetivo e superfície estão claros e podem ser automatizados sem dependência externa sensível ainda não provida.",
     "conditional_infrastructure": "Requer conta/fixture/backend/dataset/provedor/ambiente protegido ou estado controlado antes da execução.",
-    "blocked_external_or_human": "Depende de decisão humana, contrato externo, dispositivo físico ou insumo ainda indisponível."
+    "blocked_external_or_human": "Depende de decisão humana, contrato externo, dispositivo físico ou insumo ainda indisponível.",
+    "failed": "Objetivo integral executado e comportamento incorreto reproduzido em navegador saudável."
   },
   "summary": {
     "total": 178,
     "by_status": {
-      "approved": 3,
-      "blocked_external_or_human": 19,
-      "candidate_ready_to_automate": 16,
+      "approved": 12,
       "conditional_infrastructure": 125,
-      "implemented_needs_validation": 15
+      "implemented_needs_validation": 15,
+      "candidate_ready_to_automate": 6,
+      "blocked_external_or_human": 19,
+      "failed": 1
     },
     "by_area": {
       "Acelerador": 6,
@@ -177,7 +179,7 @@
       "priority": "P0",
       "area": "Autenticação",
       "channel": "UI pública",
-      "status": "candidate_ready_to_automate",
+      "status": "approved",
       "preconditions": [
         "HML disponível"
       ],
@@ -258,7 +260,7 @@
       "priority": "P0",
       "area": "Cadastro",
       "channel": "UI pública",
-      "status": "candidate_ready_to_automate",
+      "status": "approved",
       "preconditions": [
         "sessão anônima",
         "aba Criar conta aberta",
@@ -321,7 +323,7 @@
       "priority": "P0",
       "area": "Landing",
       "channel": "UI pública",
-      "status": "candidate_ready_to_automate",
+      "status": "approved",
       "preconditions": [
         "sessão anônima limpa",
         "splash pública carregada"
@@ -343,7 +345,7 @@
       "priority": "P0",
       "area": "Privacidade",
       "channel": "UI pública",
-      "status": "candidate_ready_to_automate",
+      "status": "approved",
       "preconditions": [
         "Novo contexto sem consentimento"
       ],
@@ -405,7 +407,7 @@
       "priority": "P0",
       "area": "Privacidade",
       "channel": "UI pública",
-      "status": "candidate_ready_to_automate",
+      "status": "approved",
       "preconditions": [
         "sessão anônima limpa",
         "camada Preferências aberta"
@@ -1960,7 +1962,7 @@
       "priority": "P1",
       "area": "Privacidade",
       "channel": "UI pública",
-      "status": "candidate_ready_to_automate",
+      "status": "approved",
       "preconditions": [
         "Novo contexto sem consentimento"
       ],
@@ -1980,7 +1982,7 @@
       "priority": "P1",
       "area": "Privacidade",
       "channel": "UI pública",
-      "status": "candidate_ready_to_automate",
+      "status": "failed",
       "preconditions": [
         "banner ou preferências de consentimento visível"
       ],
@@ -3394,7 +3396,7 @@
       "priority": "P2",
       "area": "Cadastro",
       "channel": "UI pública",
-      "status": "candidate_ready_to_automate",
+      "status": "approved",
       "preconditions": [
         "aba Criar conta aberta",
         "valor sintético não sensível no campo senha"
@@ -3415,7 +3417,7 @@
       "priority": "P2",
       "area": "Landing",
       "channel": "UI pública",
-      "status": "candidate_ready_to_automate",
+      "status": "approved",
       "preconditions": [
         "sessão anônima",
         "splash pública com mídia carregada"
@@ -3436,7 +3438,7 @@
       "priority": "P2",
       "area": "Privacidade",
       "channel": "UI pública",
-      "status": "candidate_ready_to_automate",
+      "status": "approved",
       "preconditions": [
         "Novo contexto sem consentimento"
       ],
