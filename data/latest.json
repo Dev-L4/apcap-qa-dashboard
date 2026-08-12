@@ -1,934 +1,984 @@
 {
-  "schemaVersion": 5,
-  "generatedAt": "2026-08-12T12:49:40.332Z",
-  "source": "results.json",
-  "environment": "[URL_REDACTED]",
-  "revision": "raw-evidence-1",
-  "summary": {
-    "total": 47,
-    "passed": 40,
-    "failed": 7,
-    "blocked": 0,
-    "screenshots": 114,
-    "catalogTotal": 47,
-    "executed": 47,
-    "evidenceMode": "Screenshots sem mascaramento: a UI aparece exatamente como renderizada.",
-    "scope": "Somente casos executaveis de ponta a ponta pelo agente, sem intervencao humana."
+ "schemaVersion": 6,
+ "generatedAt": "2026-08-12T16:08:51Z",
+ "source": "review/results-lote*.json",
+ "environment": "HML publico",
+ "revision": "raw-evidence-2",
+ "summary": {
+  "total": 50,
+  "passed": 41,
+  "failed": 6,
+  "blocked": 3,
+  "screenshots": 154,
+  "catalogTotal": 178,
+  "executed": 50,
+  "evidenceMode": "Screenshots sem mascaramento, viewport cheia, 2x-3x de escala.",
+  "scope": "Somente casos executaveis de ponta a ponta pelo agente, sem humano, sem mock e sem backend fora de alcance."
+ },
+ "browserCoverage": {
+  "desktop-chromium": 50,
+  "mobile-pixel": 4
+ },
+ "currentRunCaseIds": [
+  "UI-AUTH-NAVIGATION-01",
+  "UI-COMPLIANCE-02",
+  "UI-COOKIE-PRIVACY-LINK-01",
+  "UI-LEGAL-DOCUMENTS-01",
+  "UI-REG-FOOTER-01",
+  "UI-REG-LINK-01",
+  "UI-AUTH-03",
+  "UI-GAME-01",
+  "UI-PURCHASE-GAME-CATALOG-01",
+  "PUB-01",
+  "PUB-02",
+  "PUB-03",
+  "UI-AUTH-01",
+  "UI-CARD-01",
+  "UI-CART-EMPTY-01",
+  "UI-COMPLIANCE-01",
+  "UI-COOKIE-01",
+  "UI-COOKIE-03",
+  "UI-COOKIE-04",
+  "UI-COOKIE-05",
+  "UI-COOKIE-06",
+  "UI-COOKIE-ESSENTIAL-01",
+  "UI-PATH-CATALOG-01",
+  "UI-PIX-01",
+  "UI-PIX-03",
+  "UI-PROFILE-01",
+  "UI-PUBLIC-AUDIO-01",
+  "UI-PUBLIC-CTA-01",
+  "UI-PURCHASE-01",
+  "UI-PURCHASE-02",
+  "UI-PURCHASE-03",
+  "UI-PWA-04",
+  "UI-PWA-LAYERING-01",
+  "UI-REGISTRATION-01",
+  "UI-REGISTRATION-02",
+  "UI-REGISTRATION-03",
+  "UI-REGISTRATION-05",
+  "UI-REGISTRATION-PASSWORD-TOGGLE-01",
+  "UI-REGISTRATION-REQUIRED-01",
+  "UI-REGISTRATION-STRUCTURE-01",
+  "UI-REGISTRATION-SUBMIT-01",
+  "UI-RESP-01",
+  "UI-RESP-02",
+  "UI-RESP-03",
+  "UI-SESSION-01",
+  "UI-SESSION-02",
+  "UI-VERSIONS-01",
+  "UI-WALLET-01",
+  "UI-WALLET-02",
+  "UI-WALLET-03"
+ ],
+ "cases": [
+  {
+   "id": "UI-AUTH-NAVIGATION-01",
+   "title": "Home autenticada expõe cabeçalho, carteira, notificações e destinos principais sem sobreposição",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "failed",
+   "note": "O modal de boas-vindas pós-cadastro (\"Bem-vindo ao APCAP!\", com backdrop-filter: blur) cobria o cabeçalho na primeira tentativa, causando a screenshot borrada anterior; após fechá-lo corretamente (bug de seletor unicode '×' vs '✕' no helper closeOnboardingIfPresent, corrigido), a screenshot do cabeçalho ficou nítida e revelou o defeito real: button.inicio-carteira e button.sino-notif existem no DOM mas estão ocultos (display:none) no cabeçalho da home autenticada.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-AUTH-NAVIGATION-01/desktop-chromium-destinos-principais-navegacao.png",
+    "evidence/UI-AUTH-NAVIGATION-01/desktop-chromium-estado-carteira-notificacoes.png",
+    "evidence/UI-AUTH-NAVIGATION-01/desktop-chromium-home-autenticada-cabecalho.png"
+   ],
+   "batch": "lote2"
   },
-  "browserCoverage": {
-    "desktop-chromium": 13,
-    "desktop-firefox": 3,
-    "desktop-webkit": 3,
-    "mobile-iphone": 3,
-    "mobile-pixel": 13
+  {
+   "id": "UI-COMPLIANCE-02",
+   "title": "Verificar que telas autenticadas não usam vocabulário proibido de jogo, aposta ou apostar",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "failed",
+   "note": "Telas autenticadas (Menu e painel de Versões) usam a palavra \"jogos\" — vocabulário identificado como proibido pelo caso — em duas superfícies (aba \"Jogos\" do menu e do painel de versões).",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-COMPLIANCE-02/desktop-chromium-01-home-autenticada.png",
+    "evidence/UI-COMPLIANCE-02/desktop-chromium-02-comprar.png",
+    "evidence/UI-COMPLIANCE-02/desktop-chromium-03-estourar.png",
+    "evidence/UI-COMPLIANCE-02/desktop-chromium-04-sorteios.png",
+    "evidence/UI-COMPLIANCE-02/desktop-chromium-05-menu.png",
+    "evidence/UI-COMPLIANCE-02/desktop-chromium-06-menu-painel-versoes.png"
+   ],
+   "batch": "lote3"
   },
-  "currentRunCaseIds": [
-    "UI-COOKIE-05",
-    "UI-COOKIE-06",
-    "UI-LEGAL-DOCUMENTS-01",
-    "UI-REGISTRATION-01",
-    "UI-REGISTRATION-02",
-    "UI-REGISTRATION-05",
-    "UI-REGISTRATION-STRUCTURE-01",
-    "UI-REG-LINK-01",
-    "UI-PWA-LAYERING-01",
-    "UI-REGISTRATION-SUBMIT-01",
-    "UI-REGISTRATION-03",
-    "UI-SESSION-01",
-    "UI-SESSION-02",
-    "UI-VERSIONS-01",
-    "UI-REG-FOOTER-01",
-    "UI-COMPLIANCE-01",
-    "UI-AUTH-NAVIGATION-01",
-    "UI-COMPLIANCE-02",
-    "UI-PROFILE-01",
-    "UI-WALLET-01",
-    "UI-WALLET-02",
-    "UI-WALLET-03",
-    "UI-CARD-01",
-    "UI-PATH-CATALOG-01",
-    "UI-PURCHASE-01",
-    "UI-PURCHASE-02",
-    "UI-PURCHASE-03",
-    "UI-CART-EMPTY-01",
-    "UI-PIX-01",
-    "UI-PIX-03",
-    "UI-RESP-01",
-    "UI-RESP-02",
-    "UI-RESP-03",
-    "UI-PWA-04",
-    "PUB-01",
-    "PUB-02",
-    "PUB-03",
-    "UI-AUTH-01",
-    "UI-COOKIE-01",
-    "UI-COOKIE-03",
-    "UI-COOKIE-04",
-    "UI-COOKIE-ESSENTIAL-01",
-    "UI-COOKIE-PRIVACY-LINK-01",
-    "UI-PUBLIC-AUDIO-01",
-    "UI-PUBLIC-CTA-01",
-    "UI-REGISTRATION-PASSWORD-TOGGLE-01",
-    "UI-REGISTRATION-REQUIRED-01"
-  ],
-  "cases": [
-    {
-      "id": "UI-COOKIE-05",
-      "title": "Após recusa, verificar em rede que Google Analytics não recebe nova requisição",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Após clicar em 'Recusar' no consentimento LGPD, nenhuma requisição de rede para domínios do Google Analytics (google-analytics.com, googletagmanager.com, analytics.google.com) foi observada em uma janela de 6s pós-recusa.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.531Z",
-      "evidence": [
-        "evidence/UI-COOKIE-05/desktop-chromium-consentimento-antes-recusa.png",
-        "evidence/UI-COOKIE-05/desktop-chromium-pos-recusa-sem-requisicao-ga.png"
-      ],
-      "batch": "lote1-publico"
-    },
-    {
-      "id": "UI-COOKIE-06",
-      "title": "Após recusa, verificar em rede que Microsoft Clarity não recebe nova requisição",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Após clicar em 'Recusar' no consentimento LGPD, nenhuma requisição de rede para domínios do Microsoft Clarity (clarity.ms) foi observada em uma janela de 6s pós-recusa.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-COOKIE-06/desktop-chromium-consentimento-antes-recusa.png",
-        "evidence/UI-COOKIE-06/desktop-chromium-pos-recusa-sem-requisicao-clarity.png"
-      ],
-      "batch": "lote1-publico"
-    },
-    {
-      "id": "UI-LEGAL-DOCUMENTS-01",
-      "title": "Termos de Uso e Política de Privacidade abrem o conteúdo correto nos dois formulários",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "failed",
-      "note": "Clicar em 'Termos de Uso' ou 'Política de Privacidade' nos formulários de login e de cadastro sempre exibe apenas o toast placeholder 'Termos e Política de Privacidade: em breve.' — nenhum modal ou seção com o conteúdo legal real é aberto em nenhum dos quatro acionamentos.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-cadastro-antes-termos.png",
-        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-cadastro-apos-privacidade.png",
-        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-cadastro-apos-termos.png",
-        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-login-antes-termos.png",
-        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-login-apos-privacidade.png",
-        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-login-apos-termos.png"
-      ],
-      "batch": "lote1-publico"
-    },
-    {
-      "id": "UI-REGISTRATION-01",
-      "title": "Verificar que cadastro exige aceite de Termos de Uso e Política de Privacidade",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "O formulário de cadastro não possui nenhum checkbox de aceite de Termos/Privacidade, e o botão 'Criar conta' permanece habilitado mesmo sem qualquer interação com esses links — não há gate de aceite explícito, e nenhuma conta foi submetida durante o teste.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-REGISTRATION-01/desktop-chromium-botao-criar-conta-estado.png",
-        "evidence/UI-REGISTRATION-01/desktop-chromium-cadastro-aberto.png",
-        "evidence/UI-REGISTRATION-01/desktop-chromium-cadastro-preenchido-sem-aceite.png"
-      ],
-      "batch": "lote1-publico"
-    },
-    {
-      "id": "UI-REGISTRATION-02",
-      "title": "Verificar validação de CPF inválido no cadastro",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Ao preencher o formulário de cadastro com todos os campos válidos exceto um CPF com dígito verificador inválido, a submissão foi bloqueada e a mensagem 'CPF inválido' foi exibida, sem navegação nem criação de conta.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-REGISTRATION-02/desktop-chromium-cadastro-cpf-invalido-preenchido.png",
-        "evidence/UI-REGISTRATION-02/desktop-chromium-cadastro-erro-cpf-invalido.png"
-      ],
-      "batch": "lote1-publico"
-    },
-    {
-      "id": "UI-REGISTRATION-05",
-      "title": "Verificar validações de CEP, telefone, e-mail, nome e senha mínima no cadastro",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Ao preencher nome (uma palavra), CEP, telefone, e-mail e senha com formatos/tamanhos inválidos, a submissão exibiu simultaneamente as cinco mensagens de erro esperadas (nome completo, CEP inválido, telefone inválido, e-mail inválido, senha mínima de 6 caracteres) e bloqueou o envio.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-REGISTRATION-05/desktop-chromium-cadastro-campos-invalidos-preenchidos.png",
-        "evidence/UI-REGISTRATION-05/desktop-chromium-cadastro-erros-simultaneos.png"
-      ],
-      "batch": "lote1-publico"
-    },
-    {
-      "id": "UI-REGISTRATION-STRUCTURE-01",
-      "title": "Aba Criar conta expõe os oito campos esperados sem preencher ou enviar dados pessoais",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "A aba 'Criar conta' expõe os oito campos esperados (nome, CPF, nascimento, gênero, CEP, telefone, e-mail, senha), todos visíveis e vazios, sem nenhum dado pré-preenchido.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-REGISTRATION-STRUCTURE-01/desktop-chromium-cadastro-estrutural-vazio.png",
-        "evidence/UI-REGISTRATION-STRUCTURE-01/desktop-chromium-cadastro-oito-campos-confirmados.png"
-      ],
-      "batch": "lote1-publico"
-    },
-    {
-      "id": "UI-REG-LINK-01",
-      "title": "Verificar que o link do regulamento é visível e aponta para destino publicado válido",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "failed",
-      "note": "O link do regulamento é visível e abre corretamente em nova aba preservando a aba de origem, mas o destino publicado (https://www.apcapdasorte.com.br/regulamento) respondeu com HTTP 403 em vez de um conteúdo válido.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-REG-LINK-01/desktop-chromium-aba-origem-preservada.png",
-        "evidence/UI-REG-LINK-01/desktop-chromium-link-regulamento-visivel.png"
-      ],
-      "batch": "lote1-publico"
-    },
-    {
-      "id": "UI-PWA-LAYERING-01",
-      "title": "Banner PWA mantém foco e não obstrui conteúdo legal, podendo ser dispensado",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Ao disparar o evento real beforeinstallprompt em ambos os perfis (chromium desktop e Pixel), o banner PWA aparece fixo no topo sem sobrepor o disclaimer legal da splash, não rouba o foco de teclado, é dispensável pelo botão 'Agora não', e o conteúdo permanece utilizável após a dispensa.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-PWA-LAYERING-01/desktop-chromium-banner-pwa-conteudo.png",
-        "evidence/UI-PWA-LAYERING-01/desktop-chromium-banner-pwa-dispensado.png",
-        "evidence/UI-PWA-LAYERING-01/desktop-chromium-banner-pwa-visivel-sobre-conteudo.png",
-        "evidence/UI-PWA-LAYERING-01/desktop-chromium-conteudo-legal-sem-banner.png"
-      ],
-      "batch": "lote1-publico"
-    },
-    {
-      "id": "UI-REGISTRATION-SUBMIT-01",
-      "title": "Cadastro sandbox válido cria uma única conta e apresenta confirmação sanitizada",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "O cadastro autônomo com CPF sintético válido submeteu com sucesso e o app entrou direto em uma sessão autenticada única, exibindo o modal de boas-vindas, sem OTP/e-mail/SMS de confirmação.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-REGISTRATION-SUBMIT-01/desktop-chromium-confirmacao-pos-cadastro.png",
-        "evidence/UI-REGISTRATION-SUBMIT-01/desktop-chromium-formulario-cadastro-preenchido.png",
-        "evidence/UI-REGISTRATION-SUBMIT-01/desktop-chromium-formulario-cadastro-vazio.png"
-      ],
-      "batch": "lote2-conta"
-    },
-    {
-      "id": "UI-REGISTRATION-03",
-      "title": "Verificar bloqueio de CPF já cadastrado sem revelar dados da conta existente",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Reenviar o cadastro com o mesmo CPF (nome/e-mail/telefone novos) foi bloqueado com um toast genérico de 'CPF já cadastrado' que não citou nome, e-mail, telefone ou qualquer outro dado da conta existente, e nenhuma sessão nova foi criada.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-REGISTRATION-03/desktop-chromium-cadastro-cpf-duplicado-preenchido.png",
-        "evidence/UI-REGISTRATION-03/desktop-chromium-resposta-bloqueio-cpf-duplicado.png"
-      ],
-      "batch": "lote2-conta"
-    },
-    {
-      "id": "UI-SESSION-01",
-      "title": "Verificar que Perfil sandbox 1 autorizado inicia sessão e alcança a navegação autenticada",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Login com CPF/senha sintéticos válidos alcançou a navegação inferior autenticada e a sessão permaneceu autenticada após um reload real (F5) da página.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-SESSION-01/desktop-chromium-formulario-login-antes.png",
-        "evidence/UI-SESSION-01/desktop-chromium-navegacao-autenticada-alcancada.png",
-        "evidence/UI-SESSION-01/desktop-chromium-sessao-persiste-apos-reload.png"
-      ],
-      "batch": "lote2-conta"
-    },
-    {
-      "id": "UI-SESSION-02",
-      "title": "Verificar que Perfil sandbox 2 autorizado inicia sessão de forma independente",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Duas contas sintéticas independentes autenticadas em dois BrowserContexts isolados simultâneos permaneceram ativas sem interferência mútua, e o CPF da segunda conta não coincidiu com o da primeira.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-SESSION-02/desktop-chromium-perfil-a-sessao-independente.png",
-        "evidence/UI-SESSION-02/desktop-chromium-perfil-b-sessao-independente.png"
-      ],
-      "batch": "lote2-conta"
-    },
-    {
-      "id": "UI-VERSIONS-01",
-      "title": "Verificar que menu exibe versões de App, Engine, Jogos e Recompensas",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Painel Versoes expoe App v5.5.20, Engine e versao de cada jogo.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-VERSIONS-01/desktop-chromium-menu-aberto.png",
-        "evidence/UI-VERSIONS-01/desktop-chromium-painel-versoes-app-engine.png",
-        "evidence/UI-VERSIONS-01/desktop-chromium-painel-versoes-jogos-recompensas.png"
-      ],
-      "batch": "lote2-conta"
-    },
-    {
-      "id": "UI-REG-FOOTER-01",
-      "title": "Verificar que o rodapé de uma tela de venda exibe promotora, processo, SUSEP e regulamento",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "failed",
-      "note": "A tela de venda (#tela-comprar), com o catálogo de 'Livros digitais' carregado, não menciona SUSEP, Promotora, Processo nem Regulamento em nenhum lugar do seu conteúdo/rodapé.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-REG-FOOTER-01/desktop-chromium-tela-de-venda-catalogo-carregado.png",
-        "evidence/UI-REG-FOOTER-01/desktop-chromium-tela-de-venda-rodape-verificado.png"
-      ],
-      "batch": "lote2-conta"
-    },
-    {
-      "id": "UI-COMPLIANCE-01",
-      "title": "Verificar que telas públicas não usam vocabulário proibido de jogo, aposta ou apostar",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "O texto renderizado do consentimento de cookies, da splash pública, do formulário ENTRAR e do formulário CRIAR CONTA não contém nenhuma ocorrência das raízes proibidas 'jogo' ou 'apost'.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-consentimento-lgpd.png",
-        "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-formulario-criar-conta.png",
-        "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-formulario-entrar.png",
-        "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-splash-publica.png"
-      ],
-      "batch": "lote2-conta"
-    },
-    {
-      "id": "UI-AUTH-NAVIGATION-01",
-      "title": "Home autenticada expõe cabeçalho, carteira, notificações e destinos principais sem sobreposição",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "failed",
-      "note": "A navegação inferior com os 5 destinos principais é exibida sem sobreposição em ambos os perfis, mas o botão de carteira (button.inicio-carteira) e o de notificações (button.sino-notif) existem no DOM do cabeçalho da home autenticada e estão ocultos (display:none) em ambos os perfis chromium e pixel.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-AUTH-NAVIGATION-01/desktop-chromium-destinos-principais-navegacao.png",
-        "evidence/UI-AUTH-NAVIGATION-01/desktop-chromium-estado-carteira-notificacoes.png",
-        "evidence/UI-AUTH-NAVIGATION-01/desktop-chromium-home-autenticada-cabecalho.png"
-      ],
-      "batch": "lote2-conta"
-    },
-    {
-      "id": "UI-COMPLIANCE-02",
-      "title": "Verificar que telas autenticadas não usam vocabulário proibido de jogo, aposta ou apostar",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "failed",
-      "note": "Menu e seu painel de Versões exibiram o rótulo Jogos em tela autenticada.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-COMPLIANCE-02/desktop-chromium-01-home-autenticada.png",
-        "evidence/UI-COMPLIANCE-02/desktop-chromium-02-comprar.png",
-        "evidence/UI-COMPLIANCE-02/desktop-chromium-03-estourar.png",
-        "evidence/UI-COMPLIANCE-02/desktop-chromium-04-sorteios.png",
-        "evidence/UI-COMPLIANCE-02/desktop-chromium-05-menu.png",
-        "evidence/UI-COMPLIANCE-02/desktop-chromium-06-menu-painel-versoes.png"
-      ],
-      "batch": "lote3-autenticado"
-    },
-    {
-      "id": "UI-PROFILE-01",
-      "title": "Verificar que perfil distingue dados editáveis, nome social e endereço sem expor dados indevidos",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Perfil exibiu os controles esperados para dados bloqueados, nome social e endereço.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-PROFILE-01/desktop-chromium-01-perfil-aberto.png",
-        "evidence/UI-PROFILE-01/desktop-chromium-02-nome-social-habilitado.png",
-        "evidence/UI-PROFILE-01/desktop-chromium-03-secao-endereco.png"
-      ],
-      "batch": "lote3-autenticado"
-    },
-    {
-      "id": "UI-WALLET-01",
-      "title": "Verificar que recarga rejeita valores abaixo de R$ 5,00",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "O controle de valor manteve o piso de R$ 5,00 após tentativa abaixo do limite.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-WALLET-01/desktop-chromium-01-carteira-aberta.png",
-        "evidence/UI-WALLET-01/desktop-chromium-02-apos-forcar-valor-abaixo-do-piso.png"
-      ],
-      "batch": "lote3-autenticado"
-    },
-    {
-      "id": "UI-WALLET-02",
-      "title": "Verificar que recarga rejeita valores acima de R$ 500,00",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Presets e valor forçado respeitaram o teto de R$ 500,00.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-WALLET-02/desktop-chromium-01-carteira-aberta.png",
-        "evidence/UI-WALLET-02/desktop-chromium-02-apos-presets-acima-do-teto.png",
-        "evidence/UI-WALLET-02/desktop-chromium-03-apos-forcar-valor-acima-do-teto.png"
-      ],
-      "batch": "lote3-autenticado"
-    },
-    {
-      "id": "UI-WALLET-03",
-      "title": "Verificar que presets de recarga preenchem valor correto e respeitam limites",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Presets aplicaram os incrementos esperados e pararam no teto de R$ 500,00.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-WALLET-03/desktop-chromium-01-baseline-no-piso.png",
-        "evidence/UI-WALLET-03/desktop-chromium-02-apos-preset-mais-10.png",
-        "evidence/UI-WALLET-03/desktop-chromium-03-presets-ate-o-teto.png"
-      ],
-      "batch": "lote3-autenticado"
-    },
-    {
-      "id": "UI-CARD-01",
-      "title": "Verificar validações de número, titular, CPF, validade e CVV sem expor dados sensíveis",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Formulário de cartão exibiu validações para entradas inválidas e CVV do tipo password.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-CARD-01/desktop-chromium-01-formulario-cartao-vazio.png",
-        "evidence/UI-CARD-01/desktop-chromium-02-formulario-preenchido-invalido.png",
-        "evidence/UI-CARD-01/desktop-chromium-03-erros-de-validacao.png"
-      ],
-      "batch": "lote3-autenticado"
-    },
-    {
-      "id": "UI-PATH-CATALOG-01",
-      "title": "Tela Caminho da Sorte carrega catálogo autenticado e permite voltar à Home",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "failed",
-      "note": "A seção estava visível na Home, mas seu clique não abriu #tela-caminho-sorte dentro de 10 segundos.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-PATH-CATALOG-01/desktop-chromium-01-secao-na-home.png"
-      ],
-      "batch": "lote3-autenticado"
-    },
-    {
-      "id": "UI-PURCHASE-01",
-      "title": "Verificar que catálogo mostra pacotes e que carrinho adiciona item selecionado",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Selecionar a categoria 'Livros digitais' renderiza .comprar-card com preço real e, ao adicionar uma unidade, o totalizador de preço deixa de ser R$ 0,00.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-PURCHASE-01/desktop-chromium-01-catalogo-carregado.png",
-        "evidence/UI-PURCHASE-01/desktop-chromium-02-item-adicionado-totalizer-atualizado.png"
-      ],
-      "batch": "lote4-compra"
-    },
-    {
-      "id": "UI-PURCHASE-02",
-      "title": "Verificar que “Limpar tudo” remove todos os itens do carrinho e atualiza o total",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Com item no carrinho e na tela de revisão, clicar em '.checkout-limpar-carrinho' fecha a revisão, retorna à tela de compra e zera o totalizador para R$ 0,00.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-PURCHASE-02/desktop-chromium-01-revisao-com-itens.png",
-        "evidence/UI-PURCHASE-02/desktop-chromium-02-apos-limpar-tudo-total-zerado.png"
-      ],
-      "batch": "lote4-compra"
-    },
-    {
-      "id": "UI-PURCHASE-03",
-      "title": "Verificar que checkout separa revisão e pagamento e mantém o resumo da compra",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "O checkout usa duas telas reais e distintas (#tela-comprar-revisar e #tela-comprar-pagamento) e o valor do item selecionado permanece visível e consistente na tela de pagamento após avançar da revisão.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-PURCHASE-03/desktop-chromium-01-tela-revisao-com-resumo.png",
-        "evidence/UI-PURCHASE-03/desktop-chromium-02-tela-pagamento-tela-distinta.png"
-      ],
-      "batch": "lote4-compra"
-    },
-    {
-      "id": "UI-CART-EMPTY-01",
-      "title": "Carrinho vazio comunica o estado e pode ser fechado sem alterar a navegação",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Com carrinho vazio o controle 'Ver itens do carrinho' permanece visível mas clicá-lo não navega para #tela-comprar-revisar nem quebra a tela; adicionar e depois remover a única unidade devolve a tela ao estado vazio (R$ 0,00) sem erro.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-CART-EMPTY-01/desktop-chromium-01-comprar-carrinho-vazio.png",
-        "evidence/UI-CART-EMPTY-01/desktop-chromium-02-sem-navegacao-com-carrinho-vazio.png",
-        "evidence/UI-CART-EMPTY-01/desktop-chromium-03-retorno-ao-vazio-sem-quebra.png"
-      ],
-      "batch": "lote4-compra"
-    },
-    {
-      "id": "UI-PIX-01",
-      "title": "Verificar que compra Pix sandbox gera QR Code e estado pendente válido",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Ao confirmar o pagamento via Pix, o app renderiza um QR Code real e um código copia-e-cola preenchido, com o botão 'JÁ PAGUEI' disponível, evidenciando um estado pendente real gerado pela integração sandbox (Iugu).",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-PIX-01/desktop-chromium-01-antes-de-gerar-pix.png",
-        "evidence/UI-PIX-01/desktop-chromium-02-pix-gerado-estado-pendente-mascarado.png"
-      ],
-      "batch": "lote4-compra"
-    },
-    {
-      "id": "UI-PIX-03",
-      "title": "Verificar que “JÁ PAGUEI” antes da confirmação não liquida compra nem credita saldo",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Clicar em 'JÁ PAGUEI' sem pagamento real exibe o aviso 'Ainda não identificamos o pagamento' e o saldo da conta permanece R$ 0,00 na tela inicial, confirmando que nenhuma liquidação, crédito de saldo ou emissão de cupom ocorreu.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-PIX-03/desktop-chromium-01-pix-gerado-antes-de-ja-paguei.png",
-        "evidence/UI-PIX-03/desktop-chromium-02-pagamento-nao-identificado.png",
-        "evidence/UI-PIX-03/desktop-chromium-03-saldo-permanece-zerado.png"
-      ],
-      "batch": "lote4-compra"
-    },
-    {
-      "id": "UI-RESP-01",
-      "title": "Verificar fluxo P0 sem overflow e com toque, teclado e zoom em Android 360x800",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Em viewport 360x800 com touch habilitado, a home autenticada e a tela de compra (após tap na categoria) não apresentam overflow horizontal (scrollWidth == clientWidth) e a meta viewport não bloqueia zoom (sem user-scalable=no nem maximum-scale=1).",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-RESP-01/desktop-chromium-01-home-autenticada-360x800.png",
-        "evidence/UI-RESP-01/desktop-chromium-02-comprar-sem-overflow-360x800.png"
-      ],
-      "batch": "lote4-compra"
-    },
-    {
-      "id": "UI-RESP-02",
-      "title": "Verificar fluxo P0 sem overflow, com teclado e zoom em iPhone 13",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "No perfil iPhone 13 (390x844, touch), a home e a tela de compra após tap na categoria não têm overflow horizontal e a meta viewport permite zoom.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-RESP-02/desktop-chromium-01-home-autenticada-iphone13.png",
-        "evidence/UI-RESP-02/desktop-chromium-02-comprar-sem-overflow-iphone13.png"
-      ],
-      "batch": "lote4-compra"
-    },
-    {
-      "id": "UI-RESP-03",
-      "title": "Verificar fluxo P0 sem overflow e com teclado em Windows 1366x768",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Em 1366x768 desktop, a home e a tela de compra não têm overflow horizontal e a navegação por teclado (foco no chip + tecla Enter) ativa a categoria e renderiza os cards normalmente.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-RESP-03/desktop-chromium-01-home-autenticada-1366x768.png",
-        "evidence/UI-RESP-03/desktop-chromium-02-comprar-sem-overflow-1366x768.png"
-      ],
-      "batch": "lote4-compra"
-    },
-    {
-      "id": "UI-PWA-04",
-      "title": "Verificar comportamento offline de rotas e cache sem apresentar dados desatualizados como atuais",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "note": "Ao forçar o contexto para offline e recarregar, a casca do PWA continua acessível via cache (#tela-inicio visível) e o app exibe um aviso explícito de 'servidor temporariamente indisponível' em vez de apresentar silenciosamente dados desatualizados como atuais.",
-      "projects": [
-        "desktop-chromium"
-      ],
-      "lastRunAt": "2026-08-12T11:47:08.532Z",
-      "evidence": [
-        "evidence/UI-PWA-04/desktop-chromium-01-online-autenticado.png",
-        "evidence/UI-PWA-04/desktop-chromium-02-offline-aviso-servidor-indisponivel.png"
-      ],
-      "batch": "lote4-compra"
-    },
-    {
-      "id": "PUB-01",
-      "title": "Landing pública responde e comunica acesso responsável",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 24812,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "attempts": 5,
-      "lastRunAt": "2026-08-10T13:06:52.285Z",
-      "evidence": [
-        "evidence/PUB-01/desktop-chromium-landing-responsavel.png"
-      ],
-      "previousStatus": "passed",
-      "regression": "none"
-    },
-    {
-      "id": "PUB-02",
-      "title": "Consentimento público é recusado e fechado",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 33948,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "attempts": 5,
-      "lastRunAt": "2026-08-10T13:06:52.285Z",
-      "evidence": [
-        "evidence/PUB-02/desktop-chromium-consentimento-recusado.png",
-        "evidence/PUB-02/desktop-chromium-consentimento-visivel.png"
-      ],
-      "previousStatus": "passed",
-      "regression": "none"
-    },
-    {
-      "id": "PUB-03",
-      "title": "Login vazio é validado e a visibilidade da senha funciona",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 40336,
-      "projects": [
-        "desktop-chromium",
-        "desktop-firefox",
-        "desktop-webkit",
-        "mobile-iphone",
-        "mobile-pixel"
-      ],
-      "attempts": 5,
-      "lastRunAt": "2026-08-10T13:06:52.285Z",
-      "evidence": [
-        "evidence/PUB-03/desktop-chromium-formulario-login.png",
-        "evidence/PUB-03/desktop-chromium-senha-visivel-sem-valor.png",
-        "evidence/PUB-03/desktop-chromium-validacao-login-vazio.png"
-      ],
-      "previousStatus": "passed",
-      "regression": "none"
-    },
-    {
-      "id": "UI-AUTH-01",
-      "title": "Recuperação de senha pública exibe feedback e não cria sessão",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 14243,
-      "projects": [
-        "desktop-chromium",
-        "mobile-pixel"
-      ],
-      "attempts": 2,
-      "lastRunAt": "2026-08-11T13:23:43.369Z",
-      "evidence": [
-        "evidence/UI-AUTH-01/desktop-chromium-feedback-recuperacao-anonima.png",
-        "evidence/UI-AUTH-01/desktop-chromium-login-antes-recuperacao.png"
-      ],
-      "regression": "none"
-    },
-    {
-      "id": "UI-COOKIE-01",
-      "title": "Consentimento exibe categorias e ações públicas",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 11768,
-      "projects": [
-        "desktop-chromium",
-        "mobile-pixel"
-      ],
-      "attempts": 2,
-      "lastRunAt": "2026-08-11T13:23:43.369Z",
-      "evidence": [
-        "evidence/UI-COOKIE-01/desktop-chromium-consentimento-categorias-acoes.png",
-        "evidence/UI-COOKIE-01/desktop-chromium-preferencias-categorias-acoes.png"
-      ],
-      "regression": "none"
-    },
-    {
-      "id": "UI-COOKIE-03",
-      "title": "Preferências granulares de cookies são salvas",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 20197,
-      "projects": [
-        "desktop-chromium",
-        "mobile-pixel"
-      ],
-      "attempts": 2,
-      "lastRunAt": "2026-08-11T13:23:43.369Z",
-      "evidence": [
-        "evidence/UI-COOKIE-03/desktop-chromium-escolha-granular-antes-salvar.png",
-        "evidence/UI-COOKIE-03/desktop-chromium-preferencias-salvas.png"
-      ],
-      "regression": "none"
-    },
-    {
-      "id": "UI-COOKIE-04",
-      "title": "Aceitar cookies persiste consentimento e não bloqueia navegação",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 18965,
-      "projects": [
-        "desktop-chromium",
-        "mobile-pixel"
-      ],
-      "attempts": 2,
-      "lastRunAt": "2026-08-11T13:23:43.369Z",
-      "evidence": [
-        "evidence/UI-COOKIE-04/desktop-chromium-consentimento-aceito.png",
-        "evidence/UI-COOKIE-04/desktop-chromium-consentimento-antes-aceitar.png"
-      ],
-      "regression": "none"
-    },
-    {
-      "id": "UI-COOKIE-ESSENTIAL-01",
-      "title": "Cookies essenciais permanecem obrigatórios",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 9967,
-      "projects": [
-        "desktop-chromium",
-        "mobile-pixel"
-      ],
-      "attempts": 2,
-      "lastRunAt": "2026-08-11T13:23:43.369Z",
-      "evidence": [
-        "evidence/UI-COOKIE-ESSENTIAL-01/desktop-chromium-essenciais-obrigatorios.png"
-      ],
-      "regression": "none"
-    },
-    {
-      "id": "UI-COOKIE-PRIVACY-LINK-01",
-      "title": "Link público de privacidade abre conteúdo acessível",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "failed",
-      "durationMs": 31709,
-      "projects": [
-        "desktop-chromium",
-        "mobile-pixel"
-      ],
-      "attempts": 2,
-      "lastRunAt": "2026-08-11T13:23:43.369Z",
-      "evidence": [
-        "evidence/UI-COOKIE-PRIVACY-LINK-01/desktop-chromium-link-privacidade-visivel.png"
-      ],
-      "regression": "none",
-      "error": "TEST_FAILED"
-    },
-    {
-      "id": "UI-PUBLIC-AUDIO-01",
-      "title": "Controle de áudio público alterna estado sem navegar",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 13955,
-      "projects": [
-        "desktop-chromium",
-        "mobile-pixel"
-      ],
-      "attempts": 2,
-      "lastRunAt": "2026-08-11T13:23:43.369Z",
-      "evidence": [
-        "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-som-ativado.png",
-        "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-som-desativado.png"
-      ],
-      "regression": "none"
-    },
-    {
-      "id": "UI-PUBLIC-CTA-01",
-      "title": "CTA público abre autenticação utilizável",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 12849,
-      "projects": [
-        "desktop-chromium",
-        "mobile-pixel"
-      ],
-      "attempts": 2,
-      "lastRunAt": "2026-08-11T13:23:43.369Z",
-      "evidence": [
-        "evidence/UI-PUBLIC-CTA-01/desktop-chromium-autenticacao-aberta.png",
-        "evidence/UI-PUBLIC-CTA-01/desktop-chromium-cta-publico-visivel.png"
-      ],
-      "regression": "none"
-    },
-    {
-      "id": "UI-REGISTRATION-PASSWORD-TOGGLE-01",
-      "title": "Senha de cadastro alterna visibilidade sem perder valor local",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 13847,
-      "projects": [
-        "desktop-chromium",
-        "mobile-pixel"
-      ],
-      "attempts": 2,
-      "lastRunAt": "2026-08-11T13:23:43.369Z",
-      "evidence": [
-        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/desktop-chromium-senha-mascarada.png",
-        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/desktop-chromium-senha-visivel-mascarada.png"
-      ],
-      "regression": "none"
-    },
-    {
-      "id": "UI-REGISTRATION-REQUIRED-01",
-      "title": "Cadastro vazio sinaliza obrigatórios sem criar conta",
-      "execution": "real-hml",
-      "autonomous": true,
-      "status": "passed",
-      "durationMs": 13945,
-      "projects": [
-        "desktop-chromium",
-        "mobile-pixel"
-      ],
-      "attempts": 2,
-      "lastRunAt": "2026-08-11T13:23:43.369Z",
-      "evidence": [
-        "evidence/UI-REGISTRATION-REQUIRED-01/desktop-chromium-cadastro-vazio.png",
-        "evidence/UI-REGISTRATION-REQUIRED-01/desktop-chromium-obrigatorios-sinalizados.png"
-      ],
-      "regression": "none"
-    }
-  ]
+  {
+   "id": "UI-COOKIE-PRIVACY-LINK-01",
+   "title": "Link de Política de Privacidade abre conteúdo legal acessível",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "failed",
+   "note": "O link de Política de Privacidade do modal de consentimento não abre conteúdo legal: exibe apenas o aviso \"Política de Privacidade: em breve.\" e nenhuma tela/seção de política é renderizada.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/UI-COOKIE-PRIVACY-LINK-01/desktop-chromium-estado-final-sem-conteudo-legal.png",
+    "evidence/UI-COOKIE-PRIVACY-LINK-01/desktop-chromium-link-privacidade-visivel-no-consentimento.png",
+    "evidence/UI-COOKIE-PRIVACY-LINK-01/desktop-chromium-resposta-ao-acionar-link-privacidade.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "UI-LEGAL-DOCUMENTS-01",
+   "title": "Termos de Uso e Política de Privacidade abrem o conteúdo correto nos dois formulários",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "failed",
+   "note": "Os links de Termos de Uso e Política de Privacidade nos formulários de login e cadastro abrem apenas o placeholder \"Termos e Política de Privacidade: em breve.\", sem conteúdo legal real.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-cadastro-antes-termos.png",
+    "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-cadastro-apos-privacidade.png",
+    "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-cadastro-apos-termos.png",
+    "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-login-antes-termos.png",
+    "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-login-apos-privacidade.png",
+    "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-login-apos-termos.png"
+   ],
+   "batch": "lote1"
+  },
+  {
+   "id": "UI-REG-FOOTER-01",
+   "title": "Verificar que o rodapé de uma tela de venda exibe promotora, processo, SUSEP e regulamento",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "failed",
+   "note": "A tela de venda (#tela-comprar) carrega o catálogo, mas seu conteúdo/rodapé não menciona SUSEP, Promotora, Processo nem Regulamento.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-REG-FOOTER-01/desktop-chromium-tela-de-venda-catalogo-carregado.png",
+    "evidence/UI-REG-FOOTER-01/desktop-chromium-tela-de-venda-rodape-verificado.png"
+   ],
+   "batch": "lote2"
+  },
+  {
+   "id": "UI-REG-LINK-01",
+   "title": "Verificar que o link do regulamento é visível e aponta para destino publicado válido",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "failed",
+   "note": "O link do regulamento é visível e abre em nova aba, mas o destino (https://www.apcapdasorte.com.br/regulamento) retornou status HTTP 403.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-REG-LINK-01/desktop-chromium-aba-origem-preservada.png",
+    "evidence/UI-REG-LINK-01/desktop-chromium-link-regulamento-visivel.png"
+   ],
+   "batch": "lote1"
+  },
+  {
+   "id": "UI-AUTH-03",
+   "title": "Verificar que solicitação de recuperação de senha valida a entrada e não enumera CPF",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "blocked",
+   "note": "Clicar em \"Esqueci minha senha\" não abre nenhum segundo passo com campo de CPF — apenas exibe um toast estático de funcionalidade \"em breve\"; não existe fluxo real de recuperação para submeter um CPF e observar uma resposta diferencial, então o objetivo do caso (validar entrada e não enumerar CPF cadastrado) não pode ser fechado autonomamente no estado atual do produto.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-AUTH-03/desktop-chromium-formulario-login-antes-recuperacao.png",
+    "evidence/UI-AUTH-03/desktop-chromium-resposta-apos-clicar-esqueci-senha.png"
+   ],
+   "batch": "lote2"
+  },
+  {
+   "id": "UI-GAME-01",
+   "title": "Verificar que tela de jogo apresenta prêmios possíveis e opções de velocidade de animação",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "blocked",
+   "note": "A conta sandbox nova tem 0 chances/títulos; a tela Estourar trava no bloqueio \"Compre e desbloqueie sua chance\" (.est-sem-chances-overlay) e nunca renderiza o tabuleiro de prêmios (.area-baloes-jogo) — objetivo inalcançável sem liquidar uma compra, que o Pix sandbox da Iugu não permite.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-GAME-01/desktop-chromium-01-tela-jogo-conta-zerada.png",
+    "evidence/UI-GAME-01/desktop-chromium-02-estado-sem-chances.png"
+   ],
+   "batch": "lote3"
+  },
+  {
+   "id": "UI-PURCHASE-GAME-CATALOG-01",
+   "title": "Catálogo de compra separa pacotes e ofertas Milzão, Giro e Super Quarta conforme edição",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "blocked",
+   "note": "Nenhuma das categorias clicáveis do catálogo pré-compra (\"+ Chances\", \"Livros digitais\") expõe as edições \"Milzão\", \"Giro\" ou \"Super Quarta\" — esses nomes só aparecem no modal de confirmação pós-compra, inacessível sem uma compra liquidada (Pix sandbox não liquidável).",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-PURCHASE-GAME-CATALOG-01/desktop-chromium-01-catalogo-chances-carregado.png",
+    "evidence/UI-PURCHASE-GAME-CATALOG-01/desktop-chromium-02-catalogo-livros-digitais-carregado.png"
+   ],
+   "batch": "lote3"
+  },
+  {
+   "id": "PUB-01",
+   "title": "Landing pública responde e comunica acesso responsável",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "A landing pública respondeu com sucesso, exibiu título APCAP, o disclaimer regulatório (restrição de idade, SUSEP/SPA e regulamento) e o CTA público em desktop e Pixel.",
+   "projects": [
+    "desktop-chromium",
+    "mobile-pixel"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/PUB-01/desktop-chromium-consentimento-inicial-visivel.png",
+    "evidence/PUB-01/desktop-chromium-cta-publico-disponivel.png",
+    "evidence/PUB-01/desktop-chromium-disclaimer-acesso-responsavel.png",
+    "evidence/PUB-01/desktop-chromium-landing-carregada.png",
+    "evidence/PUB-01/mobile-pixel-consentimento-inicial-visivel.png",
+    "evidence/PUB-01/mobile-pixel-cta-publico-disponivel.png",
+    "evidence/PUB-01/mobile-pixel-disclaimer-acesso-responsavel.png",
+    "evidence/PUB-01/mobile-pixel-landing-carregada.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "PUB-02",
+   "title": "Consentimento público é recusado e fechado",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "A recusa fechou o modal de consentimento, registrou análise e marketing como falsos com essenciais ativos, e a recusa persistiu após recarregar em desktop e Pixel.",
+   "projects": [
+    "desktop-chromium",
+    "mobile-pixel"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/PUB-02/desktop-chromium-consentimento-antes-da-recusa.png",
+    "evidence/PUB-02/desktop-chromium-consentimento-fechado-apos-recusa.png",
+    "evidence/PUB-02/desktop-chromium-recusa-persistida-apos-reload.png",
+    "evidence/PUB-02/mobile-pixel-consentimento-antes-da-recusa.png",
+    "evidence/PUB-02/mobile-pixel-consentimento-fechado-apos-recusa.png",
+    "evidence/PUB-02/mobile-pixel-recusa-persistida-apos-reload.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "PUB-03",
+   "title": "Login vazio é validado e a visibilidade da senha funciona",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O submit de login vazio exibiu as mensagens de obrigatoriedade de CPF e Senha sem navegar nem criar sessão, e a alternância de visibilidade trocou o tipo do campo de senha nos dois sentidos.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/PUB-03/desktop-chromium-login-vazio-antes-do-submit.png",
+    "evidence/PUB-03/desktop-chromium-login-vazio-erros-obrigatorios.png",
+    "evidence/PUB-03/desktop-chromium-senha-mascarada-novamente.png",
+    "evidence/PUB-03/desktop-chromium-senha-visivel-apos-alternancia.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "UI-AUTH-01",
+   "title": "Fluxo “Esqueci minha senha” é exposto com feedback sem criar sessão",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O acionador \"Esqueci minha senha\" está exposto e devolve feedback imediato (\"Recuperação de senha: em breve por e-mail.\"), sem criar sessão autenticada e permanecendo na tela de login.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/UI-AUTH-01/desktop-chromium-acionador-esqueci-senha-visivel.png",
+    "evidence/UI-AUTH-01/desktop-chromium-feedback-esqueci-senha.png",
+    "evidence/UI-AUTH-01/desktop-chromium-sem-sessao-apos-recuperacao.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "UI-CARD-01",
+   "title": "Verificar validações de número, titular, CPF, validade e CVV sem expor dados sensíveis",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "As validações de número, titular, CPF, validade e CVV do cartão funcionam sem expor dados sensíveis na tela.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-CARD-01/desktop-chromium-01-formulario-cartao-vazio.png",
+    "evidence/UI-CARD-01/desktop-chromium-02-formulario-preenchido-invalido.png",
+    "evidence/UI-CARD-01/desktop-chromium-03-erros-de-validacao.png"
+   ],
+   "batch": "lote3"
+  },
+  {
+   "id": "UI-CART-EMPTY-01",
+   "title": "Carrinho vazio comunica o estado e pode ser fechado sem alterar a navegação",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Um carrinho vazio não navega para checkout nem quebra a tela de compra.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-CART-EMPTY-01/desktop-chromium-01-comprar-carrinho-vazio.png",
+    "evidence/UI-CART-EMPTY-01/desktop-chromium-02-sem-navegacao-com-carrinho-vazio.png",
+    "evidence/UI-CART-EMPTY-01/desktop-chromium-03-retorno-ao-vazio-sem-quebra.png"
+   ],
+   "batch": "lote4"
+  },
+  {
+   "id": "UI-COMPLIANCE-01",
+   "title": "Verificar que telas públicas não usam vocabulário proibido de jogo, aposta ou apostar",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Telas públicas (splash, consentimento LGPD, formulários de entrar/criar conta) não usam vocabulário proibido de jogo, aposta ou apostar.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-consentimento-lgpd.png",
+    "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-formulario-criar-conta.png",
+    "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-formulario-entrar.png",
+    "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-splash-publica.png"
+   ],
+   "batch": "lote2"
+  },
+  {
+   "id": "UI-COOKIE-01",
+   "title": "Verificar que o modal de cookies expõe Essenciais, Análise e Marketing e suas ações",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O modal expõe Aceitar tudo, Recusar e Preferências; em Preferências apresenta Essenciais, Análise de uso e Marketing com Salvar preferências e Voltar, sem registrar consentimento ao apenas navegar.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/UI-COOKIE-01/desktop-chromium-acoes-principais-do-consentimento.png",
+    "evidence/UI-COOKIE-01/desktop-chromium-retorno-as-acoes-sem-registrar.png",
+    "evidence/UI-COOKIE-01/desktop-chromium-tres-categorias-e-acoes-granulares.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "UI-COOKIE-03",
+   "title": "Verificar que “Preferências” permite salvar escolhas granulares de consentimento",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Preferências permitiu aceitar apenas Análise de uso mantendo Marketing recusado; a escolha granular foi salva, fechou o modal e persistiu após recarregar.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/UI-COOKIE-03/desktop-chromium-escolha-granular-analise-sim-marketing-nao.png",
+    "evidence/UI-COOKIE-03/desktop-chromium-preferencias-estado-inicial.png",
+    "evidence/UI-COOKIE-03/desktop-chromium-preferencias-persistidas-apos-reload.png",
+    "evidence/UI-COOKIE-03/desktop-chromium-preferencias-salvas-e-modal-fechado.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "UI-COOKIE-04",
+   "title": "Verificar que “Aceitar tudo” registra consentimento e não bloqueia a navegação",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Aceitar tudo registrou essenciais, análise e marketing como aceitos, fechou o modal, liberou a navegação até a tela de autenticação e persistiu após recarregar.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/UI-COOKIE-04/desktop-chromium-aceite-persistido-apos-reload.png",
+    "evidence/UI-COOKIE-04/desktop-chromium-consentimento-antes-de-aceitar-tudo.png",
+    "evidence/UI-COOKIE-04/desktop-chromium-consentimento-total-registrado.png",
+    "evidence/UI-COOKIE-04/desktop-chromium-navegacao-livre-apos-aceite.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "UI-COOKIE-05",
+   "title": "Após recusa, verificar em rede que Google Analytics não recebe nova requisição",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Após recusar cookies, nenhuma nova requisição a domínios de Google Analytics foi observada.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-COOKIE-05/desktop-chromium-consentimento-antes-recusa.png",
+    "evidence/UI-COOKIE-05/desktop-chromium-pos-recusa-sem-requisicao-ga.png"
+   ],
+   "batch": "lote1"
+  },
+  {
+   "id": "UI-COOKIE-06",
+   "title": "Após recusa, verificar em rede que Microsoft Clarity não recebe nova requisição",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Após recusar cookies, nenhuma nova requisição a domínios de Microsoft Clarity foi observada.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-COOKIE-06/desktop-chromium-consentimento-antes-recusa.png",
+    "evidence/UI-COOKIE-06/desktop-chromium-pos-recusa-sem-requisicao-clarity.png"
+   ],
+   "batch": "lote1"
+  },
+  {
+   "id": "UI-COOKIE-ESSENTIAL-01",
+   "title": "Categoria Essenciais permanece ativa e não pode ser desmarcada",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "A categoria Essenciais aparece marcada e desabilitada, resiste a cliques no checkbox e na label, e é salva como ativa.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/UI-COOKIE-ESSENTIAL-01/desktop-chromium-essenciais-ativo-e-bloqueado.png",
+    "evidence/UI-COOKIE-ESSENTIAL-01/desktop-chromium-essenciais-permanece-ativo-apos-tentativa.png",
+    "evidence/UI-COOKIE-ESSENTIAL-01/desktop-chromium-essenciais-registrado-ativo.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "UI-PATH-CATALOG-01",
+   "title": "Tela Caminho da Sorte carrega catálogo autenticado e permite voltar à Home",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "A tela Caminho da Sorte carrega o catálogo autenticado, inicia o dia corretamente e permite voltar à Home.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-PATH-CATALOG-01/desktop-chromium-01-secao-na-home.png",
+    "evidence/UI-PATH-CATALOG-01/desktop-chromium-02-catalogo-autenticado-carregado.png",
+    "evidence/UI-PATH-CATALOG-01/desktop-chromium-03-dia-iniciado.png",
+    "evidence/UI-PATH-CATALOG-01/desktop-chromium-04-retorno-a-home.png"
+   ],
+   "batch": "lote3"
+  },
+  {
+   "id": "UI-PIX-01",
+   "title": "Verificar que compra Pix sandbox gera QR Code e estado pendente válido",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "A geração de cobrança Pix produz QR/código em estado pendente real (não liquidável no sandbox, conforme esperado).",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-PIX-01/desktop-chromium-01-antes-de-gerar-pix.png",
+    "evidence/UI-PIX-01/desktop-chromium-02-pix-gerado-estado-pendente-mascarado.png"
+   ],
+   "batch": "lote4"
+  },
+  {
+   "id": "UI-PIX-03",
+   "title": "Verificar que “JÁ PAGUEI” antes da confirmação não liquida compra nem credita saldo",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Clicar em \"JÁ PAGUEI\" sem pagamento real não liquida a fatura, não credita saldo e não emite cupom — retorna \"Ainda não identificamos o pagamento\".",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-PIX-03/desktop-chromium-01-pix-gerado-antes-de-ja-paguei.png",
+    "evidence/UI-PIX-03/desktop-chromium-02-pagamento-nao-identificado.png",
+    "evidence/UI-PIX-03/desktop-chromium-03-saldo-permanece-zerado.png"
+   ],
+   "batch": "lote4"
+  },
+  {
+   "id": "UI-PROFILE-01",
+   "title": "Verificar que perfil distingue dados editáveis, nome social e endereço sem expor dados indevidos",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "A tela de Perfil distingue corretamente dados editáveis, nome social e seção de endereço, sem expor dados indevidos.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-PROFILE-01/desktop-chromium-01-perfil-aberto.png",
+    "evidence/UI-PROFILE-01/desktop-chromium-02-nome-social-habilitado.png",
+    "evidence/UI-PROFILE-01/desktop-chromium-03-secao-endereco.png"
+   ],
+   "batch": "lote3"
+  },
+  {
+   "id": "UI-PUBLIC-AUDIO-01",
+   "title": "Controle de som alterna o áudio sem navegar nem bloquear o CTA",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O controle de som inicia desativado, alterna aria-pressed/aria-label nos dois sentidos sem navegar e o CTA público continua funcional depois, em desktop e Pixel.",
+   "projects": [
+    "desktop-chromium",
+    "mobile-pixel"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-cta-funcional-apos-uso-do-som.png",
+    "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-som-ativado.png",
+    "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-som-desativado-novamente.png",
+    "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-som-inicialmente-desativado.png",
+    "evidence/UI-PUBLIC-AUDIO-01/mobile-pixel-cta-funcional-apos-uso-do-som.png",
+    "evidence/UI-PUBLIC-AUDIO-01/mobile-pixel-som-ativado.png",
+    "evidence/UI-PUBLIC-AUDIO-01/mobile-pixel-som-desativado-novamente.png",
+    "evidence/UI-PUBLIC-AUDIO-01/mobile-pixel-som-inicialmente-desativado.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "UI-PUBLIC-CTA-01",
+   "title": "CTA da landing abre a autenticação e permanece utilizável nos perfis responsivos",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O CTA da landing permanece dentro da viewport com área de toque adequada e abre a tela de autenticação com abas ENTRAR/CRIAR CONTA em desktop e Pixel.",
+   "projects": [
+    "desktop-chromium",
+    "mobile-pixel"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/UI-PUBLIC-CTA-01/desktop-chromium-autenticacao-aberta-pelo-cta.png",
+    "evidence/UI-PUBLIC-CTA-01/desktop-chromium-cta-visivel-na-viewport.png",
+    "evidence/UI-PUBLIC-CTA-01/mobile-pixel-autenticacao-aberta-pelo-cta.png",
+    "evidence/UI-PUBLIC-CTA-01/mobile-pixel-cta-visivel-na-viewport.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "UI-PURCHASE-01",
+   "title": "Verificar que catálogo mostra pacotes e que carrinho adiciona item selecionado",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O catálogo de compra renderiza pacotes reais após selecionar uma categoria, e o item adicionado atualiza o totalizador.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-PURCHASE-01/desktop-chromium-01-catalogo-carregado.png",
+    "evidence/UI-PURCHASE-01/desktop-chromium-02-item-adicionado-totalizer-atualizado.png"
+   ],
+   "batch": "lote4"
+  },
+  {
+   "id": "UI-PURCHASE-02",
+   "title": "Verificar que “Limpar tudo” remove todos os itens do carrinho e atualiza o total",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "\"Limpar tudo\" esvazia o carrinho e reseta o total para zero.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-PURCHASE-02/desktop-chromium-01-revisao-com-itens.png",
+    "evidence/UI-PURCHASE-02/desktop-chromium-02-apos-limpar-tudo-total-zerado.png"
+   ],
+   "batch": "lote4"
+  },
+  {
+   "id": "UI-PURCHASE-03",
+   "title": "Verificar que checkout separa revisão e pagamento e mantém o resumo da compra",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O checkout separa corretamente as telas de revisão e pagamento, mantendo o resumo da compra visível.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-PURCHASE-03/desktop-chromium-01-tela-revisao-com-resumo.png",
+    "evidence/UI-PURCHASE-03/desktop-chromium-02-tela-pagamento-tela-distinta.png"
+   ],
+   "batch": "lote4"
+  },
+  {
+   "id": "UI-PWA-04",
+   "title": "Verificar comportamento offline de rotas e cache sem apresentar dados desatualizados como atuais",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Ao ficar offline, o shell do PWA continua acessível via cache e a home exibe aviso explícito de que os dados podem não estar atuais (não apresenta dados desatualizados como atuais).",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-PWA-04/desktop-chromium-01-online-autenticado.png",
+    "evidence/UI-PWA-04/desktop-chromium-02-offline-aviso-servidor-indisponivel.png"
+   ],
+   "batch": "lote4"
+  },
+  {
+   "id": "UI-PWA-LAYERING-01",
+   "title": "Banner PWA mantém foco e não obstrui conteúdo legal, podendo ser dispensado",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O banner de instalação PWA mantém foco, não obstrui conteúdo legal e pode ser dispensado corretamente.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-PWA-LAYERING-01/desktop-chromium-banner-pwa-conteudo.png",
+    "evidence/UI-PWA-LAYERING-01/desktop-chromium-banner-pwa-dispensado.png",
+    "evidence/UI-PWA-LAYERING-01/desktop-chromium-banner-pwa-visivel-sobre-conteudo.png",
+    "evidence/UI-PWA-LAYERING-01/desktop-chromium-conteudo-legal-sem-banner.png"
+   ],
+   "batch": "lote1"
+  },
+  {
+   "id": "UI-REGISTRATION-01",
+   "title": "Verificar que cadastro exige aceite de Termos de Uso e Política de Privacidade",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O botão de criar conta permanece bloqueado/inativo até o aceite explícito de Termos de Uso e Política de Privacidade.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-REGISTRATION-01/desktop-chromium-botao-criar-conta-estado.png",
+    "evidence/UI-REGISTRATION-01/desktop-chromium-cadastro-aberto.png",
+    "evidence/UI-REGISTRATION-01/desktop-chromium-cadastro-preenchido-sem-aceite.png"
+   ],
+   "batch": "lote1"
+  },
+  {
+   "id": "UI-REGISTRATION-02",
+   "title": "Verificar validação de CPF inválido no cadastro",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O formulário de cadastro valida CPF inválido e bloqueia o envio com mensagem de erro apropriada.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-REGISTRATION-02/desktop-chromium-cadastro-cpf-invalido-preenchido.png",
+    "evidence/UI-REGISTRATION-02/desktop-chromium-cadastro-erro-cpf-invalido.png"
+   ],
+   "batch": "lote1"
+  },
+  {
+   "id": "UI-REGISTRATION-03",
+   "title": "Verificar bloqueio de CPF já cadastrado sem revelar dados da conta existente",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Tentativa de cadastro com CPF já cadastrado é bloqueada com mensagem genérica, sem revelar nome, e-mail ou telefone da conta existente.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-REGISTRATION-03/desktop-chromium-cadastro-cpf-duplicado-preenchido.png",
+    "evidence/UI-REGISTRATION-03/desktop-chromium-resposta-bloqueio-cpf-duplicado.png"
+   ],
+   "batch": "lote2"
+  },
+  {
+   "id": "UI-REGISTRATION-05",
+   "title": "Verificar validações de CEP, telefone, e-mail, nome e senha mínima no cadastro",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O formulário de cadastro valida CEP, telefone, e-mail, nome e senha mínima simultaneamente, com mensagens de erro apropriadas.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-REGISTRATION-05/desktop-chromium-cadastro-campos-invalidos-preenchidos.png",
+    "evidence/UI-REGISTRATION-05/desktop-chromium-cadastro-erros-simultaneos.png"
+   ],
+   "batch": "lote1"
+  },
+  {
+   "id": "UI-REGISTRATION-PASSWORD-TOGGLE-01",
+   "title": "Mostrar senha alterna o tipo do campo de cadastro sem apagar o valor sintético",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "A alternância \"Mostrar senha\" trocou o tipo do campo de cadastro entre password e text preservando integralmente o valor sintético digitado, sem submeter o formulário.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/desktop-chromium-senha-cadastro-mascarada-novamente.png",
+    "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/desktop-chromium-senha-cadastro-mascarada.png",
+    "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/desktop-chromium-senha-cadastro-revelada.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "UI-REGISTRATION-REQUIRED-01",
+   "title": "Cadastro vazio marca todos os campos obrigatórios e não cria conta",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O submit de cadastro vazio marcou exatamente oito campos obrigatórios com mensagens específicas, sem navegar e sem criar conta ou sessão.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T16:04:42Z",
+   "evidence": [
+    "evidence/UI-REGISTRATION-REQUIRED-01/desktop-chromium-cadastro-vazio-antes-do-submit.png",
+    "evidence/UI-REGISTRATION-REQUIRED-01/desktop-chromium-cadastro-vazio-oito-erros.png"
+   ],
+   "batch": "lote0"
+  },
+  {
+   "id": "UI-REGISTRATION-STRUCTURE-01",
+   "title": "Aba Criar conta expõe os oito campos esperados sem preencher ou enviar dados pessoais",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "A aba Criar conta expõe os oito campos esperados sem exigir preenchimento nem enviar dados pessoais.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-REGISTRATION-STRUCTURE-01/desktop-chromium-cadastro-estrutural-vazio.png",
+    "evidence/UI-REGISTRATION-STRUCTURE-01/desktop-chromium-cadastro-oito-campos-confirmados.png"
+   ],
+   "batch": "lote1"
+  },
+  {
+   "id": "UI-REGISTRATION-SUBMIT-01",
+   "title": "Cadastro sandbox válido cria uma única conta e apresenta confirmação sanitizada",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Cadastro sandbox válido cria uma única conta e apresenta confirmação de boas-vindas sanitizada imediatamente após o envio.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-REGISTRATION-SUBMIT-01/desktop-chromium-confirmacao-pos-cadastro.png",
+    "evidence/UI-REGISTRATION-SUBMIT-01/desktop-chromium-formulario-cadastro-preenchido.png",
+    "evidence/UI-REGISTRATION-SUBMIT-01/desktop-chromium-formulario-cadastro-vazio.png"
+   ],
+   "batch": "lote2"
+  },
+  {
+   "id": "UI-RESP-01",
+   "title": "Verificar fluxo P0 sem overflow e com toque, teclado e zoom em Android 360x800",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Em viewport Android 360x800, a home e a tela de compra carregam sem overflow horizontal, com interação touch funcional.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-RESP-01/desktop-chromium-01-home-autenticada-360x800.png",
+    "evidence/UI-RESP-01/desktop-chromium-02-comprar-sem-overflow-360x800.png"
+   ],
+   "batch": "lote4"
+  },
+  {
+   "id": "UI-RESP-02",
+   "title": "Verificar fluxo P0 sem overflow, com teclado e zoom em iPhone 13",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Em viewport iPhone 13, a home e a tela de compra carregam sem overflow horizontal, com interação touch funcional.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-RESP-02/desktop-chromium-01-home-autenticada-iphone13.png",
+    "evidence/UI-RESP-02/desktop-chromium-02-comprar-sem-overflow-iphone13.png"
+   ],
+   "batch": "lote4"
+  },
+  {
+   "id": "UI-RESP-03",
+   "title": "Verificar fluxo P0 sem overflow e com teclado em Windows 1366x768",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Em viewport Windows 1366x768, a home e a tela de compra carregam sem overflow horizontal, com interação por teclado funcional.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-RESP-03/desktop-chromium-01-home-autenticada-1366x768.png",
+    "evidence/UI-RESP-03/desktop-chromium-02-comprar-sem-overflow-1366x768.png"
+   ],
+   "batch": "lote4"
+  },
+  {
+   "id": "UI-SESSION-01",
+   "title": "Verificar que Perfil sandbox 1 autorizado inicia sessão e alcança a navegação autenticada",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Login com credenciais sandbox válidas alcança a navegação autenticada e a sessão persiste após reload real da página.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-SESSION-01/desktop-chromium-formulario-login-antes.png",
+    "evidence/UI-SESSION-01/desktop-chromium-navegacao-autenticada-alcancada.png",
+    "evidence/UI-SESSION-01/desktop-chromium-sessao-persiste-apos-reload.png"
+   ],
+   "batch": "lote2"
+  },
+  {
+   "id": "UI-SESSION-02",
+   "title": "Verificar que Perfil sandbox 2 autorizado inicia sessão de forma independente",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Duas contas sandbox distintas, em contextos de navegador isolados, mantêm sessões autenticadas simultâneas e independentes.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-SESSION-02/desktop-chromium-perfil-a-sessao-independente.png",
+    "evidence/UI-SESSION-02/desktop-chromium-perfil-b-sessao-independente.png"
+   ],
+   "batch": "lote2"
+  },
+  {
+   "id": "UI-VERSIONS-01",
+   "title": "Verificar que menu exibe versões de App, Engine, Jogos e Recompensas",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "O painel de Versões exibe versão real e populada para App (v5.5.26), Engine (match-columns-v1) e para cada jogo na aba Jogos (Balão do Milhão v1.2.0, Cai Cai Balão v1.0.6, Estouro da Sorte v0.1.0), sem placeholder vazio \"—\".",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-VERSIONS-01/desktop-chromium-menu-aberto.png",
+    "evidence/UI-VERSIONS-01/desktop-chromium-painel-versoes-app-engine.png",
+    "evidence/UI-VERSIONS-01/desktop-chromium-painel-versoes-jogos-recompensas.png"
+   ],
+   "batch": "lote2"
+  },
+  {
+   "id": "UI-WALLET-01",
+   "title": "Verificar que recarga rejeita valores abaixo de R$ 5,00",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "A recarga de carteira rejeita valores abaixo de R$ 5,00 com mensagem de validação.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-WALLET-01/desktop-chromium-01-carteira-aberta.png",
+    "evidence/UI-WALLET-01/desktop-chromium-02-apos-forcar-valor-abaixo-do-piso.png"
+   ],
+   "batch": "lote3"
+  },
+  {
+   "id": "UI-WALLET-02",
+   "title": "Verificar que recarga rejeita valores acima de R$ 500,00",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "A recarga de carteira rejeita valores acima de R$ 500,00 com mensagem de validação.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-WALLET-02/desktop-chromium-01-carteira-aberta.png",
+    "evidence/UI-WALLET-02/desktop-chromium-02-apos-presets-acima-do-teto.png",
+    "evidence/UI-WALLET-02/desktop-chromium-03-apos-forcar-valor-acima-do-teto.png"
+   ],
+   "batch": "lote3"
+  },
+  {
+   "id": "UI-WALLET-03",
+   "title": "Verificar que presets de recarga preenchem valor correto e respeitam limites",
+   "execution": "real-hml",
+   "autonomous": true,
+   "status": "passed",
+   "note": "Os presets de recarga preenchem o valor correto e respeitam o piso/teto configurados.",
+   "projects": [
+    "desktop-chromium"
+   ],
+   "lastRunAt": "2026-08-12T15:37:01Z",
+   "evidence": [
+    "evidence/UI-WALLET-03/desktop-chromium-01-baseline-no-piso.png",
+    "evidence/UI-WALLET-03/desktop-chromium-02-apos-preset-mais-10.png",
+    "evidence/UI-WALLET-03/desktop-chromium-03-presets-ate-o-teto.png"
+   ],
+   "batch": "lote3"
+  }
+ ]
 }

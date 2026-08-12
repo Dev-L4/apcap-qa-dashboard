@@ -7,7 +7,7 @@
   <meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
   <base href="/apcap-qa-dashboard/">
   <title>APCAP · Catálogo e resultados de QA</title>
-  <link rel="stylesheet" href="styles.css?v=full-catalog-v1">
+  <link rel="stylesheet" href="styles.css?v=coherent-v6">
 </head>
 <body>
 <main>
@@ -16,7 +16,7 @@
     <nav class="tabs" aria-label="Seções"><button class="tab active" data-view="catalog">Catálogo completo</button><button class="tab" data-view="results">Resultados executados</button></nav>
   </header>
 
-  <section class="notice"><strong>Leitura correta:</strong> o catálogo reúne todos os casos identificados para revisão. Somente itens com status <b>Aprovado</b> possuem execução integral e evidência aceita; os demais são candidatos, condicionais ou bloqueados.</section>
+  <section class="notice"><strong>Por que 50 de 178?</strong> O catálogo mapeia 178 casos, mas só recebem veredito os que o agente executa <b>do início ao fim sozinho</b> contra o HML real, sem humano, sem mock e sem backend fora de alcance: <b>50 executados</b> (41 aprovados, 6 falhas e 3 bloqueados por exigirem Pix liquidado). Os outros <b>128</b> dependem de decisão de negócio, hardware físico, dado de produção ou verificação de backend sem acesso — cada um traz o motivo no card. Screenshots são cruas, sem mascaramento.</section>
 
   <section id="catalogView">
     <section class="stats" id="catalogStats" aria-label="Resumo do catálogo"></section>
@@ -25,6 +25,7 @@
       <label><span>Status</span><select id="status"><option value="">Todos</option></select></label>
       <label><span>Canal</span><select id="channel"><option value="">Todos</option></select></label>
       <label><span>Prioridade</span><select id="priority"><option value="">Todas</option></select></label>
+      <label><span>Escopo</span><select id="scope"><option value="">Todos</option></select></label>
       <button id="selectVisible" class="button secondary">Selecionar visíveis</button>
     </section>
     <div class="list-meta"><b id="catalogCount">—</b><span>Abra cada caso para ver pré-condições, perfis e notas.</span></div>
@@ -40,5 +41,5 @@
   <div id="toast" class="toast" hidden></div>
   <footer>A execução permanece privada. Esta página pública contém apenas catálogo, vereditos e evidências sanitizadas e não deve ser indexada.</footer>
 </main>
-<script src="app.js?v=full-catalog-v1"></script>
+<script src="app.js?v=coherent-v6"></script>
 </body></html>
