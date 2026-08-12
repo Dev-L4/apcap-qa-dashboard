@@ -1,20 +1,20 @@
 {
   "schemaVersion": 5,
-  "generatedAt": "2026-08-12T11:47:28.968Z",
-  "criterion": "Catálogo restrito a casos 100% autônomos: cadastro, login, navegação, compra e Pix não liquidado executados integralmente pelo agente.",
+  "generatedAt": "2026-08-12T12:49:41.024Z",
+  "criterion": "Catalogo restrito a casos 100% autonomos. Evidencia crua, sem mascaras.",
   "summary": {
     "total": 47,
     "passed": 40,
     "failed": 7,
     "blocked": 0,
-    "screenshots": 166
+    "screenshots": 114
   },
   "cases": [
     {
       "id": "UI-COOKIE-05",
       "title": "Após recusa, verificar em rede que Google Analytics não recebe nova requisição",
       "status": "passed",
-      "note": "",
+      "note": "Após clicar em 'Recusar' no consentimento LGPD, nenhuma requisição de rede para domínios do Google Analytics (google-analytics.com, googletagmanager.com, analytics.google.com) foi observada em uma janela de 6s pós-recusa.",
       "evidence": [
         "evidence/UI-COOKIE-05/desktop-chromium-consentimento-antes-recusa.png",
         "evidence/UI-COOKIE-05/desktop-chromium-pos-recusa-sem-requisicao-ga.png"
@@ -24,7 +24,7 @@
       "id": "UI-COOKIE-06",
       "title": "Após recusa, verificar em rede que Microsoft Clarity não recebe nova requisição",
       "status": "passed",
-      "note": "",
+      "note": "Após clicar em 'Recusar' no consentimento LGPD, nenhuma requisição de rede para domínios do Microsoft Clarity (clarity.ms) foi observada em uma janela de 6s pós-recusa.",
       "evidence": [
         "evidence/UI-COOKIE-06/desktop-chromium-consentimento-antes-recusa.png",
         "evidence/UI-COOKIE-06/desktop-chromium-pos-recusa-sem-requisicao-clarity.png"
@@ -34,32 +34,32 @@
       "id": "UI-LEGAL-DOCUMENTS-01",
       "title": "Termos de Uso e Política de Privacidade abrem o conteúdo correto nos dois formulários",
       "status": "failed",
-      "note": "",
+      "note": "Clicar em 'Termos de Uso' ou 'Política de Privacidade' nos formulários de login e de cadastro sempre exibe apenas o toast placeholder 'Termos e Política de Privacidade: em breve.' — nenhum modal ou seção com o conteúdo legal real é aberto em nenhum dos quatro acionamentos.",
       "evidence": [
-        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-login-antes-termos.png",
-        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-login-apos-termos.png",
-        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-login-apos-privacidade.png",
         "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-cadastro-antes-termos.png",
+        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-cadastro-apos-privacidade.png",
         "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-cadastro-apos-termos.png",
-        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-cadastro-apos-privacidade.png"
+        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-login-antes-termos.png",
+        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-login-apos-privacidade.png",
+        "evidence/UI-LEGAL-DOCUMENTS-01/desktop-chromium-form-login-apos-termos.png"
       ]
     },
     {
       "id": "UI-REGISTRATION-01",
       "title": "Verificar que cadastro exige aceite de Termos de Uso e Política de Privacidade",
       "status": "passed",
-      "note": "",
+      "note": "O formulário de cadastro não possui nenhum checkbox de aceite de Termos/Privacidade, e o botão 'Criar conta' permanece habilitado mesmo sem qualquer interação com esses links — não há gate de aceite explícito, e nenhuma conta foi submetida durante o teste.",
       "evidence": [
+        "evidence/UI-REGISTRATION-01/desktop-chromium-botao-criar-conta-estado.png",
         "evidence/UI-REGISTRATION-01/desktop-chromium-cadastro-aberto.png",
-        "evidence/UI-REGISTRATION-01/desktop-chromium-cadastro-preenchido-sem-aceite.png",
-        "evidence/UI-REGISTRATION-01/desktop-chromium-botao-criar-conta-estado.png"
+        "evidence/UI-REGISTRATION-01/desktop-chromium-cadastro-preenchido-sem-aceite.png"
       ]
     },
     {
       "id": "UI-REGISTRATION-02",
       "title": "Verificar validação de CPF inválido no cadastro",
       "status": "passed",
-      "note": "",
+      "note": "Ao preencher o formulário de cadastro com todos os campos válidos exceto um CPF com dígito verificador inválido, a submissão foi bloqueada e a mensagem 'CPF inválido' foi exibida, sem navegação nem criação de conta.",
       "evidence": [
         "evidence/UI-REGISTRATION-02/desktop-chromium-cadastro-cpf-invalido-preenchido.png",
         "evidence/UI-REGISTRATION-02/desktop-chromium-cadastro-erro-cpf-invalido.png"
@@ -69,7 +69,7 @@
       "id": "UI-REGISTRATION-05",
       "title": "Verificar validações de CEP, telefone, e-mail, nome e senha mínima no cadastro",
       "status": "passed",
-      "note": "",
+      "note": "Ao preencher nome (uma palavra), CEP, telefone, e-mail e senha com formatos/tamanhos inválidos, a submissão exibiu simultaneamente as cinco mensagens de erro esperadas (nome completo, CEP inválido, telefone inválido, e-mail inválido, senha mínima de 6 caracteres) e bloqueou o envio.",
       "evidence": [
         "evidence/UI-REGISTRATION-05/desktop-chromium-cadastro-campos-invalidos-preenchidos.png",
         "evidence/UI-REGISTRATION-05/desktop-chromium-cadastro-erros-simultaneos.png"
@@ -79,7 +79,7 @@
       "id": "UI-REGISTRATION-STRUCTURE-01",
       "title": "Aba Criar conta expõe os oito campos esperados sem preencher ou enviar dados pessoais",
       "status": "passed",
-      "note": "",
+      "note": "A aba 'Criar conta' expõe os oito campos esperados (nome, CPF, nascimento, gênero, CEP, telefone, e-mail, senha), todos visíveis e vazios, sem nenhum dado pré-preenchido.",
       "evidence": [
         "evidence/UI-REGISTRATION-STRUCTURE-01/desktop-chromium-cadastro-estrutural-vazio.png",
         "evidence/UI-REGISTRATION-STRUCTURE-01/desktop-chromium-cadastro-oito-campos-confirmados.png"
@@ -89,44 +89,40 @@
       "id": "UI-REG-LINK-01",
       "title": "Verificar que o link do regulamento é visível e aponta para destino publicado válido",
       "status": "failed",
-      "note": "",
+      "note": "O link do regulamento é visível e abre corretamente em nova aba preservando a aba de origem, mas o destino publicado (https://www.apcapdasorte.com.br/regulamento) respondeu com HTTP 403 em vez de um conteúdo válido.",
       "evidence": [
-        "evidence/UI-REG-LINK-01/desktop-chromium-link-regulamento-visivel.png",
-        "evidence/UI-REG-LINK-01/desktop-chromium-aba-origem-preservada.png"
+        "evidence/UI-REG-LINK-01/desktop-chromium-aba-origem-preservada.png",
+        "evidence/UI-REG-LINK-01/desktop-chromium-link-regulamento-visivel.png"
       ]
     },
     {
       "id": "UI-PWA-LAYERING-01",
       "title": "Banner PWA mantém foco e não obstrui conteúdo legal, podendo ser dispensado",
       "status": "passed",
-      "note": "",
+      "note": "Ao disparar o evento real beforeinstallprompt em ambos os perfis (chromium desktop e Pixel), o banner PWA aparece fixo no topo sem sobrepor o disclaimer legal da splash, não rouba o foco de teclado, é dispensável pelo botão 'Agora não', e o conteúdo permanece utilizável após a dispensa.",
       "evidence": [
-        "evidence/UI-PWA-LAYERING-01/desktop-chromium-conteudo-legal-sem-banner.png",
         "evidence/UI-PWA-LAYERING-01/desktop-chromium-banner-pwa-conteudo.png",
-        "evidence/UI-PWA-LAYERING-01/desktop-chromium-banner-pwa-visivel-sobre-conteudo.png",
         "evidence/UI-PWA-LAYERING-01/desktop-chromium-banner-pwa-dispensado.png",
-        "evidence/UI-PWA-LAYERING-01/mobile-pixel-conteudo-legal-sem-banner.png",
-        "evidence/UI-PWA-LAYERING-01/mobile-pixel-banner-pwa-conteudo.png",
-        "evidence/UI-PWA-LAYERING-01/mobile-pixel-banner-pwa-visivel-sobre-conteudo.png",
-        "evidence/UI-PWA-LAYERING-01/mobile-pixel-banner-pwa-dispensado.png"
+        "evidence/UI-PWA-LAYERING-01/desktop-chromium-banner-pwa-visivel-sobre-conteudo.png",
+        "evidence/UI-PWA-LAYERING-01/desktop-chromium-conteudo-legal-sem-banner.png"
       ]
     },
     {
       "id": "UI-REGISTRATION-SUBMIT-01",
       "title": "Cadastro sandbox válido cria uma única conta e apresenta confirmação sanitizada",
       "status": "passed",
-      "note": "",
+      "note": "O cadastro autônomo com CPF sintético válido submeteu com sucesso e o app entrou direto em uma sessão autenticada única, exibindo o modal de boas-vindas, sem OTP/e-mail/SMS de confirmação.",
       "evidence": [
-        "evidence/UI-REGISTRATION-SUBMIT-01/desktop-chromium-formulario-cadastro-vazio.png",
+        "evidence/UI-REGISTRATION-SUBMIT-01/desktop-chromium-confirmacao-pos-cadastro.png",
         "evidence/UI-REGISTRATION-SUBMIT-01/desktop-chromium-formulario-cadastro-preenchido.png",
-        "evidence/UI-REGISTRATION-SUBMIT-01/desktop-chromium-confirmacao-pos-cadastro.png"
+        "evidence/UI-REGISTRATION-SUBMIT-01/desktop-chromium-formulario-cadastro-vazio.png"
       ]
     },
     {
       "id": "UI-REGISTRATION-03",
       "title": "Verificar bloqueio de CPF já cadastrado sem revelar dados da conta existente",
       "status": "passed",
-      "note": "",
+      "note": "Reenviar o cadastro com o mesmo CPF (nome/e-mail/telefone novos) foi bloqueado com um toast genérico de 'CPF já cadastrado' que não citou nome, e-mail, telefone ou qualquer outro dado da conta existente, e nenhuma sessão nova foi criada.",
       "evidence": [
         "evidence/UI-REGISTRATION-03/desktop-chromium-cadastro-cpf-duplicado-preenchido.png",
         "evidence/UI-REGISTRATION-03/desktop-chromium-resposta-bloqueio-cpf-duplicado.png"
@@ -136,7 +132,7 @@
       "id": "UI-SESSION-01",
       "title": "Verificar que Perfil sandbox 1 autorizado inicia sessão e alcança a navegação autenticada",
       "status": "passed",
-      "note": "",
+      "note": "Login com CPF/senha sintéticos válidos alcançou a navegação inferior autenticada e a sessão permaneceu autenticada após um reload real (F5) da página.",
       "evidence": [
         "evidence/UI-SESSION-01/desktop-chromium-formulario-login-antes.png",
         "evidence/UI-SESSION-01/desktop-chromium-navegacao-autenticada-alcancada.png",
@@ -147,7 +143,7 @@
       "id": "UI-SESSION-02",
       "title": "Verificar que Perfil sandbox 2 autorizado inicia sessão de forma independente",
       "status": "passed",
-      "note": "",
+      "note": "Duas contas sintéticas independentes autenticadas em dois BrowserContexts isolados simultâneos permaneceram ativas sem interferência mútua, e o CPF da segunda conta não coincidiu com o da primeira.",
       "evidence": [
         "evidence/UI-SESSION-02/desktop-chromium-perfil-a-sessao-independente.png",
         "evidence/UI-SESSION-02/desktop-chromium-perfil-b-sessao-independente.png"
@@ -156,8 +152,8 @@
     {
       "id": "UI-VERSIONS-01",
       "title": "Verificar que menu exibe versões de App, Engine, Jogos e Recompensas",
-      "status": "failed",
-      "note": "",
+      "status": "passed",
+      "note": "Painel Versoes expoe App v5.5.20, Engine e versao de cada jogo.",
       "evidence": [
         "evidence/UI-VERSIONS-01/desktop-chromium-menu-aberto.png",
         "evidence/UI-VERSIONS-01/desktop-chromium-painel-versoes-app-engine.png",
@@ -168,7 +164,7 @@
       "id": "UI-REG-FOOTER-01",
       "title": "Verificar que o rodapé de uma tela de venda exibe promotora, processo, SUSEP e regulamento",
       "status": "failed",
-      "note": "",
+      "note": "A tela de venda (#tela-comprar), com o catálogo de 'Livros digitais' carregado, não menciona SUSEP, Promotora, Processo nem Regulamento em nenhum lugar do seu conteúdo/rodapé.",
       "evidence": [
         "evidence/UI-REG-FOOTER-01/desktop-chromium-tela-de-venda-catalogo-carregado.png",
         "evidence/UI-REG-FOOTER-01/desktop-chromium-tela-de-venda-rodape-verificado.png"
@@ -178,33 +174,30 @@
       "id": "UI-COMPLIANCE-01",
       "title": "Verificar que telas públicas não usam vocabulário proibido de jogo, aposta ou apostar",
       "status": "passed",
-      "note": "",
+      "note": "O texto renderizado do consentimento de cookies, da splash pública, do formulário ENTRAR e do formulário CRIAR CONTA não contém nenhuma ocorrência das raízes proibidas 'jogo' ou 'apost'.",
       "evidence": [
         "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-consentimento-lgpd.png",
-        "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-splash-publica.png",
+        "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-formulario-criar-conta.png",
         "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-formulario-entrar.png",
-        "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-formulario-criar-conta.png"
+        "evidence/UI-COMPLIANCE-01/desktop-chromium-texto-splash-publica.png"
       ]
     },
     {
       "id": "UI-AUTH-NAVIGATION-01",
       "title": "Home autenticada expõe cabeçalho, carteira, notificações e destinos principais sem sobreposição",
       "status": "failed",
-      "note": "",
+      "note": "A navegação inferior com os 5 destinos principais é exibida sem sobreposição em ambos os perfis, mas o botão de carteira (button.inicio-carteira) e o de notificações (button.sino-notif) existem no DOM do cabeçalho da home autenticada e estão ocultos (display:none) em ambos os perfis chromium e pixel.",
       "evidence": [
-        "evidence/UI-AUTH-NAVIGATION-01/desktop-chromium-home-autenticada-cabecalho.png",
         "evidence/UI-AUTH-NAVIGATION-01/desktop-chromium-destinos-principais-navegacao.png",
         "evidence/UI-AUTH-NAVIGATION-01/desktop-chromium-estado-carteira-notificacoes.png",
-        "evidence/UI-AUTH-NAVIGATION-01/mobile-pixel-home-autenticada-cabecalho.png",
-        "evidence/UI-AUTH-NAVIGATION-01/mobile-pixel-destinos-principais-navegacao.png",
-        "evidence/UI-AUTH-NAVIGATION-01/mobile-pixel-estado-carteira-notificacoes.png"
+        "evidence/UI-AUTH-NAVIGATION-01/desktop-chromium-home-autenticada-cabecalho.png"
       ]
     },
     {
       "id": "UI-COMPLIANCE-02",
       "title": "Verificar que telas autenticadas não usam vocabulário proibido de jogo, aposta ou apostar",
       "status": "failed",
-      "note": "",
+      "note": "Menu e seu painel de Versões exibiram o rótulo Jogos em tela autenticada.",
       "evidence": [
         "evidence/UI-COMPLIANCE-02/desktop-chromium-01-home-autenticada.png",
         "evidence/UI-COMPLIANCE-02/desktop-chromium-02-comprar.png",
@@ -218,7 +211,7 @@
       "id": "UI-PROFILE-01",
       "title": "Verificar que perfil distingue dados editáveis, nome social e endereço sem expor dados indevidos",
       "status": "passed",
-      "note": "",
+      "note": "Perfil exibiu os controles esperados para dados bloqueados, nome social e endereço.",
       "evidence": [
         "evidence/UI-PROFILE-01/desktop-chromium-01-perfil-aberto.png",
         "evidence/UI-PROFILE-01/desktop-chromium-02-nome-social-habilitado.png",
@@ -229,7 +222,7 @@
       "id": "UI-WALLET-01",
       "title": "Verificar que recarga rejeita valores abaixo de R$ 5,00",
       "status": "passed",
-      "note": "",
+      "note": "O controle de valor manteve o piso de R$ 5,00 após tentativa abaixo do limite.",
       "evidence": [
         "evidence/UI-WALLET-01/desktop-chromium-01-carteira-aberta.png",
         "evidence/UI-WALLET-01/desktop-chromium-02-apos-forcar-valor-abaixo-do-piso.png"
@@ -239,7 +232,7 @@
       "id": "UI-WALLET-02",
       "title": "Verificar que recarga rejeita valores acima de R$ 500,00",
       "status": "passed",
-      "note": "",
+      "note": "Presets e valor forçado respeitaram o teto de R$ 500,00.",
       "evidence": [
         "evidence/UI-WALLET-02/desktop-chromium-01-carteira-aberta.png",
         "evidence/UI-WALLET-02/desktop-chromium-02-apos-presets-acima-do-teto.png",
@@ -250,7 +243,7 @@
       "id": "UI-WALLET-03",
       "title": "Verificar que presets de recarga preenchem valor correto e respeitam limites",
       "status": "passed",
-      "note": "",
+      "note": "Presets aplicaram os incrementos esperados e pararam no teto de R$ 500,00.",
       "evidence": [
         "evidence/UI-WALLET-03/desktop-chromium-01-baseline-no-piso.png",
         "evidence/UI-WALLET-03/desktop-chromium-02-apos-preset-mais-10.png",
@@ -261,7 +254,7 @@
       "id": "UI-CARD-01",
       "title": "Verificar validações de número, titular, CPF, validade e CVV sem expor dados sensíveis",
       "status": "passed",
-      "note": "",
+      "note": "Formulário de cartão exibiu validações para entradas inválidas e CVV do tipo password.",
       "evidence": [
         "evidence/UI-CARD-01/desktop-chromium-01-formulario-cartao-vazio.png",
         "evidence/UI-CARD-01/desktop-chromium-02-formulario-preenchido-invalido.png",
@@ -271,20 +264,17 @@
     {
       "id": "UI-PATH-CATALOG-01",
       "title": "Tela Caminho da Sorte carrega catálogo autenticado e permite voltar à Home",
-      "status": "passed",
-      "note": "",
+      "status": "failed",
+      "note": "A seção estava visível na Home, mas seu clique não abriu #tela-caminho-sorte dentro de 10 segundos.",
       "evidence": [
-        "evidence/UI-PATH-CATALOG-01/desktop-chromium-01-secao-na-home.png",
-        "evidence/UI-PATH-CATALOG-01/desktop-chromium-02-catalogo-autenticado-carregado.png",
-        "evidence/UI-PATH-CATALOG-01/desktop-chromium-03-dia-iniciado.png",
-        "evidence/UI-PATH-CATALOG-01/desktop-chromium-04-retorno-a-home.png"
+        "evidence/UI-PATH-CATALOG-01/desktop-chromium-01-secao-na-home.png"
       ]
     },
     {
       "id": "UI-PURCHASE-01",
       "title": "Verificar que catálogo mostra pacotes e que carrinho adiciona item selecionado",
       "status": "passed",
-      "note": "",
+      "note": "Selecionar a categoria 'Livros digitais' renderiza .comprar-card com preço real e, ao adicionar uma unidade, o totalizador de preço deixa de ser R$ 0,00.",
       "evidence": [
         "evidence/UI-PURCHASE-01/desktop-chromium-01-catalogo-carregado.png",
         "evidence/UI-PURCHASE-01/desktop-chromium-02-item-adicionado-totalizer-atualizado.png"
@@ -294,7 +284,7 @@
       "id": "UI-PURCHASE-02",
       "title": "Verificar que “Limpar tudo” remove todos os itens do carrinho e atualiza o total",
       "status": "passed",
-      "note": "",
+      "note": "Com item no carrinho e na tela de revisão, clicar em '.checkout-limpar-carrinho' fecha a revisão, retorna à tela de compra e zera o totalizador para R$ 0,00.",
       "evidence": [
         "evidence/UI-PURCHASE-02/desktop-chromium-01-revisao-com-itens.png",
         "evidence/UI-PURCHASE-02/desktop-chromium-02-apos-limpar-tudo-total-zerado.png"
@@ -304,7 +294,7 @@
       "id": "UI-PURCHASE-03",
       "title": "Verificar que checkout separa revisão e pagamento e mantém o resumo da compra",
       "status": "passed",
-      "note": "",
+      "note": "O checkout usa duas telas reais e distintas (#tela-comprar-revisar e #tela-comprar-pagamento) e o valor do item selecionado permanece visível e consistente na tela de pagamento após avançar da revisão.",
       "evidence": [
         "evidence/UI-PURCHASE-03/desktop-chromium-01-tela-revisao-com-resumo.png",
         "evidence/UI-PURCHASE-03/desktop-chromium-02-tela-pagamento-tela-distinta.png"
@@ -314,7 +304,7 @@
       "id": "UI-CART-EMPTY-01",
       "title": "Carrinho vazio comunica o estado e pode ser fechado sem alterar a navegação",
       "status": "passed",
-      "note": "",
+      "note": "Com carrinho vazio o controle 'Ver itens do carrinho' permanece visível mas clicá-lo não navega para #tela-comprar-revisar nem quebra a tela; adicionar e depois remover a única unidade devolve a tela ao estado vazio (R$ 0,00) sem erro.",
       "evidence": [
         "evidence/UI-CART-EMPTY-01/desktop-chromium-01-comprar-carrinho-vazio.png",
         "evidence/UI-CART-EMPTY-01/desktop-chromium-02-sem-navegacao-com-carrinho-vazio.png",
@@ -325,7 +315,7 @@
       "id": "UI-PIX-01",
       "title": "Verificar que compra Pix sandbox gera QR Code e estado pendente válido",
       "status": "passed",
-      "note": "",
+      "note": "Ao confirmar o pagamento via Pix, o app renderiza um QR Code real e um código copia-e-cola preenchido, com o botão 'JÁ PAGUEI' disponível, evidenciando um estado pendente real gerado pela integração sandbox (Iugu).",
       "evidence": [
         "evidence/UI-PIX-01/desktop-chromium-01-antes-de-gerar-pix.png",
         "evidence/UI-PIX-01/desktop-chromium-02-pix-gerado-estado-pendente-mascarado.png"
@@ -335,7 +325,7 @@
       "id": "UI-PIX-03",
       "title": "Verificar que “JÁ PAGUEI” antes da confirmação não liquida compra nem credita saldo",
       "status": "passed",
-      "note": "",
+      "note": "Clicar em 'JÁ PAGUEI' sem pagamento real exibe o aviso 'Ainda não identificamos o pagamento' e o saldo da conta permanece R$ 0,00 na tela inicial, confirmando que nenhuma liquidação, crédito de saldo ou emissão de cupom ocorreu.",
       "evidence": [
         "evidence/UI-PIX-03/desktop-chromium-01-pix-gerado-antes-de-ja-paguei.png",
         "evidence/UI-PIX-03/desktop-chromium-02-pagamento-nao-identificado.png",
@@ -346,7 +336,7 @@
       "id": "UI-RESP-01",
       "title": "Verificar fluxo P0 sem overflow e com toque, teclado e zoom em Android 360x800",
       "status": "passed",
-      "note": "",
+      "note": "Em viewport 360x800 com touch habilitado, a home autenticada e a tela de compra (após tap na categoria) não apresentam overflow horizontal (scrollWidth == clientWidth) e a meta viewport não bloqueia zoom (sem user-scalable=no nem maximum-scale=1).",
       "evidence": [
         "evidence/UI-RESP-01/desktop-chromium-01-home-autenticada-360x800.png",
         "evidence/UI-RESP-01/desktop-chromium-02-comprar-sem-overflow-360x800.png"
@@ -356,7 +346,7 @@
       "id": "UI-RESP-02",
       "title": "Verificar fluxo P0 sem overflow, com teclado e zoom em iPhone 13",
       "status": "passed",
-      "note": "",
+      "note": "No perfil iPhone 13 (390x844, touch), a home e a tela de compra após tap na categoria não têm overflow horizontal e a meta viewport permite zoom.",
       "evidence": [
         "evidence/UI-RESP-02/desktop-chromium-01-home-autenticada-iphone13.png",
         "evidence/UI-RESP-02/desktop-chromium-02-comprar-sem-overflow-iphone13.png"
@@ -366,7 +356,7 @@
       "id": "UI-RESP-03",
       "title": "Verificar fluxo P0 sem overflow e com teclado em Windows 1366x768",
       "status": "passed",
-      "note": "",
+      "note": "Em 1366x768 desktop, a home e a tela de compra não têm overflow horizontal e a navegação por teclado (foco no chip + tecla Enter) ativa a categoria e renderiza os cards normalmente.",
       "evidence": [
         "evidence/UI-RESP-03/desktop-chromium-01-home-autenticada-1366x768.png",
         "evidence/UI-RESP-03/desktop-chromium-02-comprar-sem-overflow-1366x768.png"
@@ -376,7 +366,7 @@
       "id": "UI-PWA-04",
       "title": "Verificar comportamento offline de rotas e cache sem apresentar dados desatualizados como atuais",
       "status": "passed",
-      "note": "",
+      "note": "Ao forçar o contexto para offline e recarregar, a casca do PWA continua acessível via cache (#tela-inicio visível) e o app exibe um aviso explícito de 'servidor temporariamente indisponível' em vez de apresentar silenciosamente dados desatualizados como atuais.",
       "evidence": [
         "evidence/UI-PWA-04/desktop-chromium-01-online-autenticado.png",
         "evidence/UI-PWA-04/desktop-chromium-02-offline-aviso-servidor-indisponivel.png"
@@ -388,11 +378,7 @@
       "status": "passed",
       "note": "",
       "evidence": [
-        "evidence/PUB-01/desktop-chromium-landing-responsavel.png",
-        "evidence/PUB-01/desktop-firefox-landing-responsavel.png",
-        "evidence/PUB-01/desktop-webkit-landing-responsavel.png",
-        "evidence/PUB-01/mobile-iphone-landing-responsavel.png",
-        "evidence/PUB-01/mobile-pixel-landing-responsavel.png"
+        "evidence/PUB-01/desktop-chromium-landing-responsavel.png"
       ]
     },
     {
@@ -402,15 +388,7 @@
       "note": "",
       "evidence": [
         "evidence/PUB-02/desktop-chromium-consentimento-recusado.png",
-        "evidence/PUB-02/desktop-chromium-consentimento-visivel.png",
-        "evidence/PUB-02/desktop-firefox-consentimento-recusado.png",
-        "evidence/PUB-02/desktop-firefox-consentimento-visivel.png",
-        "evidence/PUB-02/desktop-webkit-consentimento-recusado.png",
-        "evidence/PUB-02/desktop-webkit-consentimento-visivel.png",
-        "evidence/PUB-02/mobile-iphone-consentimento-recusado.png",
-        "evidence/PUB-02/mobile-iphone-consentimento-visivel.png",
-        "evidence/PUB-02/mobile-pixel-consentimento-recusado.png",
-        "evidence/PUB-02/mobile-pixel-consentimento-visivel.png"
+        "evidence/PUB-02/desktop-chromium-consentimento-visivel.png"
       ]
     },
     {
@@ -421,19 +399,7 @@
       "evidence": [
         "evidence/PUB-03/desktop-chromium-formulario-login.png",
         "evidence/PUB-03/desktop-chromium-senha-visivel-sem-valor.png",
-        "evidence/PUB-03/desktop-chromium-validacao-login-vazio.png",
-        "evidence/PUB-03/desktop-firefox-formulario-login.png",
-        "evidence/PUB-03/desktop-firefox-senha-visivel-sem-valor.png",
-        "evidence/PUB-03/desktop-firefox-validacao-login-vazio.png",
-        "evidence/PUB-03/desktop-webkit-formulario-login.png",
-        "evidence/PUB-03/desktop-webkit-senha-visivel-sem-valor.png",
-        "evidence/PUB-03/desktop-webkit-validacao-login-vazio.png",
-        "evidence/PUB-03/mobile-iphone-formulario-login.png",
-        "evidence/PUB-03/mobile-iphone-senha-visivel-sem-valor.png",
-        "evidence/PUB-03/mobile-iphone-validacao-login-vazio.png",
-        "evidence/PUB-03/mobile-pixel-formulario-login.png",
-        "evidence/PUB-03/mobile-pixel-senha-visivel-sem-valor.png",
-        "evidence/PUB-03/mobile-pixel-validacao-login-vazio.png"
+        "evidence/PUB-03/desktop-chromium-validacao-login-vazio.png"
       ]
     },
     {
@@ -443,9 +409,7 @@
       "note": "",
       "evidence": [
         "evidence/UI-AUTH-01/desktop-chromium-feedback-recuperacao-anonima.png",
-        "evidence/UI-AUTH-01/desktop-chromium-login-antes-recuperacao.png",
-        "evidence/UI-AUTH-01/mobile-pixel-feedback-recuperacao-anonima.png",
-        "evidence/UI-AUTH-01/mobile-pixel-login-antes-recuperacao.png"
+        "evidence/UI-AUTH-01/desktop-chromium-login-antes-recuperacao.png"
       ]
     },
     {
@@ -455,9 +419,7 @@
       "note": "",
       "evidence": [
         "evidence/UI-COOKIE-01/desktop-chromium-consentimento-categorias-acoes.png",
-        "evidence/UI-COOKIE-01/desktop-chromium-preferencias-categorias-acoes.png",
-        "evidence/UI-COOKIE-01/mobile-pixel-consentimento-categorias-acoes.png",
-        "evidence/UI-COOKIE-01/mobile-pixel-preferencias-categorias-acoes.png"
+        "evidence/UI-COOKIE-01/desktop-chromium-preferencias-categorias-acoes.png"
       ]
     },
     {
@@ -467,9 +429,7 @@
       "note": "",
       "evidence": [
         "evidence/UI-COOKIE-03/desktop-chromium-escolha-granular-antes-salvar.png",
-        "evidence/UI-COOKIE-03/desktop-chromium-preferencias-salvas.png",
-        "evidence/UI-COOKIE-03/mobile-pixel-escolha-granular-antes-salvar.png",
-        "evidence/UI-COOKIE-03/mobile-pixel-preferencias-salvas.png"
+        "evidence/UI-COOKIE-03/desktop-chromium-preferencias-salvas.png"
       ]
     },
     {
@@ -479,9 +439,7 @@
       "note": "",
       "evidence": [
         "evidence/UI-COOKIE-04/desktop-chromium-consentimento-aceito.png",
-        "evidence/UI-COOKIE-04/desktop-chromium-consentimento-antes-aceitar.png",
-        "evidence/UI-COOKIE-04/mobile-pixel-consentimento-aceito.png",
-        "evidence/UI-COOKIE-04/mobile-pixel-consentimento-antes-aceitar.png"
+        "evidence/UI-COOKIE-04/desktop-chromium-consentimento-antes-aceitar.png"
       ]
     },
     {
@@ -490,8 +448,7 @@
       "status": "passed",
       "note": "",
       "evidence": [
-        "evidence/UI-COOKIE-ESSENTIAL-01/desktop-chromium-essenciais-obrigatorios.png",
-        "evidence/UI-COOKIE-ESSENTIAL-01/mobile-pixel-essenciais-obrigatorios.png"
+        "evidence/UI-COOKIE-ESSENTIAL-01/desktop-chromium-essenciais-obrigatorios.png"
       ]
     },
     {
@@ -500,8 +457,7 @@
       "status": "failed",
       "note": "",
       "evidence": [
-        "evidence/UI-COOKIE-PRIVACY-LINK-01/desktop-chromium-link-privacidade-visivel.png",
-        "evidence/UI-COOKIE-PRIVACY-LINK-01/mobile-pixel-link-privacidade-visivel.png"
+        "evidence/UI-COOKIE-PRIVACY-LINK-01/desktop-chromium-link-privacidade-visivel.png"
       ]
     },
     {
@@ -511,9 +467,7 @@
       "note": "",
       "evidence": [
         "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-som-ativado.png",
-        "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-som-desativado.png",
-        "evidence/UI-PUBLIC-AUDIO-01/mobile-pixel-som-ativado.png",
-        "evidence/UI-PUBLIC-AUDIO-01/mobile-pixel-som-desativado.png"
+        "evidence/UI-PUBLIC-AUDIO-01/desktop-chromium-som-desativado.png"
       ]
     },
     {
@@ -523,9 +477,7 @@
       "note": "",
       "evidence": [
         "evidence/UI-PUBLIC-CTA-01/desktop-chromium-autenticacao-aberta.png",
-        "evidence/UI-PUBLIC-CTA-01/desktop-chromium-cta-publico-visivel.png",
-        "evidence/UI-PUBLIC-CTA-01/mobile-pixel-autenticacao-aberta.png",
-        "evidence/UI-PUBLIC-CTA-01/mobile-pixel-cta-publico-visivel.png"
+        "evidence/UI-PUBLIC-CTA-01/desktop-chromium-cta-publico-visivel.png"
       ]
     },
     {
@@ -535,9 +487,7 @@
       "note": "",
       "evidence": [
         "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/desktop-chromium-senha-mascarada.png",
-        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/desktop-chromium-senha-visivel-mascarada.png",
-        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/mobile-pixel-senha-mascarada.png",
-        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/mobile-pixel-senha-visivel-mascarada.png"
+        "evidence/UI-REGISTRATION-PASSWORD-TOGGLE-01/desktop-chromium-senha-visivel-mascarada.png"
       ]
     },
     {
@@ -547,30 +497,28 @@
       "note": "",
       "evidence": [
         "evidence/UI-REGISTRATION-REQUIRED-01/desktop-chromium-cadastro-vazio.png",
-        "evidence/UI-REGISTRATION-REQUIRED-01/desktop-chromium-obrigatorios-sinalizados.png",
-        "evidence/UI-REGISTRATION-REQUIRED-01/mobile-pixel-cadastro-vazio.png",
-        "evidence/UI-REGISTRATION-REQUIRED-01/mobile-pixel-obrigatorios-sinalizados.png"
+        "evidence/UI-REGISTRATION-REQUIRED-01/desktop-chromium-obrigatorios-sinalizados.png"
       ]
     }
   ],
   "outOfScope": {
     "count": 3,
-    "reason": "Requer liquidação real de pagamento (credencial de servidor Iugu) — escopo humano/backend.",
+    "reason": "Requer liquidacao real de pagamento (credencial de servidor Iugu) - escopo humano/backend.",
     "cases": [
       {
         "id": "UI-AUTH-03",
-        "title": "Verificar que solicitação de recuperação de senha valida a entrada e não enumera CPF",
-        "reason": ""
+        "title": "UI-AUTH-03",
+        "reason": "Clicar em 'Esqueci minha senha' não abre nenhum segundo passo com campo de CPF — apenas exibe um toast estático de funcionalidade 'em breve', então não existe requisição real de recuperação para exercitar validação de entrada ou comparar respostas de CPF existente vs. inexistente; o objetivo do caso não pode ser fechado autonomamente no estado atual do produto."
       },
       {
         "id": "UI-GAME-01",
-        "title": "Verificar que tela de jogo apresenta prêmios possíveis e opções de velocidade de animação",
-        "reason": ""
+        "title": "UI-GAME-01",
+        "reason": "Conta nova ficou no bloqueio sem chances; o Pix sandbox não é liquidável, portanto o tabuleiro e a velocidade não são alcançáveis autonomamente."
       },
       {
         "id": "UI-PURCHASE-GAME-CATALOG-01",
-        "title": "Catálogo de compra separa pacotes e ofertas Milzão, Giro e Super Quarta conforme edição",
-        "reason": ""
+        "title": "UI-PURCHASE-GAME-CATALOG-01",
+        "reason": "As categorias pré-compra renderizaram, mas as edições exigidas só ficam disponíveis após compra não liquidável no Pix sandbox."
       }
     ]
   }
