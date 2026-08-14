@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-08-14",
+  "status": "Fase 0 concluída · 100 sessões em preparação",
+  "stats": [
+    { "label": "CPFs sintéticos planejados", "value": "100" },
+    { "label": "Onde mora o sorteio", "value": "Servidor" },
+    { "label": "Jogadas por título de R$ 20 (medido)", "value": "6" },
+    { "label": "Valor da chance no servidor", "value": "R$ 0,60" },
+    { "label": "RTP em dinheiro (parâmetros atuais)", "value": "37,72%" },
+    { "label": "Prêmios não monetários", "value": "47,7%" }
+  ],
+  "sections": [
+    {
+      "title": "O que esta página é",
+      "text": "Simulação matemática da gamificação do APCAP com 100 CPFs válidos e sintéticos jogando aleatoriamente. O objetivo é medir, contra o ambiente de homologação real, se as frequências observadas batem com os parâmetros declarados de premiação — e não apenas conferir se a tela funciona. Nenhum resultado aqui vem de mock: cada jogada é uma rodada de verdade, com conta descartável e título pago via Pix de teste.",
+      "note": "Ambiente: homologação. Contas sintéticas e descartáveis, prefixo QA-. Nenhuma senha, CPF, token ou payload financeiro é publicado."
+    },
+    {
+      "title": "Fase 0 — onde mora o RNG: no servidor",
+      "text": "Antes de simular era preciso saber quem sorteia. A resposta de cada jogada já traz o resultado revelado antes de qualquer animação na tela, e esse resultado quase nunca coincide com o palpite enviado pelo cliente. Logo, o sorteio é do servidor e o cliente apenas o exibe.",
+      "table": {
+        "head": ["Rodada", "Palpite do jogador", "Resultado do servidor", "Acertos"],
+        "rows": [
+          ["1", "19, 6, 16", "19, 6, 16", "3"],
+          ["2", "9, 6, 14", "13, 0, 15", "0"],
+          ["3", "7, 19, 10", "1, 12, 2", "0"],
+          ["4", "7, 5, 2", "14, 10, 16", "0"],
+          ["5", "18, 9, 11", "3, 10, 5", "0"]
+        ]
+      },
+      "note": "Consequência prática e boa notícia de segurança: o motor não é manipulável pelo navegador. Consequência operacional: a simulação pode rodar por chamadas diretas ao mesmo motor, o que reduz de dias para minutos o tempo necessário para milhares de jogadas."
+    },
+    {
+      "title": "As variáveis que faltavam — agora fixadas",
+      "list": [
+        "Jogadas por título: medido em jornada real — um título de R$ 20,00 liberou 6 jogadas do Estouro da Sorte, ou seja R$ 3,33 por jogada. Extrapolando linearmente, um título de R$ 50 concederia 15 jogadas. Observação: não existe no catálogo de homologação nenhum item avulso de R$ 50.",
+        "Valor da chance: o próprio servidor carimba cada rodada com valor de R$ 0,60, o que confirma o número declarado sem precisar arbitrá-lo. É esse valor que a simulação usa para converter chances bônus e números da sorte em dinheiro.",
+        "Tensão registrada: 6 jogadas a R$ 0,60 somam R$ 3,60 de chances para um título de R$ 20,00 — os dois números vivem em escalas diferentes e essa distância entra no relatório final.",
+        "Carga: 8 sessões simultâneas, com desligamento automático se a latência passar de 15 segundos. Escalonamento só depois de a primeira janela se provar estável.",
+        "Pagamentos de teste: autorizados em volume, por ser ambiente de sandbox."
+      ]
+    },
+    {
+      "title": "Auditoria dos parâmetros declarados",
+      "list": [
+        "As faixas de premiação somam 300.000 e as proporções fecham em 100% — a tabela é internamente consistente.",
+        "Ressalva séria: 'arrecadado' e 'orçamento de prêmios' aparecem colapsados em um único número. Enquanto os dois não forem separados, citar 'RTP de 40%' a partir dessa tabela é indefensável.",
+        "RTP em dinheiro efetivamente calculado: 37,72%, depois de descontar R$ 15 mil em prêmios não monetários e R$ 2.100 que não chegam a ser pagos.",
+        "47,7% do valor premiado não é dinheiro — é produto ou serviço. Isso muda a leitura de qualquer promessa de retorno.",
+        "O prêmio de R$ 50.000 exige cerca de 8,3 milhões de tickets para sair uma vez.",
+        "Arredondamento é sempre para baixo, o que empurra silenciosamente o retorno real para menos."
+      ]
+    },
+    {
+      "title": "Amostra necessária",
+      "text": "Para distinguir frequências vizinhas com confiança são necessárias cerca de 1.000 jogadas para os desfechos comuns, 2.000 para os intermediários e 3.600 para separar o caso de acerto total da premiação de festa. As 100 sessões foram dimensionadas para ultrapassar esse piso.",
+      "note": "Próximo passo: criar as 100 contas sintéticas, liquidar os títulos, executar as jogadas em janelas de 8 sessões e publicar aqui as frequências observadas lado a lado com as declaradas."
+    }
+  ]
+}
