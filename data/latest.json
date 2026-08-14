@@ -1,15 +1,15 @@
 {
   "schemaVersion": 6,
-  "generatedAt": "2026-08-14T02:18:26Z",
+  "generatedAt": "2026-08-14T16:41:12Z",
   "source": "review/results-lote*.json",
   "environment": "HML publico",
   "revision": "lote6-pos-pagamento",
   "summary": {
     "total": 68,
-    "passed": 51,
-    "failed": 10,
-    "blocked": 7,
-    "screenshots": 199,
+    "passed": 52,
+    "failed": 16,
+    "blocked": 0,
+    "screenshots": 209,
     "catalogTotal": 178,
     "executed": 68,
     "evidenceMode": "Screenshots sem mascaramento, viewport cheia, 2x-3x de escala.",
@@ -20,12 +20,18 @@
     "mobile-pixel": 4
   },
   "currentRunCaseIds": [
+    "UI-AUTH-03",
+    "UI-BALLOON-GAME-01",
     "UI-BALLOON-GAME-01",
     "UI-BONUS-BALANCE-01",
+    "UI-BONUS-BALANCE-01",
+    "UI-BONUS-GAME-01",
     "UI-BONUS-GAME-01",
     "UI-CHANCE-02",
     "UI-GAME-01",
     "UI-GAME-02",
+    "UI-GAME-02",
+    "UI-GAME-03",
     "UI-GAME-03",
     "UI-GAME-04",
     "UI-LIBRARY-READER-01",
@@ -35,6 +41,7 @@
     "UI-PAYMENT-01",
     "UI-PIX-04",
     "UI-PURCHASE-04",
+    "UI-PURCHASE-GAME-CATALOG-01",
     "UI-PURCHASE-GAME-CATALOG-01",
     "UI-TITLE-01",
     "UI-UPSELL-01",
@@ -127,20 +134,23 @@
     },
     {
       "id": "UI-AUTH-03",
-      "title": "Verificar que solicitação de recuperação de senha valida a entrada e não enumera CPF",
+      "title": "Solicitação de recuperação de senha valida a entrada e não enumera CPF",
       "execution": "real-hml",
       "autonomous": true,
-      "status": "blocked",
-      "note": "Clicar em \"Esqueci minha senha\" não abre nenhum segundo passo com campo de CPF — apenas exibe um toast estático de funcionalidade \"em breve\"; não existe fluxo real de recuperação para submeter um CPF e observar uma resposta diferencial, então o objetivo do caso (validar entrada e não enumerar CPF cadastrado) não pode ser fechado autonomamente no estado atual do produto.",
+      "status": "failed",
+      "note": "Medido no formulário público real (7 controles visíveis: ENTRAR | CRIAR CONTA | 👁️ | Esqueci minha S-E-N-H-A | ENTRAR | Termos de Uso | Política de Privacidade). (a) CPF de formato inválido (\"123\", 3 dígitos): resposta observável \"Recuperação de S-E-N-H-A: em breve por e-mail.\" em 171 ms; mensagem de validação de campo capturada: NENHUMA. (b) CPF não cadastrado: \"Recuperação de S-E-N-H-A: em breve por e-mail.\" em 124 ms. (c) CPF cadastrado (conta sintética criada nesta execução): \"Recuperação de S-E-N-H-A: em breve por e-mail.\" em 132 ms. Respostas (b) e (c) idênticas — não há enumeração possível pelo texto. Nenhuma tela de solicitação existe: após o acionamento a única seção visível permanece tela-login e os únicos campos visíveis continuam sendo os do login (login-cpf, login-S-E-N-H-A, Buscar por título ou autor..., pdfr-rate); nenhum campo/etapa de recuperação é apresentado. Veredito: falhou porque a validação de entrada NÃO ocorreu — o app aceita 3 dígitos e devolve o mesmo aviso genérico de funcionalidade futura, sem validar formato nem oferecer a solicitação especificada.",
       "projects": [
         "desktop-chromium"
       ],
-      "lastRunAt": "2026-08-12T15:37:01Z",
+      "lastRunAt": "2026-08-14T16:29:38Z",
       "evidence": [
-        "evidence/UI-AUTH-03/desktop-chromium-formulario-login-antes-recuperacao.png",
-        "evidence/UI-AUTH-03/desktop-chromium-resposta-apos-clicar-esqueci-senha.png"
+        "evidence/UI-AUTH-03/desktop-chromium-01-conta-sintetica-autenticada.png",
+        "evidence/UI-AUTH-03/desktop-chromium-02-entrada-recuperacao.png",
+        "evidence/UI-AUTH-03/desktop-chromium-03-resposta-formato-invalido.png",
+        "evidence/UI-AUTH-03/desktop-chromium-04-resposta-nao-cadastrado.png",
+        "evidence/UI-AUTH-03/desktop-chromium-05-resposta-cadastrado.png"
       ],
-      "batch": "lote2"
+      "batch": "lote7-desbloqueio"
     },
     {
       "id": "UI-AUTH-NAVIGATION-01",
@@ -165,50 +175,52 @@
       "title": "Tela Encontre o Balão apresenta pontos, alvo e ação de jogar conforme estado elegível",
       "execution": "real-hml",
       "autonomous": true,
-      "status": "blocked",
-      "note": "Caminho da Sorte acessível com 7 cartão(ões) de dia, mas nenhum rotulado \"Encontre o Balão\" apareceu na grade atual. Cartões vistos: DIA 7 CONCORRA ATÉ: | DIA 6 CONCORRA ATÉ: | DIA 5 CONCORRA ATÉ: | DIA 4 CONCORRA ATÉ: | DIA 3 CONCORRA ATÉ: | DIA 2 23:01:17 CONCORRA ATÉ: | DIA 1 INICIAR START.",
+      "status": "failed",
+      "note": "Varredura exaustiva por navegação real, com conta sintética nova, não alcançou nenhuma tela \"Encontre o Balão\" (#tela-encontre-balao nunca ficou visível). Caminho da Sorte aberto pelo CTA da home, com os cartões de dia: DIA 7 CONCORRA ATÉ: [ilustração: trilhadourada.png] | DIA 6 CONCORRA ATÉ: [ilustração: caicaiturbinado.png] | DIA 5 CONCORRA ATÉ: [ilustração: trilhaprata.png] | DIA 4 CONCORRA ATÉ: [ilustração: caicai-logo.png] | DIA 3 CONCORRA ATÉ: [ilustração: trilhabronze.png] | DIA 2 08:33:01 CONCORRA ATÉ: [ilustração: encontre-logo.png] | DIA 1 INICIAR START [ilustração: cachorro.png]. Cada cartão foi acionado nos seus dois controles reais (corpo do cartão, que carrega o handler de jogar, e o rótulo INICIAR/START), inclusive o único dia liberado hoje (DIA 1), e nenhum deles abriu qualquer tela nova — a tela do Caminho da Sorte permaneceu a única superfície visível. O cartão que ilustra o jogo do balão (\"DIA 2 08:33:01 CONCORRA ATÉ: [ilustração: encontre-logo.png]\") é de um dia ainda bloqueado por contagem regressiva, e clicá-lo não abre nada. Menu \"Mais\" percorrido item a item: 🎁 MINHAS COISAS › › Perfil | 🎁 MINHAS COISAS › › Cupons | 🎁 MINHAS COISAS › › Livros | ⭐ GANHAR MAIS › › Ganhadores | 💰 MEU DINHEIRO › › Sacar | 💰 MEU DINHEIRO › › Extrato | ❓ AJUDA › › Tutorial | ❓ AJUDA › › Suporte (controles de configuração, sem tela: 👓 ACESSIBILIDADE › › Modo Leitura Fácil | 👓 ACESSIBILIDADE › › Reduzir Animações). Superfícies visitadas ao todo (19): home autenticada | #tela-caminho-sorte | cartão 1 (\"DIA 7 CONCORRA ATÉ:\") → #tela-caminho-sorte | cartão 2 (\"DIA 6 CONCORRA ATÉ:\") → #tela-caminho-sorte | cartão 3 (\"DIA 5 CONCORRA ATÉ:\") → #tela-caminho-sorte | cartão 4 (\"DIA 4 CONCORRA ATÉ:\") → #tela-caminho-sorte | cartão 5 (\"DIA 3 CONCORRA ATÉ:\") → #tela-caminho-sorte | cartão 6 (\"DIA 2 08:33:01 CONCORRA ATÉ:\") → #tela-caminho-sorte | cartão 7 (\"DIA 1 INICIAR START\") → #tela-caminho-sorte | Mais › 🎁 MINHAS COISAS › › Perfil → #tela-mais | Mais › 🎁 MINHAS COISAS › › Cupons → #tela-meus-cupons | Mais › 🎁 MINHAS COISAS › › Livros → .bib-overlay.bib-overlay-show, .bib-popup | Mais › ⭐ GANHAR MAIS › › Ganhadores → #tela-ganhadores | Mais › 💰 MEU DINHEIRO › › Sacar → .sacar-overlay.mostrar, .sacar-popup | Mais › 💰 MEU DINHEIRO › › Extrato → #tela-mais | Mais › ❓ AJUDA › › Tutorial → .mi-overlay.mostrar | Mais › ❓ AJUDA › › Suporte → #. Todas as ocorrências do termo \"balão\" no texto visível varrido: nenhuma. Conforme o critério de desbloqueio do lote 7 (superfície especificada e comprovadamente ausente é defeito), o veredito é falha.",
       "projects": [
         "desktop-chromium"
       ],
-      "lastRunAt": "2026-08-14T00:58:43Z",
+      "lastRunAt": "2026-08-14T15:33:19Z",
       "evidence": [
-        "evidence/UI-BALLOON-GAME-01/desktop-chromium-01-home.png",
-        "evidence/UI-BALLOON-GAME-01/desktop-chromium-02-caminho-da-sorte.png"
+        "evidence/UI-BALLOON-GAME-01/desktop-chromium-01-home-partida.png",
+        "evidence/UI-BALLOON-GAME-01/desktop-chromium-02-caminho-da-sorte.png",
+        "evidence/UI-BALLOON-GAME-01/desktop-chromium-03-menu-mais-varrido.png"
       ],
-      "batch": "lote6-pos-pagamento"
+      "batch": "lote7-desbloqueio"
     },
     {
       "id": "UI-BONUS-BALANCE-01",
       "title": "Tela de bônus apresenta saldo e recompensas conforme fixture/ledger",
       "execution": "real-hml",
       "autonomous": true,
-      "status": "blocked",
-      "note": "Bônus>0 alcançado de verdade nesta execução (rodada 1: estado=vitoria, bônus=0 · rodada 2: estado=retry, bônus=1, HUD final bônus=1), sem fixture nem seed — jogar rodadas reais é o único caminho observado. Porém não existe uma tela dedicada de bônus reachable pela navegação: o menu \"Mais\" expõe apenas os grupos [\"🎁 MINHAS COISAS ›\",\"⭐ GANHAR MAIS ›\",\"💰 MEU DINHEIRO ›\",\"❓ AJUDA ›\",\"👓 ACESSIBILIDADE ›\"] com itens [\"Perfil\",\"Cupons\",\"Livros\",\"Ganhadores\",\"Sacar\",\"Extrato\",\"Tutorial\",\"Suporte\",\"Modo Leitura Fácil\",\"Reduzir Animações\"] — nenhum chamado \"Bônus\". O único lugar que mostra o saldo é o contador `.es-hud-bonus` dentro da própria tela do jogo \"Estouro da Sorte\", não uma tela separada de saldo/recompensas. Como a superfície que o caso descreve (\"tela de bônus\") não existe hoje fora do HUD do jogo, não há o que comparar contra fixture/ledger.",
+      "status": "failed",
+      "note": "Bônus real acumulado jogando rodadas reais nesta conta sintética (rodada 1: estado=vitoria, Nº DA SORTE 6→5, BÔNUS 0→0 · rodada 2: estado=retry, Nº DA SORTE 5→4, BÔNUS 0→1); saldo de bônus medido no HUD do jogo = 1. Varredura completa do menu \"Mais\", item a item, com o app já nesse estado: 🎁 MINHAS COISAS › › Perfil | 🎁 MINHAS COISAS › › Cupons | 🎁 MINHAS COISAS › › Livros | ⭐ GANHAR MAIS › › Ganhadores | 💰 MEU DINHEIRO › › Sacar | 💰 MEU DINHEIRO › › Extrato | ❓ AJUDA › › Tutorial | ❓ AJUDA › › Suporte (controles de configuração, sem tela própria: 👓 ACESSIBILIDADE › › Modo Leitura Fácil | 👓 ACESSIBILIDADE › › Reduzir Animações). Telas fora do jogo que exibem algum saldo de bônus: NENHUMA. O único lugar do app que apresenta o saldo de bônus é o contador do HUD dentro da tela do jogo \"Estouro da Sorte\"; nenhuma tela dedicada de saldo/recompensas de bônus existe ou é alcançável por navegação real (Extrato, Cupons e Perfil incluídos na varredura). Superfície especificada e ausente ⇒ falha, conforme critério de desbloqueio do lote 7.",
       "projects": [
         "desktop-chromium"
       ],
-      "lastRunAt": "2026-08-14T02:03:49Z",
+      "lastRunAt": "2026-08-14T15:41:52Z",
       "evidence": [
-        "evidence/UI-BONUS-BALANCE-01/desktop-chromium-01-hud-bonus-acumulado.png",
-        "evidence/UI-BONUS-BALANCE-01/desktop-chromium-02-menu-mais-sem-tela-bonus.png"
+        "evidence/UI-BONUS-BALANCE-01/desktop-chromium-01-hud-bonus-no-jogo.png",
+        "evidence/UI-BONUS-BALANCE-01/desktop-chromium-02-menu-mais-varrido.png"
       ],
-      "batch": "lote6-pos-pagamento"
+      "batch": "lote7-desbloqueio"
     },
     {
       "id": "UI-BONUS-GAME-01",
       "title": "Tela do jogo de bônus carrega o estado elegível sem revelar prêmio indevido",
       "execution": "real-hml",
       "autonomous": true,
-      "status": "blocked",
-      "note": "Nesta execução: rodada 1: estado=vitoria, bônus=0 · rodada 2: estado=retry. Estado \"retry\" real alcançado (card virado oferecendo usar bônus para tentar de novo). Plaqueta de prêmio sorteada visível=true com alt=\"\" (sem texto acessível de valor, só imagem); botão \"USAR BÔNUS\" visível=false.",
+      "status": "failed",
+      "note": "Estado elegível de bônus alcançado jogando rodadas reais após compra liquidada: rodada 1: estado=vitoria, BÔNUS 0→0, Nº DA SORTE 6→5 · rodada 2: estado=retry (BÔNUS antes=0, no estado elegível=1). No estado elegível (card virado oferecendo nova tentativa): BÔNUS antes=0 e no estado elegível=1 (≥1 = true). Ação de usar bônus (.es-retry-btn): presente no DOM=true, visível pelo critério frouxo do Playwright=false, REALMENTE visível para o jogador (opacidade+viewport+hit-test)=false, habilitado=false, texto pintado do botão=\"(nada pintado)\". Texto realmente pintado do card no estado elegível=\"✨ CONCORRENDO ✨ USE SEU BÔNUS PARA TENTAR NOVAMENTE NÃO QUERO ESTOURE E ACHE OS 03 PARES ▲ ▼ ▲ ▼ ▲ ▼ Data · Edição 14/08/2026 14:30 Nº do Título APC-6EDE2EB2BB\". Exposição do prêmio antes da decisão: texto visível do card=\"✨ CONCORRENDO ✨ USE SEU BÔNUS PARA TENTAR NOVAMENTE NÃO QUERO ESTOURE E ACHE OS 03 PARES ▲ ▼ ▲ ▼ ▲ ▼ Data · Edição 14/08/2026 14:30 Nº do Título APC-6EDE2EB2BB\", plaqueta visível=true com alt=\"(vazio)\" e aria-label=\"(vazio)\", atributos de dado com valor de prêmio=nenhum ⇒ prêmio revelado antes da decisão=false. Divergência do critério medida acima.",
       "projects": [
         "desktop-chromium"
       ],
-      "lastRunAt": "2026-08-14T02:09:58Z",
+      "lastRunAt": "2026-08-14T14:30:52Z",
       "evidence": [
-        "evidence/UI-BONUS-GAME-01/desktop-chromium-01-tela-retry-usar-bonus.png"
+        "evidence/UI-BONUS-GAME-01/desktop-chromium-01-estado-elegivel-retry.png",
+        "evidence/UI-BONUS-GAME-01/desktop-chromium-02-placa-e-acao-do-retry.png"
       ],
-      "batch": "lote6-pos-pagamento"
+      "batch": "lote7-desbloqueio"
     },
     {
       "id": "UI-CARD-01",
@@ -448,35 +460,38 @@
     },
     {
       "id": "UI-GAME-02",
-      "title": "Verificar que UI comunica separadamente chances de achar figura e Estourar conforme especificação aprovada",
+      "title": "UI comunica separadamente chances de achar figura e Estourar",
       "execution": "real-hml",
       "autonomous": true,
-      "status": "blocked",
-      "note": "DEC-CURRENCIES-01 segue sem aprovação (ver review/DECISOES-REGISTRADAS.md item 1 do placar de destravamento) — não há especificação aprovada para comparar o copy. Copy hoje observado no HUD do jogo: rótulo \"Nº DA SORTE\" com valor numérico (medido: 6) e rótulo \"BÔNUS\" com valor numérico prefixado por \"+\" (medido: +0), em blocos HUD distintos e clicáveis separadamente. Nenhuma tela usa o termo \"achar figura\".",
+      "status": "passed",
+      "note": "DEC-CURRENCIES-01 segue pendente, então o veredito mede a coerência interna observável (rótulo x comportamento), não a especificação ausente. HUD real apresenta duas moedas em blocos separados e clicáveis: rótulos visíveis [\"6 Nº DA SORTE\",\"+0 BÔNUS\"] ⇒ distinguíveis pelo usuário=true. Medições rodada a rodada na mesma sessão: rodada 1: estado=vitoria, Nº DA SORTE 6→5, BÔNUS 0→0 · rodada 2: estado=retry, Nº DA SORTE 5→4, BÔNUS 0→1 · rodada 3: estado=idle, Nº DA SORTE 4→3, BÔNUS 1→1 · rodada 4: estado=idle, Nº DA SORTE 3→2, BÔNUS 1→1 · rodada 5: estado=idle, Nº DA SORTE 2→1, BÔNUS 1→1. Em todas as 5 rodadas cada jogada consumiu exatamente 1 do contador \"Nº DA SORTE\" e nenhuma jogada consumiu o contador \"BÔNUS\": os rótulos correspondem ao que é efetivamente consumido/creditado.",
       "projects": [
         "desktop-chromium"
       ],
-      "lastRunAt": "2026-08-13T19:01:01Z",
+      "lastRunAt": "2026-08-14T14:15:35Z",
       "evidence": [
-        "evidence/UI-GAME-02/desktop-chromium-01-hud-contadores-atuais.png"
+        "evidence/UI-GAME-02/desktop-chromium-01-hud-dois-contadores.png",
+        "evidence/UI-GAME-02/desktop-chromium-02-hud-apos-rodadas-reais.png"
       ],
-      "batch": "lote6-pos-pagamento"
+      "batch": "lote7-desbloqueio"
     },
     {
       "id": "UI-GAME-03",
-      "title": "Verificar que copy de bônus de consolação 2/3 corresponde ao comportamento efetivamente concedido",
+      "title": "Copy de bônus de consolação 2/3 corresponde ao comportamento efetivamente concedido",
       "execution": "real-hml",
       "autonomous": true,
-      "status": "blocked",
-      "note": "DEC-FIGURES-2OF3-01 segue sem aprovação (ver review/DECISOES-REGISTRADAS.md) — sem definição do que \"2/3\" concede, não há critério para comparar copy x comportamento. Rodadas reais jogadas nesta execução: rodada 1: estado=vitoria, bônus 0→0 · rodada 2: estado=idle, bônus 0→2 · rodada 3: estado=idle, bônus 2→2. A UI da \"Estouro da Sorte\" não rotula nenhum resultado como \"2/3\"; o crédito de consolação aparece apenas como incremento do contador \"BÔNUS\" no HUD, sem menção a figuras ou a uma fração 2/3.",
+      "status": "failed",
+      "note": "DEC-FIGURES-2OF3-01 pendente: veredito mede a coerência entre o texto exibido e o crédito efetivamente concedido, rodada a rodada, em jogo real após compra liquidada. 5 rodada(s) reais em 1 conta(s) sintética(s), 1 com crédito de bônus. rodada 1: estado=vitoria, BÔNUS 0→0 (crédito=+0), texto visível do resultado menciona bônus=false, trechos com valor=nenhum, valor do texto bate com o crédito=false · rodada 2: estado=retry, BÔNUS 0→1 (crédito=+1), texto visível do resultado menciona bônus=true, trechos com valor=nenhum, valor do texto bate com o crédito=false, texto integral do resultado (sem o HUD)=\"✨ CONCORRENDO ✨ USE SEU BÔNUS PARA TENTAR NOVAMENTE NÃO QUERO ESTOURE E ACHE OS 03 PARES ▲ ▼ ▲ ▼ ▲ ▼ Data · Edição 14/08/2026 14:46 Nº do Título APC-7.949B19E91\" · rodada 3: estado=idle, BÔNUS 1→1 (crédito=+0), texto visível do resultado menciona bônus=false, trechos com valor=nenhum, valor do texto bate com o crédito=false · rodada 4: estado=idle, BÔNUS 1→1 (crédito=+0), texto visível do resultado menciona bônus=false, trechos com valor=nenhum, valor do texto bate com o crédito=false · rodada 5: estado=idle, BÔNUS 1→1 (crédito=+0), texto visível do resultado menciona bônus=false, trechos com valor=nenhum, valor do texto bate com o crédito=false. Amostra do texto visível do resultado numa rodada sem crédito: \"✨ CONCORRENDO ✨ ESCOLHA SUAS 3 FIGURAS Data · Edição 14/08/2026 14:46 Nº do Título APC-7.949B19E91 PARABÉNS USUARIO, VOCÊ GANHOU! Saldo anterior R$ 2,00 Você ganhou + R$ 2,00 Saldo agora R$ 2,65 || .es-vitoria-overlay.ativo :: PARABÉNS USUARIO, VOCÊ GANHOU! Saldo anterior R$ 2,00 Você ganhou + R$ 2,\". Divergência medida: rodada 2 creditou +1 de bônus com texto visível que não informa o valor creditado (trechos: nenhum). O app credita bônus sem texto visível que informe o usuário do valor concedido.",
       "projects": [
         "desktop-chromium"
       ],
-      "lastRunAt": "2026-08-13T19:02:01Z",
+      "lastRunAt": "2026-08-14T14:47:44Z",
       "evidence": [
-        "evidence/UI-GAME-03/desktop-chromium-01-hud-apos-rodadas-reais.png"
+        "evidence/UI-GAME-03/desktop-chromium-01-partida-hud-inicial.png",
+        "evidence/UI-GAME-03/desktop-chromium-02-rodada-2-credito-de-bonus.png",
+        "evidence/UI-GAME-03/desktop-chromium-06-hud-final-apos-rodadas.png"
       ],
-      "batch": "lote6-pos-pagamento"
+      "batch": "lote7-desbloqueio"
     },
     {
       "id": "UI-GAME-04",
@@ -809,17 +824,21 @@
       "title": "Catálogo de compra separa pacotes e ofertas Milzão, Giro e Super Quarta conforme edição",
       "execution": "real-hml",
       "autonomous": true,
-      "status": "blocked",
-      "note": "Nenhuma das duas categorias clicáveis do catálogo pré-compra expõe as edições \"Milzão\", \"Giro\" ou \"Super Quarta\": \"+ Chances\" mostra 1 CHANCE\nR$ 3,99\n−\n0\n+ | 2 CHANCES\nR$ 7,98\n-6%\nR$ 7,50\n−\n0\n+ | 3 CHANCES\nPOPULAR\nR$ 11,97\n-9%\nR$ 10,90\n−\n0\n+ | 5 CHANCES\nR$ 19,95\n-15%\nR$ 16,90\n−\n0\n+ | 10 CHANCES\nR$ 39,90\n-25%\nR$ 29,90\n−\n0\n+ (contém edições=false); \"Livros digitais\" mostra LIVRO DO MILHÃO\n7 Hábitos da Sorte\n📖\nR$ 6,65\n-10%\nR$ 5,99\n−\n0\n+ | HIPER COMBO\nO Poder do Agora\nPOPULAR\n📖\nR$ 8,74\n-20%\nR$ 6,99\n−\n0\n+ | HIPER COMBO DUPLO\nMentalidade Milionária\n📖\nR$ 13,98\n−\n0\n+ (contém edições=false). O único lugar do app onde esses 3 nomes aparecem é um modal de confirmação de compra antigo/morto (classe .modal-confirmada, fluxo do jogo Balão), não utilizado pelo fluxo de confirmação real hoje ativo (.pagamento-confirmada-overlay), que gera cupons dinamicamente a partir do pacote comprado (hoje: só \"Estourar\", nunca Milzão/Giro/Super Quarta). Sem uma superfície reachable que separe pacotes por essas edições, não há o que comparar contra o critério.",
+      "status": "failed",
+      "note": "Varredura da vitrine de compra (#tela-comprar) autenticada: categorias expostas = Livros digitais / + Chances / Seguros EM BREVE / Empréstimos EM BREVE; todas as linhas visíveis do catálogo, na ordem = R$ 0,00 | Livros digitais | + Chances | Seguros | EM BREVE | Empréstimos | EM BREVE | LIVRO DO MILHÃO | 7 Hábitos da Sorte | 📖 | R$ 6,65 | -10% | R$ 5,99 | − | 0 | + | HIPER COMBO | O Poder do Agora | POPULAR | 📖 | R$ 8,74 | -20% | R$ 6,99 | − | 0 | + | HIPER COMBO DUPLO | Mentalidade Milionária | 📖 | R$ 13,98 | − | 0 | + | PACOTES | 0 | N.SORTE | 0 | TOTAL | R$ 0,00. Nenhuma categoria/aba separa edições: dos três nomes, o catálogo expõe NENHUM (0 de 3 quando vazio). Resto do app alcançável sem compra — Milzão: ausente em todas as superfícies varridas; Giro: Cupons (#tela-meus-cupons); Super Quarta: ausente em todas as superfícies varridas. Cartões de sorteio da home trazem apenas os selos INSTANTÂNEO e QUINTA-FEIRA; o cupom que cita Giro leva a: seções visíveis tela-meus-cupons. Veredito: falhou — a superfície especificada (catálogo de compra com pacotes/ofertas separados por edição Milzão, Giro e Super Quarta) não existe no HML após varredura de vitrine, home, cupons e menu Mais.",
       "projects": [
         "desktop-chromium"
       ],
-      "lastRunAt": "2026-08-13T23:23:32Z",
+      "lastRunAt": "2026-08-14T16:33:34Z",
       "evidence": [
-        "evidence/UI-PURCHASE-GAME-CATALOG-01/desktop-chromium-01-catalogo-chances.png",
-        "evidence/UI-PURCHASE-GAME-CATALOG-01/desktop-chromium-02-catalogo-livros-digitais.png"
+        "evidence/UI-PURCHASE-GAME-CATALOG-01/desktop-chromium-01-catalogo-categorias.png",
+        "evidence/UI-PURCHASE-GAME-CATALOG-01/desktop-chromium-02-catalogo-itens.png",
+        "evidence/UI-PURCHASE-GAME-CATALOG-01/desktop-chromium-03-home-sorteios.png",
+        "evidence/UI-PURCHASE-GAME-CATALOG-01/desktop-chromium-04-cupons.png",
+        "evidence/UI-PURCHASE-GAME-CATALOG-01/desktop-chromium-05-destino-cupom-giro.png",
+        "evidence/UI-PURCHASE-GAME-CATALOG-01/desktop-chromium-06-menu-mais.png"
       ],
-      "batch": "lote6-pos-pagamento"
+      "batch": "lote7-desbloqueio"
     },
     {
       "id": "UI-PWA-04",
