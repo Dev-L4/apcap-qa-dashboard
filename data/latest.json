@@ -1,9 +1,9 @@
 {
   "schemaVersion": 6,
-  "generatedAt": "2026-08-14T16:41:12Z",
+  "generatedAt": "2026-08-14T16:44:20Z",
   "source": "review/results-lote*.json",
   "environment": "HML publico",
-  "revision": "lote6-pos-pagamento",
+  "revision": "lote7-desbloqueio",
   "summary": {
     "total": 68,
     "passed": 52,
