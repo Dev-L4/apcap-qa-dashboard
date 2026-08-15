@@ -18,6 +18,7 @@ function simBlock(b){let h=`<article class="notice"><h3>${esc(b.title)}</h3>`;
 if(b.text)h+=`<p>${esc(b.text)}</p>`;
 if(b.list)h+=`<ul>${b.list.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
 if(b.table)h+=`<div class="table-wrap"><table><thead><tr>${b.table.head.map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${b.table.rows.map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+if(b.images)h+=`<div class="shots">${b.images.map(i=>`<figure><a href="${esc(i.src)}" target="_blank" rel="noopener nofollow"><img src="${esc(i.src)}" alt="${esc(i.caption||'')}" loading="lazy"></a><figcaption>${esc(i.caption||'')}</figcaption></figure>`).join('')}</div>`;
 if(b.note)h+=`<p><small>${esc(b.note)}</small></p>`;
 return h+'</article>'}
 function renderSimulation(sim){$('simStats').innerHTML=(sim.stats||[]).map(s=>`<article class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></article>`).join('');
