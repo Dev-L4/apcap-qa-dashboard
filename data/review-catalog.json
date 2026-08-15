@@ -1,10 +1,11 @@
 {
   "schemaVersion": 6,
-  "generatedAt": "2026-08-12T16:08:51Z",
+  "generatedAt": "2026-08-15T21:51:41Z",
   "policy": {
     "scope": "O catalogo mapeia 178 casos. Apenas os que o agente consegue executar do inicio ao fim sozinho, contra o HML real, recebem veredito. Os demais ficam explicitos como fora do escopo autonomo.",
     "evidence": "Screenshots cruas, sem mascaramento, na resolucao real da viewport. Texto nao registra dados sensiveis.",
-    "verdicts": "Somente aprovado ou falhou contam como veredito. Bloqueado significa execucao interrompida por limite tecnico declarado."
+    "verdicts": "Somente aprovado ou falhou contam como veredito. Bloqueado significa execucao interrompida por limite tecnico declarado.",
+    "codeReview": "Casos com canal \"Codigo-fonte (backend apcapv5)\" tem veredito por leitura do codigo publicado no repositorio, com arquivo e trecho citados. Nao substituem execucao no HML: quando o efeito for observavel na aplicacao, o caso ganha screenshot correspondente."
   },
   "statusDefinitions": {
     "approved": "Executado de ponta a ponta no HML real, objetivo cumprido, com evidencia crua.",
@@ -13,15 +14,15 @@
     "out_of_scope": "Fora do escopo autonomo: exige decisao humana de negocio, hardware fisico, dado de producao ou verificacao de backend sem acesso. Nao pode ser fechado de ponta a ponta pelo agente."
   },
   "summary": {
-    "total": 178,
+    "total": 192,
     "by_status": {
-      "failed": 16,
+      "failed": 27,
       "blocked": 0,
-      "approved": 52,
+      "approved": 55,
       "out_of_scope": 110
     },
-    "executed": 68,
-    "verdicts": 68,
+    "executed": 82,
+    "verdicts": 82,
     "screenshots": 209,
     "by_area": {
       "Navegação autenticada": 1,
@@ -30,10 +31,10 @@
       "Regulatório": 6,
       "Autenticação": 3,
       "Jogo": 1,
-      "Compra": 7,
+      "Compra": 8,
       "Landing": 3,
       "Cartão": 1,
-      "Caminho da Sorte": 6,
+      "Caminho da Sorte": 13,
       "Pix": 10,
       "Perfil e LGPD": 1,
       "PWA": 5,
@@ -41,12 +42,12 @@
       "Responsividade": 3,
       "Sessão": 2,
       "Rastreabilidade": 1,
-      "Carteira": 8,
+      "Carteira": 9,
       "Acelerador": 6,
       "Agenda de Grandes": 5,
       "Chances": 5,
       "Contrato": 1,
-      "Motor": 4,
+      "Motor": 5,
       "Odds": 1,
       "Estoque": 1,
       "Selo": 1,
@@ -73,19 +74,19 @@
       "Contrato Pix": 2,
       "Contrato de carteira": 1,
       "Produto e regulatório": 1,
-      "Motor e regulatório": 1,
+      "Motor e regulatório": 2,
       "Campanha": 1,
       "Integrações": 1,
       "Arquitetura": 1,
       "P&L": 1,
       "Pagamento": 2,
       "Dados": 1,
-      "Carteira e regulatório": 1,
+      "Carteira e regulatório": 2,
       "Modelo de motor": 1,
       "Modelo Pix": 2,
-      "Encontre o Balão": 1,
+      "Encontre o Balão": 2,
       "Bônus": 1,
-      "Jogo de bônus": 1,
+      "Jogo de bônus": 2,
       "Feed de ganhadores": 3,
       "Histórico": 1,
       "Biblioteca": 2,
@@ -4186,6 +4187,336 @@
         "evidence/UI-WALLET-HISTORY-01/desktop-chromium-03-extrato-todos-filtros.png"
       ],
       "observed": "real-hml"
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-PATH-EV-01",
+      "title": "EV Calculado do editor soma valor x peso ignorando o tipo do premio",
+      "priority": "P1",
+      "area": "Caminho da Sorte",
+      "status": "failed",
+      "preconditions": [
+        "apps/admin/src/features/caminho-da-sorte/caminho-da-sorte-page.tsx:67"
+      ],
+      "reason": "calcEV soma p.valor * p.peso sem olhar p.tipo. Premio \"numero_sorte\" e quantidade de numeros (backend: finalizarEmissao acumula totalNumeroSorte), mas o admin le o mesmo campo como centavos.",
+      "notes": [
+        "D2 configurado com valores 1/2/3 e pesos 50/35/15 resulta em 1,65 pontos, exibido como R$ 0,02.",
+        "A configuracao do dia esta correta; o numero da tela e que engana quem opera.",
+        "Trechos citados: apps/admin/src/features/caminho-da-sorte/caminho-da-sorte-page.tsx:67 · apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts (finalizarEmissao)"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-PATH-EV-02",
+      "title": "EV Calculado nao inclui Prob. Vitoria e mistura tipos numa media unica",
+      "priority": "P2",
+      "area": "Caminho da Sorte",
+      "status": "failed",
+      "preconditions": [
+        "apps/admin/src/features/caminho-da-sorte/caminho-da-sorte-page.tsx:67"
+      ],
+      "reason": "probVitoria nao entra em calcEV. Com 60% de vitoria, um EV-alvo de R$ 0,60 por rodada exige premio medio de R$ 1,00. Nas trilhas o backend sorteia um valor por tipo e pode pagar dinheiro e pontos na mesma rodada, entao a media ponderada unica sobre tipos misturados nao representa custo.",
+      "notes": [
+        "Peso e relativo: normalizado pela soma em calcEV, sortearPorPeso e sortearPremioCelula. Somar 100 e coincidencia, nao regra.",
+        "Trechos citados: apps/admin/src/features/caminho-da-sorte/caminho-da-sorte-page.tsx:67 · apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts (distribuirPremiosNoCaminho)"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-PATH-BORDA-01",
+      "title": "Recusa de premio de borda entrega o vizinho seguinte do array em vez de re-sortear",
+      "priority": "P1",
+      "area": "Caminho da Sorte",
+      "status": "failed",
+      "preconditions": [
+        "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts:1062"
+      ],
+      "reason": "Em sortearPremioCelula o continue segue o laco com o acumulador r ja negativo: o proximo item satisfaz r <= 0 imediatamente e e devolvido. Recusar borda vira entrega deterministica do vizinho na ordem do array, nao novo sorteio.",
+      "notes": [
+        "Existem duas implementacoes divergentes no mesmo arquivo: sortearValorDoTipo (linha 1039) re-sorteia corretamente entre os nao-borda.",
+        "O caminho enviesado e o usado pelo Encontre o Baloes (D2), que chama sortearPremioCelula(configId, false).",
+        "Trechos citados: caminho-sorte.service.ts:1039 (correta) · caminho-sorte.service.ts:1062 (enviesada)"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-PATH-POOL-01",
+      "title": "Dia sem premio configurado cai em pool legada de codigo com EV de R$ 8,80",
+      "priority": "P1",
+      "area": "Caminho da Sorte",
+      "status": "failed",
+      "preconditions": [
+        "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts:1105"
+      ],
+      "reason": "_sortearValorPremioLegado tem pool cravada (R$ 2 a R$ 100, pesos 40/30/15/10/4/1), EV de R$ 8,80 por rodada em dinheiro. D3-D7 estao com 0 premios provisionados: nao saem sem premio, pagam 5x o alvo do D3 (R$ 1,72) direto na carteira.",
+      "notes": [
+        "Responde a pendencia \"D3-D7 sem premios\": o default existe em runtime e e mais caro que a configuracao.",
+        "Trechos citados: caminho-sorte.service.ts:1105 (_sortearValorPremioLegado)"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-PATH-BOLSA-01",
+      "title": "Caminho da Sorte credita premio sem bolsa, sem RTP e sem teto",
+      "priority": "P1",
+      "area": "Caminho da Sorte",
+      "status": "failed",
+      "preconditions": [
+        "caminho-sorte.service.ts (finalizarEmissao)",
+        "campanha/services/emitir-premiacoes.service.ts"
+      ],
+      "reason": "O Estouro debita a bolsa da campanha na emissao, com trava e teste de solvencia. O Caminho da Sorte cria movimentoCarteira bucket PREMIOS direto, sem campanha, sem bolsa, sem RTP e sem teto. Custo = jogadores x EV do dia, sem freio.",
+      "notes": [
+        "Com a pool legada ativa nos dias vazios, sao R$ 8,80 por rodada por jogador saindo do caixa sem provisao.",
+        "Trechos citados: caminho-sorte.service.ts (finalizarEmissao, movimentoCarteira CREDITO_PREMIO) · emitir-premiacoes.service.ts (filtro de solvencia)"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-PATH-D2-01",
+      "title": "Encontre o Balao ignora a Prob. Vitoria do painel e paga 100% das rodadas",
+      "priority": "P1",
+      "area": "Encontre o Balão",
+      "status": "failed",
+      "preconditions": [
+        "caminho-sorte.service.ts (gerarEstadoEncontreOBalao)"
+      ],
+      "reason": "A funcao fixa venceu = true (\"este jogo e SEMPRE vitoria\"). O painel exibe 60% para o D2, entao quem configura o dia pela tela subestima o custo real em 40%.",
+      "notes": [
+        "Efeito combinado com CODE-PATH-EV-01: o custo real do D2 e maior que o exibido por dois motivos independentes.",
+        "Trechos citados: caminho-sorte.service.ts (gerarEstadoEncontreOBalao)"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-PATH-TZ-01",
+      "title": "Virada do dia calcula a hora no fuso local e a data em UTC",
+      "priority": "P2",
+      "area": "Caminho da Sorte",
+      "status": "failed",
+      "preconditions": [
+        "caminho-sorte.service.ts (getGameDate)"
+      ],
+      "reason": "getGameDate le date.getHours() no fuso do processo e devolve d.toISOString().split(\"T\")[0] em UTC. As duas metades vivem em fusos diferentes: com servidor em UTC o \"00:00\" do painel vira 21:00 de Brasilia; com servidor em America/Sao_Paulo a data UTC pula na hora errada. Uma das duas esta errada necessariamente.",
+      "notes": [
+        "Nenhum TZ explicito encontrado nos manifests (k8s, Dockerfile, docker-compose, .env.example).",
+        "Contraste util: compra/limite-diario.ts resolve o dia civil brasileiro corretamente via Intl com timeZone fixo — o padrao certo ja existe na base.",
+        "Trechos citados: caminho-sorte.service.ts (getGameDate) · compra/limite-diario.ts (intervaloDoDia)"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-PATH-CICLO-01",
+      "title": "Ciclo semanal zera a trilha de 7 dias no meio da jornada",
+      "priority": "P1",
+      "area": "Caminho da Sorte",
+      "status": "failed",
+      "preconditions": [
+        "caminho-sorte.service.ts (getCicloAtual)"
+      ],
+      "reason": "O progresso e gravado por (usuarioId, ciclo) com ciclo no formato \"2026-W33\". Quem comeca a trilha na quinta perde o progresso na virada da semana, antes de chegar ao D7. O calculo do numero da semana e caseiro, com risco de borda na virada do ano.",
+      "notes": [
+        "Consequencia para o teste: a coorte da simulacao de 7 dias precisa comecar no primeiro dia do ciclo, senao mede o reset e nao a jornada.",
+        "Trechos citados: caminho-sorte.service.ts (getCicloAtual)"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-BURST-CHAMARIZ-01",
+      "title": "Rodada perdedora exibe valor alto sorteado de lista fixa, sem vinculo com o estoque",
+      "priority": "P2",
+      "area": "Motor e regulatório",
+      "status": "failed",
+      "preconditions": [
+        "apps/apcap-api/src/modules/chance/estouro (const/valores.ts)"
+      ],
+      "reason": "Na rodada sem premio a plaquinha mostra um valor de VALORES = [200, 1000, 5000, 10000, 100000, 500000, 1000000, 5000000, 10000000], inclusive R$ 100.000, sem consultar o estoque da campanha. O proprio codigo chama isso de CHAMARIZ.",
+      "notes": [
+        "Intencional no codigo; o que se cobra aqui e a exibicao de premio que nao esta em jogo, nao um erro de implementacao.",
+        "Retifica o achado anterior \"faixa alta nunca paga\": aquele valor nunca esteve disponivel, o achado foi descartado.",
+        "Trechos citados: chance/estouro/const/valores.ts · chance/estouro/iniciar-estouro-novo.ts"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-BURST-BONUS-01",
+      "title": "Quase-acerto do Estouro e a chance bonus sendo revelada, nao acaso",
+      "priority": "P3",
+      "area": "Jogo de bônus",
+      "status": "approved",
+      "preconditions": [
+        "chance/estouro/iniciar-estouro-novo.ts"
+      ],
+      "reason": "A rodada perdedora sorteia entre as figuras que o jogador NAO escolheu, entao acerto por acaso e impossivel. Cada chance bonus concedida vira um acerto exibido (acertos[pos] = true, no maximo 2). O 87,2% de \"2 de 3\" medido na simulacao e o bonus, e o comportamento e coerente com o desenho.",
+      "notes": [
+        "Explica a anomalia estatistica levantada na simulacao anterior; nao ha defeito.",
+        "Trechos citados: chance/estouro/iniciar-estouro-novo.ts (embaralhar EMOJIS filtrando a selecao)"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-BURST-RTP-01",
+      "title": "RTP realizado sobe devagar porque cada bolsa so emite ao acumular o premio cheio",
+      "priority": "P2",
+      "area": "Motor",
+      "status": "approved",
+      "preconditions": [
+        "campanha/services/distribuir-arrecadacao.service.ts",
+        "campanha/services/emitir-premiacoes.service.ts"
+      ],
+      "reason": "A arrecadacao distribui rtp% do bruto entre as bolsas por proporcao, e a emissao filtra bolsas com saldo >= valor do premio. A bolsa de R$ 50.000 retem dinheiro ate acumular o valor cheio, entao o RTP realizado e baixo no inicio e converge para o alvo no longo prazo.",
+      "notes": [
+        "Reclassifica o RTP de 2,02% medido antes: transitorio do desenho somado a ambiente sem bolsa provisionada, nao defeito do produto.",
+        "Fica em aberto como pergunta de produto, nao como falha: quanto dura o transitorio e se o cliente e avisado.",
+        "Trechos citados: distribuir-arrecadacao.service.ts · emitir-premiacoes.service.ts"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-LIMIT-01",
+      "title": "Teto diario e por campanha e a checagem nao e atomica",
+      "priority": "P2",
+      "area": "Compra",
+      "status": "failed",
+      "preconditions": [
+        "compra/services/validar-limite-diario.service.ts"
+      ],
+      "reason": "O limite lido e Campanha.limiteDiarioCpf, avaliado campanha a campanha: o mesmo CPF pode somar o teto em cada campanha ativa no mesmo dia. A validacao le e decide fora de lock, entao compras simultaneas do mesmo CPF passam juntas — o proprio comentario do codigo assume a janela.",
+      "notes": [
+        "O calculo do dia usa o dia civil brasileiro corretamente e conta pix pendente como reserva, liberando na expiracao. Essa parte esta certa.",
+        "Alvo de teste executavel no HML: disparar compras concorrentes do mesmo CPF e medir quanto passa alem de R$ 900.",
+        "Trechos citados: compra/limite-diario.ts · compra/services/validar-limite-diario.service.ts"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-WALLET-01",
+      "title": "Saldo exibido nao separa o bucket sacavel do credito interno",
+      "priority": "P1",
+      "area": "Carteira",
+      "status": "failed",
+      "preconditions": [
+        "baas/services/consultar-saldo.service.ts"
+      ],
+      "reason": "O saldo e a soma do ledger append-only por bucket: CARTEIRA (credito de uso interno, nao sacavel) e PREMIOS (unico sacavel). A tela apresenta um numero unico, o que explica a aritmetica incoerente ja capturada em screenshot no HML e cria expectativa de saque sobre valor nao sacavel.",
+      "notes": [
+        "Fecha a pendencia \"aritmetica incoerente de saldo\": a origem e a fusao de dois buckets com regras diferentes.",
+        "Trechos citados: baas/services/consultar-saldo.service.ts · evidence/UI-BONUS-BALANCE-01"
+      ]
+    },
+    {
+      "channel": "Código-fonte (backend apcapv5)",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo"
+      ],
+      "observed": "codigo-fonte",
+      "lastRunAt": "2026-08-15",
+      "batch": "codigo-01",
+      "id": "CODE-SAQUE-01",
+      "title": "Saque debita antes de chamar a Iugu, com lock por usuario e estorno idempotente",
+      "priority": "P2",
+      "area": "Carteira e regulatório",
+      "status": "approved",
+      "preconditions": [
+        "baas/services/solicitar-saque.service.ts"
+      ],
+      "reason": "O fluxo serializa por usuario com pg_advisory_xact_lock, confere saldo do bucket PREMIOS dentro da transacao, debita antes de chamar a Iugu e estorna na recusa, com idempotencia garantida por indice unico (id_saque, tipo). A ordem escolhida troca perda direta por saldo retido recuperavel.",
+      "notes": [
+        "Minimo de saque R$ 5,00, imposto pela propria Iugu.",
+        "Trechos citados: baas/services/solicitar-saque.service.ts"
+      ]
     }
   ]
 }
