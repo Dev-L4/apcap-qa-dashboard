@@ -16,9 +16,8 @@
  "summary": {
   "total": 200,
   "by_status": {
-   "failed": 27,
-   "blocked": 0,
-   "approved": 55,
+   "failed": 33,
+   "approved": 57,
    "out_of_scope": 110
   },
   "executed": 90,
@@ -61,7 +60,7 @@
    "LGPD": 2,
    "Pagamento combinado": 2,
    "Performance": 2,
-   "Segurança": 2,
+   "Segurança": 3,
    "Título": 4,
    "Upsell": 5,
    "Conservação": 2,
@@ -81,7 +80,7 @@
    "P&L": 1,
    "Pagamento": 2,
    "Dados": 1,
-   "Carteira e regulatório": 2,
+   "Carteira e regulatório": 3,
    "Modelo de motor": 1,
    "Modelo Pix": 2,
    "Encontre o Balão": 2,
@@ -92,7 +91,11 @@
    "Biblioteca": 2,
    "Acessibilidade": 1,
    "Cálculo e copy": 1,
-   "Sorteios": 1
+   "Sorteios": 1,
+   "Premiação e RTP": 3,
+   "Estabilidade e carga": 1,
+   "Configuração de campanha": 1,
+   "Compra e pagamento": 1
   },
   "approved": 57,
   "failed": 33
