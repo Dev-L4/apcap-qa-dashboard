@@ -1,10 +1,10 @@
 {
   "generatedAt": "2026-08-17",
-  "status": "PAUSADA às 09:53 BRT de 17/08 a pedido da equipe · rodada de R$ 500.000 · R$ 12.295 liquidados (2.5%) · 356 contas sintéticas · 5.284 jogadas reais · parcial de 17/08/2026, 10:09 BRT",
+  "status": "PAUSADA às 09:53 BRT de 17/08 a pedido da equipe · rodada de R$ 500.000 · R$ 12.335 liquidados (2.5%) · 356 contas sintéticas · 5.284 jogadas reais · parcial de 17/08/2026, 10:57 BRT",
   "stats": [
     {
       "label": "Liquidado nesta rodada (alvo R$ 500.000)",
-      "value": "R$ 12.295"
+      "value": "R$ 12.335"
     },
     {
       "label": "Tentado mas não liquidado (Pix não emitido)",
@@ -12,7 +12,7 @@
     },
     {
       "label": "Arrecadação total da campanha agora",
-      "value": "R$ 74.305 (inclui R$ 62.010 anteriores ao teste)"
+      "value": "R$ 74.345 (inclui R$ 62.010 anteriores ao teste)"
     },
     {
       "label": "Jogadas reais medidas nesta rodada",
@@ -20,7 +20,7 @@
     },
     {
       "label": "RTP real medido nesta rodada",
-      "value": "11.21%"
+      "value": "11.17%"
     },
     {
       "label": "RTP declarado na campanha",
@@ -33,19 +33,27 @@
     {
       "label": "Teto de concorrência verde (sem 5xx)",
       "value": "16 sessões"
+    },
+    {
+      "label": "Cota de faturas Pix do ambiente (limite operacional)",
+      "value": "366 de 800 usadas hoje · 1 fatura por conta"
+    },
+    {
+      "label": "Ritmo máximo sob a cota de Pix",
+      "value": "~R$ 55.684 por dia · alvo de R$ 500.000 exige ~9 dias"
     }
   ],
   "sections": [
     {
-      "title": "Rodada de 17/08/2026 — pausada em R$ 12.295 de R$ 500.000",
+      "title": "Rodada de 17/08/2026 — pausada em R$ 12.335 de R$ 500.000",
       "text": "Esta página mostra apenas a rodada corrente. Contas sintéticas compram títulos reais na Campanha de Inverno em homologação, com Pix liquidado no sandbox, e jogam cada chance contra o servidor. Nenhuma jogada é simulada: cadastro, compra, liquidação e abertura de balão passam pelos endpoints do ambiente. A rodada foi pausada às 09:53 BRT de 17/08 a pedido da equipe, porque o ambiente de homologação é compartilhado e o volume começou a incomodar. Os números abaixo são o parcial fechado nesse instante, recontados direto dos registros da execução.",
       "list": [
-        "Liquidado até a pausa: R$ 12.295 de R$ 500.000 (2.5%)",
+        "Liquidado até a pausa: R$ 12.335 de R$ 500.000 (2.5%)",
         "Tentado sem liquidar: R$ 12.230 em compras criadas que nunca receberam Pix",
-        "Arrecadação total da campanha no ambiente: R$ 74.305",
-        "Prêmio pago pelo servidor nesta rodada: R$ 1.378 — RTP real de 11.21% contra 55% declarados",
+        "Arrecadação total da campanha no ambiente: R$ 74.345",
+        "Prêmio pago pelo servidor nesta rodada: R$ 1.378 — RTP real de 11.17% contra 55% declarados",
         "Prêmio creditado nas carteiras das contas desta rodada: R$ 676",
-        "Ondas executadas: 57 · concorrência testada até 20 · teto sem erro de servidor: 16",
+        "Ondas executadas: 61 · concorrência testada até 20 · teto sem erro de servidor: 16",
         "Sessões: 175 concluíram o fluxo inteiro, 181 falharam · respostas 5xx do servidor: 1",
         "Tempo de resposta: mediana 190 ms, p95 753 ms, pior caso 55956 ms",
         "Compradores acima de R$ 400 (whales): 6"
