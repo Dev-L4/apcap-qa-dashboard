@@ -1,6 +1,6 @@
 {
   "schemaVersion": 6,
-  "generatedAt": "2026-08-16T23:16:40Z",
+  "generatedAt": "2026-08-17T11:56:54Z",
   "policy": {
     "scope": "O catalogo mapeia 178 casos. Apenas os que o agente consegue executar do inicio ao fim sozinho, contra o HML real, recebem veredito. Os demais ficam explicitos como fora do escopo autonomo.",
     "evidence": "Screenshots cruas, sem mascaramento, na resolucao real da viewport. Texto nao registra dados sensiveis.",
@@ -14,14 +14,14 @@
     "out_of_scope": "Fora do escopo autonomo: exige decisao humana de negocio, hardware fisico, dado de producao ou verificacao de backend sem acesso. Nao pode ser fechado de ponta a ponta pelo agente."
   },
   "summary": {
-    "total": 205,
+    "total": 206,
     "by_status": {
-      "failed": 38,
+      "failed": 39,
       "approved": 57,
       "out_of_scope": 110
     },
-    "executed": 95,
-    "verdicts": 95,
+    "executed": 14,
+    "verdicts": 96,
     "screenshots": 209,
     "by_area": {
       "Navegação autenticada": 1,
@@ -98,10 +98,11 @@
       "Compra e pagamento": 1,
       "Carga e concorrência": 1,
       "Disponibilidade": 1,
-      "Observabilidade": 1
+      "Observabilidade": 1,
+      "Cálculo e decisão de negócio": 1
     },
     "approved": 57,
-    "failed": 33
+    "failed": 39
   },
   "cases": [
     {
@@ -4829,6 +4830,124 @@
         "O motor de simulação do lote 10 recupera a sessão por login e registra cada ocorrência, em vez de queimar a conta.",
         "Ordem correta seria enfileirar depois de responder, ou tolerar falha de enfileiramento com reconciliação posterior."
       ]
+    },
+    {
+      "id": "ADMIN-FREQ-01",
+      "title": "Coluna \"Frequência\" do editor de bolsas é 15× otimista: mostra compras de R$ 50 e é lida como jogadas",
+      "area": "Cálculo e decisão de negócio",
+      "status": "failed",
+      "priority": "P1",
+      "channel": "Leitura do código-fonte + conferência contra medição real do lote 9",
+      "scope": "autonomo",
+      "execution_profiles": [
+        "revisao-de-codigo",
+        "api-sequencial"
+      ],
+      "observed": "execucao-real",
+      "lastRunAt": "2026-08-17",
+      "batch": "lote10",
+      "preconditions": [
+        "Campanha de Inverno com as 13 bolsas configuradas",
+        "Admin HML acessível"
+      ],
+      "reason": "O editor de bolsas calcula a frequência como valor_do_prêmio ÷ (proporção × 55% × maiorValorProduto), com maiorValorProduto = R$ 50. A unidade resultante é \"compras do produto mais caro\", mas a coluna é lida no admin como esforço do jogador. Duas correções se acumulam: o ticket real medido é R$ 20 (produto dominante R$ 20/6 chances), o que já torna o número 2,5× otimista; e cada compra entrega 6 chances, ou seja 6 inicializações de jogo, o que multiplica por outros 6. O resultado é uniforme em todas as 13 bolsas: a frequência exibida é 15× menor que a real em jogadas. O painel anuncia \"1 em 20.202\" para o prêmio de R$ 50.000, quando o valor real é 1 em 303.030 jogadas — coincidentemente, 20.202 jogadas é a frequência real do prêmio de R$ 1.000. O prêmio máximo é apresentado com a aparência de acessibilidade de um prêmio 50 vezes menor.",
+      "notes": [
+        "Fórmula no código: apps/admin/src/features/campanhas/bolsas-editor.tsx, calcularFrequencia.",
+        "Fator de desvio = (R$ 50 ÷ R$ 20) × 6 chances = 15×, idêntico para todas as bolsas.",
+        "Conferido contra o lote 9 (17.700 jogadas reais, R$ 61.970 aplicados): nenhum prêmio acima de R$ 100 saiu, compatível com a frequência real e incompatível com a exibida.",
+        "Impacto: a coluna orienta a definição de proporções de bolsa e a comunicação de prêmio máximo. Errada por 15×, sustenta decisão de negócio sobre premissa inexistente.",
+        "Correção sugerida: dividir pelo ticket médio real e pelo número de chances do SKU, ou rotular a coluna explicitamente como \"compras de R$ 50\" para remover a ambiguidade."
+      ],
+      "evidence": {
+        "tabela": {
+          "colunas": [
+            "Bolsa",
+            "Proporção",
+            "Frequência exibida no admin",
+            "Frequência real em jogadas"
+          ],
+          "linhas": [
+            [
+              "Chance bônus — 1 ch",
+              "1,2%",
+              "1,82",
+              "27"
+            ],
+            [
+              "Pacote — 1 nº × 2 estouros",
+              "1,5%",
+              "2,42",
+              "36"
+            ],
+            [
+              "Financeiro — R$ 2",
+              "17,7%",
+              "0,41",
+              "6"
+            ],
+            [
+              "Chance bônus — 5 ch",
+              "2,7%",
+              "4,04",
+              "61"
+            ],
+            [
+              "Financeiro — R$ 5",
+              "22%",
+              "0,83",
+              "12"
+            ],
+            [
+              "Chance bônus — 10 ch",
+              "2,7%",
+              "8,08",
+              "121"
+            ],
+            [
+              "Financeiro — R$ 10",
+              "13,3%",
+              "2,73",
+              "41"
+            ],
+            [
+              "Financeiro — R$ 100",
+              "8,9%",
+              "40,86",
+              "613"
+            ],
+            [
+              "Financeiro — R$ 500",
+              "4,4%",
+              "413,22",
+              "6.198"
+            ],
+            [
+              "Financeiro — R$ 1.000",
+              "2,7%",
+              "1.346,80",
+              "20.202"
+            ],
+            [
+              "Financeiro — R$ 5.000",
+              "8,9%",
+              "2.042,90",
+              "30.644"
+            ],
+            [
+              "Financeiro — R$ 10.000",
+              "5%",
+              "7.272,73",
+              "109.091"
+            ],
+            [
+              "Financeiro — R$ 50.000",
+              "9%",
+              "20.202,02",
+              "303.030"
+            ]
+          ]
+        }
+      }
     }
   ]
 }
