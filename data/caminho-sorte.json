@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-17T14:30:00Z",
+  "titulo": "Simular Caminho da Sorte",
+  "status": "bloqueado",
+  "estado": "Nenhuma medicao publicada. A simulacao do Caminho da Sorte esta bloqueada por decisao de QA, e nao por falta de ferramenta: rodar agora produziria numeros que nao podem ser interpretados.",
+  "porQueBloqueado": [
+    "O premio do Caminho da Sorte e creditado direto na conta de premios, sem passar pela bolsa geral que financia a premiacao (caminho-sorte.service.ts, linhas 779-789). Enquanto isso nao for respondido pelos desenvolvedores, qualquer RTP medido aqui mede uma fonte de dinheiro diferente da do Estouro da Sorte, e os dois numeros nao sao comparaveis.",
+    "As dificuldades D3 a D7 nao tem premio configurado e caem numa pool legada de R$ 8,80 por rodada — a simulacao mediria a pool legada, nao o produto.",
+    "O modo demonstracao segue ligado por decisao da equipe, entao o resultado observado nao e o resultado do motor real.",
+    "O calculo de valor esperado exibido na tela trata o Numero da Sorte como centavos e ignora a probabilidade de vitoria, entao a referencia teorica contra a qual comparar tambem esta errada."
+  ],
+  "oQueJaEstaProvado": [
+    "Os quatro achados acima vem de leitura do codigo publicado, nao de suposicao, e estao registrados no catalogo com veredito proprio quando formalizados.",
+    "A aba Prova do Motor cobre o Estouro da Sorte, que consome a bolsa geral corretamente — e o contraste que expoe o desvio."
+  ],
+  "condicoesParaDestravar": [
+    "Resposta dos desenvolvedores sobre a bolsa geral: o Caminho da Sorte deve ou nao consumir a mesma bolsa.",
+    "Decisao sobre desligar o modo demonstracao para medir o motor real.",
+    "Premio configurado para D3 a D7, ou confirmacao de que a pool legada e o comportamento pretendido."
+  ]
+}

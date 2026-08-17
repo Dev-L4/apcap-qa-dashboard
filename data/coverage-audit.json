@@ -1,7 +1,6 @@
 {
-  "schemaVersion": 2,
-  "generatedAt": "2026-08-10T13:05:58.203Z",
-  "eligibleCaseIds": ["PUB-01", "PUB-02", "PUB-03"],
-  "excludedCaseIds": ["PUB-04", "PUB-05", "AUTH-01", "AUTH-02", "LUCK-PATH-E2E-01", "PIX-E2E-01", "BALANCE-E2E-01"],
-  "note": "PUB-01/02/03 concluíram o objetivo declarado nos cinco perfis. AUTH/PIX/saldo aguardam nova comprovação completa; cadastro estrutural, link sem navegação e catálogo parcial permanecem inelegíveis."
+  "descontinuado": true,
+  "descontinuadoEm": "2026-08-17",
+  "aviso": "Arquivo descontinuado. A cobertura por perfil de navegador consta nos proprios casos de data/review-catalog.json.",
+  "fonteUnica": "data/review-catalog.json"
 }

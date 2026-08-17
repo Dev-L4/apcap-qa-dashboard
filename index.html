@@ -13,7 +13,7 @@
 <main>
   <header>
     <div><p class="eyebrow">QA APCAP · HML</p><h1>Catálogo completo e resultados</h1><p id="meta">Carregando dados sanitizados…</p></div>
-    <nav class="tabs" aria-label="Seções"><button class="tab active" data-view="catalog">Catálogo completo</button><button class="tab" data-view="results">Resultados executados</button><button class="tab" data-view="simulation">Simular Estouro da Sorte</button><button class="tab" data-view="prova">Prova do Motor</button></nav>
+    <nav class="tabs" aria-label="Seções"><button class="tab active" data-view="catalog">Catálogo completo</button><button class="tab" data-view="results">Resultados executados</button><button class="tab" data-view="simulation">Simular Estouro da Sorte</button><button class="tab" data-view="prova">Prova do Motor</button><button class="tab" data-view="caminho">Simular Caminho da Sorte</button></nav>
   </header>
 
   <section class="notice" id="scopeNotice"><strong>Por que só parte do catálogo tem veredito?</strong> O catálogo mapeia 178 casos, mas só recebem veredito os que o agente executa <b>do início ao fim sozinho</b> contra o HML real, sem humano, sem mock e sem backend fora de alcance: <b>68 executados</b> (52 aprovados e 16 falhas, nenhum bloqueado). Os outros <b>110</b> dependem de decisão de negócio, hardware físico, dado de produção ou verificação de backend sem acesso — cada um traz o motivo no card. Screenshots são cruas, sem mascaramento. A aba <b>Simular Estouro da Sorte</b> traz a medição estatística da gamificação, em página própria.</section>
@@ -47,6 +47,11 @@
   <section id="provaView" hidden>
     <p class="lead-text" id="provaIntro"></p>
     <section id="provaCards" class="prova-grid"></section>
+  <section id="caminhoView" hidden>
+    <h2>Simular Caminho da Sorte</h2>
+    <p class="lead" id="csEstado">Carregando…</p>
+    <div id="csBody"></div>
+  </section>
     <section class="notice" id="provaRegras"></section>
   </section>
 
