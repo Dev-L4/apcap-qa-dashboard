@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-08-17",
-  "status": "PAUSADA às 09:53 BRT de 17/08 a pedido da equipe · rodada de R$ 500.000 · R$ 12.295 liquidados (2.5%) · 356 contas sintéticas · 5.284 jogadas reais · parcial de 17/08/2026, 09:59 BRT",
+  "status": "PAUSADA às 09:53 BRT de 17/08 a pedido da equipe · rodada de R$ 500.000 · R$ 12.295 liquidados (2.5%) · 356 contas sintéticas · 5.284 jogadas reais · parcial de 17/08/2026, 10:09 BRT",
   "stats": [
     {
       "label": "Liquidado nesta rodada (alvo R$ 500.000)",
@@ -9,6 +9,10 @@
     {
       "label": "Tentado mas não liquidado (Pix não emitido)",
       "value": "R$ 12.230"
+    },
+    {
+      "label": "Arrecadação total da campanha agora",
+      "value": "R$ 74.305 (inclui R$ 62.010 anteriores ao teste)"
     },
     {
       "label": "Jogadas reais medidas nesta rodada",
