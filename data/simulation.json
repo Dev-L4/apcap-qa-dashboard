@@ -1,18 +1,22 @@
 {
   "generatedAt": "2026-08-17",
-  "status": "Em andamento · rodada de R$ 500.000 · R$ 9.370 aplicados (1.9%) · 139 contas sintéticas · 4.114 jogadas reais · atualizado 17/08/2026, 09:13 BRT",
+  "status": "PAUSADA às 09:53 BRT de 17/08 a pedido da equipe · rodada de R$ 500.000 · R$ 12.295 liquidados (2.5%) · 356 contas sintéticas · 5.284 jogadas reais · parcial de 17/08/2026, 09:59 BRT",
   "stats": [
     {
-      "label": "Aplicado nesta rodada (alvo R$ 500.000)",
-      "value": "R$ 9.370"
+      "label": "Liquidado nesta rodada (alvo R$ 500.000)",
+      "value": "R$ 12.295"
+    },
+    {
+      "label": "Tentado mas não liquidado (Pix não emitido)",
+      "value": "R$ 12.230"
     },
     {
       "label": "Jogadas reais medidas nesta rodada",
-      "value": "4.114"
+      "value": "5.284"
     },
     {
       "label": "RTP real medido nesta rodada",
-      "value": "5.13%"
+      "value": "11.21%"
     },
     {
       "label": "RTP declarado na campanha",
@@ -20,7 +24,7 @@
     },
     {
       "label": "Sessões concluídas do início ao fim",
-      "value": "135 de 139"
+      "value": "175 de 356"
     },
     {
       "label": "Teto de concorrência verde (sem 5xx)",
@@ -29,16 +33,27 @@
   ],
   "sections": [
     {
-      "title": "Rodada de 17/08/2026 — em andamento, R$ 9.370 de R$ 500.000 aplicados",
-      "text": "Esta página mostra apenas a rodada corrente. Contas sintéticas compram títulos reais na Campanha de Inverno em homologação, com Pix liquidado no sandbox, e jogam cada chance contra o servidor. Nenhuma jogada é simulada: cadastro, compra, liquidação e abertura de balão passam pelos endpoints do ambiente. Os números abaixo são recontados a cada atualização, direto dos registros da execução.",
+      "title": "Rodada de 17/08/2026 — pausada em R$ 12.295 de R$ 500.000",
+      "text": "Esta página mostra apenas a rodada corrente. Contas sintéticas compram títulos reais na Campanha de Inverno em homologação, com Pix liquidado no sandbox, e jogam cada chance contra o servidor. Nenhuma jogada é simulada: cadastro, compra, liquidação e abertura de balão passam pelos endpoints do ambiente. A rodada foi pausada às 09:53 BRT de 17/08 a pedido da equipe, porque o ambiente de homologação é compartilhado e o volume começou a incomodar. Os números abaixo são o parcial fechado nesse instante, recontados direto dos registros da execução.",
       "list": [
-        "Aplicado até agora: R$ 9.370 de R$ 500.000 (1.9%)",
-        "Arrecadação total da campanha no ambiente: R$ 71.380",
-        "Prêmio registrado nesta rodada: R$ 481 — RTP real de 5.13% contra 55% declarados",
-        "Ondas executadas: 11 · concorrência testada até 20 · teto sem erro de servidor: 16",
-        "Sessões: 135 concluíram o fluxo inteiro, 4 falharam · respostas 5xx do servidor: 1",
-        "Tempo de resposta: mediana 186 ms, p95 724 ms, pior caso 55956 ms",
-        "Compradores acima de R$ 400 (whales): 2"
+        "Liquidado até a pausa: R$ 12.295 de R$ 500.000 (2.5%)",
+        "Tentado sem liquidar: R$ 12.230 em compras criadas que nunca receberam Pix",
+        "Arrecadação total da campanha no ambiente: R$ 74.305",
+        "Prêmio pago pelo servidor nesta rodada: R$ 1.378 — RTP real de 11.21% contra 55% declarados",
+        "Prêmio creditado nas carteiras das contas desta rodada: R$ 676",
+        "Ondas executadas: 57 · concorrência testada até 20 · teto sem erro de servidor: 16",
+        "Sessões: 175 concluíram o fluxo inteiro, 181 falharam · respostas 5xx do servidor: 1",
+        "Tempo de resposta: mediana 190 ms, p95 753 ms, pior caso 55956 ms",
+        "Compradores acima de R$ 400 (whales): 6"
+      ]
+    },
+    {
+      "title": "Por que a rodada parou antes do alvo: o Pix deixou de ser emitido às 09:32 BRT",
+      "text": "Das 356 sessões, 181 falharam e 172 delas pelo mesmo motivo: a compra é aceita com HTTP 201 e status TENTANDO_NOVAMENTE, mas volta sem pagamento e sem código Pix. Reproduzido isoladamente, fora de carga, com uma única sessão: o mesmo resultado. A última onda com 100% de aproveitamento foi a 14, às 09:31 BRT; a partir da onda 16, às 09:32 BRT, nenhuma sessão conseguiu pagar e a arrecadação da campanha congelou. Não é o volume: a concorrência estava em 4 sessões simultâneas quando o Pix parou, muito abaixo do teto verde de 16 medido de manhã, e o servidor não devolveu nenhum 5xx. O cliente recebe resposta de sucesso para uma compra que não pode ser paga.",
+      "list": [
+        "A compra é criada no banco com status TENTANDO_NOVAMENTE e fica órfã: sem Pix, o usuário não tem como concluir",
+        "A resposta HTTP é 201, então nenhum cliente saberia que a compra nasceu impagável",
+        "Ocorreu sob concorrência de 4 sessões, sem 5xx: falha de integração com o intermediador, não de capacidade"
       ]
     },
     {
@@ -47,31 +62,33 @@
       "list": []
     },
     {
-      "title": "Faixas sorteadas pelo servidor contra o que virou dinheiro",
-      "text": "A coluna da esquerda é a faixa que o servidor sorteou na abertura do balão. Creditado nesta rodada: R$ 481 de R$ 48.922.667 sorteados. A diferença é o prêmio descartado na emissão por falta de unidade em estoque nas faixas altas — estado da homologação, registrado como tal.",
-      "list": [
-        "R$ 100.000 — 228 sorteio(s)",
-        "R$ 50.000 — 484 sorteio(s)",
-        "R$ 10.000 — 136 sorteio(s)",
-        "R$ 5.000 — 56 sorteio(s)",
-        "R$ 1.000 — 248 sorteio(s)",
-        "R$ 100 — 174 sorteio(s)",
-        "R$ 50 — 152 sorteio(s)",
-        "R$ 10 — 846 sorteio(s)",
-        "R$ 6 — 23 sorteio(s)",
-        "R$ 5 — 27 sorteio(s)",
-        "R$ 3 — 28 sorteio(s)",
-        "R$ 2 — 412 sorteio(s)",
-        "R$ 1 — 26 sorteio(s)"
-      ]
-    },
-    {
       "title": "Por que as sessões falharam",
       "text": "Toda falha é registrada com o motivo devolvido pelo servidor. Nenhuma foi ocultada.",
       "list": [
-        "2× — COMPRA_400:{\"message\":\"Limite diário de R$ 1.000,00 da campanha \\\"Campanha de Inverno\\\" ex",
+        "172× — PIX_URL_AUSENTE:",
+        "5× — COMPRA_400:{\"message\":\"Limite diário de R$ 1.000,00 da campanha \\\"Campanha de Inverno\\\" ex",
+        "2× — The socket connection was closed unexpectedly. For more information, pass `verbose: true` ",
         "1× — ESTOURAR_429",
-        "1× — The socket connection was closed unexpectedly. For more information, pass `verbose: true` "
+        "1× — The operation timed out."
+      ]
+    },
+    {
+      "title": "Faixas sorteadas pelo servidor contra o que virou dinheiro",
+      "text": "A coluna da esquerda é a faixa que o servidor sorteou na abertura do balão. Creditado nas carteiras nesta rodada: R$ 676 de R$ 67.252.868 sorteados. A diferença é o prêmio descartado na emissão por falta de unidade em estoque nas faixas altas — estado da homologação, registrado como tal.",
+      "list": [
+        "R$ 100.000 — 360 sorteio(s)",
+        "R$ 50.000 — 551 sorteio(s)",
+        "R$ 10.000 — 266 sorteio(s)",
+        "R$ 5.000 — 122 sorteio(s)",
+        "R$ 1.000 — 384 sorteio(s)",
+        "R$ 100 — 246 sorteio(s)",
+        "R$ 50 — 264 sorteio(s)",
+        "R$ 10 — 946 sorteio(s)",
+        "R$ 6 — 39 sorteio(s)",
+        "R$ 5 — 36 sorteio(s)",
+        "R$ 3 — 48 sorteio(s)",
+        "R$ 2 — 507 sorteio(s)",
+        "R$ 1 — 36 sorteio(s)"
       ]
     },
     {

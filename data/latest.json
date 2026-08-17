@@ -1,6 +1,6 @@
 {
  "schemaVersion": 7,
- "generatedAt": "2026-08-17T12:32:41Z",
+ "generatedAt": "2026-08-17T12:59:51Z",
  "runDateAtual": "2026-08-17",
  "runs": [
   {
@@ -1288,20 +1288,20 @@
    "rotulo": "Rodada corrente — revisão de código, lote 9 e lote 10 em andamento",
    "status": "em-andamento",
    "summary": {
-    "total": 28,
+    "total": 29,
     "passed": 5,
-    "failed": 23,
+    "failed": 24,
     "blocked": 0,
-    "screenshots": 1,
-    "catalogTotal": 206,
-    "executed": 28,
+    "screenshots": 5,
+    "catalogTotal": 207,
+    "executed": 29,
     "evidenceMode": "Screenshots sem mascaramento, viewport cheia. Casos de código e de carga são provados por trecho citado e por medição na API, sem tela.",
-    "scope": "Casos com veredito obtido depois da linha de base de 14/08: leitura do backend, lote 9 (R$ 61.970) e lote 10 (R$ 500.000, em curso)."
+    "scope": "Casos com veredito obtido depois da linha de base de 14/08: leitura do backend, lote 9 (R$ 61.970) e lote 10 (pausado em R$ 12.295 às 09:53 BRT de 17/08, a pedido da equipe)."
    },
    "browserCoverage": {
     "revisao-de-codigo": 15,
-    "api-hml": 4,
-    "carga-hml": 9,
+    "api-hml": 5,
+    "carga-hml": 10,
     "api-sem-credencial": 1
    },
    "currentRunCaseIds": [
@@ -1332,7 +1332,8 @@
     "SIM-L9-DIST-07",
     "SIM-L9-EXPO-06",
     "SIM-L9-RTP-01",
-    "ADMIN-FREQ-01"
+    "ADMIN-FREQ-01",
+    "GATEWAY-PIX-01"
    ],
    "cases": [
     {
@@ -1844,11 +1845,32 @@
        ]
       }
      }
+    },
+    {
+     "id": "GATEWAY-PIX-01",
+     "title": "Compra é aceita com HTTP 201 mas nasce impagável: sem Pix e com status TENTANDO_NOVAMENTE",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "failed",
+     "note": "A partir de 09:32 BRT de 17/08/2026, POST /v1/compras passou a responder HTTP 201 com status TENTANDO_NOVAMENTE, pagamento nulo e sem código Pix. A compra fica registrada e órfã: o usuário recebe resposta de sucesso para algo que não tem como pagar. 172 de 356 sessões do lote 10 falharam por esse motivo e a arrecadação da campanha congelou em R$ 74.305 a partir da onda 16. Reproduzido isoladamente, com uma única sessão e concorrência de 4 — muito abaixo do teto verde de 16 sessões medido na mesma manhã e sem nenhuma resposta 5xx — o que separa a falha de qualquer questão de capacidade: é a integração com o intermediador de pagamento que deixou de emitir a cobrança. O contrato correto seria recusar a compra com erro explícito, ou devolvê-la em estado pendente que o cliente saiba tratar, em vez de 201.",
+     "projects": [
+      "api-hml",
+      "carga-hml"
+     ],
+     "lote": "lote10",
+     "priority": "P1",
+     "lastRunAt": "2026-08-17",
+     "evidence": [
+      "Reprodução isolada: POST /v1/compras → 201, status TENTANDO_NOVAMENTE, pagamento null",
+      "172 sessões com PIX_URL_AUSENTE em sim/lote10/sessoes.jsonl",
+      "Arrecadação da campanha congelada em R$ 74.305 desde a onda 16 (09:32 BRT)",
+      "Última onda com 100% de aproveitamento: onda 14, 09:31 BRT, concorrência 8"
+     ]
     }
    ],
    "source": "agente autônomo (Playwright + API HML + leitura do código-fonte)",
    "environment": "https://apcap-v5-hml.web.app/ · https://apcapadm-v5-hml.web.app/ · https://apcapv5-hml.duckdns.org",
-   "generatedAt": "2026-08-17T12:32:41Z"
+   "generatedAt": "2026-08-17T12:59:51Z"
   }
  ]
 }

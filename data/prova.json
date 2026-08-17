@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-17T12:29:31Z",
+  "generatedAt": "2026-08-17T12:57:56Z",
   "titulo": "Prova do Motor",
   "introducao": "A aba SIMULAR ESTOURO DA SORTE mostra o que aconteceu: quanto entrou, quanto saiu, quais bolsas pagaram. É descritiva — quem lê ainda precisa julgar se o número está bom. A Prova do Motor é o oposto: cada linha é uma afirmação verificável com fórmula declarada, fonte do dado, tolerância definida antes da rodada, e veredito binário. Onde a amostra não sustenta conclusão, a linha diz amostra insuficiente e não recebe veredito.",
   "regras": [
@@ -21,7 +21,7 @@
       "tolerancia": "±1,5 ponto percentual absoluto",
       "criterioVeredito": "aprovado se |realizado − 55| ≤ 1,5",
       "veredito": "falhou",
-      "medido": "RTP realizado 10,97% — R$ 1.192,80 pagos sobre R$ 10.872,50 arrecadados nesta rodada. Desvio de 44,03% contra os 55,00% declarados. 7 das 13 bolsas pagaram algo; RTP alcançável pelas que pagaram: 64,30%.",
+      "medido": "RTP realizado 11,21% — R$ 1.377,80 pagos sobre R$ 12.295,00 arrecadados nesta rodada. Desvio de 43,79% contra os 55,00% declarados. 7 das 13 bolsas pagaram algo; RTP alcançável pelas que pagaram: 64,30%.",
       "observacoes": [
         "Reporta também o RTP alcançável: a soma das proporções das bolsas que poderiam pagar na rodada, dado saldo e estoque.",
         "Quando o alcançável fica abaixo do declarado, o motor está impedido de cumprir a promessa antes de sortear — e isso é falha estrutural, não azar.",
@@ -38,7 +38,7 @@
       "tolerancia": "±3% relativo, só para bolsas com ≥ 30 emissões",
       "criterioVeredito": "aprovado se todas as bolsas elegíveis passarem",
       "veredito": "falhou",
-      "medido": "7 bolsa(s) com ≥30 emissões nesta rodada. 7 fora da tolerância de ±3%: R$ 0,60: paga 13,48% do prêmio, financia 1,20%; R$ 1,00: paga 3,52% do prêmio, financia 1,50%; R$ 2,00: paga 6,37% do prêmio, financia 17,70%; R$ 3,00: paga 10,81% do prêmio, financia 2,70%; R$ 5,00: paga 13,83% do prêmio, financia 22,00%; R$ 6,00: paga 17,61% do prêmio, financia 2,70%",
+      "medido": "7 bolsa(s) com ≥30 emissões nesta rodada. 7 fora da tolerância de ±3%: R$ 0,60: paga 12,32% do prêmio, financia 1,20%; R$ 1,00: paga 3,27% do prêmio, financia 1,50%; R$ 2,00: paga 6,53% do prêmio, financia 17,70%; R$ 3,00: paga 11,10% do prêmio, financia 2,70%; R$ 5,00: paga 13,06% do prêmio, financia 22,00%; R$ 6,00: paga 17,42% do prêmio, financia 2,70%",
       "observacoes": [
         "É a prova que pega o desvio mais grave do lote 9: 61% de todos os prêmios saíram da bolsa de R$ 0,60, que financia 1,2% do bolo.",
         "Dinheiro alocado numa faixa saindo por outra."
@@ -54,7 +54,7 @@
       "tolerancia": "zero — é aritmética, não estatística",
       "criterioVeredito": "aprovado se nenhuma bolsa solvente terminar sem emitir",
       "veredito": "falhou",
-      "medido": "R$ 7.090,70 empoçados em 3 bolsa(s) solvente(s) que não pagaram. R$ 100,00 — R$ 3.939,98 em caixa, sorteada 209 vez(es) e não creditou nada → sem unidade em estoque | R$ 500,00 — R$ 1.966,78 em caixa, nunca sorteada nesta rodada | R$ 1.000,00 — R$ 1.183,94 em caixa, sorteada 267 vez(es) e não creditou nada → sem unidade em estoque",
+      "medido": "R$ 7.215,92 empoçados em 3 bolsa(s) solvente(s) que não pagaram. R$ 100,00 — R$ 4.009,64 em caixa, sorteada 246 vez(es) e não creditou nada → sem unidade em estoque | R$ 500,00 — R$ 2.001,20 em caixa, nunca sorteada nesta rodada | R$ 1.000,00 — R$ 1.205,08 em caixa, sorteada 384 vez(es) e não creditou nada → sem unidade em estoque",
       "observacoes": [
         "Reporta, para cada bolsa empoçada, por que não pagou: sem saldo, sem estoque, ou fila cheia. Sem essa coluna o achado vira opinião.",
         "No lote 9 foram R$ 27.978 empoçados, e a suspeita é estoque zerado nas faixas de R$ 100 para cima."
@@ -70,7 +70,7 @@
       "tolerancia": "max ÷ min ≤ 1,20 entre SKUs com ≥ 500 chances",
       "criterioVeredito": "aprovado se o espalhamento couber em 1,20×",
       "veredito": "falhou",
-      "medido": "4 SKUs elegíveis, RTP de 2,11% a 10,48% — espalhamento de 4,96×",
+      "medido": "4 SKUs elegíveis, RTP de 3,91% a 10,48% — espalhamento de 2,68×",
       "observacoes": [
         "A vitrine cobra de R$ 0,42 a R$ 3,33 por chance — spread de 8×.",
         "Se toda chance vale o mesmo, o RTP por SKU varia na mesma proporção, e o jogador de Dom Casmurro recebe 8× menos que o do e-book de 24 chances pelo mesmo real gasto.",
@@ -87,7 +87,7 @@
       "tolerancia": "±10% relativo, bolsas com ≥ 30 emissões",
       "criterioVeredito": "aprovado se todas as elegíveis passarem",
       "veredito": "falhou",
-      "medido": "R$ 0,60: painel 1 em 1,8, observado 1 em 18; R$ 1,00: painel 1 em 2,4, observado 1 em 116; R$ 2,00: painel 1 em 0,4, observado 1 em 129; R$ 3,00: painel 1 em 4,0, observado 1 em 114; R$ 5,00: painel 1 em 0,8, observado 1 em 148; R$ 6,00: painel 1 em 8,1, observado 1 em 140 — 7 de 7 fora de ±10%.",
+      "medido": "R$ 0,60: painel 1 em 1,8, observado 1 em 20; R$ 1,00: painel 1 em 2,4, observado 1 em 123; R$ 2,00: painel 1 em 0,4, observado 1 em 123; R$ 3,00: painel 1 em 4,0, observado 1 em 108; R$ 5,00: painel 1 em 0,8, observado 1 em 154; R$ 6,00: painel 1 em 8,1, observado 1 em 138 — 7 de 7 fora de ±10%.",
       "observacoes": [
         "O painel divide pelo maior valor do catálogo (R$ 50) em vez do ticket médio.",
         "O erro esperado é exatamente R$ 50 ÷ ticket real. Esta prova mede o desvio em vez de argumentar."
@@ -103,7 +103,7 @@
       "tolerancia": "zero",
       "criterioVeredito": "aprovado só com divergência exatamente nula",
       "veredito": "sem veredito",
-      "medido": "Rateio: R$ 5.979,92 entraram nas bolsas contra R$ 5.979,88 esperados (55% de R$ 10.872,50) — divergência R$ 0,04. Créditos: R$ 554,00 nas carteiras contra R$ 651,00 debitados das bolsas financeiras — divergência R$ -97,00 — sessões ainda em voo no momento da leitura. Fora da conta em dinheiro: R$ 541,80 pagos em chances e pacotes.",
+      "medido": "Rateio: R$ 6.762,30 entraram nas bolsas contra R$ 6.762,25 esperados (55% de R$ 12.295,00) — divergência R$ 0,05. Créditos: R$ 676,00 nas carteiras contra R$ 770,00 debitados das bolsas financeiras — divergência R$ -94,00 — sessões ainda em voo no momento da leitura. Fora da conta em dinheiro: R$ 607,80 pagos em chances e pacotes.",
       "observacoes": [
         "Segunda metade: Σ prêmios creditados nas carteiras = Σ premiado das bolsas.",
         "Diferença aqui é prêmio órfão — emitido, debitado da bolsa, nunca creditado a ninguém.",
@@ -120,7 +120,7 @@
       "tolerancia": "α = 0,01",
       "criterioVeredito": "aprovado se não rejeitar a hipótese de justiça",
       "veredito": "sem veredito",
-      "medido": "4.639 rodadas medidas. 0 acerto(s): 13,80% obs vs 59,65% teórico, 1 acerto(s): 12,46% obs vs 35,79% teórico, 2 acerto(s): 69,09% obs vs 4,47% teórico, 3 acerto(s): 4,66% obs vs 0,09% teórico. Dois acertos aparecem 15,4× mais que num sorteio independente de 3 entre 20 — a quase-vitória é a face mais comum do jogo. O resultado não sai de um sorteio independente: o servidor o deriva do prêmio. Sem o algoritmo declarado pelo produto não existe modelo nulo legítimo, então esta prova publica a medição e não recebe veredito binário.",
+      "medido": "5.284 rodadas medidas. 0 acerto(s): 19,78% obs vs 59,65% teórico, 1 acerto(s): 11,66% obs vs 35,79% teórico, 2 acerto(s): 63,82% obs vs 4,47% teórico, 3 acerto(s): 4,75% obs vs 0,09% teórico. Dois acertos aparecem 14,3× mais que num sorteio independente de 3 entre 20 — a quase-vitória é a face mais comum do jogo. O resultado não sai de um sorteio independente: o servidor o deriva do prêmio. Sem o algoritmo declarado pelo produto não existe modelo nulo legítimo, então esta prova publica a medição e não recebe veredito binário.",
       "observacoes": [
         "Cobre a acusação mais séria que se pode fazer a um jogo.",
         "Com ~250 mil rodadas, um viés de 1% já aparece."
@@ -136,7 +136,7 @@
       "tolerancia": "zero",
       "criterioVeredito": "aprovado só sem nenhum 5xx",
       "veredito": "falhou",
-      "medido": "13 onda(s), concorrência exercitada até 20 sessões simultâneas. 1 resposta(s) 5xx. Teto verde medido: 16 sessões. p95 de 788 ms.",
+      "medido": "57 onda(s), concorrência exercitada até 20 sessões simultâneas. 1 resposta(s) 5xx. Teto verde medido: 16 sessões. p95 de 753 ms.",
       "observacoes": [
         "A concorrência é adaptativa: sobe 4 sessões por onda enquanto está verde e recua 40% no primeiro 5xx. O teto não é assumido, é medido.",
         "No lote 9, 8 sessões simultâneas produziram 9 falhas em 4 pontos do fluxo."
@@ -152,7 +152,7 @@
       "tolerancia": "zero",
       "criterioVeredito": "aprovado com zero",
       "veredito": "sem veredito",
-      "medido": "R$ 651,00 debitados das bolsas financeiras, R$ 554,00 creditados nas carteiras desta rodada. Diferença: R$ 97,00. Prêmio sem dono.",
+      "medido": "R$ 770,00 debitados das bolsas financeiras, R$ 676,00 creditados nas carteiras desta rodada. Diferença: R$ 94,00. Prêmio sem dono.",
       "observacoes": []
     },
     {
@@ -165,7 +165,7 @@
       "tolerancia": "zero",
       "criterioVeredito": "aprovado com conjunto vazio",
       "veredito": "falhou",
-      "medido": "1.294 sorteios exibiram faixa que não creditou nada nesta rodada, somando R$ 28.932.900,00 mostrados e não pagos: R$ 50.000,00 × 522, R$ 10.000,00 × 213, R$ 5.000,00 × 83, R$ 1.000,00 × 267, R$ 100,00 × 209",
+      "medido": "1.569 sorteios exibiram faixa que não creditou nada nesta rodada, somando R$ 31.228.600,00 mostrados e não pagos: R$ 50.000,00 × 551, R$ 10.000,00 × 266, R$ 5.000,00 × 122, R$ 1.000,00 × 384, R$ 100,00 × 246",
       "observacoes": [
         "O backend chama essa lista de CHAMARIZ no próprio código.",
         "A prova mede quantas vezes o jogador viu um prêmio que não podia sair."
@@ -181,7 +181,7 @@
       "tolerancia": "zero",
       "criterioVeredito": "aprovado se nenhuma passar",
       "veredito": "aprovado",
-      "medido": "Limite configurado: R$ 1.000,00 por CPF por dia. Maior compra aceita nesta rodada: R$ 750,00 em 163 CPFs. 0 acima do teto. O servidor recusou as tentativas maiores com HTTP 400.",
+      "medido": "Limite configurado: R$ 1.000,00 por CPF por dia. Maior compra aceita nesta rodada: R$ 750,00 em 356 CPFs. 0 acima do teto. O servidor recusou as tentativas maiores com HTTP 400.",
       "observacoes": [
         "A cauda longa da distribuição chega a 45 unidades.",
         "No SKU de R$ 50 isso é R$ 2.250 numa tacada — 2,25× o limite.",
@@ -193,10 +193,10 @@
   "rodada": {
     "runDate": "2026-08-17",
     "inicio": "2026-08-17T11:47:53.717Z",
-    "arrecadadoCentavos": 1087250,
+    "arrecadadoCentavos": 1229500,
     "alvoCentavos": 50000000,
-    "sessoes": 163,
-    "rodadasJogadas": 4639,
+    "sessoes": 356,
+    "rodadasJogadas": 5284,
     "status": "em andamento"
   },
   "resumo": {
