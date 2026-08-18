@@ -36,3 +36,6 @@
 .tbl th,.tbl td{border:1px solid #2a3140;padding:7px 10px;text-align:left;vertical-align:top}
 .tbl th{background:#1b2130;font-weight:600}
 .tbl tbody tr:nth-child(even){background:rgba(255,255,255,.03)}
+
+details.hist{border:1px solid var(--border,#d8dee6);border-radius:8px;padding:.5rem .75rem;margin:.5rem 0}
+details.hist summary{cursor:pointer;font-weight:600}

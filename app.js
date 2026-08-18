@@ -51,5 +51,6 @@ const tab=t=>t&&t.linhas&&t.linhas.length?`<h3>${esc(t.titulo||'')}</h3><div cla
 let corpo='';
 if(Array.isArray(d.secoes)&&d.secoes.length){corpo=d.secoes.map(s=>bloco(s.titulo,s.itens)).join('');}
 else{corpo=bloco('Por que esta bloqueado',d.porQueBloqueado)+bloco('O que ja esta provado',d.oQueJaEstaProvado)+bloco('Condicoes para destravar',d.condicoesParaDestravar);}
-$('csBody').innerHTML=tab(d.tabela)+corpo+((d.geradoEmBrt||d.generatedAt)?`<p class="case-meta">Atualizado em ${esc(d.geradoEmBrt||d.generatedAt)}</p>`:'');}
+const hist=Array.isArray(d.historico)&&d.historico.length?`<h3>Historico de medicoes</h3>`+(d.notaHistorico?`<p class="case-meta">${esc(d.notaHistorico)}</p>`:'')+d.historico.map(h=>`<details class="hist"><summary>${esc(h.rotulo||h.id||'')}</summary><p class="case-meta">${esc(h.resumo||'')}</p>${tab(h.tabela)}</details>`).join(''):'';
+$('csBody').innerHTML=tab(d.tabela)+corpo+hist+((d.geradoEmBrt||d.generatedAt)?`<p class="case-meta">Atualizado em ${esc(d.geradoEmBrt||d.generatedAt)}</p>`:'');}
 fetch('data/caminho-sorte.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(renderCaminho).catch(()=>{$('csEstado').textContent='Simulação do Caminho da Sorte ainda não publicada.'});

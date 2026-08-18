@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-18T14:20:00Z",
-  "geradoEmBrt": "18/08/2026 11:20 BRT",
+  "generatedAt": "2026-08-18T15:00:00Z",
+  "geradoEmBrt": "18/08/2026 12:0x BRT",
   "titulo": "Simular Caminho da Sorte",
   "status": "linha de base medida",
   "estado": "Medicao real executada: 175 partidas (25 por dia, D1 a D7), zero erro de servidor, custo Pix R$ 0. Esta e a LINHA DE BASE ANTES DA SEMEADURA de estoque das bolsas. Nao e o resultado final do produto: e o retrato de como o Caminho da Sorte paga hoje, com as bolsas de R$ 100 para cima zeradas.",
@@ -25,13 +25,22 @@
       ]
     },
     {
-      "titulo": "O que esta em aberto",
+      "titulo": "Catalogo real configurado (lido na migration de seed)",
       "itens": [
-        "Nao esta separado se os valores altos de D7 nao existem no cadastro ou se existem e estao sendo apagados da tela por falta de estoque na bolsa. O codigo remove silenciosamente o premio sem unidade disponivel, entao o jogador nunca ve a diferenca.",
-        "O experimento que separa as duas hipoteses e barato e nao consome Pix: semear o estoque das bolsas de R$ 100 para cima e repetir esta mesma sonda. Se D7 passar a pagar acima de R$ 10,00, o problema era estoque. Se continuar com teto de R$ 10,00, o problema e cadastro do Caminho da Sorte.",
-        "O modo demonstracao segue ligado por decisao da equipe, entao o resultado observado ainda nao e o do motor real.",
-        "O calculo de valor esperado exibido na tela trata o Numero da Sorte como centavos e ignora a probabilidade de vitoria.",
-        "A funcao que escolhe a campanha vigente usa a campanha ativa mais recente, sem campo explicito. Com tres campanhas ativas ao mesmo tempo, e ela quem decide de qual bolsa o Caminho da Sorte drena."
+        "D1: nenhum premio cadastrado (so prob_vitoria = 0,60).",
+        "D2, D3, D4, D6: apenas premios do tipo numero_sorte. Nenhum valor em dinheiro cadastrado — por isso pagaram R$ 0,00 em 100 partidas.",
+        "D5 (Trilha Prata): dinheiro R$ 2,00 (peso 20), R$ 5,00 (peso 15), R$ 10,00 (peso 5, borda prob 0,5).",
+        "D7 (Trilha Dourada): dinheiro R$ 5,00 (peso 15), R$ 10,00 (peso 10), R$ 15,00 (peso 5), R$ 20,00 (peso 5, borda prob 0,3).",
+        "O teto real do D7 e R$ 20,00, nao R$ 1.000,00. O campo max_dinheiro = R$ 1.000,00 e apenas um limite superior de validacao, sem premio correspondente cadastrado.",
+        "R$ 15,00 e R$ 20,00 nao possuem bolsa correspondente. A reserva casa por valor exato, entao esses dois premios sao descartados em silencio: ~29% das vitorias do D7 nao pagam nada.",
+        "Correcao de registro: a mencao anterior a um premio orfao de R$ 50,00 estava incorreta. R$ 50,00 (5000 centavos) pertencia a pool legada hardcoded _sortearValorPremioLegado, removida na versao 0.1.122. Nao existe no catalogo atual."
+      ]
+    },
+    {
+      "titulo": "O que continua em aberto",
+      "itens": [
+        "Confirmar via Admin se o catalogo em HML e identico ao da migration de seed de 31/07 (endpoint de premios exige token admin).",
+        "Medir o efeito da borda: D5 tem R$ 10,00 com prob_borda 0,5 e o D7 tem R$ 20,00 com prob_borda 0,3; a amostra de 25 partidas por dia nao separa recusa de borda de ausencia de bolsa."
       ]
     }
   ],
@@ -97,5 +106,76 @@
     ]
   },
   "porQueBloqueado": [],
-  "condicoesParaDestravar": []
+  "condicoesParaDestravar": [],
+  "historico": [
+    {
+      "id": "cs-2026-08-18-baseline",
+      "rotulo": "18/08/2026 11:20 BRT — 175 partidas (pre-semeadura)",
+      "geradoEmBrt": "18/08/2026 11:20 BRT",
+      "partidas": 175,
+      "resumo": "D5 e D7 pagaram; D1/D2/D3/D4/D6 zero. Maior valor observado: R$ 10,00.",
+      "tabela": {
+        "titulo": "Linha de base por dia — 25 partidas cada, 18/08/2026 11:0x BRT",
+        "colunas": [
+          "Dia",
+          "Jogo",
+          "Partidas",
+          "Com dinheiro",
+          "Valores que sairam"
+        ],
+        "linhas": [
+          [
+            "D1",
+            "sem-jogo",
+            "25",
+            "0",
+            "—"
+          ],
+          [
+            "D2",
+            "encontre-o-balao",
+            "25",
+            "0",
+            "—"
+          ],
+          [
+            "D3",
+            "trilha-bronze",
+            "25",
+            "0",
+            "—"
+          ],
+          [
+            "D4",
+            "cai-cai",
+            "25",
+            "0",
+            "—"
+          ],
+          [
+            "D5",
+            "trilha-prata",
+            "25",
+            "12",
+            "R$ 2,00 (4x) · R$ 5,00 (8x)"
+          ],
+          [
+            "D6",
+            "cai-cai-turbinado",
+            "25",
+            "0",
+            "—"
+          ],
+          [
+            "D7",
+            "trilha-dourada",
+            "25",
+            "9",
+            "R$ 5,00 (6x) · R$ 10,00 (3x)"
+          ]
+        ]
+      }
+    }
+  ],
+  "notaHistorico": "Cada medicao do Caminho da Sorte fica arquivada aqui. Nada e sobrescrito: rodadas novas sao acrescentadas ao topo."
 }
