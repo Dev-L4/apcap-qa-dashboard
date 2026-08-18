@@ -1,22 +1,101 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-08-17T14:30:00Z",
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-18T14:20:00Z",
+  "geradoEmBrt": "18/08/2026 11:20 BRT",
   "titulo": "Simular Caminho da Sorte",
-  "status": "bloqueado",
-  "estado": "Nenhuma medicao publicada. A simulacao do Caminho da Sorte esta bloqueada por decisao de QA, e nao por falta de ferramenta: rodar agora produziria numeros que nao podem ser interpretados.",
-  "porQueBloqueado": [
-    "O premio do Caminho da Sorte e creditado direto na conta de premios, sem passar pela bolsa geral que financia a premiacao (caminho-sorte.service.ts, linhas 779-789). Enquanto isso nao for respondido pelos desenvolvedores, qualquer RTP medido aqui mede uma fonte de dinheiro diferente da do Estouro da Sorte, e os dois numeros nao sao comparaveis.",
-    "As dificuldades D3 a D7 nao tem premio configurado e caem numa pool legada de R$ 8,80 por rodada — a simulacao mediria a pool legada, nao o produto.",
-    "O modo demonstracao segue ligado por decisao da equipe, entao o resultado observado nao e o resultado do motor real.",
-    "O calculo de valor esperado exibido na tela trata o Numero da Sorte como centavos e ignora a probabilidade de vitoria, entao a referencia teorica contra a qual comparar tambem esta errada."
+  "status": "linha de base medida",
+  "estado": "Medicao real executada: 175 partidas (25 por dia, D1 a D7), zero erro de servidor, custo Pix R$ 0. Esta e a LINHA DE BASE ANTES DA SEMEADURA de estoque das bolsas. Nao e o resultado final do produto: e o retrato de como o Caminho da Sorte paga hoje, com as bolsas de R$ 100 para cima zeradas.",
+  "secoes": [
+    {
+      "titulo": "O que foi medido",
+      "itens": [
+        "175 partidas reais contra a HML, jogadas ponta a ponta pelo mesmo fluxo do jogador (desbloquear, iniciar, finalizar). Nenhum mock.",
+        "25 partidas por dia em cada uma das 7 dificuldades, com o modo demonstracao ligado, como esta em producao de homologacao hoje.",
+        "Registrado por partida: jogo sorteado, numero da sorte, todo premio em dinheiro prometido na tela e o credito efetivo na carteira."
+      ]
+    },
+    {
+      "titulo": "O que ficou provado",
+      "itens": [
+        "A correcao da bolsa funciona ponta a ponta. Uma partida prometeu R$ 5,00 na tela e a carteira saiu de premios 0 para premios 500. O credito agora sai da unidade reservada na bolsa geral, e nao do nada. O desvio CODE-CS-BOLSA-01 esta resolvido no ambiente, nao apenas no codigo.",
+        "Cinco dos sete dias nao pagam um centavo. D1, D2, D3, D4 e D6 entregaram apenas numero da sorte em 125 partidas seguidas. Nao e azar de amostra: e ausencia de premio em dinheiro pagavel. Com a pool legada de R$ 8,80 removida na versao 0.1.122, o que antes mascarava isso deixou de existir.",
+        "So D5 e D7 pagam dinheiro, e pagam pouco. D5 pagou em 12 de 25 partidas (R$ 2,00 e R$ 5,00). D7 pagou em 9 de 25 (R$ 5,00 e R$ 10,00).",
+        "A Trilha Dourada tem teto configurado de R$ 1.000,00 e nunca pagou acima de R$ 10,00 em 25 partidas.",
+        "A reserva de premio casa por valor exato. O valor de R$ 50,00 existe no catalogo do Caminho da Sorte e nao tem bolsa correspondente, entao nunca pode ser pago."
+      ]
+    },
+    {
+      "titulo": "O que esta em aberto",
+      "itens": [
+        "Nao esta separado se os valores altos de D7 nao existem no cadastro ou se existem e estao sendo apagados da tela por falta de estoque na bolsa. O codigo remove silenciosamente o premio sem unidade disponivel, entao o jogador nunca ve a diferenca.",
+        "O experimento que separa as duas hipoteses e barato e nao consome Pix: semear o estoque das bolsas de R$ 100 para cima e repetir esta mesma sonda. Se D7 passar a pagar acima de R$ 10,00, o problema era estoque. Se continuar com teto de R$ 10,00, o problema e cadastro do Caminho da Sorte.",
+        "O modo demonstracao segue ligado por decisao da equipe, entao o resultado observado ainda nao e o do motor real.",
+        "O calculo de valor esperado exibido na tela trata o Numero da Sorte como centavos e ignora a probabilidade de vitoria.",
+        "A funcao que escolhe a campanha vigente usa a campanha ativa mais recente, sem campo explicito. Com tres campanhas ativas ao mesmo tempo, e ela quem decide de qual bolsa o Caminho da Sorte drena."
+      ]
+    }
   ],
-  "oQueJaEstaProvado": [
-    "Os quatro achados acima vem de leitura do codigo publicado, nao de suposicao, e estao registrados no catalogo com veredito proprio quando formalizados.",
-    "A aba Prova do Motor cobre o Estouro da Sorte, que consome a bolsa geral corretamente — e o contraste que expoe o desvio."
-  ],
-  "condicoesParaDestravar": [
-    "Resposta dos desenvolvedores sobre a bolsa geral: o Caminho da Sorte deve ou nao consumir a mesma bolsa.",
-    "Decisao sobre desligar o modo demonstracao para medir o motor real.",
-    "Premio configurado para D3 a D7, ou confirmacao de que a pool legada e o comportamento pretendido."
-  ]
+  "tabela": {
+    "titulo": "Linha de base por dia — 25 partidas cada, 18/08/2026 11:0x BRT",
+    "colunas": [
+      "Dia",
+      "Jogo",
+      "Partidas",
+      "Com dinheiro",
+      "Valores que sairam"
+    ],
+    "linhas": [
+      [
+        "D1",
+        "sem-jogo",
+        "25",
+        "0",
+        "—"
+      ],
+      [
+        "D2",
+        "encontre-o-balao",
+        "25",
+        "0",
+        "—"
+      ],
+      [
+        "D3",
+        "trilha-bronze",
+        "25",
+        "0",
+        "—"
+      ],
+      [
+        "D4",
+        "cai-cai",
+        "25",
+        "0",
+        "—"
+      ],
+      [
+        "D5",
+        "trilha-prata",
+        "25",
+        "12",
+        "R$ 2,00 (4x) · R$ 5,00 (8x)"
+      ],
+      [
+        "D6",
+        "cai-cai-turbinado",
+        "25",
+        "0",
+        "—"
+      ],
+      [
+        "D7",
+        "trilha-dourada",
+        "25",
+        "9",
+        "R$ 5,00 (6x) · R$ 10,00 (3x)"
+      ]
+    ]
+  },
+  "porQueBloqueado": [],
+  "condicoesParaDestravar": []
 }

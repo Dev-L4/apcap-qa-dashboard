@@ -44,8 +44,12 @@ function provaResumo(d){const r=d.resumo,o=d.rodada;if(!r&&!o)return '';const mo
 function renderProva(data){data=data||{};$('provaIntro').innerHTML=esc(data.introducao||'')+(data.congelado&&data.notaCongelamento?`<br><br><b>Medição congelada.</b> ${esc(data.notaCongelamento)}`:'');$('provaCards').innerHTML=provaResumo(data)+(data.provas||[]).map(provaCard).join('')||'<div class="empty">Nenhuma prova publicada.</div>';$('provaRegras').innerHTML=(data.regras||[]).length?`<h3>Regras da prova</h3><ol>${data.regras.map(r=>`<li>${esc(r)}</li>`).join('')}</ol>`:''}
 fetch('data/prova.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(renderProva).catch(()=>{$('provaCards').innerHTML='<div class="empty">Prova do Motor ainda não publicada.</div>'});
 
-function renderCaminho(d){d=d||{};const badge=d.status==='bloqueado'?'<span class="badge failed">bloqueado</span>':'<span class="badge">'+esc(d.status||'')+'</span>';
+function renderCaminho(d){d=d||{};const st=d.status||'';const cls=st==='bloqueado'?'badge failed':'badge';const badge=`<span class="${cls}">${esc(st)}</span>`;
 $('csEstado').innerHTML=badge+' '+esc(d.estado||'');
 const bloco=(t,l)=>l&&l.length?`<h3>${esc(t)}</h3><ul>${l.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'';
-$('csBody').innerHTML=bloco('Por que esta bloqueado',d.porQueBloqueado)+bloco('O que ja esta provado',d.oQueJaEstaProvado)+bloco('Condicoes para destravar',d.condicoesParaDestravar)+(d.generatedAt?`<p class="case-meta">Atualizado em ${esc(d.generatedAt)}</p>`:'');}
+const tab=t=>t&&t.linhas&&t.linhas.length?`<h3>${esc(t.titulo||'')}</h3><div class="tbl-wrap"><table class="tbl"><thead><tr>${(t.colunas||[]).map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${t.linhas.map(r=>`<tr>${r.map(c=>`<td>${esc(String(c))}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'';
+let corpo='';
+if(Array.isArray(d.secoes)&&d.secoes.length){corpo=d.secoes.map(s=>bloco(s.titulo,s.itens)).join('');}
+else{corpo=bloco('Por que esta bloqueado',d.porQueBloqueado)+bloco('O que ja esta provado',d.oQueJaEstaProvado)+bloco('Condicoes para destravar',d.condicoesParaDestravar);}
+$('csBody').innerHTML=tab(d.tabela)+corpo+((d.geradoEmBrt||d.generatedAt)?`<p class="case-meta">Atualizado em ${esc(d.geradoEmBrt||d.generatedAt)}</p>`:'');}
 fetch('data/caminho-sorte.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(renderCaminho).catch(()=>{$('csEstado').textContent='Simulação do Caminho da Sorte ainda não publicada.'});
