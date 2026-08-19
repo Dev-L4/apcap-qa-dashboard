@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <base href="/apcap-qa-dashboard/">
+  <title>APCAP · Catálogo e resultados de QA</title>
+  <link rel="stylesheet" href="styles.css?v=resp-v8">
+</head>
+<body>
+<main>
+  <header>
+    <div><p class="eyebrow">QA APCAP · HML</p><h1>Catálogo completo e resultados</h1><p id="meta">Carregando dados sanitizados…</p></div>
+    <nav class="tabs" aria-label="Seções"><button class="tab active" data-view="catalog">Catálogo completo</button><button class="tab" data-view="results">Resultados executados</button><button class="tab" data-view="simulation">Simular Estouro da Sorte</button><button class="tab" data-view="prova">Prova do Motor</button><button class="tab" data-view="caminho">Simular Caminho da Sorte</button></nav>
+  </header>
+
+  <section class="notice" id="scopeNotice"><strong>Carregando o resumo do catálogo…</strong> Os números desta página são lidos da mesma fonte sanitizada e nunca escritos à mão.</section>
+
+  <section id="catalogView">
+    <section class="stats" id="catalogStats" aria-label="Resumo do catálogo"></section>
+    <section class="toolbar">
+      <label class="search"><span>Buscar</span><input id="search" type="search" placeholder="ID, título ou área"></label>
+      <label><span>Status</span><select id="status"><option value="">Todos</option></select></label>
+      <label><span>Canal</span><select id="channel"><option value="">Todos</option></select></label>
+      <label><span>Prioridade</span><select id="priority"><option value="">Todas</option></select></label>
+      <label><span>Escopo</span><select id="scope"><option value="">Todos</option></select></label>
+      <button id="selectVisible" class="button secondary">Selecionar visíveis</button>
+    </section>
+    <div class="list-meta"><b id="catalogCount">—</b><span>Abra cada caso para ver pré-condições, perfis e notas.</span></div>
+    <section id="catalogRows" class="case-grid"></section>
+  </section>
+
+  <section id="resultsView" hidden>
+    <div class="list-meta" id="runSelectorWrap"><label class="search"><span>Rodada</span><select id="runSelect"></select></label><span id="runMeta"></span></div>
+    <div id="runBlock" class="notice blocked-notice" hidden></div>
+    <section class="stats" id="resultStats" aria-label="Resumo de resultados"></section>
+    <section class="table-wrap" id="resultTableWrap"><table><thead><tr><th>ID / caso</th><th>Execução</th><th>Veredito</th><th>Perfis</th><th>Evidências</th></tr></thead><tbody id="resultRows"><tr><td colspan="5">Carregando…</td></tr></tbody></table></section>
+  </section>
+
+  <section id="simulationView" hidden>
+    <div class="list-meta run-picker"><label class="search"><span>Rodada</span><select id="simRunSelect"></select></label><span id="simRunMeta" class="case-meta"></span></div>
+    <section class="stats" id="simStats" aria-label="Resumo da simulação"></section>
+    <div id="simBody"><div class="empty">Carregando simulação…</div></div>
+  </section>
+
+  <section id="provaView" hidden>
+    <div class="list-meta run-picker"><label class="search"><span>Rodada</span><select id="provaRunSelect"></select></label><span id="provaRunMeta" class="case-meta"></span></div>
+    <p class="lead-text" id="provaIntro"></p>
+    <section id="provaCards" class="prova-grid"></section>
+    <section class="notice" id="provaRegras"></section>
+  </section>
+
+  <section id="caminhoView" hidden>
+    <h2>Simular Caminho da Sorte</h2>
+    <div class="list-meta run-picker"><label class="search"><span>Medição</span><select id="csRunSelect"></select></label><span id="csRunMeta" class="case-meta"></span></div>
+    <p class="lead" id="csEstado">Carregando…</p>
+    <div id="csBody"></div>
+  </section>
+
+  <aside id="selection" class="selection" hidden><div><b id="selectionCount"></b><small>Copie os IDs e envie na conversa com o agente para solicitar preparação ou execução.</small></div><button id="clear" class="button secondary">Limpar</button><button id="copy" class="button primary">Copiar solicitação</button></aside>
+  <div id="toast" class="toast" hidden></div>
+  <footer>A execução permanece privada. Esta página pública contém apenas catálogo, vereditos e evidências sanitizadas e não deve ser indexada.</footer>
+</main>
+<script src="app.js?v=resp-v8"></script>
+</body></html>
