@@ -1401,7 +1401,7 @@
      "title": "Caminho da Sorte credita premio sem bolsa, sem RTP e sem teto",
      "execution": "revisao-de-codigo",
      "autonomous": true,
-     "status": "failed",
+     "status": "retired",
      "note": "O Estouro debita a bolsa da campanha na emissao, com trava e teste de solvencia. O Caminho da Sorte cria movimentoCarteira bucket PREMIOS direto, sem campanha, sem bolsa, sem RTP e sem teto. Custo = jogadores x EV do dia, sem freio. Com a pool legada ativa nos dias vazios, sao R$ 8,80 por rodada por jogador saindo do caixa sem provisao.",
      "projects": [
       "revisao-de-codigo"
@@ -2010,7 +2010,7 @@
      "title": "Saldo da bolsa não trava o pagamento: motor paga 2,5× o caixa disponível",
      "execution": "real-hml",
      "autonomous": true,
-     "status": "failed",
+     "status": "retired",
      "note": "Quatro faixas altas com caixa para um prêmio cada emitiram 8, 7, 11 e 2 prêmios — R$ 2.660.000 saindo de R$ 1.065.000 provisionados. Nenhuma bolsa terminou negativa: todas pararam em cerca de R$ 150.",
      "projects": [
       "api-hml"
@@ -2045,7 +2045,7 @@
      "title": "RTP realizado de 34.046% contra 55% declarados, sem gargalo de estoque nem bolsa semeada",
      "execution": "real-hml",
      "autonomous": true,
-     "status": "failed",
+     "status": "retired",
      "note": "R$ 7.880,00 em compras produziram R$ 2.682.823,00 creditados. Primeira medição feita depois de calibrar as bolsas e repor o estoque: as duas explicações anteriores caíram.",
      "projects": [
       "api-hml"

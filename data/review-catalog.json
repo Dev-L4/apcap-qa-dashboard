@@ -1,8 +1,8 @@
 {
  "schemaVersion": 7,
- "generatedAt": "2026-08-19T12:40:00-03:00",
+ "generatedAt": "2026-08-19T17:19:45Z",
  "policy": {
-  "scope": "O catalogo mapeia 219 casos, sendo 12 acrescentados em 19/08/2026 com os achados das rodadas 11 e 12. Recebem veredito apenas os executados do inicio ao fim contra o HML real. 63 estao na fila autonoma apos a reclassificacao de 17/08/2026. 21 sao decisoes humanas e saem da contagem de QA. 11 foram aposentados por dependerem de mock. 15 seguem bloqueados por acesso de BI ou hardware fisico.",
+  "scope": "O catalogo mapeia 225 casos, sendo 18 acrescentados em 19/08/2026 com os achados das rodadas 11 e 12 e da revisão de rumo. Recebem veredito apenas os executados do inicio ao fim contra o HML real. 63 estao na fila autonoma apos a reclassificacao de 17/08/2026. 22 sao decisoes humanas e saem da contagem de QA. 14 foram aposentados por dependerem de mock ou por medição invalidada. 15 seguem bloqueados por acesso de BI ou hardware fisico.",
   "evidence": "Screenshots cruas, sem mascaramento, na resolucao real da viewport. Texto nao registra dados sensiveis.",
   "verdicts": "Somente aprovado ou falhou contam como veredito. Bloqueado significa execucao interrompida por limite tecnico declarado.",
   "codeReview": "Casos com canal \"Codigo-fonte (backend apcapv5)\" tem veredito por leitura do codigo publicado no repositorio, com arquivo e trecho citados. Nao substituem execucao no HML: quando o efeito for observavel na aplicacao, o caso ganha screenshot correspondente.",
@@ -19,18 +19,18 @@
   "blocked_external": "Bloqueado por acesso externo: falta credencial de BI ou hardware fisico. Nao depende de esforco do agente."
  },
  "summary": {
-  "total": 219,
+  "total": 225,
   "by_status": {
-   "failed": 50,
+   "failed": 52,
    "approved": 59,
    "queued": 63,
    "blocked_external": 15,
-   "retired": 11,
-   "decision_pending": 21
+   "retired": 14,
+   "decision_pending": 22
   },
-  "executed": 109,
-  "verdicts": 109,
-  "screenshots": 209,
+  "executed": 111,
+  "verdicts": 111,
+  "screenshots": 201,
   "by_area": {
    "Navegação autenticada": 1,
    "Compliance": 4,
@@ -41,7 +41,7 @@
    "Compra": 9,
    "Landing": 3,
    "Cartão": 1,
-   "Caminho da Sorte": 16,
+   "Caminho da Sorte": 20,
    "Pix": 11,
    "Perfil e LGPD": 1,
    "PWA": 5,
@@ -107,15 +107,16 @@
    "Carga e concorrência": 1,
    "Disponibilidade": 1,
    "Observabilidade": 1,
-   "Cálculo e decisão de negócio": 1
+   "Cálculo e decisão de negócio": 1,
+   "Campanha e bolsas": 2
   },
   "approved": 59,
-  "failed": 50,
+  "failed": 52,
   "executedNota": "Executado = caso levado do inicio ao fim contra o HML real (ou provado por leitura do codigo publicado) e por isso com veredito. Numero contado dos proprios casos, nunca escrito a mao.",
   "by_scope": {
-   "autonomo": 172,
+   "autonomo": 177,
    "fora_do_escopo": 26,
-   "decisao": 21
+   "decisao": 22
   },
   "queued": 63,
   "pixEstimadoFila": 160
@@ -4837,19 +4838,38 @@
    "lastRunAt": "2026-08-15",
    "batch": "codigo-01",
    "id": "CODE-PATH-BOLSA-01",
-   "title": "Caminho da Sorte credita premio sem bolsa, sem RTP e sem teto",
+   "title": "CORRIGIDO EM 0.1.122: o Caminho da Sorte passa pela bolsa geral",
    "priority": "P1",
    "area": "Caminho da Sorte",
-   "status": "failed",
+   "status": "retired",
    "preconditions": [
     "caminho-sorte.service.ts (finalizarEmissao)",
     "campanha/services/emitir-premiacoes.service.ts"
    ],
-   "reason": "O Estouro debita a bolsa da campanha na emissao, com trava e teste de solvencia. O Caminho da Sorte cria movimentoCarteira bucket PREMIOS direto, sem campanha, sem bolsa, sem RTP e sem teto. Custo = jogadores x EV do dia, sem freio.",
+   "reason": "A versao publicada afirmava que o Caminho da Sorte creditava premio por fora da bolsa, sem RTP e sem teto. Isso nao vale para o codigo em main. ServicoObterPremio.reservarFinanceiroParaEmissao (obter-premio.service.ts:171-179) exige premio FINANCEIRO da campanha com valor EXATAMENTE igual, em centavos, ao premio sorteado no jogo, e consome uma unidade de estoque previamente RESERVADO (:352-358). Sem lastro nao ha credito. O achado esta encerrado como corrigido.",
    "notes": [
-    "Com a pool legada ativa nos dias vazios, sao R$ 8,80 por rodada por jogador saindo do caixa sem provisao.",
-    "Trechos citados: caminho-sorte.service.ts (finalizarEmissao, movimentoCarteira CREDITO_PREMIO) · emitir-premiacoes.service.ts (filtro de solvencia)"
-   ]
+    "Retratacao explicita. O defeito remanescente do Caminho da Sorte nao e ausencia de integracao: ver CS-PAGAMENTO-01."
+   ],
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "Corrigido na versao 0.1.122.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/obter-premio.service.ts",
+      "symbol": "reservarFinanceiroParaEmissao",
+      "lines": "171-179, 352-358",
+      "what": "casamento por valor exato com bolsa FINANCEIRA e consumo de unidade de estoque"
+     }
+    ],
+    "endpoints": [
+     "POST /v1/caminho-sorte/emissao/{id}/iniciar"
+    ],
+    "adminScreens": [],
+    "repro": [
+     "Sortear premio de dinheiro cujo valor nao exista como bolsa FINANCEIRA: nao ha credito."
+    ]
+   }
   },
   {
    "channel": "Código-fonte (backend apcapv5)",
@@ -5552,9 +5572,9 @@
   {
    "id": "SIM-L12-BOLSA-01",
    "priority": "P0",
-   "status": "failed",
+   "status": "retired",
    "area": "Premiação e RTP",
-   "title": "Saldo da bolsa não trava o pagamento: motor paga 2,5× o caixa e o saldo é reposto depois",
+   "title": "MEDICAO INVALIDADA: o saldo da bolsa TRAVA o pagamento; o excesso da rodada 12 veio de aporte manual de QA",
    "channel": "Execução real na API HML + leitura do Admin autenticado",
    "execution_profiles": [
     "api-hml"
@@ -5564,7 +5584,7 @@
     "Quatro faixas altas com caixa para exatamente um prêmio cada",
     "Estoque reposto em 19/08 00:05 BRT para que a unidade não fosse limitante"
    ],
-   "reason": "Cada faixa alta entrou na rodada 12 com saldo para um único prêmio: R$ 5.000, R$ 10.000, R$ 50.000 e R$ 1.000.000. O motor emitiu 8, 7, 11 e 2 prêmios respectivamente, R$ 2.660.000 pagos a partir de bolsas que somavam R$ 1.065.000. Nenhuma das quatro terminou negativa: todas pararam em cerca de R$ 150, como se o saldo fosse recomposto depois do pagamento. Com o estoque já reposto, não há explicação de unidade nem de semeadura: o caixa da bolsa não é uma trava de emissão. É o mecanismo que deveria limitar a exposição financeira da campanha e ele não limita nada.",
+   "reason": "Auditoria das 14 bolsas da INVERNO2026 em 19/08 16:33 BRT: ZERO bolsas com saldo negativo. A trava de solvencia funciona. O que produziu R$ 2,66 mi pagos contra R$ 92.512,50 de receita real nao foi falha de controle: foram aportes manuais feitos pelo proprio QA na calibragem de 18/08, que injetaram R$ 14.355.945,01 nas bolsas (inclusive R$ 12.000.142,57 na bolsa do premio de R$ 1.000.000). O motor pagou dentro do lastro que o QA havia colocado. Tambem se confirmou que campanha.rtp E aplicado: distribuir-arrecadacao.service.ts:28 calcula retornavel = round(bruto * rtp / 100) e so essa parcela vai para as bolsas, ou seja o RTP e imposto no funding. A afirmacao anterior de que o RTP nao era aplicado em nenhum ponto estava ERRADA e fica retratada aqui.",
    "expected": "A bolsa só emite prêmio quando tem saldo para ele; sem saldo, o prêmio não sai e a exposição da campanha fica limitada ao que foi provisionado.",
    "evidence": [
     "Saldo pré-rodada das 4 faixas altas: R$ 1.065.000 (1 prêmio cada) — sim/CALIBRAGEM-APLICADA.json",
@@ -5578,35 +5598,47 @@
    "batch": "lote12",
    "fix": {
     "repo": "backend-l4/apcapv5",
-    "rootCause": "não localizada com certeza: o código de solvência lido (emitir-premiacoes.service.ts) deveria impedir o comportamento observado; a divergência de magnitude sugere causa fora do que foi lido estaticamente (histórico de ajustes manuais, fila Redis pré-existente de rodadas anteriores, ou versão diferente da rodando em HML).",
-    "confidence": "media",
+    "rootCause": "Artefato de ambiente de QA, nao defeito de produto. Controle de solvencia integro.",
+    "confidence": "alta",
     "files": [
      {
+      "path": "apps/apcap-api/src/modules/campanha/services/distribuir-arrecadacao.service.ts",
+      "symbol": "distribuirArrecadacao",
+      "lines": "22-30",
+      "what": "retornavel = round(bruto * campanha.rtp / 100) e distribuirMaiorResto pela proporcao de cada bolsa: o RTP e imposto no momento do funding"
+     },
+     {
       "path": "apps/apcap-api/src/modules/campanha/services/emitir-premiacoes.service.ts",
-      "symbol": "ServicoEmitirPremiacoes.emitirParaCampanha",
-      "lines": "70-146",
-      "what": "Mecanismo de emissão lido linha a linha: saldo = arrecadacao - totalPremiado é recalculado a cada chamada a partir do Postgres, sob advisory lock por campanha, e decrementado monotonicamente dentro do laço — pela leitura estática do código, uma bolsa não deveria conseguir emitir além do que arrecadou. Não encontrei, na versão atual do `main`, o mecanismo que produziria uma emissão de 2,5x o caixa da bolsa; instrumentar aqui (log de saldo antes/depois de cada ciclo) é o próximo passo para achar a causa real."
+      "symbol": "emitirPremiacoes",
+      "lines": "88, 103-159",
+      "what": "saldo = arrecadacao - totalPremiado por bolsa; premio so e escolhido se o saldo comportar o custo, com debito na mesma transacao"
      },
      {
       "path": "apps/apcap-api/src/modules/campanha/services/ajustar-arrecadacao-bolsa.service.ts",
-      "symbol": "ServicoAjustarArrecadacaoBolsa.ajustar",
-      "lines": "20-60",
-      "what": "Ponto de aporte manual (calibragem) de saldo na bolsa; verificar se a calibragem de 18/08 23:44 foi aplicada mais de uma vez (idempotência do endpoint de ajuste) — isso explicaria saldo inicial maior do que o registrado na evidência."
+      "symbol": "ajustarArrecadacaoBolsa",
+      "lines": "10-18, 38-50",
+      "what": "rota de aporte manual usada pelo QA em 18/08; foi ela que elevou o lastro a R$ 14,36 mi"
      }
     ],
     "endpoints": [
-     "POST /v1/campanhas/:id/bolsas/:idBolsa/arrecadacao (ajuste manual)"
+     "GET /v1/campanhas/{id}",
+     "POST /v1/campanhas/{id}/bolsas/{idBolsa}/arrecadacao"
     ],
     "adminScreens": [
-     "Editor de bolsas da campanha (bolsas-editor.tsx)"
+     "Campanhas > INVERNO2026 > Bolsas"
     ],
     "repro": [
-     "Calibrar 4 bolsas de faixa alta para o saldo exato de 1 prêmio cada.",
-     "Repor estoque das faixas envolvidas.",
-     "Rodar uma sessão de simulação disparando compras e resgates de prêmio.",
-     "Comparar total emitido por faixa com o saldo pré-rodada de cada bolsa."
+     "GET /v1/campanhas/019ef210-0002-7000-8000-000000000002 autenticado como admin.",
+     "Para cada bolsa calcular arrecadacao - totalPremiado: nenhuma fica negativa.",
+     "Somar arrecadacao das 14 bolsas: R$ 14.355.945,01 contra arrecadacao da campanha de R$ 92.512,50 -- a diferenca e aporte manual, nao venda."
     ]
-   }
+   },
+   "notes": [
+    "Retratacao explicita: a versao publicada deste caso dizia que o saldo da bolsa nao travava o pagamento e que o RTP nao era aplicado. As duas afirmacoes estao incorretas contra o codigo em main.",
+    "O defeito real que sobra desta familia nao e de teto, e de distribuicao: ver SIM-L12-ODDS-02.",
+    "Vetor de governanca aberto pela mesma auditoria: ver CAMP-APORTE-01.",
+    "Precisa ser remedido na base limpa de R$ 300.000 antes de qualquer conclusao sobre exposicao financeira."
+   ]
   },
   {
    "id": "SIM-L12-ODDS-02",
@@ -5660,9 +5692,9 @@
   {
    "id": "SIM-L12-RTP-03",
    "priority": "P0",
-   "status": "failed",
+   "status": "retired",
    "area": "Premiação e RTP",
-   "title": "RTP realizado de 34.046% contra 55% declarados, já sem gargalo de estoque nem bolsa semeada",
+   "title": "MEDICAO INVALIDADA: RTP realizado de 34% nao e comparavel a 55% em bolsa semeada a mao",
    "channel": "Execução real na API HML",
    "execution_profiles": [
     "api-hml"
@@ -5671,7 +5703,7 @@
     "120 contas sintéticas novas",
     "558 títulos comprados e liquidados por Pix real no sandbox"
    ],
-   "reason": "R$ 7.880,00 pagos em compras produziram R$ 2.682.823,00 creditados nas carteiras: RTP realizado de 34.046% contra 55% declarados na campanha, um fator de 619×. É a terceira medição consecutiva fora da faixa (lote 9: 9,81%; rodada 11: 108.599%), e a primeira em que as duas explicações anteriores foram removidas antes de rodar — bolsas recalibradas e estoque reposto. O desvio, portanto, não vem de provisionamento nem de empoçamento: vem da mecânica de sorteio e de emissão (ver SIM-L12-ODDS-02 e SIM-L12-BOLSA-01).",
+   "reason": "O RTP de 55% da campanha governa quanto de cada compra ENTRA nas bolsas (distribuir-arrecadacao.service.ts:28), nao quanto sai em premios num intervalo curto. Na rodada 12 as bolsas continham R$ 14,36 mi de aporte manual de QA contra R$ 92,5 mil de receita real, de modo que a razao entre pago e arrecadado da campanha nao mede o RTP do produto. A medicao precisa ser repetida numa base limpa, com lastro igual a 55% da receita simulada e sem nenhum aporte fora de venda.",
    "expected": "RTP realizado converge para os 55% declarados na campanha, dentro da tolerância da amostra.",
    "evidence": [
     "Pago em compras: R$ 7.880,00 · creditado: R$ 2.682.823,00",
@@ -5684,30 +5716,36 @@
    "batch": "lote12",
    "fix": {
     "repo": "backend-l4/apcapv5",
-    "rootCause": "Consequência agregada da seleção uniforme entre bolsas (SIM-L12-ODDS-02) somada ao mecanismo de emissão ainda não totalmente explicado (SIM-L12-BOLSA-01).",
-    "confidence": "media",
+    "rootCause": "Base de comparacao invalida: lastro artificial.",
+    "confidence": "alta",
     "files": [
      {
-      "path": "apps/apcap-api/src/modules/campanha/services/emitir-premiacoes.service.ts",
-      "symbol": "ServicoEmitirPremiacoes.emitirParaCampanha",
-      "lines": "103-111",
-      "what": "Mesma causa listada em SIM-L12-ODDS-02: sorteio uniforme entre bolsas solventes faz faixas caras saírem cedo demais, inflando o RTP realizado."
+      "path": "apps/apcap-api/src/modules/campanha/services/distribuir-arrecadacao.service.ts",
+      "symbol": "distribuirArrecadacao",
+      "lines": "22-30",
+      "what": "define o RTP como fracao do bruto que vira lastro, nao como alvo de payout observado"
      },
      {
-      "path": "apps/apcap-api/src/modules/campanha/services/emitir-premiacoes.service.ts",
-      "symbol": "ServicoEmitirPremiacoes.emitirParaCampanha (laço de emissão)",
-      "lines": "97-146",
-      "what": "Ver SIM-L12-BOLSA-01: parte do RTP inflado pode vir do mesmo mecanismo de saldo/emissão ainda não totalmente explicado pela leitura estática."
+      "path": "apps/apcap-api/src/modules/campanha/services/flush-bolsas.service.ts",
+      "symbol": "flushBolsas",
+      "lines": "35-57",
+      "what": "campanha.arrecadacao recebe o bruto e as bolsas recebem apenas o retornavel"
      }
     ],
-    "endpoints": [],
-    "adminScreens": [],
+    "endpoints": [
+     "GET /v1/campanhas/{id}"
+    ],
+    "adminScreens": [
+     "Campanhas > INVERNO2026"
+    ],
     "repro": [
-     "Rodar uma coorte com bolsas calibradas e estoque reposto (isolando as duas causas anteriores).",
-     "Registrar total pago em compras e total creditado nas carteiras ao final da rodada.",
-     "Calcular RTP realizado = creditado / pago e comparar com o RTP declarado na campanha."
+     "Comparar soma de bolsas.arrecadacao com campanha.arrecadacao * rtp: a divergencia revela o aporte manual."
     ]
-   }
+   },
+   "notes": [
+    "Nao ha evidencia, nesta rodada, de RTP fora do configurado. Ha evidencia de ambiente contaminado.",
+    "Remedir na base limpa de R$ 300.000 (55% = R$ 165.000 nas bolsas, 30% do bruto em dinheiro e 25% em chances/pacotes)."
+   ]
   },
   {
    "id": "SIM-L12-CONTAB-04",
@@ -5872,7 +5910,7 @@
    "priority": "P0",
    "status": "failed",
    "area": "Caminho da Sorte",
-   "title": "Caminho da Sorte declara vitória e paga R$ 0,00: 232 emissões em duas amostras independentes",
+   "title": "Caminho da Sorte declara vitoria e paga R$ 0,00 -- causa corrigida: D1 e sem-jogo e 17,6% das vitorias em trilha saem sem lastro",
    "channel": "Execução real na API HML",
    "execution_profiles": [
     "api-hml"
@@ -5882,7 +5920,7 @@
     "Opção C de parametrização aplicada e confirmada no servidor em 18/08 22:18 BRT",
     "Modo demonstração ligado por decisão do time"
    ],
-   "reason": "232 emissões em duas rodadas independentes (112 na rodada 11 e 120 na rodada 12) terminaram com venceu=true e valor creditado R$ 0,00. A leitura do código no main atual identificou a causa: reservarFinanceiroParaEmissao exige casamento por valor EXATO em centavos entre o prêmio sorteado no Caminho da Sorte e uma bolsa FINANCEIRA da campanha. Os prêmios do jogo têm valores fracionários (R$ 0,33, R$ 0,45, R$ 1,26) para os quais não existe bolsa cadastrada, então a reserva nunca acha lastro e iniciarEmissao aplica semDinheiro(estado) sem alterar o campo venceu. O status preso em INICIADA é um segundo defeito: finalizarEmissao devolve o objeto lido antes da transição, mesmo quando a finalização ocorre.",
+   "reason": "As 232 emissoes com venceu=true e credito R$ 0,00 das rodadas 11 e 12 tem duas causas, e nenhuma delas e a que este caso publicava antes. Primeira: todas aquelas contas estavam na casa D1, e D1 esta configurado com jogo sem-jogo, que por desenho devolve valorPremio 0 (caminho-sorte.service.ts:962-963); com o modo demonstracao ligado (permiteJogarQualquerDia=true) nenhuma conta nova saia de D1, de modo que a amostra inteira era de dias que nao pagam. Segunda, medida em 19/08 com o demo desligado e 41 contas sinteticas percorrendo D1 a D7: 17,6% das vitorias em trilha terminam com venceu=true, idPremioEstoque nulo e credito R$ 0,00, sem qualquer aviso ao jogador -- a reserva falha e o estado segue marcado como vitoria.",
    "expected": "Vitória declarada no Caminho da Sorte credita o valor correspondente na carteira e a emissão fecha.",
    "evidence": [
     "Rodada 11: 112 emissões, todas venceu=true com R$ 0,00, estado INICIADA",
@@ -5894,44 +5932,47 @@
    "lastRunAt": "2026-08-19",
    "fix": {
     "repo": "backend-l4/apcapv5",
-    "rootCause": "reservarFinanceiroParaEmissao casa por valor EXATO com uma bolsa de campanha; como nenhuma bolsa FINANCEIRA existe com os valores fracionários do Caminho da Sorte, a reserva nunca encontra lastro e a partida vira semDinheiro sem que 'venceu' mude — agravado por finalizarEmissao devolver o estado pré-transição na resposta.",
+    "rootCause": "Vitoria e lastro sao decididos em momentos separados e o estado nao volta atras quando a reserva falha; alem disso o dia D1 esta configurado com um jogo que nao paga.",
     "confidence": "alta",
     "files": [
      {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "montarEstadoSemJogo",
+      "lines": "962-963",
+      "what": "D1 com jogo sem-jogo devolve valorPremio 0 por desenho"
+     },
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "iniciarEmissao / semDinheiro",
+      "lines": "436-452",
+      "what": "quando a reserva nao acha lastro o valor e zerado mas venceu permanece true"
+     },
+     {
       "path": "apps/apcap-api/src/modules/campanha/services/obter-premio.service.ts",
-      "symbol": "ServicoObterPremio.reservarFinanceiroParaEmissao / resgatar",
-      "lines": "142-163, 262-306",
-      "what": "A reserva exige casamento por VALOR EXATO entre o prêmio sorteado no Caminho da Sorte (centavos como R$0,33) e uma bolsa cujo `Premio.valor` (catálogo de campanha, tipicamente R$2, R$5, R$10, R$1.000...) seja igual; sem uma bolsa FINANCEIRA cadastrada com esse valor específico, `reservar` nunca encontra correspondência e a reserva sempre devolve null — comentário do próprio código admite a consequência: 'valor sem bolsa correspondente PARA de pagar'."
-     },
-     {
-      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
-      "symbol": "CaminhoSorteService.iniciarEmissao",
-      "lines": "811-835",
-      "what": "Quando `reservarFinanceiroParaEmissao` devolve null (sem lastro), `estado = semDinheiro(estado)` zera o dinheiro da partida mas não altera o campo `venceu` — o jogo continua declarando vitória. É aqui, ou na função `semDinheiro`, que o contrato precisa mudar (não anunciar vitória em dinheiro sem lastro, ou criar automaticamente bolsas para os valores do Caminho da Sorte)."
-     },
-     {
-      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
-      "symbol": "CaminhoSorteService.finalizarEmissao",
-      "lines": "847-957",
-      "what": "A função busca `emissao` no início da transação (status ainda INICIADA) e, apesar de fazer a transição para FINALIZADA via `updateMany` e creditar o prêmio (quando há lastro), devolve a variável local `emissao` pré-transição na linha 955 — a resposta da API sempre mostra status INICIADA, mesmo em finalizações bem-sucedidas. Corrigir para retornar o registro pós-atualização."
+      "symbol": "reservarFinanceiroParaEmissao",
+      "lines": "171-179",
+      "what": "reserva exige bolsa FINANCEIRA com valor exato e unidade de estoque disponivel; ao falhar retorna null silenciosamente"
      }
     ],
     "endpoints": [
-     "POST /v1/caminho-sorte/emissao/:id/iniciar",
-     "POST /v1/caminho-sorte/emissao/:id/finalizar"
+     "POST /v1/caminho-sorte/emissao/{id}/iniciar",
+     "POST /v1/caminho-sorte/emissao/{id}/finalizar",
+     "GET /v1/caminho-sorte/status/{id}"
     ],
     "adminScreens": [
-     "Editor de bolsas da campanha (cadastro de Premio FINANCEIRO)",
-     "Parâmetros do Caminho da Sorte"
+     "Caminho da Sorte > Dias > D1 (campo Jogo)",
+     "Caminho da Sorte > Premios por dia"
     ],
     "repro": [
-     "Conferir se existe alguma CampanhaBolsa com Premio FINANCEIRO no valor exato de algum prêmio do Caminho da Sorte (ex.: 33 centavos).",
-     "Desbloquear o dia 1 do Caminho da Sorte para uma conta nova e iniciar a emissão.",
-     "Finalizar a emissão e conferir: venceu=true, valor creditado 0, status devolvido como INICIADA."
+     "PUT /v1/caminho-sorte com parametros.permiteJogarQualquerDia=false.",
+     "Criar conta sintetica, iniciar e finalizar a emissao em D1: valorPremio 0 sempre, porque o jogo e sem-jogo.",
+     "Avancar a conta ate D3, D5 ou D7 e repetir o jogo: em cerca de 1 de cada 6 vitorias o estado volta venceu=true com idPremioEstoque nulo e credito R$ 0,00."
     ]
    },
    "notes": [
-    "Correção de rumo em 19/08/2026: os documentos de QA anteriores diziam que o Caminho da Sorte creditava por fora da bolsa geral, sem integração. Isso não vale mais para o main atual — a integração existe (ServicoObterPremio.reservarFinanceiroParaEmissao). O defeito é o casamento por valor exato, não a ausência de integração."
+    "RETRATACAO: a versao anterior atribuia o R$ 0,00 a premios cadastrados em valores fracionarios (R$ 0,33, R$ 0,45, R$ 1,26) sem bolsa correspondente. Isso esta ERRADO. Os premios do Caminho da Sorte estao cadastrados em centavos redondos que possuem bolsa: 200, 500, 1000, 10000, 50000 e 100000. Os valores 0,33/0,45/1,26 eram o VALOR ESPERADO por dia da Opcao C, nunca foram premios.",
+    "Escopo real do defeito e muito mais estreito do que o publicado: nao e 100% das emissoes, e 17,6% das vitorias em trilha.",
+    "O sintoma correto a exibir ao jogador quando falta lastro precisa ser definido pelo produto: hoje ele ve vitoria e recebe zero."
    ]
   },
   {
@@ -5939,7 +5980,7 @@
    "priority": "P1",
    "status": "failed",
    "area": "Caminho da Sorte",
-   "title": "Virada do dia no Caminho da Sorte usa data UTC sem fuso e corta a ofensiva do jogador",
+   "title": "Virada do dia roda em UTC: o horario 03:00 configurado no Admin acontece as 00:00 BRT",
    "channel": "Leitura do código publicado + observação na API HML",
    "execution_profiles": [
     "revisao-de-codigo",
@@ -5951,7 +5992,7 @@
     "Código publicado do serviço do Caminho da Sorte",
     "Serviço sem variável TZ definida"
    ],
-   "reason": "O cálculo do dia da ofensiva mistura hora local com data em UTC e o serviço não declara TZ. Num servidor em UTC, a virada do dia acontece às 21h BRT: quem joga entre 21h e meia-noite tem a jogada contada no dia seguinte e perde a sequência, e quem joga logo após a meia-noite pode ver o dia anterior. Com a ofensiva de 7 dias sendo a mecânica central do jogo, isso quebra a progressão de qualquer jogador do horário noturno — a faixa de maior movimento.",
+   "reason": "Medido em 19/08 com o modo demonstracao desligado: o processo da API interpreta o horario de virada sem fuso, no relogio do container, que esta em UTC. Com parametros.horarioVirada = 03:00, a virada real ocorre as 00:00 BRT -- tres horas antes do que o Admin comunica. Nao ha TZ definido para o processo.",
    "expected": "O dia da ofensiva é calculado num único fuso declarado (BRT), com virada à meia-noite local.",
    "evidence": [
     "Cálculo do dia usa hora local e data UTC no mesmo trecho",
@@ -5962,28 +6003,38 @@
    "lastRunAt": "2026-08-19",
    "fix": {
     "repo": "backend-l4/apcapv5",
-    "rootCause": "getGameDate mistura hora local do processo com data serializada em UTC, sem TZ explícito.",
+    "rootCause": "Horario de virada comparado no relogio do processo (UTC) em vez do fuso de negocio (America/Sao_Paulo).",
     "confidence": "alta",
     "files": [
      {
       "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
-      "symbol": "CaminhoSorteService.getGameDate",
-      "lines": "537-548",
-      "what": "Usa `date.getHours()/getMinutes()` (fuso local do processo) para decidir se já virou o dia, mas devolve a data via `d.toISOString().split('T')[0]` (UTC) — as duas metades vivem em fusos diferentes; sem TZ declarado no serviço, a virada acontece às 21h de Brasília quando o servidor roda em UTC."
+      "symbol": "resolverDiaCorrente / virada",
+      "lines": "503-534",
+      "what": "comparacao de data e hora sem conversao de fuso; o ciclo em si esta correto"
+     },
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "atualizarParametros",
+      "lines": "217-228",
+      "what": "persistencia de horarioVirada e modoVirada, sem fuso associado"
      }
     ],
     "endpoints": [
-     "POST /v1/caminho-sorte/desbloquear"
+     "PUT /v1/caminho-sorte",
+     "GET /v1/caminho-sorte/status/{id}"
     ],
     "adminScreens": [
-     "Parâmetros do Caminho da Sorte (horário de virada)"
+     "Caminho da Sorte > Parametros > Horario de virada"
     ],
     "repro": [
-     "Configurar horarioVirada para 00:00 com o serviço rodando em servidor UTC.",
-     "Jogar uma emissão às 21h30 de Brasília (00:30 UTC do dia seguinte).",
-     "Jogar novamente logo após meia-noite de Brasília e comparar o `dia` calculado nas duas emissões."
+     "PUT /v1/caminho-sorte com parametros.horarioVirada = 03:00.",
+     "Observar em qual instante uma conta sintetica muda de casa: a mudanca ocorre as 00:00 BRT, nao as 03:00 BRT."
     ]
-   }
+   },
+   "notes": [
+    "CORRECAO IMPORTANTE: a parte deste caso que dizia que o ciclo do jogo estava quebrado NAO se confirma. O giro D1 -> D2 -> D3 -> D4 -> D5 -> D6 -> D7 -> D1 com incremento de volta funciona e foi percorrido de ponta a ponta por uma conta sintetica, que voltou a D1 com volta = 2 (caminho-sorte.service.ts:503-534). O que impedia o giro era o modo demonstracao, que nunca escreve casaAtual (:436-452, bloco comentado como DEMO NAO MOVE A CASA) e por isso congelava toda conta nova em D1 -- exatamente o retrato das rodadas 11 e 12.",
+    "O defeito remanescente e apenas de fuso, e ele tambem explica por que a ofensiva parecia cortar cedo."
+   ]
   },
   {
    "id": "CS-D7-CONCENTRACAO-01",
@@ -6190,6 +6241,372 @@
      "Calcular RTP realizado e comparar com o declarado."
     ]
    }
+  },
+  {
+   "id": "CS-SCATTER-01",
+   "status": "failed",
+   "area": "Caminho da Sorte",
+   "title": "Jogos cai-cai e cai-cai-turbinado ignoram os premios em dinheiro: 7 faixas cadastradas sao letra morta",
+   "reason": "Os dias D4 (cai-cai) e D6 (cai-cai-turbinado) tem premios do tipo dinheiro cadastrados e visiveis no Admin, mas o codigo do jogo scatter seleciona SOMENTE premios do tipo numero_sorte; os de dinheiro sao descartados explicitamente. Consequencia medida: nenhuma das 41 contas sinteticas recebeu um unico centavo em D4 ou D6, e o valor esperado desses dias e zero por construcao, nao por azar. Sao 7 faixas de dinheiro cadastradas entre os dois dias que nunca podem sair.",
+   "notes": [
+    "O mesmo vale para D1, que esta configurado como sem-jogo e tambem tem faixas de dinheiro cadastradas (ver CS-D1-SEMJOGO-01).",
+    "Ou o produto quer que scatter pague dinheiro, e o codigo precisa mudar, ou nao quer, e o Admin precisa parar de aceitar o cadastro."
+   ],
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "O ramo scatter filtra o tipo numero_sorte antes do sorteio ponderado, sem nenhum caminho para premio em dinheiro.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "montarEstadoScatter",
+      "lines": "1266-1299",
+      "what": "vitoria por probVitoria e reparticao do total em ate quatro baloes, somente numero_sorte"
+     },
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "montarEstadoScatter",
+      "lines": "1270-1278",
+      "what": "premios do tipo dinheiro sao ignorados no scatter"
+     }
+    ],
+    "endpoints": [
+     "PUT /v1/caminho-sorte/premios",
+     "GET /v1/caminho-sorte/status/{id}"
+    ],
+    "adminScreens": [
+     "Caminho da Sorte > Premios por dia > D4 e D6"
+    ],
+    "repro": [
+     "GET /v1/caminho-sorte: confirmar que D4 usa cai-cai e D6 usa cai-cai-turbinado.",
+     "Confirmar no Admin que D4 e D6 tem faixas de dinheiro com peso maior que zero.",
+     "Jogar D4 e D6 com contas sinteticas: nenhuma vitoria em dinheiro, em nenhuma repeticao."
+    ]
+   },
+   "priority": "P1",
+   "channel": "Leitura de código-fonte (backend apcapv5) + execução real na API HML",
+   "execution_profiles": [
+    "revisao-de-codigo",
+    "api-hml"
+   ],
+   "preconditions": [
+    "Configuração do Caminho da Sorte revisada em 19/08/2026",
+    "Dias D4 e D6 configurados com jogos scatter e faixas de dinheiro cadastradas"
+   ],
+   "expected": "Os jogos configurados para os dias devem sortear apenas os tipos de prêmio que o produto permite e o Admin deve refletir essa regra.",
+   "evidence": [],
+   "scope": "autonomo",
+   "observed": "execucao-real",
+   "lastRunAt": "2026-08-19",
+   "batch": "revisao-19-08-2026"
+  },
+  {
+   "id": "CS-D1-SEMJOGO-01",
+   "status": "failed",
+   "area": "Caminho da Sorte",
+   "title": "D1 e sem-jogo, mas tem premios em dinheiro cadastrados: toda conta nova joga a primeira casa e recebe R$ 0,00",
+   "reason": "O dia D1 esta configurado com jogo sem-jogo, que devolve valorPremio 0 por desenho, e ainda assim tem duas faixas de dinheiro cadastradas com peso maior que zero (R$ 2,00 com peso 150 e R$ 5,00 com peso 50). Toda conta nova comeca em D1. O jogador ve premios possiveis e recebe zero, sempre. Com o modo demonstracao ligado ate 19/08 12:39 BRT, nenhuma conta nova saia de D1, e por isso as 232 emissoes das rodadas 11 e 12 fecharam todas em R$ 0,00.",
+   "notes": [
+    "Este e o caso que explica a maior parte do sintoma antes atribuido a CS-PAGAMENTO-01.",
+    "Decisao de produto pendente: D1 deve ter um jogo que paga, ou D1 nao deve aceitar cadastro de premio em dinheiro."
+   ],
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "Configuracao de jogo do dia incompativel com os premios cadastrados para o dia, sem validacao que impeca a combinacao.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "montarEstadoSemJogo",
+      "lines": "962-963",
+      "what": "sem-jogo devolve valorPremio 0"
+     },
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "atualizarDias",
+      "lines": "188-199",
+      "what": "upsert de dia aceita qualquer combinacao de jogo e premios sem validar coerencia"
+     }
+    ],
+    "endpoints": [
+     "PUT /v1/caminho-sorte",
+     "PUT /v1/caminho-sorte/premios"
+    ],
+    "adminScreens": [
+     "Caminho da Sorte > Dias > D1",
+     "Caminho da Sorte > Premios por dia > D1"
+    ],
+    "repro": [
+     "GET /v1/caminho-sorte: D1 aparece com jogo sem-jogo.",
+     "GET dos premios de D1: duas faixas de dinheiro com peso 150 e 50.",
+     "Criar conta sintetica e finalizar a emissao em D1: valorPremio 0 em 100% das tentativas."
+    ]
+   },
+   "priority": "P1",
+   "channel": "Leitura de código-fonte (backend apcapv5) + execução real na API HML",
+   "execution_profiles": [
+    "revisao-de-codigo",
+    "api-hml"
+   ],
+   "preconditions": [
+    "Configuração do Caminho da Sorte revisada em 19/08/2026",
+    "Conta nova inicia no D1"
+   ],
+   "expected": "A configuração do dia deve ser coerente: um dia inicial que aceita prêmio financeiro precisa oferecer jogo pagável, ou o cadastro financeiro deve ser bloqueado.",
+   "evidence": [],
+   "scope": "autonomo",
+   "observed": "execucao-real",
+   "lastRunAt": "2026-08-19",
+   "batch": "revisao-19-08-2026"
+  },
+  {
+   "id": "CS-EVALVO-02",
+   "status": "failed",
+   "area": "Caminho da Sorte",
+   "title": "Campo evAlvo e gravado e exibido, mas o motor nunca o le: valor esperado da semana e 3,7x o alvo",
+   "reason": "O campo evAlvo existe no modelo, e escrito por PUT /v1/caminho-sorte e aparece no Admin, mas nao e consumido em nenhum ponto do sorteio. Quem decide vitoria e probVitoria; quem decide valor sao os pesos. Resultado medido com a parametrizacao em vigor: valor esperado de R$ 31,48 por conta na semana contra R$ 8,47 do alvo assinado da Opcao C, ou seja 3,7 vezes. Somente D7 responde por R$ 19,17. Em 32 contas sinteticas o pagamento observado foi de R$ 20,75 por conta na semana, com maior premio de R$ 100,00.",
+   "notes": [
+    "Consequencia pratica: qualquer valor digitado em evAlvo transmite uma falsa sensacao de controle de custo.",
+    "A correcao de parametro ja esta calculada: pesos que fecham a semana em R$ 8,48 sobre as seis faixas com bolsa, sem tocar em probVitoria."
+   ],
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "Parametro de orcamento sem nenhum consumidor no algoritmo: o custo real e emergente dos pesos.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "atualizarDias",
+      "lines": "188-199",
+      "what": "evAlvo e persistido"
+     },
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "montarEstadoGrid / montarEstadoScatter",
+      "lines": "1028-1031, 1266-1268",
+      "what": "quem decide vitoria e probVitoria; evAlvo nao aparece"
+     },
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "sortearPorPeso",
+      "lines": "1160-1192",
+      "what": "valor sai do sorteio ponderado pelos pesos, sem referencia a orcamento"
+     }
+    ],
+    "endpoints": [
+     "PUT /v1/caminho-sorte",
+     "PUT /v1/caminho-sorte/premios"
+    ],
+    "adminScreens": [
+     "Caminho da Sorte > Dias > coluna EV alvo"
+    ],
+    "repro": [
+     "Definir evAlvo de um dia em 0,10 e manter os pesos: o valor esperado medido nao muda.",
+     "Calcular o valor esperado por dia a partir de probVitoria e dos pesos e comparar com a coluna EV alvo do Admin."
+    ]
+   },
+   "priority": "P1",
+   "channel": "Leitura de código-fonte (backend apcapv5) + execução real na API HML",
+   "execution_profiles": [
+    "revisao-de-codigo",
+    "api-hml"
+   ],
+   "preconditions": [
+    "Parâmetros e pesos da Opção C revisados em 19/08/2026"
+   ],
+   "expected": "O EV alvo informado deve controlar ou validar o custo esperado do jogo, sem transmitir orçamento que o motor ignora.",
+   "evidence": [],
+   "scope": "autonomo",
+   "observed": "execucao-real",
+   "lastRunAt": "2026-08-19",
+   "batch": "revisao-19-08-2026"
+  },
+  {
+   "id": "CS-FALLBACK-PESO-01",
+   "status": "failed",
+   "area": "Caminho da Sorte",
+   "title": "Fallback do sorteio de celula ignora o peso: faixa com peso zero ainda pode ser sorteada",
+   "reason": "Em sortearPremioCelula, quando o laco ponderado nao devolve premio, o codigo escolhe uniformemente qualquer premio nao-borda, sem olhar o peso. Isso torna possivel sair uma faixa com peso zero. Na parametrizacao assinada da Opcao C, as faixas de R$ 15,00 e R$ 20,00 do D7 foram mantidas com peso zero justamente para nunca sairem; por esse caminho elas podem sair. O metodo e usado pelo jogo encontre-o-balao.",
+   "notes": [
+    "Peso zero deve ser tratado como exclusao absoluta do sorteio, inclusive no fallback."
+   ],
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "Caminho de excecao do sorteio nao respeita a mesma regra de peso do caminho normal.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "sortearPremioCelula",
+      "lines": "1227-1234",
+      "what": "fallback uniforme entre nao-borda, ignorando peso"
+     },
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "montarEstadoGrid",
+      "lines": "995-1025",
+      "what": "consumidor do fallback no jogo encontre-o-balao"
+     }
+    ],
+    "endpoints": [
+     "PUT /v1/caminho-sorte/premios",
+     "GET /v1/caminho-sorte/status/{id}"
+    ],
+    "adminScreens": [
+     "Caminho da Sorte > Premios por dia > D2 e D7"
+    ],
+    "repro": [
+     "Cadastrar uma faixa com peso zero num dia que use encontre-o-balao.",
+     "Forcar a condicao de fallback: a faixa de peso zero passa a ser elegivel."
+    ]
+   },
+   "priority": "P2",
+   "channel": "Leitura de código-fonte (backend apcapv5)",
+   "execution_profiles": [
+    "revisao-de-codigo"
+   ],
+   "preconditions": [
+    "Jogo encontre-o-balao com faixas configuradas, incluindo peso zero"
+   ],
+   "expected": "Prêmios com peso zero devem permanecer inelegíveis em todos os caminhos do sorteio.",
+   "evidence": [],
+   "scope": "autonomo",
+   "observed": "codigo-fonte",
+   "lastRunAt": "2026-08-19",
+   "batch": "revisao-19-08-2026"
+  },
+  {
+   "id": "CAMP-APORTE-01",
+   "status": "failed",
+   "area": "Campanha e bolsas",
+   "title": "Aporte manual em bolsa nao tem teto vinculado a receita: foi o vetor dos R$ 14,36 mi de lastro artificial",
+   "reason": "A rota POST /v1/campanhas/{id}/bolsas/{idBolsa}/arrecadacao aceita qualquer valor positivo, sem limite e sem vinculo com a arrecadacao real da campanha, e altera somente campanha_bolsa.arrecadacao (nao mexe em Campanha.arrecadacao). Foi por essa porta que as bolsas da INVERNO2026 chegaram a R$ 14.355.945,01 de lastro contra R$ 92.512,50 de receita, incluindo R$ 12.000.142,57 numa unica bolsa. Como o motor paga tudo que couber no saldo da bolsa, essa rota e o unico ponto do sistema capaz de levar a exposicao acima do RTP contratado. O estorno tem trava (nao pode reduzir abaixo do total ja premiado), mas o aporte nao tem nenhuma.",
+   "notes": [
+    "Auditoria registra ajustes nas bolsas em 19/08 entre 11:36 e 12:44 BRT com o motor de QA parado: nao foram feitos pela suite. Convem confirmar quem executou.",
+    "Sugestao de correcao: teto de aporte proporcional a arrecadacao reconhecida da campanha, ou perfil separado para aporte, com dupla confirmacao e alerta.",
+    "A tabela campanhaBolsaAjuste ja registra o historico e serve de base para o alerta."
+   ],
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "Ausencia de teto de exposicao no aporte manual; o CHECK de total_premiado contra arrecadacao segue apenas como comentario no schema.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/ajustar-arrecadacao-bolsa.service.ts",
+      "symbol": "ajustarArrecadacaoBolsa",
+      "lines": "10-18",
+      "what": "aplica o ajuste apenas em campanha_bolsa.arrecadacao, sem teto para valores positivos"
+     },
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/ajustar-arrecadacao-bolsa.service.ts",
+      "symbol": "ajustarArrecadacaoBolsa",
+      "lines": "38-50",
+      "what": "trava existe somente para estorno: arrecadacao + valor deve continuar maior ou igual a total_premiado"
+     },
+     {
+      "path": "apps/apcap-api/src/modules/campanha/campanha.controller.ts",
+      "symbol": "ajustarArrecadacaoBolsa",
+      "lines": "65-75",
+      "what": "rota admin sem limite de valor"
+     },
+     {
+      "path": "apps/apcap-api/prisma/campanha.prisma",
+      "symbol": "Campanha",
+      "lines": "74-83",
+      "what": "CHECK (total_premiado <= arrecadacao) permanece comentado"
+     }
+    ],
+    "endpoints": [
+     "POST /v1/campanhas/{id}/bolsas/{idBolsa}/arrecadacao"
+    ],
+    "adminScreens": [
+     "Campanhas > Bolsas > Ajustar arrecadacao"
+    ],
+    "repro": [
+     "Aportar um valor arbitrariamente grande numa bolsa de uma campanha com receita baixa: a rota aceita.",
+     "Rodar o motor: o pagamento passa a ser limitado pelo lastro artificial, nao pela receita."
+    ]
+   },
+   "priority": "P1",
+   "channel": "Leitura de código-fonte (backend apcapv5) + auditoria na API HML",
+   "execution_profiles": [
+    "revisao-de-codigo",
+    "api-hml"
+   ],
+   "preconditions": [
+    "Campanha INVERNO2026 e histórico de ajustes de bolsas auditados em 19/08/2026"
+   ],
+   "expected": "Aportes manuais devem ter limite e governança compatíveis com a receita reconhecida e a exposição contratada.",
+   "evidence": [],
+   "scope": "autonomo",
+   "observed": "execucao-real",
+   "lastRunAt": "2026-08-19",
+   "batch": "revisao-19-08-2026"
+  },
+  {
+   "id": "CAMP-CARGA300K-01",
+   "status": "decision_pending",
+   "area": "Campanha e bolsas",
+   "title": "Carga de R$ 300.000 nao sustenta premios de R$ 10.000 para cima: tres faixas nao pagam nem uma unidade",
+   "reason": "Com carga bruta de R$ 300.000 e RTP 55%, o lastro total das bolsas e de R$ 165.000, dos quais R$ 90.000 em dinheiro (30% do bruto) e R$ 75.000 em chances e pacotes (25%). Aplicando as proporcoes em vigor, tres faixas ficam com provisao menor que o proprio premio e por isso nunca podem pagar: R$ 10.000 recebe provisao de R$ 6.300, R$ 50.000 recebe R$ 5.400 e R$ 1.000.000 recebe R$ 5.400. Para pagar uma unica unidade, a faixa de R$ 50.000 precisaria de 30,3% de todo o retornavel e a de R$ 1.000.000 precisaria de 606%, o que e impossivel. Mantidas assim, as tres sao chamariz por construcao financeira, nao por parametro.",
+   "notes": [
+    "Decisao pendente do usuario: teto da escada em R$ 5.000 ou em R$ 10.000, e remocao das faixas inviaveis das bolsas da campanha.",
+    "Estoque excedente nao gera pagamento acima do previsto, porque o limitador e o saldo da bolsa; o estoque so limita para baixo.",
+    "Nao existe rota de API para reduzir ou zerar estoque de premio: POST /v1/premios/{id}/estoque somente adiciona. Reduzir exige acao de banco pelos desenvolvedores."
+   ],
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "Escada de premios desproporcional ao lastro previsto para a campanha.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/distribuir-arrecadacao.service.ts",
+      "symbol": "distribuirArrecadacao",
+      "lines": "22-30",
+      "what": "define a provisao de cada bolsa como bruto x rtp x proporcao"
+     },
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/emitir-premiacoes.service.ts",
+      "symbol": "emitirPremiacoes",
+      "lines": "88, 103-159",
+      "what": "premio so sai se o saldo da bolsa comportar o custo integral"
+     },
+     {
+      "path": "apps/apcap-api/src/modules/premio/premio.controller.ts",
+      "symbol": "adicionarEstoque",
+      "lines": "42-46",
+      "what": "reposicao de estoque aceita apenas quantidade positiva de 1 a 100000"
+     }
+    ],
+    "endpoints": [
+     "PATCH /v1/campanhas/{id}",
+     "POST /v1/premios/{id}/estoque",
+     "POST /v1/campanhas/{id}/bolsas/{idBolsa}/arrecadacao"
+    ],
+    "adminScreens": [
+     "Campanhas > Bolsas",
+     "Premios > Estoque"
+    ],
+    "repro": [
+     "Calcular 300000 x 0,55 x proporcao para cada bolsa e comparar com o valor do premio.",
+     "Faixas cuja provisao e menor que o premio nunca satisfazem a condicao de saldo em emitir-premiacoes.service.ts:103-159."
+    ]
+   },
+   "priority": "P1",
+   "channel": "Leitura de código-fonte (backend apcapv5) + cálculo de provisão",
+   "execution_profiles": [
+    "revisao-de-codigo"
+   ],
+   "preconditions": [
+    "Carga bruta planejada de R$ 300.000 e RTP de 55%",
+    "Proporções de bolsas em vigor revisadas em 19/08/2026"
+   ],
+   "expected": "A escada de prêmios deve ser financeiramente viável dentro do lastro planejado, ou a decisão de produto deve registrá-la como tal.",
+   "evidence": [],
+   "scope": "decisao",
+   "observed": "codigo-fonte",
+   "lastRunAt": "2026-08-19",
+   "batch": "revisao-19-08-2026"
   }
  ]
 }
