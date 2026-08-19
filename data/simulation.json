@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-08-19T03:25:53Z",
+ "generatedAt": "2026-08-19T16:39:53.565596-03:00",
  "runDate": "2026-08-19",
  "executadoEmBrt": "19/08/2026 00:08–00:19 BRT",
  "status": "rodada 12 — primeira medicao com bolsas calibradas e estoque reposto: RTP 34.046%",
@@ -103,8 +103,43 @@
    "text": "A combo acima troca a rodada exibida. As rodadas 9, 10 e 11 permanecem arquivadas com seus números originais."
   }
  ],
- "runDateAtual": "2026-08-19",
+ "runDateAtual": "2026-08-19-precheck-1639BRT",
  "historico": [
+  {
+   "id": "precheck-rodada13-1639",
+   "runDate": "2026-08-19-precheck-1639BRT",
+   "rotulo": "19/08/2026 16:39 BRT — pré-check interrompido antes do Estouro",
+   "resumo": "Pré-check iniciado em 19/08/2026 16:39 BRT. Nenhuma fatura Pix foi emitida: o Caminho da Sorte retornou `permiteJogarQualquerDia=true`, que é o modo demonstração. A rodada produtiva exige esse campo false.",
+   "status": "bloqueado",
+   "stats": [
+    {
+     "label": "Faturas Pix emitidas",
+     "value": "0 — rodada não iniciada"
+    },
+    {
+     "label": "Modo Caminho da Sorte",
+     "value": "Demonstração ativa (`permiteJogarQualquerDia=true`)"
+    },
+    {
+     "label": "Cota Pix local disponível",
+     "value": "159 até o piso de segurança (121 já contabilizadas)"
+    },
+    {
+     "label": "Campanhas alteradas",
+     "value": "0"
+    }
+   ],
+   "sections": [
+    {
+     "title": "Por que o Estouro não foi iniciado",
+     "list": [
+      "A rodada solicitada inclui validação conjunta de Estouro, motor e Caminho da Sorte.",
+      "Com o Caminho da Sorte em demonstração, o conjunto não é representativo do fluxo produtivo.",
+      "Nenhum pagamento foi tentado nem emitido; não há dado financeiro a interpretar."
+     ]
+    }
+   ]
+  },
   {
    "generatedAt": "2026-08-19T03:25:53Z",
    "runDate": "2026-08-19",

@@ -1,0 +1,12 @@
+{
+ "capturadoEmBrt": "19/08/2026 16:39 BRT",
+ "modoDemonstracao": true,
+ "campoFonte": "permiteJogarQualquerDia",
+ "campanhaAlterada": false,
+ "faturasEmitidas": 0,
+ "cotaPixLocal": {
+  "usadas": 121,
+  "disponiveisAtePiso": 159
+ },
+ "conclusao": "Rodada produtiva não iniciada enquanto modo demonstração estiver ativo."
+}

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-08-19T03:25:53Z",
+ "generatedAt": "2026-08-19T16:39:53.565596-03:00",
  "geradoEmBrt": "19/08/2026 00:08–00:19 BRT",
  "titulo": "Simular Caminho da Sorte",
  "status": "rodada 12 — Opção C no ar, 120 emissões, nenhum pagamento",
@@ -105,6 +105,32 @@
  "porQueBloqueado": [],
  "condicoesParaDestravar": [],
  "historico": [
+  {
+   "id": "precheck-rodada13-1639",
+   "runDate": "2026-08-19-precheck-1639BRT",
+   "registradoEmBrt": "19/08/2026 16:39 BRT",
+   "rotulo": "19/08/2026 16:39 BRT — pré-check: modo demonstração ativo",
+   "status": "bloqueado",
+   "estado": "Pré-check iniciado em 19/08/2026 16:39 BRT. Nenhuma fatura Pix foi emitida: o Caminho da Sorte retornou `permiteJogarQualquerDia=true`, que é o modo demonstração. A rodada produtiva exige esse campo false.",
+   "secoes": [
+    {
+     "titulo": "Leitura real no HML",
+     "itens": [
+      "GET /v1/caminho-sorte respondeu 200.",
+      "Parâmetro observado: permiteJogarQualquerDia=true.",
+      "Campanha INVERNO2026 permanece ativa; nenhuma campanha foi alterada.",
+      "Cota local: 121 faturas já contabilizadas; 159 disponíveis até o piso de segurança.",
+      "Nenhuma fatura, compra, Pix, sessão ou emissão foi criada neste pré-check."
+     ]
+    }
+   ],
+   "tabela": null,
+   "geradoEmBrt": "19/08/2026 16:39 BRT",
+   "porQueBloqueado": [
+    "A instrução vigente é manter o modo demonstração durante o dia e executar a validação produtiva após desligá-lo.",
+    "Uma rodada agora mediria comportamento de demonstração, não o motor produtivo; publicar isso como validação seria incorreto."
+   ]
+  },
   {
    "id": "rodada-12",
    "runDate": "2026-08-19",
@@ -429,5 +455,5 @@
   }
  ],
  "notaHistorico": "Cada medicao do Caminho da Sorte fica arquivada com a data de execucao. A combo troca a medicao exibida; nada e sobrescrito.",
- "runDateAtual": "2026-08-19"
+ "runDateAtual": "2026-08-19-precheck-1639BRT"
 }

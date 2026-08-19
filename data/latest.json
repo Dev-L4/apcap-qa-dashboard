@@ -1,7 +1,7 @@
 {
  "schemaVersion": 7,
- "generatedAt": "2026-08-19T09:20:00-03:00",
- "runDateAtual": "2026-08-19",
+ "generatedAt": "2026-08-19T16:39:53.565596-03:00",
+ "runDateAtual": "2026-08-19-precheck-1639BRT",
  "runs": [
   {
    "runDate": "2026-08-14",
@@ -1401,7 +1401,7 @@
      "title": "Caminho da Sorte credita premio sem bolsa, sem RTP e sem teto",
      "execution": "revisao-de-codigo",
      "autonomous": true,
-     "status": "retired",
+     "status": "failed",
      "note": "O Estouro debita a bolsa da campanha na emissao, com trava e teste de solvencia. O Caminho da Sorte cria movimentoCarteira bucket PREMIOS direto, sem campanha, sem bolsa, sem RTP e sem teto. Custo = jogadores x EV do dia, sem freio. Com a pool legada ativa nos dias vazios, sao R$ 8,80 por rodada por jogador saindo do caixa sem provisao.",
      "projects": [
       "revisao-de-codigo"
@@ -2010,7 +2010,7 @@
      "title": "Saldo da bolsa não trava o pagamento: motor paga 2,5× o caixa disponível",
      "execution": "real-hml",
      "autonomous": true,
-     "status": "retired",
+     "status": "failed",
      "note": "Quatro faixas altas com caixa para um prêmio cada emitiram 8, 7, 11 e 2 prêmios — R$ 2.660.000 saindo de R$ 1.065.000 provisionados. Nenhuma bolsa terminou negativa: todas pararam em cerca de R$ 150.",
      "projects": [
       "api-hml"
@@ -2045,7 +2045,7 @@
      "title": "RTP realizado de 34.046% contra 55% declarados, sem gargalo de estoque nem bolsa semeada",
      "execution": "real-hml",
      "autonomous": true,
-     "status": "retired",
+     "status": "failed",
      "note": "R$ 7.880,00 em compras produziram R$ 2.682.823,00 creditados. Primeira medição feita depois de calibrar as bolsas e repor o estoque: as duas explicações anteriores caíram.",
      "projects": [
       "api-hml"
@@ -2192,6 +2192,45 @@
      "evidence": [
       "Varredura da UI de login e da API pública"
      ]
+    }
+   ]
+  },
+  {
+   "runDate": "2026-08-19-precheck-1639BRT",
+   "rotulo": "Rodada 13 — pré-check interrompido (19/08/2026 16:39 BRT)",
+   "status": "bloqueado_por_modo_demonstracao",
+   "source": "HML real: GET /v1/caminho-sorte, GET /v1/campanhas e contador local da cota Pix",
+   "environment": "HML publico",
+   "revision": "precheck-rodada13",
+   "generatedAt": "2026-08-19T16:39:53.565596-03:00",
+   "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "blocked": 1,
+    "screenshots": 0,
+    "catalogTotal": 225,
+    "executed": 0,
+    "evidenceMode": "Leitura real de configuração; sem fatura, conta, Pix, jogo ou mock.",
+    "scope": "Pré-check de segurança: não é veredito de produto e não substitui a rodada completa."
+   },
+   "currentRunCaseIds": [],
+   "cases": [
+    {
+     "id": "PRECHECK-R13-DEMO",
+     "title": "Pré-condição da Rodada 13 — modo demonstração desligado",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "blocked",
+     "note": "Pré-check iniciado em 19/08/2026 16:39 BRT. Nenhuma fatura Pix foi emitida: o Caminho da Sorte retornou `permiteJogarQualquerDia=true`, que é o modo demonstração. A rodada produtiva exige esse campo false.",
+     "projects": [
+      "API HML"
+     ],
+     "lastRunAt": "2026-08-19T16:39:53.565596-03:00",
+     "evidence": [
+      "data/precheck-rodada13.json"
+     ],
+     "batch": "rodada13-precheck"
     }
    ]
   }
