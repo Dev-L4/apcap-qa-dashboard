@@ -1,7 +1,7 @@
 {
  "schemaVersion": 7,
- "generatedAt": "2026-08-19T03:25:53Z",
- "runDateAtual": "2026-08-17",
+ "generatedAt": "2026-08-19T09:20:00-03:00",
+ "runDateAtual": "2026-08-19",
  "runs": [
   {
    "runDate": "2026-08-14",
@@ -1871,6 +1871,329 @@
    "source": "agente autônomo (Playwright + API HML + leitura do código-fonte)",
    "environment": "https://apcap-v5-hml.web.app/ · https://apcapadm-v5-hml.web.app/ · https://apcapv5-hml.duckdns.org",
    "generatedAt": "2026-08-17T12:59:51Z"
+  },
+  {
+   "runDate": "2026-08-18",
+   "rotulo": "Rodada 11 — 112 sessões com bolsas semeadas, antes da calibragem",
+   "status": "concluido",
+   "source": "execucao autonoma contra o HML real",
+   "environment": "apcap-v5-hml",
+   "generatedAt": "2026-08-18T22:35:00-03:00",
+   "summary": {
+    "total": 4,
+    "passed": 1,
+    "failed": 3,
+    "blocked": 0,
+    "screenshots": 0,
+    "catalogTotal": 219,
+    "executed": 4,
+    "evidenceMode": "Medição direta na API HML e no Admin autenticado. Casos de motor e de contabilidade são provados por número medido, não por tela.",
+    "scope": "Rodada autônoma de 18/08/2026 22:23–22:35 BRT: 553 compras, 112 sessões completas, liquidação Pix real no sandbox."
+   },
+   "browserCoverage": {
+    "api-hml": 4
+   },
+   "currentRunCaseIds": [
+    "SIM-L11-RTP-01",
+    "CS-PAGAMENTO-01",
+    "SIM-L12-LIMITE-05",
+    "GATEWAY-PIX-01"
+   ],
+   "cases": [
+    {
+     "id": "SIM-L11-RTP-01",
+     "title": "Rodada 11 mediu RTP de 108.599% com bolsas semeadas e estoque incompleto",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "failed",
+     "note": "R$ 8.635 em compras produziram R$ 9.377.493 creditados. Bolsas com saldo igual ou acima de R$ 5.000 responderam por 99,56% do valor. Vitórias com os 3 números em 2,48% das chances, contra 0,088% esperados.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote11",
+     "priority": "P1",
+     "lastRunAt": "2026-08-18",
+     "evidence": [
+      "553 compras · 112 sessões · zero falha · 11,9 min · 114 faturas Pix"
+     ]
+    },
+    {
+     "id": "CS-PAGAMENTO-01",
+     "title": "Caminho da Sorte declara vitória e paga R$ 0,00",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "failed",
+     "note": "112 emissões, todas no dia 1, todas com venceu=true e valor R$ 0,00, presas no estado INICIADA.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote11",
+     "priority": "P0",
+     "lastRunAt": "2026-08-18",
+     "evidence": [
+      "sim/lote11/sessoes.jsonl — 112 emissões sem pagamento"
+     ]
+    },
+    {
+     "id": "SIM-L12-LIMITE-05",
+     "title": "Limite diário de R$ 1.000 por CPF é de compra, não de ganho",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "passed",
+     "note": "Sonda dedicada com três CPFs: todos recusados ao tentar passar de R$ 1.000 em compras no dia. O contador debita a fatura emitida mesmo antes da liquidação Pix. Ganhos acima do teto não são bloqueados.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote11",
+     "priority": "P1",
+     "lastRunAt": "2026-08-18",
+     "evidence": [
+      "sim/lote11/limite-probe.json"
+     ]
+    },
+    {
+     "id": "GATEWAY-PIX-01",
+     "title": "Erros esporádicos do gateway Pix sob concorrência 4",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "failed",
+     "note": "2 erros em 4.631 requisições (0,04%), com HTTP 201 e status TENTANDO_NOVAMENTE sem código Pix.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote11",
+     "priority": "P1",
+     "lastRunAt": "2026-08-18",
+     "evidence": [
+      "2 ocorrências em 4.631 requisições na rodada 11"
+     ]
+    }
+   ]
+  },
+  {
+   "runDate": "2026-08-19",
+   "rotulo": "Rodada 12 — 120 sessões com bolsas calibradas e estoque reposto",
+   "status": "concluido",
+   "source": "execucao autonoma contra o HML real",
+   "environment": "apcap-v5-hml",
+   "generatedAt": "2026-08-19T00:19:00-03:00",
+   "summary": {
+    "total": 11,
+    "passed": 3,
+    "failed": 8,
+    "blocked": 0,
+    "screenshots": 0,
+    "catalogTotal": 219,
+    "executed": 11,
+    "evidenceMode": "Medição direta na API HML e no Admin autenticado. Casos de motor e de contabilidade são provados por número medido, não por tela.",
+    "scope": "Rodada autônoma de 19/08/2026 00:08–00:19 BRT: 558 títulos, 120 sessões completas, liquidação Pix real no sandbox, com as duas explicações anteriores (bolsa semeada e estoque vazio) removidas antes de rodar."
+   },
+   "browserCoverage": {
+    "api-hml": 11
+   },
+   "currentRunCaseIds": [
+    "SIM-L12-BOLSA-01",
+    "SIM-L12-ODDS-02",
+    "SIM-L12-RTP-03",
+    "SIM-L12-CONTAB-04",
+    "SIM-L12-LIMITE-05",
+    "SIM-L12-ESTOQUE-06",
+    "CS-PAGAMENTO-01",
+    "GATEWAY-PIX-01",
+    "CS-EV-CALC-01",
+    "CS-CICLO-01",
+    "AUTH-RESET-01"
+   ],
+   "cases": [
+    {
+     "id": "SIM-L12-BOLSA-01",
+     "title": "Saldo da bolsa não trava o pagamento: motor paga 2,5× o caixa disponível",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "failed",
+     "note": "Quatro faixas altas com caixa para um prêmio cada emitiram 8, 7, 11 e 2 prêmios — R$ 2.660.000 saindo de R$ 1.065.000 provisionados. Nenhuma bolsa terminou negativa: todas pararam em cerca de R$ 150.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote12",
+     "priority": "P0",
+     "lastRunAt": "2026-08-19",
+     "evidence": [
+      "Saldo pré-rodada: R$ 1.065.000 nas 4 faixas altas",
+      "Creditado nas 4 faixas: R$ 2.660.000 (99,15% do total)"
+     ]
+    },
+    {
+     "id": "SIM-L12-ODDS-02",
+     "title": "Frequência dos prêmios ignora a proporção configurada",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "failed",
+     "note": "R$ 1.000.000 saiu 1 em 2.486 chances contra 1 em 35 milhões previstos pelo custeio. Todas as 13 faixas sorteadas caíram entre 1 em 262 e 1 em 2.486, independentemente do valor.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote12",
+     "priority": "P0",
+     "lastRunAt": "2026-08-19",
+     "evidence": [
+      "4.972 chances jogadas · 127 vitórias · 13 faixas emitidas"
+     ]
+    },
+    {
+     "id": "SIM-L12-RTP-03",
+     "title": "RTP realizado de 34.046% contra 55% declarados, sem gargalo de estoque nem bolsa semeada",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "failed",
+     "note": "R$ 7.880,00 em compras produziram R$ 2.682.823,00 creditados. Primeira medição feita depois de calibrar as bolsas e repor o estoque: as duas explicações anteriores caíram.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote12",
+     "priority": "P0",
+     "lastRunAt": "2026-08-19",
+     "evidence": [
+      "120 de 120 sessões completas · 558 títulos · 10,8 min · concorrência 4"
+     ]
+    },
+    {
+     "id": "SIM-L12-CONTAB-04",
+     "title": "Carteira, bolsa e campanha registram o mesmo prêmio com 30× de diferença",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "failed",
+     "note": "Carteira R$ 2.682.823,00 · bolsas −R$ 1.084.596,59 · campanha R$ 87.946,20, para o mesmo conjunto de prêmios. A rodada 11 media 28×: a calibragem não alterou a divergência.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote12",
+     "priority": "P1",
+     "lastRunAt": "2026-08-19",
+     "evidence": [
+      "Três leituras no mesmo instante, ao final da rodada 12"
+     ]
+    },
+    {
+     "id": "SIM-L12-LIMITE-05",
+     "title": "Limite diário de R$ 1.000 por CPF permanece íntegro",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "passed",
+     "note": "Maior compra aceita R$ 750,00; nenhuma das 120 contas passou de R$ 1.000 no dia.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote12",
+     "priority": "P1",
+     "lastRunAt": "2026-08-19",
+     "evidence": [
+      "120 CPFs sintéticos distintos, distribuição lognormal com whales até R$ 900"
+     ]
+    },
+    {
+     "id": "SIM-L12-ESTOQUE-06",
+     "title": "Com estoque reposto, nenhuma bolsa solvente deixou de pagar por falta de unidade",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "passed",
+     "note": "24.249 unidades repostas em 7 faixas às 00:05 BRT. O empoçamento dos lotes 9 e 10 desapareceu.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote12",
+     "priority": "P1",
+     "lastRunAt": "2026-08-19",
+     "evidence": [
+      "R$ 50.000: de 1 para 50 unidades · chance R$ 0,60: de 1.812 para 21.812"
+     ]
+    },
+    {
+     "id": "CS-PAGAMENTO-01",
+     "title": "Caminho da Sorte declara vitória e paga R$ 0,00 — segunda amostra independente",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "failed",
+     "note": "120 emissões, todas no dia 1, todas com venceu=true e valor R$ 0,00. Com a rodada 11 são 232 emissões declarando vitória sem pagar. D2 a D7 seguem sem medição.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote12",
+     "priority": "P0",
+     "lastRunAt": "2026-08-19",
+     "evidence": [
+      "sim/lote12/sessoes.jsonl — 120 emissões sem pagamento"
+     ]
+    },
+    {
+     "id": "GATEWAY-PIX-01",
+     "title": "Erro de emissão do Pix não se reproduziu em 120 liquidações",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "passed",
+     "note": "14.916 requisições, zero resposta 5xx, p95 de 1.270 ms e mediana de 186 ms, na mesma concorrência 4 que reproduzia a falha em 17/08.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote12",
+     "priority": "P1",
+     "lastRunAt": "2026-08-19",
+     "evidence": [
+      "14.916 requisições · zero 5xx · p95 1.270 ms"
+     ]
+    },
+    {
+     "id": "CS-EV-CALC-01",
+     "title": "Cálculo de valor esperado do Caminho da Sorte ignora a probabilidade de vitória",
+     "execution": "revisao-de-codigo",
+     "autonomous": true,
+     "status": "failed",
+     "note": "A função soma o campo Nº da Sorte como centavos e não pondera cada prêmio pela probabilidade.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote12",
+     "priority": "P2",
+     "lastRunAt": "2026-08-19",
+     "evidence": [
+      "Leitura do código publicado"
+     ]
+    },
+    {
+     "id": "CS-CICLO-01",
+     "title": "Virada do dia no Caminho da Sorte usa data UTC sem fuso declarado",
+     "execution": "revisao-de-codigo",
+     "autonomous": true,
+     "status": "failed",
+     "note": "Hora local somada a data UTC, serviço sem TZ: em servidor UTC a virada cai às 21h BRT e corta a ofensiva.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote12",
+     "priority": "P1",
+     "lastRunAt": "2026-08-19",
+     "evidence": [
+      "Leitura do código publicado"
+     ]
+    },
+    {
+     "id": "AUTH-RESET-01",
+     "title": "Não existe recuperação de senha em nenhum canal",
+     "execution": "real-hml",
+     "autonomous": true,
+     "status": "failed",
+     "note": "Sem link na tela de login, sem rota na API, sem redefinição por e-mail ou SMS. Conta com senha esquecida fica inacessível com saldo e títulos dentro.",
+     "projects": [
+      "api-hml"
+     ],
+     "lote": "lote12",
+     "priority": "P0",
+     "lastRunAt": "2026-08-19",
+     "evidence": [
+      "Varredura da UI de login e da API pública"
+     ]
+    }
+   ]
   }
  ],
  "runDate": "2026-08-19"

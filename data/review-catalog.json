@@ -1,8 +1,8 @@
 {
- "schemaVersion": 6,
- "generatedAt": "2026-08-17T23:19:49-03:00",
+ "schemaVersion": 7,
+ "generatedAt": "2026-08-19T09:20:00-03:00",
  "policy": {
-  "scope": "O catalogo mapeia 207 casos. Recebem veredito apenas os executados do inicio ao fim contra o HML real. 63 estao na fila autonoma apos a reclassificacao de 17/08/2026. 21 sao decisoes humanas e saem da contagem de QA. 11 foram aposentados por dependerem de mock. 15 seguem bloqueados por acesso de BI ou hardware fisico.",
+  "scope": "O catalogo mapeia 219 casos, sendo 12 acrescentados em 19/08/2026 com os achados das rodadas 11 e 12. Recebem veredito apenas os executados do inicio ao fim contra o HML real. 63 estao na fila autonoma apos a reclassificacao de 17/08/2026. 21 sao decisoes humanas e saem da contagem de QA. 11 foram aposentados por dependerem de mock. 15 seguem bloqueados por acesso de BI ou hardware fisico.",
   "evidence": "Screenshots cruas, sem mascaramento, na resolucao real da viewport. Texto nao registra dados sensiveis.",
   "verdicts": "Somente aprovado ou falhou contam como veredito. Bloqueado significa execucao interrompida por limite tecnico declarado.",
   "codeReview": "Casos com canal \"Codigo-fonte (backend apcapv5)\" tem veredito por leitura do codigo publicado no repositorio, com arquivo e trecho citados. Nao substituem execucao no HML: quando o efeito for observavel na aplicacao, o caso ganha screenshot correspondente."
@@ -18,29 +18,29 @@
   "blocked_external": "Bloqueado por acesso externo: falta credencial de BI ou hardware fisico. Nao depende de esforco do agente."
  },
  "summary": {
-  "total": 207,
+  "total": 219,
   "by_status": {
-   "failed": 40,
-   "approved": 57,
+   "failed": 50,
+   "approved": 59,
    "queued": 63,
    "blocked_external": 15,
    "retired": 11,
    "decision_pending": 21
   },
-  "executed": 97,
-  "verdicts": 97,
+  "executed": 109,
+  "verdicts": 109,
   "screenshots": 209,
   "by_area": {
    "Navegação autenticada": 1,
    "Compliance": 4,
    "Privacidade": 8,
    "Regulatório": 6,
-   "Autenticação": 3,
+   "Autenticação": 4,
    "Jogo": 1,
-   "Compra": 8,
+   "Compra": 9,
    "Landing": 3,
    "Cartão": 1,
-   "Caminho da Sorte": 13,
+   "Caminho da Sorte": 16,
    "Pix": 11,
    "Perfil e LGPD": 1,
    "PWA": 5,
@@ -54,8 +54,8 @@
    "Chances": 5,
    "Contrato": 1,
    "Motor": 5,
-   "Odds": 1,
-   "Estoque": 1,
+   "Odds": 2,
+   "Estoque": 2,
    "Selo": 1,
    "Idempotência": 3,
    "Reprodutibilidade": 1,
@@ -72,7 +72,7 @@
    "Upsell": 5,
    "Conservação": 2,
    "Marketing": 1,
-   "Cálculo": 3,
+   "Cálculo": 4,
    "BI": 5,
    "Contrato de saldo": 1,
    "Contrato de checkout": 3,
@@ -87,7 +87,7 @@
    "P&L": 1,
    "Pagamento": 2,
    "Dados": 1,
-   "Carteira e regulatório": 3,
+   "Carteira e regulatório": 4,
    "Modelo de motor": 1,
    "Modelo Pix": 2,
    "Encontre o Balão": 2,
@@ -99,7 +99,7 @@
    "Acessibilidade": 1,
    "Cálculo e copy": 1,
    "Sorteios": 1,
-   "Premiação e RTP": 3,
+   "Premiação e RTP": 6,
    "Estabilidade e carga": 1,
    "Configuração de campanha": 1,
    "Compra e pagamento": 1,
@@ -108,11 +108,11 @@
    "Observabilidade": 1,
    "Cálculo e decisão de negócio": 1
   },
-  "approved": 57,
-  "failed": 40,
+  "approved": 59,
+  "failed": 50,
   "executedNota": "Executado = caso levado do inicio ao fim contra o HML real (ou provado por leitura do codigo publicado) e por isso com veredito. Numero contado dos proprios casos, nunca escrito a mao.",
   "by_scope": {
-   "autonomo": 160,
+   "autonomo": 172,
    "fora_do_escopo": 26,
    "decisao": 21
   },
@@ -5497,7 +5497,7 @@
     "carga-hml"
    ],
    "observed": "execucao-real",
-   "lastRunAt": "2026-08-17",
+   "lastRunAt": "2026-08-19",
    "batch": "lote10",
    "preconditions": [
     "Conta sintética recém-cadastrada e autenticada",
@@ -5509,8 +5509,325 @@
     "Reprodução isolada: POST /v1/compras → 201, status TENTANDO_NOVAMENTE, pagamento null",
     "172 sessões com PIX_URL_AUSENTE em sim/lote10/sessoes.jsonl",
     "Arrecadação da campanha congelada em R$ 74.305 desde a onda 16 (09:32 BRT)",
-    "Última onda com 100% de aproveitamento: onda 14, 09:31 BRT, concorrência 8"
+    "Última onda com 100% de aproveitamento: onda 14, 09:31 BRT, concorrência 8",
+    "Não se reproduziu na rodada 12 (19/08/2026): 558 compras e 120 liquidações na mesma concorrência 4, com 14.916 requisições e zero resposta 5xx. A falha medida em 17/08 permanece registrada; o caso segue como falha até que uma causa seja identificada e corrigida."
    ]
+  },
+  {
+   "id": "SIM-L12-BOLSA-01",
+   "priority": "P0",
+   "status": "failed",
+   "area": "Premiação e RTP",
+   "title": "Saldo da bolsa não trava o pagamento: motor paga 2,5× o caixa e o saldo é reposto depois",
+   "channel": "Execução real na API HML + leitura do Admin autenticado",
+   "execution_profiles": [
+    "api-hml"
+   ],
+   "preconditions": [
+    "14 bolsas da campanha INVERNO2026 calibradas em 18/08 23:44 BRT",
+    "Quatro faixas altas com caixa para exatamente um prêmio cada",
+    "Estoque reposto em 19/08 00:05 BRT para que a unidade não fosse limitante"
+   ],
+   "reason": "Cada faixa alta entrou na rodada 12 com saldo para um único prêmio: R$ 5.000, R$ 10.000, R$ 50.000 e R$ 1.000.000. O motor emitiu 8, 7, 11 e 2 prêmios respectivamente, R$ 2.660.000 pagos a partir de bolsas que somavam R$ 1.065.000. Nenhuma das quatro terminou negativa: todas pararam em cerca de R$ 150, como se o saldo fosse recomposto depois do pagamento. Com o estoque já reposto, não há explicação de unidade nem de semeadura: o caixa da bolsa não é uma trava de emissão. É o mecanismo que deveria limitar a exposição financeira da campanha e ele não limita nada.",
+   "expected": "A bolsa só emite prêmio quando tem saldo para ele; sem saldo, o prêmio não sai e a exposição da campanha fica limitada ao que foi provisionado.",
+   "evidence": [
+    "Saldo pré-rodada das 4 faixas altas: R$ 1.065.000 (1 prêmio cada) — sim/CALIBRAGEM-APLICADA.json",
+    "Emissões medidas: R$ 1.000.000 × 2, R$ 50.000 × 11, R$ 10.000 × 7, R$ 5.000 × 8",
+    "Creditado em carteira nas 4 faixas: R$ 2.660.000 — 99,15% do total da rodada",
+    "Saldo pós-rodada das 4 faixas: ~R$ 150 cada, nenhuma negativa"
+   ],
+   "scope": "autonomo",
+   "observed": "execucao-real",
+   "lastRunAt": "2026-08-19",
+   "batch": "lote12"
+  },
+  {
+   "id": "SIM-L12-ODDS-02",
+   "priority": "P0",
+   "status": "failed",
+   "area": "Odds",
+   "title": "Frequência dos prêmios ignora a proporção configurada: sorteio quase uniforme entre faixas",
+   "channel": "Execução real na API HML",
+   "execution_profiles": [
+    "api-hml"
+   ],
+   "preconditions": [
+    "4.972 chances jogadas na rodada 12",
+    "Proporções calibradas no Admin para RTP 55%"
+   ],
+   "reason": "O R$ 1.000.000 saiu 1 vez a cada 2.486 chances. O custeio configurado (3,273% do arrecadado dentro de um RTP de 55%) manda esse prêmio sair 1 vez a cada 35 milhões de chances — 14 mil vezes mais raro. O R$ 50.000 saiu 1 em 452 contra 1 em 1,75 milhão previsto. Na ponta oposta, o R$ 2 saiu 1 em 355 contra 1 em 32 previsto. As treze faixas sorteadas caíram entre 1 em 262 e 1 em 2.486, ou seja, na mesma ordem de grandeza, independentemente do valor do prêmio. O sorteio se comporta como escolha quase uniforme entre faixas e a proporção configurada no Admin não governa o resultado.",
+   "expected": "A frequência de cada faixa segue a proporção configurada: prêmios caros saem raramente, na medida em que o custeio da bolsa os financia.",
+   "evidence": [
+    "4.972 chances jogadas, 127 vitórias, 13 faixas distintas emitidas",
+    "R$ 1.000.000: medido 1 em 2.486 · esperado 1 em 35.000.000",
+    "R$ 50.000: medido 1 em 452 · esperado 1 em 1.750.000",
+    "R$ 2: medido 1 em 355 · esperado 1 em 32"
+   ],
+   "scope": "autonomo",
+   "observed": "execucao-real",
+   "lastRunAt": "2026-08-19",
+   "batch": "lote12"
+  },
+  {
+   "id": "SIM-L12-RTP-03",
+   "priority": "P0",
+   "status": "failed",
+   "area": "Premiação e RTP",
+   "title": "RTP realizado de 34.046% contra 55% declarados, já sem gargalo de estoque nem bolsa semeada",
+   "channel": "Execução real na API HML",
+   "execution_profiles": [
+    "api-hml"
+   ],
+   "preconditions": [
+    "120 contas sintéticas novas",
+    "558 títulos comprados e liquidados por Pix real no sandbox"
+   ],
+   "reason": "R$ 7.880,00 pagos em compras produziram R$ 2.682.823,00 creditados nas carteiras: RTP realizado de 34.046% contra 55% declarados na campanha, um fator de 619×. É a terceira medição consecutiva fora da faixa (lote 9: 9,81%; rodada 11: 108.599%), e a primeira em que as duas explicações anteriores foram removidas antes de rodar — bolsas recalibradas e estoque reposto. O desvio, portanto, não vem de provisionamento nem de empoçamento: vem da mecânica de sorteio e de emissão (ver SIM-L12-ODDS-02 e SIM-L12-BOLSA-01).",
+   "expected": "RTP realizado converge para os 55% declarados na campanha, dentro da tolerância da amostra.",
+   "evidence": [
+    "Pago em compras: R$ 7.880,00 · creditado: R$ 2.682.823,00",
+    "120 de 120 sessões completas, zero falha, 10,8 minutos, concorrência 4",
+    "Rodada 12 em 19/08/2026 00:08–00:19 BRT"
+   ],
+   "scope": "autonomo",
+   "observed": "execucao-real",
+   "lastRunAt": "2026-08-19",
+   "batch": "lote12"
+  },
+  {
+   "id": "SIM-L12-CONTAB-04",
+   "priority": "P1",
+   "status": "failed",
+   "area": "Carteira e regulatório",
+   "title": "Carteira, bolsa e campanha registram o mesmo prêmio com 30× de diferença",
+   "channel": "Execução real na API HML + leitura do Admin autenticado",
+   "execution_profiles": [
+    "api-hml"
+   ],
+   "preconditions": [
+    "Rodada 12 concluída",
+    "Leitura das três fontes no mesmo instante"
+   ],
+   "reason": "Para o mesmo conjunto de prêmios, a carteira dos jogadores recebeu R$ 2.682.823,00, as bolsas perderam R$ 1.084.596,59 de saldo e a campanha registrou como premiado R$ 87.946,20. São três números para o mesmo evento, com 30× entre o maior e o menor. Na rodada 11 a divergência entre carteira e campanha era de 28×, praticamente a mesma, o que mostra que o problema é de contabilidade e não de parametrização. Qualquer relatório financeiro, fechamento de P&L ou prestação de contas regulatória apoiado nesses campos vai divergir do dinheiro efetivamente entregue ao jogador.",
+   "expected": "Carteira, saldo de bolsa e total premiado da campanha fecham no mesmo valor para o mesmo evento.",
+   "evidence": [
+    "Carteira: R$ 2.682.823,00",
+    "Bolsas: −R$ 1.084.596,59",
+    "Campanha: R$ 87.946,20",
+    "Rodada 11 mediu a mesma divergência (28×) com bolsas não calibradas"
+   ],
+   "scope": "autonomo",
+   "observed": "execucao-real",
+   "lastRunAt": "2026-08-19",
+   "batch": "lote12"
+  },
+  {
+   "id": "SIM-L12-LIMITE-05",
+   "priority": "P1",
+   "status": "approved",
+   "area": "Compra",
+   "title": "Limite diário de R$ 1.000 por CPF permanece íntegro em 120 contas e 558 compras",
+   "channel": "Execução real na API HML",
+   "execution_profiles": [
+    "api-hml"
+   ],
+   "preconditions": [
+    "120 CPFs sintéticos distintos",
+    "Distribuição lognormal com whales até R$ 900"
+   ],
+   "reason": "Nenhuma das 120 contas ultrapassou R$ 1.000,00 em compras no dia e a maior compra aceita foi de R$ 750,00. Somado à sonda dedicada da rodada 11, em que três CPFs foram recusados ao tentar passar do teto, o limite por CPF/dia está cumprido. Confirma-se também que o limite é de compra, não de ganho: contas que receberam prêmios muito acima de R$ 1.000 não tiveram o crédito bloqueado, o que é o comportamento correto.",
+   "expected": "Compras por CPF/dia param em R$ 1.000,00; ganhos não são afetados pelo limite.",
+   "evidence": [
+    "Maior compra aceita: R$ 750,00",
+    "Nenhuma das 120 contas passou de R$ 1.000,00 no dia",
+    "Sonda da rodada 11: 3 CPFs recusados acima do teto — sim/lote11/limite-probe.json"
+   ],
+   "scope": "autonomo",
+   "observed": "execucao-real",
+   "lastRunAt": "2026-08-19",
+   "batch": "lote12"
+  },
+  {
+   "id": "SIM-L12-ESTOQUE-06",
+   "priority": "P1",
+   "status": "approved",
+   "area": "Estoque",
+   "title": "Com estoque reposto, nenhuma bolsa solvente deixou de pagar por falta de unidade",
+   "channel": "Execução real na API HML + Admin autenticado",
+   "execution_profiles": [
+    "api-hml"
+   ],
+   "preconditions": [
+    "24.249 unidades repostas em 7 faixas às 00:05 BRT de 19/08",
+    "R$ 50.000 saiu de 1 para 50 unidades; chance de R$ 0,60 de 1.812 para 21.812"
+   ],
+   "reason": "O empoçamento que dominou os lotes 9 e 10 — R$ 27.978 presos por estoque vazio no lote 9 — não ocorreu. Todas as faixas com caixa emitiram, e as treze faixas sorteadas incluem as quatro altas. A reposição cumpriu o papel de isolar a variável: o que restou de anômalo na rodada 12 não pode mais ser atribuído a estoque.",
+   "expected": "Prêmio com bolsa solvente e unidade disponível é emitido normalmente.",
+   "evidence": [
+    "Reposição de 24.249 unidades em 7 faixas, registrada no Admin em 19/08 00:05 BRT",
+    "13 faixas distintas emitidas na rodada, incluindo as 4 altas",
+    "Zero ocorrência de bolsa solvente sem emissão (prova P3 da aba Prova do Motor)"
+   ],
+   "scope": "autonomo",
+   "observed": "execucao-real",
+   "lastRunAt": "2026-08-19",
+   "batch": "lote12"
+  },
+  {
+   "id": "CS-PAGAMENTO-01",
+   "priority": "P0",
+   "status": "failed",
+   "area": "Caminho da Sorte",
+   "title": "Caminho da Sorte declara vitória e paga R$ 0,00: 232 emissões em duas amostras independentes",
+   "channel": "Execução real na API HML",
+   "execution_profiles": [
+    "api-hml"
+   ],
+   "batch": "lote11+lote12",
+   "preconditions": [
+    "Opção C de parametrização aplicada e confirmada no servidor em 18/08 22:18 BRT",
+    "Modo demonstração ligado por decisão do time"
+   ],
+   "reason": "Nas rodadas 11 e 12 somam-se 232 emissões do Caminho da Sorte, todas no dia 1, todas devolvendo \"venceu=true\" com valor R$ 0,00 e todas presas no estado INICIADA. Nenhum centavo chegou à carteira. A parametrização não é a causa: a Opção C está no ar e confere com o esperado (D1 R$ 0,33, semana R$ 8,47). O jogo anuncia vitória ao usuário e não paga. Como conta nova nunca avança do dia 1, os dias 2 a 7 continuam sem qualquer medição — inclusive o teto de R$ 1.000 do D7, que nunca foi pago.",
+   "expected": "Vitória declarada no Caminho da Sorte credita o valor correspondente na carteira e a emissão fecha.",
+   "evidence": [
+    "Rodada 11: 112 emissões, todas venceu=true com R$ 0,00, estado INICIADA",
+    "Rodada 12: 120 emissões, mesmo comportamento, amostra independente",
+    "D2 a D7 sem medição: nenhuma conta avançou do dia 1"
+   ],
+   "scope": "autonomo",
+   "observed": "execucao-real",
+   "lastRunAt": "2026-08-19"
+  },
+  {
+   "id": "CS-CICLO-01",
+   "priority": "P1",
+   "status": "failed",
+   "area": "Caminho da Sorte",
+   "title": "Virada do dia no Caminho da Sorte usa data UTC sem fuso e corta a ofensiva do jogador",
+   "channel": "Leitura do código publicado + observação na API HML",
+   "execution_profiles": [
+    "revisao-de-codigo",
+    "api-hml"
+   ],
+   "observed": "revisao-de-codigo",
+   "batch": "codigo",
+   "preconditions": [
+    "Código publicado do serviço do Caminho da Sorte",
+    "Serviço sem variável TZ definida"
+   ],
+   "reason": "O cálculo do dia da ofensiva mistura hora local com data em UTC e o serviço não declara TZ. Num servidor em UTC, a virada do dia acontece às 21h BRT: quem joga entre 21h e meia-noite tem a jogada contada no dia seguinte e perde a sequência, e quem joga logo após a meia-noite pode ver o dia anterior. Com a ofensiva de 7 dias sendo a mecânica central do jogo, isso quebra a progressão de qualquer jogador do horário noturno — a faixa de maior movimento.",
+   "expected": "O dia da ofensiva é calculado num único fuso declarado (BRT), com virada à meia-noite local.",
+   "evidence": [
+    "Cálculo do dia usa hora local e data UTC no mesmo trecho",
+    "Serviço publicado sem variável TZ",
+    "Consequência: virada às 21h BRT quando o servidor roda em UTC"
+   ],
+   "scope": "autonomo",
+   "lastRunAt": "2026-08-19"
+  },
+  {
+   "id": "CS-D7-CONCENTRACAO-01",
+   "priority": "P2",
+   "status": "failed",
+   "area": "Caminho da Sorte",
+   "title": "Parametrização original concentra 88% do valor esperado da semana num único bilhete do dia 7",
+   "channel": "Leitura da configuração no Admin autenticado + cálculo sobre a tabela vigente",
+   "execution_profiles": [
+    "api-hml"
+   ],
+   "observed": "execucao-real",
+   "batch": "caminho-sorte",
+   "preconditions": [
+    "Tabela dos 7 dias lida do Admin em 18/08 antes da mudança"
+   ],
+   "reason": "Na configuração original, o valor esperado da semana estava concentrado em 88% num único bilhete do dia 7. Na prática o jogador cumpre seis dias por um retorno quase nulo e todo o prêmio depende de uma única jogada final — que, somada ao CS-CICLO-01 e ao CS-PAGAMENTO-01, é justamente a que nunca chegou a pagar. A Opção C, assinada e aplicada em 18/08, reduz essa concentração para 11,8% e distribui o valor pelos sete dias (D1 R$ 0,33 · D2 R$ 0,45 · D3 R$ 1,26 · D4 R$ 0,45 · D5 R$ 1,87 · D6 R$ 0,66 · D7 R$ 3,45 · semana R$ 8,47).",
+   "expected": "O valor esperado se distribui pelos sete dias, sem depender de um único bilhete terminal.",
+   "evidence": [
+    "Configuração original: 88% do EV da semana no D7",
+    "Opção C aplicada em 18/08 22:18 BRT: concentração cai para 11,8%",
+    "R$ 15 e R$ 20 ficaram com peso zero por não terem bolsa correspondente"
+   ],
+   "scope": "autonomo",
+   "lastRunAt": "2026-08-19"
+  },
+  {
+   "id": "CS-EV-CALC-01",
+   "priority": "P2",
+   "status": "failed",
+   "area": "Cálculo",
+   "title": "Cálculo de valor esperado do Caminho da Sorte trata o Nº da Sorte como centavos e ignora a probabilidade",
+   "channel": "Leitura do código publicado",
+   "execution_profiles": [
+    "revisao-de-codigo"
+   ],
+   "observed": "revisao-de-codigo",
+   "batch": "codigo",
+   "preconditions": [
+    "Função de cálculo de EV do Caminho da Sorte no código publicado"
+   ],
+   "reason": "A função soma o campo \"Nº da Sorte\" como se fosse um valor em centavos e não multiplica cada prêmio pela respectiva probabilidade de vitória. O número exibido como valor esperado, portanto, não é um valor esperado: quem parametriza o jogo pelo painel decide com base num indicador que não corresponde ao custo real da premiação.",
+   "expected": "O valor esperado é a soma de cada prêmio multiplicado pela sua probabilidade de vitória.",
+   "evidence": [
+    "Campo \"Nº da Sorte\" somado como centavos na função de cálculo",
+    "Probabilidade de vitória não entra na fórmula",
+    "Indicador diverge do custo medido em rodada real"
+   ],
+   "scope": "autonomo",
+   "lastRunAt": "2026-08-19"
+  },
+  {
+   "id": "AUTH-RESET-01",
+   "priority": "P0",
+   "status": "failed",
+   "area": "Autenticação",
+   "title": "Não existe recuperação de senha: conta com senha esquecida é conta perdida",
+   "channel": "Execução real na UI e na API HML",
+   "execution_profiles": [
+    "desktop-chromium",
+    "api-hml"
+   ],
+   "batch": "autenticacao",
+   "preconditions": [
+    "Tela de login do HML",
+    "Varredura da API pública por rota de recuperação"
+   ],
+   "reason": "Não há link de \"esqueci minha senha\" na tela de login, nem fluxo equivalente na API, nem qualquer rota de redefinição por e-mail ou SMS. O usuário que esquece a senha não tem caminho de volta e a conta — com saldo de carteira e títulos ativos — fica inacessível. Numa operação com dinheiro do cliente, a ausência total de recuperação é bloqueante para produção e tende a virar um passivo de atendimento desde o primeiro dia.",
+   "expected": "Existe fluxo de recuperação de senha autenticado por canal verificado, com expiração de token.",
+   "evidence": [
+    "Tela de login sem link de recuperação",
+    "Nenhuma rota de redefinição de senha exposta na API",
+    "Conta sem senha permanece com saldo e títulos inacessíveis"
+   ],
+   "scope": "autonomo",
+   "observed": "execucao-real",
+   "lastRunAt": "2026-08-19"
+  },
+  {
+   "id": "SIM-L11-RTP-01",
+   "priority": "P1",
+   "status": "failed",
+   "area": "Premiação e RTP",
+   "title": "Rodada 11 mediu RTP de 108.599% com bolsas semeadas e estoque incompleto",
+   "channel": "Execução real na API HML",
+   "execution_profiles": [
+    "api-hml"
+   ],
+   "lastRunAt": "2026-08-18",
+   "batch": "lote11",
+   "preconditions": [
+    "112 sessões completas",
+    "Bolsas semeadas com R$ 13.122.398 contra arrecadação de R$ 84.590"
+   ],
+   "reason": "R$ 8.635 pagos em compras geraram R$ 9.377.493 creditados: RTP de 108.599% contra 55% declarados. À época, duas explicações concorriam — bolsas fortemente semeadas e estoque parcial. A rodada 12 removeu as duas e o desvio permaneceu na mesma ordem de grandeza, o que descarta ambas como causa e mantém o caso como falha estrutural do motor de premiação.",
+   "expected": "RTP realizado converge para os 55% declarados.",
+   "evidence": [
+    "553 compras · 112 sessões · zero falha · 11,9 minutos · 114 faturas Pix",
+    "Bolsas ≥ R$ 5.000 pagaram 99,56% do total creditado",
+    "Gateway: 2 erros em 4.631 requisições (0,04%)"
+   ],
+   "scope": "autonomo",
+   "observed": "execucao-real"
   }
  ]
 }
