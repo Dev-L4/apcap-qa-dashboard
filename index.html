@@ -40,11 +40,13 @@
   </section>
 
   <section id="simulationView" hidden>
+    <div class="list-meta run-picker"><label class="search"><span>Rodada</span><select id="simRunSelect"></select></label><span id="simRunMeta" class="case-meta"></span></div>
     <section class="stats" id="simStats" aria-label="Resumo da simulação"></section>
     <div id="simBody"><div class="empty">Carregando simulação…</div></div>
   </section>
 
   <section id="provaView" hidden>
+    <div class="list-meta run-picker"><label class="search"><span>Rodada</span><select id="provaRunSelect"></select></label><span id="provaRunMeta" class="case-meta"></span></div>
     <p class="lead-text" id="provaIntro"></p>
     <section id="provaCards" class="prova-grid"></section>
     <section class="notice" id="provaRegras"></section>
@@ -52,6 +54,7 @@
 
   <section id="caminhoView" hidden>
     <h2>Simular Caminho da Sorte</h2>
+    <div class="list-meta run-picker"><label class="search"><span>Medição</span><select id="csRunSelect"></select></label><span id="csRunMeta" class="case-meta"></span></div>
     <p class="lead" id="csEstado">Carregando…</p>
     <div id="csBody"></div>
   </section>

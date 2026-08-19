@@ -39,3 +39,6 @@
 
 details.hist{border:1px solid var(--border,#d8dee6);border-radius:8px;padding:.5rem .75rem;margin:.5rem 0}
 details.hist summary{cursor:pointer;font-weight:600}
+
+.run-picker{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px}
+.run-picker select{min-width:280px;max-width:100%}
