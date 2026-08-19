@@ -42,3 +42,12 @@ details.hist summary{cursor:pointer;font-weight:600}
 
 .run-picker{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px}
 .run-picker select{min-width:280px;max-width:100%}
+.diag summary{cursor:pointer;font-weight:600}
+.diag .diagbody{max-width:70ch;padding:.5rem .25rem;font-size:.92em;line-height:1.5}
+.diag .diagbody h4{margin:.9rem 0 .25rem;font-size:.9em;text-transform:uppercase;letter-spacing:.04em;opacity:.75}
+.diag .diagbody code{font-size:.9em;word-break:break-all}
+.diag .fixlist li{margin-bottom:.5rem}
+.diag .fixlist span{opacity:.85}
+.conf{font-size:.75em;font-weight:500;padding:.05rem .35rem;border-radius:.35rem;border:1px solid currentColor;text-transform:none;letter-spacing:0}
+.conf-alta{color:#166534}.conf-media{color:#92400e}.conf-baixa{color:#991b1b}
+.muted{opacity:.6;font-size:.9em}

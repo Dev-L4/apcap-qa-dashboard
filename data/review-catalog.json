@@ -1,11 +1,12 @@
 {
  "schemaVersion": 7,
- "generatedAt": "2026-08-19T09:20:00-03:00",
+ "generatedAt": "2026-08-19T12:40:00-03:00",
  "policy": {
   "scope": "O catalogo mapeia 219 casos, sendo 12 acrescentados em 19/08/2026 com os achados das rodadas 11 e 12. Recebem veredito apenas os executados do inicio ao fim contra o HML real. 63 estao na fila autonoma apos a reclassificacao de 17/08/2026. 21 sao decisoes humanas e saem da contagem de QA. 11 foram aposentados por dependerem de mock. 15 seguem bloqueados por acesso de BI ou hardware fisico.",
   "evidence": "Screenshots cruas, sem mascaramento, na resolucao real da viewport. Texto nao registra dados sensiveis.",
   "verdicts": "Somente aprovado ou falhou contam como veredito. Bloqueado significa execucao interrompida por limite tecnico declarado.",
-  "codeReview": "Casos com canal \"Codigo-fonte (backend apcapv5)\" tem veredito por leitura do codigo publicado no repositorio, com arquivo e trecho citados. Nao substituem execucao no HML: quando o efeito for observavel na aplicacao, o caso ganha screenshot correspondente."
+  "codeReview": "Casos com canal \"Codigo-fonte (backend apcapv5)\" tem veredito por leitura do codigo publicado no repositorio, com arquivo e trecho citados. Nao substituem execucao no HML: quando o efeito for observavel na aplicacao, o caso ganha screenshot correspondente.",
+  "fixDetail": "Cada caso com veredito 'falhou' carrega, quando localizável, o ponto de correção verificado no repositório backend-l4/apcapv5 (arquivo, função e faixa de linhas), os endpoints envolvidos, as telas de Admin afetadas e os passos de reprodução. Confiança 'alta' significa que o trecho foi aberto e lido; 'média' significa que o mecanismo foi confirmado mas a causa exata da magnitude não fecha por leitura estática. Nenhum ponto de correção é inferido sem leitura do arquivo."
  },
  "statusDefinitions": {
   "approved": "Executado de ponta a ponta no HML real, objetivo cumprido, com evidencia crua.",
@@ -5511,7 +5512,42 @@
     "Arrecadação da campanha congelada em R$ 74.305 desde a onda 16 (09:32 BRT)",
     "Última onda com 100% de aproveitamento: onda 14, 09:31 BRT, concorrência 8",
     "Não se reproduziu na rodada 12 (19/08/2026): 558 compras e 120 liquidações na mesma concorrência 4, com 14.916 requisições e zero resposta 5xx. A falha medida em 17/08 permanece registrada; o caso segue como falha até que uma causa seja identificada e corrigida."
-   ]
+   ],
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "O catch de comprar() absorve a falha da Iugu e devolve um objeto de sucesso; o controller usa o 201 padrão do Nest sem diferenciar o ramo de erro.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/compra/services/compra.service.ts",
+      "symbol": "Comprar.comprar",
+      "lines": "91-101",
+      "what": "O catch de falha ao criar a cobrança na Iugu marca a compra como TENTANDO_NOVAMENTE e devolve `{...compra, status, pagamento: null}` como resposta de sucesso; deve lançar uma exceção HTTP explícita (ou devolver um corpo com código de erro) em vez de retornar objeto normal."
+     },
+     {
+      "path": "apps/apcap-api/src/modules/compra/compra.controller.ts",
+      "symbol": "CompraController.criarCompra",
+      "lines": "25-27",
+      "what": "`@Post()` sem `@HttpCode`, herda 201 do Nest mesmo quando o service devolve o ramo de falha do gateway; falta diferenciar o status HTTP conforme o resultado do service."
+     },
+     {
+      "path": "apps/apcap-api/src/modules/iugu/services/criar-cobranca.service.ts",
+      "symbol": "ServicoCriarCobranca.criarCobranca",
+      "lines": "80-90",
+      "what": "Ponto onde o erro da Iugu é de fato lançado (rethrow após log); é o que o `comprar()` deveria propagar como falha ao chamador em vez de engolir."
+     }
+    ],
+    "endpoints": [
+     "POST /v1/compras"
+    ],
+    "adminScreens": [],
+    "repro": [
+     "Fazer login e obter token de uma conta sintética.",
+     "Chamar POST /v1/compras com um item válido de uma campanha ativa.",
+     "Forçar/observar falha da Iugu ao criar a cobrança (ex.: intermediador indisponível).",
+     "Conferir que a resposta chega com HTTP 201, status TENTANDO_NOVAMENTE e pagamento nulo."
+    ]
+   }
   },
   {
    "id": "SIM-L12-BOLSA-01",
@@ -5539,7 +5575,38 @@
    "scope": "autonomo",
    "observed": "execucao-real",
    "lastRunAt": "2026-08-19",
-   "batch": "lote12"
+   "batch": "lote12",
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "não localizada com certeza: o código de solvência lido (emitir-premiacoes.service.ts) deveria impedir o comportamento observado; a divergência de magnitude sugere causa fora do que foi lido estaticamente (histórico de ajustes manuais, fila Redis pré-existente de rodadas anteriores, ou versão diferente da rodando em HML).",
+    "confidence": "media",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/emitir-premiacoes.service.ts",
+      "symbol": "ServicoEmitirPremiacoes.emitirParaCampanha",
+      "lines": "70-146",
+      "what": "Mecanismo de emissão lido linha a linha: saldo = arrecadacao - totalPremiado é recalculado a cada chamada a partir do Postgres, sob advisory lock por campanha, e decrementado monotonicamente dentro do laço — pela leitura estática do código, uma bolsa não deveria conseguir emitir além do que arrecadou. Não encontrei, na versão atual do `main`, o mecanismo que produziria uma emissão de 2,5x o caixa da bolsa; instrumentar aqui (log de saldo antes/depois de cada ciclo) é o próximo passo para achar a causa real."
+     },
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/ajustar-arrecadacao-bolsa.service.ts",
+      "symbol": "ServicoAjustarArrecadacaoBolsa.ajustar",
+      "lines": "20-60",
+      "what": "Ponto de aporte manual (calibragem) de saldo na bolsa; verificar se a calibragem de 18/08 23:44 foi aplicada mais de uma vez (idempotência do endpoint de ajuste) — isso explicaria saldo inicial maior do que o registrado na evidência."
+     }
+    ],
+    "endpoints": [
+     "POST /v1/campanhas/:id/bolsas/:idBolsa/arrecadacao (ajuste manual)"
+    ],
+    "adminScreens": [
+     "Editor de bolsas da campanha (bolsas-editor.tsx)"
+    ],
+    "repro": [
+     "Calibrar 4 bolsas de faixa alta para o saldo exato de 1 prêmio cada.",
+     "Repor estoque das faixas envolvidas.",
+     "Rodar uma sessão de simulação disparando compras e resgates de prêmio.",
+     "Comparar total emitido por faixa com o saldo pré-rodada de cada bolsa."
+    ]
+   }
   },
   {
    "id": "SIM-L12-ODDS-02",
@@ -5566,7 +5633,29 @@
    "scope": "autonomo",
    "observed": "execucao-real",
    "lastRunAt": "2026-08-19",
-   "batch": "lote12"
+   "batch": "lote12",
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "Seleção da bolsa candidata a emitir usa Math.random() uniforme entre as solventes, sem ponderar pela proporção configurada.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/emitir-premiacoes.service.ts",
+      "symbol": "ServicoEmitirPremiacoes.emitirParaCampanha",
+      "lines": "103-111",
+      "what": "`candidatas[Math.floor(Math.random() * candidatas.length)]` escolhe a bolsa a emitir com peso UNIFORME entre as bolsas solventes/com estoque/com vaga, ignorando `campanhaBolsa.proporcao`; a frequência de cada faixa devia ser proporcional ao ritmo de acúmulo de saldo de cada bolsa (proporção configurada), não a uma loteria uniforme entre as que já cruzaram o próprio teto."
+     }
+    ],
+    "endpoints": [],
+    "adminScreens": [
+     "Editor de bolsas da campanha (proporção por faixa)"
+    ],
+    "repro": [
+     "Configurar bolsas com proporções bem diferentes (ex.: 3% para R$1.000.000, 40% para R$2).",
+     "Rodar milhares de chances numa campanha com receita suficiente para todas as faixas ficarem solventes ao mesmo tempo.",
+     "Medir a frequência de emissão de cada faixa e comparar com a proporção configurada."
+    ]
+   }
   },
   {
    "id": "SIM-L12-RTP-03",
@@ -5592,7 +5681,33 @@
    "scope": "autonomo",
    "observed": "execucao-real",
    "lastRunAt": "2026-08-19",
-   "batch": "lote12"
+   "batch": "lote12",
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "Consequência agregada da seleção uniforme entre bolsas (SIM-L12-ODDS-02) somada ao mecanismo de emissão ainda não totalmente explicado (SIM-L12-BOLSA-01).",
+    "confidence": "media",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/emitir-premiacoes.service.ts",
+      "symbol": "ServicoEmitirPremiacoes.emitirParaCampanha",
+      "lines": "103-111",
+      "what": "Mesma causa listada em SIM-L12-ODDS-02: sorteio uniforme entre bolsas solventes faz faixas caras saírem cedo demais, inflando o RTP realizado."
+     },
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/emitir-premiacoes.service.ts",
+      "symbol": "ServicoEmitirPremiacoes.emitirParaCampanha (laço de emissão)",
+      "lines": "97-146",
+      "what": "Ver SIM-L12-BOLSA-01: parte do RTP inflado pode vir do mesmo mecanismo de saldo/emissão ainda não totalmente explicado pela leitura estática."
+     }
+    ],
+    "endpoints": [],
+    "adminScreens": [],
+    "repro": [
+     "Rodar uma coorte com bolsas calibradas e estoque reposto (isolando as duas causas anteriores).",
+     "Registrar total pago em compras e total creditado nas carteiras ao final da rodada.",
+     "Calcular RTP realizado = creditado / pago e comparar com o RTP declarado na campanha."
+    ]
+   }
   },
   {
    "id": "SIM-L12-CONTAB-04",
@@ -5619,7 +5734,35 @@
    "scope": "autonomo",
    "observed": "execucao-real",
    "lastRunAt": "2026-08-19",
-   "batch": "lote12"
+   "batch": "lote12",
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "não localizada no código com certeza: a escrita de totalPremiado (campanha e bolsa) é atômica e deveria bater entre si; o crédito na carteira é um ledger fisicamente separado sem invariante de conciliação, mas o ponto exato da divergência de 30x não foi confirmado.",
+    "confidence": "media",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/emitir-premiacoes.service.ts",
+      "symbol": "ServicoEmitirPremiacoes.emitirParaCampanha",
+      "lines": "150-163",
+      "what": "`campanha.totalPremiado` e `campanhaBolsa.totalPremiado` são incrementados juntos, com o mesmo `totalDebitado`, na mesma transação — pela leitura estática deveriam sempre fechar entre si; a divergência de 30x relatada não tem explicação nestas linhas e precisa de auditoria em runtime (histórico de updates concorrentes, campanhas múltiplas)."
+     },
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/obter-premio.service.ts",
+      "symbol": "ServicoObterPremio.entregar / entregarDaEmissao",
+      "lines": "300-360",
+      "what": "Ledger separado: o crédito efetivo na carteira (`movimentoCarteira`) acontece aqui, desacoplado da escrita de `totalPremiado` feita em emitir-premiacoes.service.ts — não há invariante de banco que force os dois a baterem; é o candidato mais provável para a divergência carteira × bolsa × campanha, mas não encontrei o ponto exato onde os números divergem."
+     }
+    ],
+    "endpoints": [],
+    "adminScreens": [
+     "Tela de campanha (resumo com arrecadação/premiado)"
+    ],
+    "repro": [
+     "Rodar uma coorte completa numa campanha.",
+     "Ler, no mesmo instante, o total creditado na carteira dos jogadores, o somatório de totalPremiado das bolsas e o totalPremiado da campanha.",
+     "Comparar os três valores."
+    ]
+   }
   },
   {
    "id": "SIM-L12-LIMITE-05",
@@ -5645,7 +5788,36 @@
    "scope": "autonomo",
    "observed": "execucao-real",
    "lastRunAt": "2026-08-19",
-   "batch": "lote12"
+   "batch": "lote12",
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "não aplicável (caso aprovado) — regra implementada e íntegra em validar-limite-diario.service.ts.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/compra/services/validar-limite-diario.service.ts",
+      "symbol": "ServicoValidarLimiteDiario.validar",
+      "lines": "1-70",
+      "what": "Implementação do teto: soma o gasto do dia por campanha (via limite-diario.ts) e recusa a compra que estouraria `Campanha.limiteDiarioCpf`; aplica só a compras, não a créditos de prêmio — sustenta o veredito de aprovação."
+     },
+     {
+      "path": "apps/apcap-api/src/modules/compra/services/compra.service.ts",
+      "symbol": "Comprar.comprar",
+      "lines": "60-62",
+      "what": "Chamada ao validador antes de criar a compra e antes de gerar cobrança na Iugu."
+     }
+    ],
+    "endpoints": [
+     "POST /v1/compras",
+     "GET /v1/compras/limite-diario"
+    ],
+    "adminScreens": [],
+    "repro": [
+     "Configurar limiteDiarioCpf numa campanha.",
+     "Tentar compras sucessivas com o mesmo CPF até ultrapassar o teto.",
+     "Confirmar recusa (400) só na compra que estouraria o limite, e que créditos de prêmio na carteira não são bloqueados."
+    ]
+   }
   },
   {
    "id": "SIM-L12-ESTOQUE-06",
@@ -5671,7 +5843,29 @@
    "scope": "autonomo",
    "observed": "execucao-real",
    "lastRunAt": "2026-08-19",
-   "batch": "lote12"
+   "batch": "lote12",
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "não aplicável (caso aprovado) — mecanismo de reserva de estoque funciona como esperado em emitir-premiacoes.service.ts.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/emitir-premiacoes.service.ts",
+      "symbol": "ServicoEmitirPremiacoes.emitirParaCampanha (reserva de estoque)",
+      "lines": "112-131",
+      "what": "`UPDATE premio_estoque ... FOR UPDATE SKIP LOCKED` reserva uma unidade DISPONIVEL antes de enfileirar o prêmio; bolsa sem unidade entra em `semEstoque` e é descartada do ciclo — sustenta o veredito de que, com estoque reposto, nenhuma bolsa solvente deixa de pagar por falta de unidade."
+     }
+    ],
+    "endpoints": [],
+    "adminScreens": [
+     "Tela de estoque de prêmios (semear estoque)"
+    ],
+    "repro": [
+     "Repor estoque de todas as faixas de uma campanha.",
+     "Rodar uma coorte que deixa várias bolsas solventes simultaneamente.",
+     "Conferir que toda bolsa com saldo >= custo do prêmio e estoque disponível emite pelo menos uma vez."
+    ]
+   }
   },
   {
    "id": "CS-PAGAMENTO-01",
@@ -5688,7 +5882,7 @@
     "Opção C de parametrização aplicada e confirmada no servidor em 18/08 22:18 BRT",
     "Modo demonstração ligado por decisão do time"
    ],
-   "reason": "Nas rodadas 11 e 12 somam-se 232 emissões do Caminho da Sorte, todas no dia 1, todas devolvendo \"venceu=true\" com valor R$ 0,00 e todas presas no estado INICIADA. Nenhum centavo chegou à carteira. A parametrização não é a causa: a Opção C está no ar e confere com o esperado (D1 R$ 0,33, semana R$ 8,47). O jogo anuncia vitória ao usuário e não paga. Como conta nova nunca avança do dia 1, os dias 2 a 7 continuam sem qualquer medição — inclusive o teto de R$ 1.000 do D7, que nunca foi pago.",
+   "reason": "232 emissões em duas rodadas independentes (112 na rodada 11 e 120 na rodada 12) terminaram com venceu=true e valor creditado R$ 0,00. A leitura do código no main atual identificou a causa: reservarFinanceiroParaEmissao exige casamento por valor EXATO em centavos entre o prêmio sorteado no Caminho da Sorte e uma bolsa FINANCEIRA da campanha. Os prêmios do jogo têm valores fracionários (R$ 0,33, R$ 0,45, R$ 1,26) para os quais não existe bolsa cadastrada, então a reserva nunca acha lastro e iniciarEmissao aplica semDinheiro(estado) sem alterar o campo venceu. O status preso em INICIADA é um segundo defeito: finalizarEmissao devolve o objeto lido antes da transição, mesmo quando a finalização ocorre.",
    "expected": "Vitória declarada no Caminho da Sorte credita o valor correspondente na carteira e a emissão fecha.",
    "evidence": [
     "Rodada 11: 112 emissões, todas venceu=true com R$ 0,00, estado INICIADA",
@@ -5697,7 +5891,48 @@
    ],
    "scope": "autonomo",
    "observed": "execucao-real",
-   "lastRunAt": "2026-08-19"
+   "lastRunAt": "2026-08-19",
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "reservarFinanceiroParaEmissao casa por valor EXATO com uma bolsa de campanha; como nenhuma bolsa FINANCEIRA existe com os valores fracionários do Caminho da Sorte, a reserva nunca encontra lastro e a partida vira semDinheiro sem que 'venceu' mude — agravado por finalizarEmissao devolver o estado pré-transição na resposta.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/obter-premio.service.ts",
+      "symbol": "ServicoObterPremio.reservarFinanceiroParaEmissao / resgatar",
+      "lines": "142-163, 262-306",
+      "what": "A reserva exige casamento por VALOR EXATO entre o prêmio sorteado no Caminho da Sorte (centavos como R$0,33) e uma bolsa cujo `Premio.valor` (catálogo de campanha, tipicamente R$2, R$5, R$10, R$1.000...) seja igual; sem uma bolsa FINANCEIRA cadastrada com esse valor específico, `reservar` nunca encontra correspondência e a reserva sempre devolve null — comentário do próprio código admite a consequência: 'valor sem bolsa correspondente PARA de pagar'."
+     },
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "CaminhoSorteService.iniciarEmissao",
+      "lines": "811-835",
+      "what": "Quando `reservarFinanceiroParaEmissao` devolve null (sem lastro), `estado = semDinheiro(estado)` zera o dinheiro da partida mas não altera o campo `venceu` — o jogo continua declarando vitória. É aqui, ou na função `semDinheiro`, que o contrato precisa mudar (não anunciar vitória em dinheiro sem lastro, ou criar automaticamente bolsas para os valores do Caminho da Sorte)."
+     },
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "CaminhoSorteService.finalizarEmissao",
+      "lines": "847-957",
+      "what": "A função busca `emissao` no início da transação (status ainda INICIADA) e, apesar de fazer a transição para FINALIZADA via `updateMany` e creditar o prêmio (quando há lastro), devolve a variável local `emissao` pré-transição na linha 955 — a resposta da API sempre mostra status INICIADA, mesmo em finalizações bem-sucedidas. Corrigir para retornar o registro pós-atualização."
+     }
+    ],
+    "endpoints": [
+     "POST /v1/caminho-sorte/emissao/:id/iniciar",
+     "POST /v1/caminho-sorte/emissao/:id/finalizar"
+    ],
+    "adminScreens": [
+     "Editor de bolsas da campanha (cadastro de Premio FINANCEIRO)",
+     "Parâmetros do Caminho da Sorte"
+    ],
+    "repro": [
+     "Conferir se existe alguma CampanhaBolsa com Premio FINANCEIRO no valor exato de algum prêmio do Caminho da Sorte (ex.: 33 centavos).",
+     "Desbloquear o dia 1 do Caminho da Sorte para uma conta nova e iniciar a emissão.",
+     "Finalizar a emissão e conferir: venceu=true, valor creditado 0, status devolvido como INICIADA."
+    ]
+   },
+   "notes": [
+    "Correção de rumo em 19/08/2026: os documentos de QA anteriores diziam que o Caminho da Sorte creditava por fora da bolsa geral, sem integração. Isso não vale mais para o main atual — a integração existe (ServicoObterPremio.reservarFinanceiroParaEmissao). O defeito é o casamento por valor exato, não a ausência de integração."
+   ]
   },
   {
    "id": "CS-CICLO-01",
@@ -5724,7 +5959,31 @@
     "Consequência: virada às 21h BRT quando o servidor roda em UTC"
    ],
    "scope": "autonomo",
-   "lastRunAt": "2026-08-19"
+   "lastRunAt": "2026-08-19",
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "getGameDate mistura hora local do processo com data serializada em UTC, sem TZ explícito.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.service.ts",
+      "symbol": "CaminhoSorteService.getGameDate",
+      "lines": "537-548",
+      "what": "Usa `date.getHours()/getMinutes()` (fuso local do processo) para decidir se já virou o dia, mas devolve a data via `d.toISOString().split('T')[0]` (UTC) — as duas metades vivem em fusos diferentes; sem TZ declarado no serviço, a virada acontece às 21h de Brasília quando o servidor roda em UTC."
+     }
+    ],
+    "endpoints": [
+     "POST /v1/caminho-sorte/desbloquear"
+    ],
+    "adminScreens": [
+     "Parâmetros do Caminho da Sorte (horário de virada)"
+    ],
+    "repro": [
+     "Configurar horarioVirada para 00:00 com o serviço rodando em servidor UTC.",
+     "Jogar uma emissão às 21h30 de Brasília (00:30 UTC do dia seguinte).",
+     "Jogar novamente logo após meia-noite de Brasília e comparar o `dia` calculado nas duas emissões."
+    ]
+   }
   },
   {
    "id": "CS-D7-CONCENTRACAO-01",
@@ -5749,7 +6008,32 @@
     "R$ 15 e R$ 20 ficaram com peso zero por não terem bolsa correspondente"
    ],
    "scope": "autonomo",
-   "lastRunAt": "2026-08-19"
+   "lastRunAt": "2026-08-19",
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "não é bug de código — concentração é resultado da tabela de prêmios cadastrada por dia; resolvida via reparametrização (Opção C), não via alteração de código.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/caminho-sorte-config/caminho-sorte.controller.ts",
+      "symbol": "CaminhoSorteController.salvarPremios",
+      "lines": "97-101",
+      "what": "Não é bug de código: a concentração vem dos dados cadastrados em caminho_sorte_premio por dia via este endpoint. A Opção C (aplicada em 18/08 22:18) já reduziu a concentração de 88% para 11,8% redistribuindo valor/peso pelos 7 dias; item é de parametrização, não de correção de código."
+     }
+    ],
+    "endpoints": [
+     "PUT /v1/caminho-sorte/premios",
+     "GET /v1/caminho-sorte/:dia/premios"
+    ],
+    "adminScreens": [
+     "Editor de prêmios do Caminho da Sorte por dia"
+    ],
+    "repro": [
+     "Abrir o editor de prêmios do Caminho da Sorte no Admin.",
+     "Calcular o valor esperado de cada dia com a fórmula correta (prêmio × probabilidade, ver CS-EV-CALC-01).",
+     "Comparar a fração do EV semanal que cada dia representa."
+    ]
+   }
   },
   {
    "id": "CS-EV-CALC-01",
@@ -5774,7 +6058,31 @@
     "Indicador diverge do custo medido em rodada real"
    ],
    "scope": "autonomo",
-   "lastRunAt": "2026-08-19"
+   "lastRunAt": "2026-08-19",
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "calcEV soma valor×peso sem distinguir tipo (pontos vs centavos) e sem multiplicar pela probabilidade de vitória do dia.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/admin/src/features/caminho-da-sorte/caminho-da-sorte-page.tsx",
+      "symbol": "calcEV",
+      "lines": "67-70",
+      "what": "`return premios.reduce((s, p) => s + (p.valor * p.peso), 0) / total` trata `valor` como centavos independente do tipo do prêmio (soma pontos de \"Nº da Sorte\" como se fossem centavos) e não multiplica pela probabilidade de vitória do dia — o indicador exibido no painel não é um valor esperado real."
+     }
+    ],
+    "endpoints": [
+     "GET /v1/caminho-sorte (lido pelo admin para montar a tela)"
+    ],
+    "adminScreens": [
+     "Editor de prêmios do Caminho da Sorte — coluna EV Calculado"
+    ],
+    "repro": [
+     "Cadastrar um dia com prêmios mistos de tipo numero_sorte e dinheiro.",
+     "Observar o EV Calculado exibido no painel.",
+     "Recalcular manualmente somando (valor em centavos × peso normalizado) só para prêmios tipo dinheiro, multiplicado pela probVitoria do dia, e comparar com o número exibido."
+    ]
+   }
   },
   {
    "id": "AUTH-RESET-01",
@@ -5801,7 +6109,35 @@
    ],
    "scope": "autonomo",
    "observed": "execucao-real",
-   "lastRunAt": "2026-08-19"
+   "lastRunAt": "2026-08-19",
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "Módulo de autenticação não implementa nenhum fluxo de recuperação de senha; login depende de senha local ou de validação síncrona contra a IM externa, sem alternativa para senha esquecida em ambos os casos.",
+    "confidence": "alta",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/auth/auth.controller.ts",
+      "symbol": "AuthController",
+      "lines": "1-13",
+      "what": "Único endpoint do controller é POST /auth/login; não existe rota de recuperação/redefinição de senha. É aqui que uma rota de \"esqueci minha senha\" (solicitar token) e outra de confirmação (trocar senha com token) precisam ser adicionadas."
+     },
+     {
+      "path": "apps/apcap-api/src/modules/auth/auth.service.ts",
+      "symbol": "AuthService.login / autenticarNaImEUpsert",
+      "lines": "50-95",
+      "what": "O login local cai para autenticação externa via IM API (im-api/services/login.service.ts) quando a senha local falha, e sincroniza a senha local com a validada na IM; não há caminho de recuperação para quando a senha na IM também é esquecida — nenhum serviço de envio de token por e-mail/SMS foi encontrado no módulo usuario nem auth."
+     }
+    ],
+    "endpoints": [
+     "POST /auth/login (único existente)"
+    ],
+    "adminScreens": [],
+    "repro": [
+     "Abrir a tela de login em HML e procurar link de recuperação de senha.",
+     "Varrer as rotas do controller de auth e usuário por endpoint de reset/forgot-password.",
+     "Confirmar ausência de rota equivalente na API."
+    ]
+   }
   },
   {
    "id": "SIM-L11-RTP-01",
@@ -5827,7 +6163,33 @@
     "Gateway: 2 erros em 4.631 requisições (0,04%)"
    ],
    "scope": "autonomo",
-   "observed": "execucao-real"
+   "observed": "execucao-real",
+   "fix": {
+    "repo": "backend-l4/apcapv5",
+    "rootCause": "Mesma causa parcial de SIM-L12-RTP-03: seleção uniforme entre bolsas solventes (confirmada) somada a mecanismo de emissão não totalmente explicado (não confirmado).",
+    "confidence": "media",
+    "files": [
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/emitir-premiacoes.service.ts",
+      "symbol": "ServicoEmitirPremiacoes.emitirParaCampanha",
+      "lines": "103-111",
+      "what": "Mesma causa da rodada 12 (SIM-L12-ODDS-02): seleção uniforme entre bolsas solventes ignora a proporção configurada, inflando o RTP realizado também na rodada 11."
+     },
+     {
+      "path": "apps/apcap-api/src/modules/campanha/services/emitir-premiacoes.service.ts",
+      "symbol": "ServicoEmitirPremiacoes.emitirParaCampanha (laço de emissão)",
+      "lines": "97-146",
+      "what": "Ver SIM-L12-BOLSA-01: parte do desvio de RTP pode vir do mesmo mecanismo de saldo/emissão cuja causa exata não foi confirmada pela leitura estática."
+     }
+    ],
+    "endpoints": [],
+    "adminScreens": [],
+    "repro": [
+     "Rodar uma coorte de ~112 sessões numa campanha com bolsas semeadas e estoque parcial.",
+     "Registrar total pago em compras e total creditado nas carteiras.",
+     "Calcular RTP realizado e comparar com o declarado."
+    ]
+   }
   }
  ]
 }
