@@ -185,18 +185,20 @@
   {
    "id": "P11",
    "titulo": "O limite diário por CPF é limite",
-   "pergunta": "O teto de R$ 1.000 por CPF por dia é aplicado?",
-   "formula": "compras aceitas por CPF no dia contra limiteDiarioCpf",
-   "fonte": "sessoes.jsonl — gastoCentavos por sessão (1 CPF por sessão)",
-   "esperado": "nenhuma compra aceita acima de R$ 1.000",
+   "pergunta": "O teto de R$ 1.000 por CPF por dia é aplicado na compra?",
+   "formula": "soma das compras aceitas por CPF no dia contra limiteDiarioCpf (100000 centavos)",
+   "fonte": "sim/lote11/limite-probe.json — sonda dirigida com 3 CPFs sintéticos, 23:00 BRT 18/08/2026",
+   "esperado": "nenhuma compra aceita que leve o CPF acima de R$ 1.000 no dia",
    "tolerancia": "zero",
-   "criterioVeredito": "aprovado se nenhuma passar",
-   "veredito": "falhou",
-   "medido": "28 das 112 contas receberam mais de R$ 1.000 no mesmo dia; a maior recebeu R$ 1.000.000,00. O limite continua configurado (limiteDiarioCpf = 100000 centavos) e continua sendo aplicado na compra, mas não é aplicado ao crédito de prêmio.",
+   "criterioVeredito": "aprovado se toda tentativa acima do teto for recusada",
+   "veredito": "aprovado",
+   "medido": "Três tentativas de ultrapassar o teto, três recusas com HTTP 400 e mensagem explícita. A rodada 11 por si só não provava nada: a maior compra de um CPF foi R$ 780, abaixo do limite. O contador considera a fatura emitida, mesmo não liquidada.",
    "observacoes": [
-    "Esta prova estava aprovada. A aprovação anterior media um ambiente onde nenhum prêmio grande chegava a ser pago.",
-    "Reversão de veredito registrada em 18/08/2026 22:35 BRT.",
-    "Medido na rodada 11, executada em 18/08/2026 22:23–22:35 BRT."
+    "C1 — compra única de R$ 1.200: HTTP 400, recusada.",
+    "C2 — R$ 600 não liquidada + R$ 600: segunda recusada (HTTP 400); servidor informou saldo restante de R$ 400 no dia.",
+    "C3 — R$ 600 liquidada via Pix + R$ 600: segunda recusada (HTTP 400), mesmo saldo restante.",
+    "Correção de rumo: às 22:35 BRT esta prova foi marcada como falha por confundir crédito de prêmio com limite de compra. O limite nunca regeu crédito. Veredito restabelecido como aprovado às 23:02 BRT de 18/08/2026.",
+    "Os créditos acima de R$ 1.000 medidos na rodada 11 permanecem como achado, sob as provas de RTP (P1) e bolsa (P2)."
    ]
   },
   {
@@ -233,23 +235,24 @@
  },
  "resumo": {
   "total": 12,
-  "aprovados": 1,
-  "falhou": 10,
+  "aprovados": 2,
+  "falhou": 9,
   "semVeredito": 1,
   "amostraInsuficiente": 0,
   "pendentes": 0,
-  "estado": "rodada 11 completa · executada em 18/08/2026 22:23–22:35 BRT"
+  "estado": "rodada 11 completa · executada em 18/08/2026 22:23–22:35 BRT",
+  "falhas": 9
  },
  "congelado": false,
  "notaCongelamento": "",
- "geradoEmBrt": "18/08/2026 22:23–22:35 BRT",
+ "geradoEmBrt": "2026-08-18 23:02 BRT",
  "runDateAtual": "2026-08-18",
  "historico": [
   {
    "id": "rodada-11",
    "runDate": "2026-08-18",
    "registradoEmBrt": "18/08/2026 22:23–22:35 BRT",
-   "rotulo": "1 aprovada(s), 10 falha(s), 1 sem veredito",
+   "rotulo": "2 aprovada(s), 9 falha(s), 1 sem veredito",
    "introducao": "A aba SIMULAR ESTOURO DA SORTE mostra o que aconteceu: quanto entrou, quanto saiu, quais bolsas pagaram. É descritiva — quem lê ainda precisa julgar se o número está bom. A Prova do Motor é o oposto: cada linha é uma afirmação verificável com fórmula declarada, fonte do dado, tolerância definida antes da rodada, e veredito binário. Onde a amostra não sustenta conclusão, a linha diz amostra insuficiente e não recebe veredito.",
    "regras": [
     "Tolerância declarada antes. Nenhum limite é escolhido depois de ver o resultado.",
@@ -433,18 +436,20 @@
     {
      "id": "P11",
      "titulo": "O limite diário por CPF é limite",
-     "pergunta": "O teto de R$ 1.000 por CPF por dia é aplicado?",
-     "formula": "compras aceitas por CPF no dia contra limiteDiarioCpf",
-     "fonte": "sessoes.jsonl — gastoCentavos por sessão (1 CPF por sessão)",
-     "esperado": "nenhuma compra aceita acima de R$ 1.000",
+     "pergunta": "O teto de R$ 1.000 por CPF por dia é aplicado na compra?",
+     "formula": "soma das compras aceitas por CPF no dia contra limiteDiarioCpf (100000 centavos)",
+     "fonte": "sim/lote11/limite-probe.json — sonda dirigida com 3 CPFs sintéticos, 23:00 BRT 18/08/2026",
+     "esperado": "nenhuma compra aceita que leve o CPF acima de R$ 1.000 no dia",
      "tolerancia": "zero",
-     "criterioVeredito": "aprovado se nenhuma passar",
-     "veredito": "falhou",
-     "medido": "28 das 112 contas receberam mais de R$ 1.000 no mesmo dia; a maior recebeu R$ 1.000.000,00. O limite continua configurado (limiteDiarioCpf = 100000 centavos) e continua sendo aplicado na compra, mas não é aplicado ao crédito de prêmio.",
+     "criterioVeredito": "aprovado se toda tentativa acima do teto for recusada",
+     "veredito": "aprovado",
+     "medido": "Três tentativas de ultrapassar o teto, três recusas com HTTP 400 e mensagem explícita. A rodada 11 por si só não provava nada: a maior compra de um CPF foi R$ 780, abaixo do limite. O contador considera a fatura emitida, mesmo não liquidada.",
      "observacoes": [
-      "Esta prova estava aprovada. A aprovação anterior media um ambiente onde nenhum prêmio grande chegava a ser pago.",
-      "Reversão de veredito registrada em 18/08/2026 22:35 BRT.",
-      "Medido na rodada 11, executada em 18/08/2026 22:23–22:35 BRT."
+      "C1 — compra única de R$ 1.200: HTTP 400, recusada.",
+      "C2 — R$ 600 não liquidada + R$ 600: segunda recusada (HTTP 400); servidor informou saldo restante de R$ 400 no dia.",
+      "C3 — R$ 600 liquidada via Pix + R$ 600: segunda recusada (HTTP 400), mesmo saldo restante.",
+      "Correção de rumo: às 22:35 BRT esta prova foi marcada como falha por confundir crédito de prêmio com limite de compra. O limite nunca regeu crédito. Veredito restabelecido como aprovado às 23:02 BRT de 18/08/2026.",
+      "Os créditos acima de R$ 1.000 medidos na rodada 11 permanecem como achado, sob as provas de RTP (P1) e bolsa (P2)."
      ]
     },
     {

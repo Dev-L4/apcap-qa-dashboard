@@ -47,8 +47,8 @@
    "value": "4.514 de 4.631 (97,47%) — esperado por sorteio 4,47%"
   },
   {
-   "label": "Contas que passaram do limite diário de R$ 1.000",
-   "value": "28 de 112 (25%) — maior crédito único R$ 1.000.000,00"
+   "label": "Crédito de prêmio acima de R$ 1.000 num dia",
+   "value": "28 de 112 contas (25%) — maior crédito único R$ 1.000.000,00. Não é violação de limite: o teto rege compra."
   },
   {
    "label": "Erros 5xx do gateway",
@@ -89,8 +89,14 @@
    "text": "Escolhendo 3 números entre 20, a chance de acertar exatamente 2 é de 4,47%. Foram medidas 4.514 ocorrências em 4.631 chances — 97,47%. Em 4.631 jogadas, a probabilidade de isso acontecer por acaso é indistinguível de zero. O servidor entrega quase-vitória por construção. É um achado de produto e de conformidade, não um desvio estatístico."
   },
   {
-   "title": "O limite diário de R$ 1.000 por CPF não segurou o crédito",
-   "text": "28 das 112 contas receberam mais de R$ 1.000 no mesmo dia; a maior recebeu R$ 1.000.000,00 de uma vez. O limite está configurado na campanha (limiteDiarioCpf = 100000 centavos) e foi aprovado em rodada anterior, quando nenhum prêmio grande chegava a ser pago por falta de estoque. Com estoque, ele não é aplicado ao crédito."
+   "title": "O limite diário de R$ 1.000 rege a compra — e foi provado que funciona",
+   "text": "O teto de R$ 1.000 por CPF por dia limita quanto a pessoa pode COMPRAR, não quanto pode ganhar. A rodada 11 não testou o teto: a maior compra de um CPF foi R$ 780, abaixo do limite. Sonda dirigida executada às 23:00 BRT de 18/08/2026, com três CPFs sintéticos, provou que o servidor barra corretamente, com HTTP 400 e mensagem explícita, e que o contador soma a compra emitida mesmo sem liquidação.",
+   "list": [
+    "Compra única de R$ 1.200 numa só chamada: recusada — HTTP 400, \"Limite diário de R$ 1.000,00 da campanha excedido. Você ainda pode comprar R$ 1.000,00 hoje.\"",
+    "R$ 600 sem pagar + R$ 600: segunda recusada — saldo informado do dia caiu para R$ 400, ou seja, a fatura emitida já consome o limite",
+    "R$ 600 liquidada via Pix + R$ 600: segunda recusada com o mesmo saldo de R$ 400",
+    "Os créditos de prêmio acima de R$ 1.000 medidos na rodada 11 são consequência do RTP de 108.599%, não do limite diário — o achado pertence às provas de RTP e bolsa"
+   ]
   },
   {
    "title": "Infraestrutura: o ambiente aguentou",
@@ -163,8 +169,8 @@
      "value": "4.514 de 4.631 (97,47%) — esperado por sorteio 4,47%"
     },
     {
-     "label": "Contas que passaram do limite diário de R$ 1.000",
-     "value": "28 de 112 (25%) — maior crédito único R$ 1.000.000,00"
+     "label": "Crédito de prêmio acima de R$ 1.000 num dia",
+     "value": "28 de 112 contas (25%) — maior crédito único R$ 1.000.000,00. Não é violação de limite: o teto rege compra."
     },
     {
      "label": "Erros 5xx do gateway",
@@ -205,8 +211,14 @@
      "text": "Escolhendo 3 números entre 20, a chance de acertar exatamente 2 é de 4,47%. Foram medidas 4.514 ocorrências em 4.631 chances — 97,47%. Em 4.631 jogadas, a probabilidade de isso acontecer por acaso é indistinguível de zero. O servidor entrega quase-vitória por construção. É um achado de produto e de conformidade, não um desvio estatístico."
     },
     {
-     "title": "O limite diário de R$ 1.000 por CPF não segurou o crédito",
-     "text": "28 das 112 contas receberam mais de R$ 1.000 no mesmo dia; a maior recebeu R$ 1.000.000,00 de uma vez. O limite está configurado na campanha (limiteDiarioCpf = 100000 centavos) e foi aprovado em rodada anterior, quando nenhum prêmio grande chegava a ser pago por falta de estoque. Com estoque, ele não é aplicado ao crédito."
+     "title": "O limite diário de R$ 1.000 rege a compra — e foi provado que funciona",
+     "text": "O teto de R$ 1.000 por CPF por dia limita quanto a pessoa pode COMPRAR, não quanto pode ganhar. A rodada 11 não testou o teto: a maior compra de um CPF foi R$ 780, abaixo do limite. Sonda dirigida executada às 23:00 BRT de 18/08/2026, com três CPFs sintéticos, provou que o servidor barra corretamente, com HTTP 400 e mensagem explícita, e que o contador soma a compra emitida mesmo sem liquidação.",
+     "list": [
+      "Compra única de R$ 1.200 numa só chamada: recusada — HTTP 400, \"Limite diário de R$ 1.000,00 da campanha excedido. Você ainda pode comprar R$ 1.000,00 hoje.\"",
+      "R$ 600 sem pagar + R$ 600: segunda recusada — saldo informado do dia caiu para R$ 400, ou seja, a fatura emitida já consome o limite",
+      "R$ 600 liquidada via Pix + R$ 600: segunda recusada com o mesmo saldo de R$ 400",
+      "Os créditos de prêmio acima de R$ 1.000 medidos na rodada 11 são consequência do RTP de 108.599%, não do limite diário — o achado pertence às provas de RTP e bolsa"
+     ]
     },
     {
      "title": "Infraestrutura: o ambiente aguentou",
