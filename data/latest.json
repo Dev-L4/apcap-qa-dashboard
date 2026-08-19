@@ -1,6 +1,6 @@
 {
  "schemaVersion": 7,
- "generatedAt": "2026-08-17T12:59:51Z",
+ "generatedAt": "2026-08-19T03:25:53Z",
  "runDateAtual": "2026-08-17",
  "runs": [
   {
@@ -1872,5 +1872,6 @@
    "environment": "https://apcap-v5-hml.web.app/ · https://apcapadm-v5-hml.web.app/ · https://apcapv5-hml.duckdns.org",
    "generatedAt": "2026-08-17T12:59:51Z"
   }
- ]
+ ],
+ "runDate": "2026-08-19"
 }

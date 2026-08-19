@@ -1,34 +1,36 @@
 {
- "generatedAt": "2026-08-18",
- "status": "RODADA 11 EXECUTADA em 18/08/2026 22:23–22:35 BRT · processo completo (cadastro → compra → Pix → todas as chances → Caminho da Sorte) · 112 sessões, 0 falha · 553 títulos comprados · R$ 8.635,00 pagos · 4.631 chances jogadas · concorrência 4 · Caminho da Sorte já na Opção C",
+ "generatedAt": "2026-08-19T03:25:53Z",
+ "runDate": "2026-08-19",
+ "executadoEmBrt": "19/08/2026 00:08–00:19 BRT",
+ "status": "rodada 12 — primeira medicao com bolsas calibradas e estoque reposto: RTP 34.046%",
  "stats": [
   {
    "label": "Executada em",
-   "value": "18/08/2026 22:23–22:35 BRT"
+   "value": "19/08/2026 00:08–00:19 BRT"
   },
   {
    "label": "Sessões completas (do cadastro ao Caminho da Sorte)",
-   "value": "112 de 112 — nenhuma falhou"
+   "value": "120 de 120 — nenhuma falhou"
   },
   {
    "label": "Títulos comprados",
-   "value": "553"
+   "value": "558"
   },
   {
    "label": "Pago em compras nesta rodada",
-   "value": "R$ 8.635,00"
+   "value": "R$ 7.880,00"
   },
   {
    "label": "Chances jogadas",
-   "value": "4.631"
+   "value": "4.972"
   },
   {
    "label": "Creditado nas carteiras",
-   "value": "R$ 9.377.493,00"
+   "value": "R$ 2.682.823,00"
   },
   {
    "label": "RTP real medido nesta rodada",
-   "value": "108.599%"
+   "value": "34.046%"
   },
   {
    "label": "RTP declarado na campanha",
@@ -36,85 +38,182 @@
   },
   {
    "label": "Premiado que a campanha registrou",
-   "value": "R$ 329.382,40 — 28× menos que o creditado"
+   "value": "R$ 87.946,20 — 30× menos que o creditado"
+  },
+  {
+   "label": "Debitado das bolsas",
+   "value": "R$ 1.084.596,59 — 2,5× menos que o creditado"
   },
   {
    "label": "Chances com os 3 números (vitória)",
-   "value": "115 de 4.631 (2,48%) — esperado por sorteio 0,088%"
+   "value": "127 de 4.972 (2,554%) — esperado por sorteio 0,088%"
   },
   {
    "label": "Chances com exatamente 2 números (quase)",
-   "value": "4.514 de 4.631 (97,47%) — esperado por sorteio 4,47%"
+   "value": "4.845 de 4.972 (97,446%) — esperado por sorteio 4,47%"
   },
   {
-   "label": "Crédito de prêmio acima de R$ 1.000 num dia",
-   "value": "28 de 112 contas (25%) — maior crédito único R$ 1.000.000,00. Não é violação de limite: o teto rege compra."
+   "label": "Prêmio de R$ 1.000.000",
+   "value": "saiu 2× com caixa para exatamente 1"
   },
   {
-   "label": "Erros 5xx do gateway",
-   "value": "2 em 4.631 chamadas de estouro (502)"
+   "label": "Infraestrutura",
+   "value": "14.916 requisições, zero 5xx, p95 1.270 ms, 4 sessões simultâneas"
   },
   {
-   "label": "Latência das jogadas",
-   "value": "mediana 184 ms · p95 1.746 ms"
-  },
-  {
-   "label": "Faturas Pix usadas hoje",
-   "value": "114 de 300 (teto do ambiente) — motor com 66 de folga"
-  },
-  {
-   "label": "Concorrência",
-   "value": "4 sessões simultâneas, conforme pedido"
+   "label": "Cota Pix",
+   "value": "121 de 300 do dia 19/08 — teto respeitado"
   }
  ],
  "sections": [
   {
-   "title": "Rodada 11 — executada em 18/08/2026 22:23–22:35 BRT, processo inteiro e sem isolamento",
-   "text": "Cada uma das 112 sessões nasceu como conta nova, comprou títulos reais na Campanha de Inverno, teve o Pix liquidado no sandbox, jogou todas as chances recebidas e terminou no Caminho da Sorte, com a carteira lida antes da compra, depois do Estouro e depois do Caminho da Sorte. Nenhum passo foi simulado ou pulado. As 112 sessões completaram o ciclo inteiro sem uma única falha, em 11,9 minutos, com 4 sessões simultâneas. A parametrização Opção C do Caminho da Sorte já estava aplicada e conferida no servidor antes da primeira compra."
+   "title": "Rodada 12 — executada em 19/08/2026 00:08–00:19 BRT, depois de calibrar bolsas e repor estoque",
+   "text": "Esta é a primeira rodada em que o ambiente não tinha nenhuma das duas desculpas anteriores. As 14 bolsas foram calibradas às 23:44 BRT de 18/08 (proporções refeitas para RTP 55%, sendo 30% em dinheiro e 25% em chances e pacotes) e as quatro faixas altas ficaram com caixa para exatamente um prêmio cada. Às 00:05 BRT de 19/08 o estoque foi reposto pelo Admin, de modo que nenhuma faixa ficasse presa por falta de unidade. Em seguida, 120 contas novas compraram 558 títulos, liquidaram Pix real no sandbox, jogaram todas as chances e terminaram no Caminho da Sorte. 120 de 120 completaram o ciclo, em 10,8 minutos, com 4 sessões simultâneas."
   },
   {
-   "title": "O RTP medido foi de 108.599% — a campanha promete 55%",
-   "text": "Entraram R$ 8.635.00 em compras. Saíram R$ 9.377.493.00 para as carteiras das 112 contas. Isso é 1.975 vezes o que a campanha declara devolver. A causa está no catálogo de prêmios contra o preço do bilhete: uma chance de um título de R$ 5 pode carregar um prêmio de R$ 1.000.000, e a vitória exige acertar 3 números entre 20. O prêmio de R$ 1.000.000 saiu 9 vezes nesta única rodada de 12 minutos. Enquanto o estoque das bolsas estava vazio isso ficava escondido: o prêmio era sorteado e não era pago. Com estoque disponível, o desenho aparece inteiro."
+   "title": "O caixa da bolsa não trava o pagamento — esta é a descoberta da rodada",
+   "text": "Cada uma das quatro faixas altas entrou na rodada com caixa para exatamente um prêmio: R$ 5.000, R$ 10.000, R$ 50.000 e R$ 1.000.000. O motor pagou 8, 7, 11 e 2 prêmios respectivamente — R$ 2.660.000 saindo de bolsas que tinham R$ 1.065.000. Ao final, as quatro bolsas não ficaram negativas: pararam em cerca de R$ 150 cada, como se o saldo tivesse sido reposto para acompanhar o pagamento. Isso responde à dúvida que sobrou da rodada 11: o RTP de três ordens de grandeza não era efeito do saldo semeado. O saldo não é uma trava — é um número que o motor ajusta depois de pagar."
+  },
+  {
+   "title": "A frequência de cada faixa não obedece ao que a bolsa financia",
+   "text": "Com 4.972 chances jogadas, o R$ 1.000.000 saiu 1 vez a cada 2.486 chances. O custeio da bolsa (3,273% do arrecadado, dentro de um RTP de 55%) manda esse prêmio sair 1 vez a cada 35 milhões de chances — 14 mil vezes mais raro. O R$ 50.000 saiu 1 em 452 contra 1 em 1,75 milhão. Já o R$ 2 saiu 1 em 355 contra 1 em 32. Todas as faixas caem na mesma ordem de grandeza de frequência, de 1 em 262 a 1 em 2.486, independentemente do valor: o sorteio se comporta como escolha quase uniforme entre as faixas, e a proporção configurada no Admin não governa o resultado."
   },
   {
    "title": "Prêmios que efetivamente saíram",
-   "text": "R$ 1,00 × 7 · R$ 2,00 × 9 · R$ 3,00 × 4 · R$ 5,00 × 13 · R$ 6,00 × 7 · R$ 10,00 × 11 · R$ 100,00 × 8 · R$ 500,00 × 13 · R$ 1.000,00 × 15 · R$ 5.000,00 × 7 · R$ 10.000,00 × 7 · R$ 50.000,00 × 5 · R$ 1.000.000,00 × 9. Total creditado: R$ 9.377.493,00 em 115 vitórias."
+   "text": "R$ 1.000.000 × 2 · R$ 50.000 × 11 · R$ 10.000 × 7 · R$ 5.000 × 8 · R$ 1.000 × 19 · R$ 500 × 6 · R$ 100 × 6 · R$ 10 × 16 · R$ 6 × 7 · R$ 5 × 7 · R$ 3 × 15 · R$ 2 × 14 · R$ 1 × 9. As quatro faixas altas somam 28 emissões e R$ 2.660.000 — 99,15% de tudo que foi creditado. As dez faixas baixas juntas somaram R$ 22.919."
   },
   {
-   "title": "Três registros do mesmo dinheiro não batem entre si",
-   "text": "O que o servidor mandou para as carteiras: R$ 9.377.493,00. O que a campanha somou em totalPremiado: R$ 329.382,40. A diferença é de 28 vezes. Os dois números saem do mesmo ambiente, no mesmo intervalo, medidos contra baseline capturado no segundo anterior à primeira compra. Enquanto essa divergência existir, nenhum relatório de RTP tirado da campanha pode ser considerado confiável — inclusive os RTPs baixos que publicamos em rodadas anteriores."
+   "title": "Três registros do mesmo dinheiro continuam sem bater",
+   "text": "A carteira dos jogadores recebeu R$ 2.682.823,00. As bolsas perderam R$ 1.084.596,59 de saldo. A campanha registrou como premiado R$ 87.946,20. São três números para o mesmo evento, com diferença de 30× entre o maior e o menor. Na rodada 11 a divergência entre carteira e campanha era de 28×; a calibragem não a alterou, o que confirma que ela é de contabilidade e não de parametrização."
   },
   {
-   "title": "O \"quase ganhou\" não é acaso: 97,47% das chances pararam a um número do prêmio",
-   "text": "Escolhendo 3 números entre 20, a chance de acertar exatamente 2 é de 4,47%. Foram medidas 4.514 ocorrências em 4.631 chances — 97,47%. Em 4.631 jogadas, a probabilidade de isso acontecer por acaso é indistinguível de zero. O servidor entrega quase-vitória por construção. É um achado de produto e de conformidade, não um desvio estatístico."
+   "title": "O estoque deixou de ser gargalo — e isso isolou a causa",
+   "text": "Antes da rodada, a faixa de R$ 50.000 tinha uma única unidade em estoque e a chance bônus de R$ 0,60 tinha 1.812 unidades para um caixa que pagava 18.262. Foram repostas 24.249 unidades em sete faixas, de forma que o caixa passasse a ser o único limitante. Nesta rodada nenhuma bolsa solvente deixou de pagar por falta de unidade — o empoçamento que dominava as rodadas 9 e 10 desapareceu, e o que sobrou é o comportamento do motor."
   },
   {
-   "title": "O limite diário de R$ 1.000 rege a compra — e foi provado que funciona",
-   "text": "O teto de R$ 1.000 por CPF por dia limita quanto a pessoa pode COMPRAR, não quanto pode ganhar. A rodada 11 não testou o teto: a maior compra de um CPF foi R$ 780, abaixo do limite. Sonda dirigida executada às 23:00 BRT de 18/08/2026, com três CPFs sintéticos, provou que o servidor barra corretamente, com HTTP 400 e mensagem explícita, e que o contador soma a compra emitida mesmo sem liquidação.",
-   "list": [
-    "Compra única de R$ 1.200 numa só chamada: recusada — HTTP 400, \"Limite diário de R$ 1.000,00 da campanha excedido. Você ainda pode comprar R$ 1.000,00 hoje.\"",
-    "R$ 600 sem pagar + R$ 600: segunda recusada — saldo informado do dia caiu para R$ 400, ou seja, a fatura emitida já consome o limite",
-    "R$ 600 liquidada via Pix + R$ 600: segunda recusada com o mesmo saldo de R$ 400",
-    "Os créditos de prêmio acima de R$ 1.000 medidos na rodada 11 são consequência do RTP de 108.599%, não do limite diário — o achado pertence às provas de RTP e bolsa"
-   ]
+   "title": "O \"quase ganhou\" segue sendo a face comum do jogo",
+   "text": "4.845 das 4.972 chances (97,446%) pararam a exatamente um número do prêmio. Num sorteio independente de 3 números entre 20, isso aconteceria em 4,47% das vezes. A proporção repete a da rodada 11 (97,47%) com amostra nova e independente."
   },
   {
-   "title": "Infraestrutura: o ambiente aguentou",
-   "text": "2 erros 502 em 4.631 chamadas de estouro, ambos recuperados na retentativa automática. Mediana de 184 ms por jogada, p95 de 1.746 ms. Nenhuma sessão perdida. Com concorrência 4, o GATEWAY-PIX-01 não reapareceu nesta rodada."
-  },
-  {
-   "title": "Cota de Pix respeitada",
-   "text": "A rodada consumiu 114 faturas. O dia fechou com 114 de 300 usadas — o teto absoluto do ambiente não foi tocado, e a fatia da fila autônoma permanece intacta."
+   "title": "Limite diário e infraestrutura",
+   "text": "A maior compra aceita foi de R$ 750,00 e nenhuma das 120 contas passou de R$ 1.000 no dia — o limite por CPF seguiu íntegro. Foram 14.916 requisições ao gateway sem uma única resposta 5xx, com p95 de 1.270 ms e mediana de 186 ms. O erro de Pix da rodada 11 (HTTP 201 com TENTANDO_NOVAMENTE) não se reproduziu em 120 liquidações na mesma concorrência 4."
   },
   {
    "title": "Histórico de rodadas — nada foi sobrescrito",
-   "text": "Rodada 11 (18/08/2026. 22:23–22:35 BRT): 112 sessões. 553 títulos. R$ 8.635.00 pagos. 4.631 chances. RTP 108.599%. R$ 9.377.493.00 creditados. Opção C ativa. Rodada 10 (17/08/2026, pausada às 09:53 BRT): 175 sessões concluídas de 356, R$ 12.295,00 liquidados de um alvo de R$ 500.000, 5.284 jogadas, RTP 11,21%, ticket médio R$ 62,71 — medida com as bolsas grandes zeradas. Rodada 9: R$ 61.970,00, 17.700 rodadas, 793 contas, RTP 9,81%, R$ 27.978,00 empoçados por estoque vazio. A leitura conjunta é o achado: os RTPs baixos de 9 e 10 eram efeito do estoque vazio, não do desenho do jogo."
+   "text": "A combo acima troca a rodada exibida. As rodadas 9, 10 e 11 permanecem arquivadas com seus números originais."
   }
  ],
- "runDate": "2026-08-18",
- "executadoEmBrt": "18/08/2026 22:23–22:35 BRT",
- "runDateAtual": "2026-08-18",
+ "runDateAtual": "2026-08-19",
  "historico": [
+  {
+   "generatedAt": "2026-08-19T03:25:53Z",
+   "runDate": "2026-08-19",
+   "executadoEmBrt": "19/08/2026 00:08–00:19 BRT",
+   "status": "rodada 12 — primeira medicao com bolsas calibradas e estoque reposto: RTP 34.046%",
+   "stats": [
+    {
+     "label": "Executada em",
+     "value": "19/08/2026 00:08–00:19 BRT"
+    },
+    {
+     "label": "Sessões completas (do cadastro ao Caminho da Sorte)",
+     "value": "120 de 120 — nenhuma falhou"
+    },
+    {
+     "label": "Títulos comprados",
+     "value": "558"
+    },
+    {
+     "label": "Pago em compras nesta rodada",
+     "value": "R$ 7.880,00"
+    },
+    {
+     "label": "Chances jogadas",
+     "value": "4.972"
+    },
+    {
+     "label": "Creditado nas carteiras",
+     "value": "R$ 2.682.823,00"
+    },
+    {
+     "label": "RTP real medido nesta rodada",
+     "value": "34.046%"
+    },
+    {
+     "label": "RTP declarado na campanha",
+     "value": "55%"
+    },
+    {
+     "label": "Premiado que a campanha registrou",
+     "value": "R$ 87.946,20 — 30× menos que o creditado"
+    },
+    {
+     "label": "Debitado das bolsas",
+     "value": "R$ 1.084.596,59 — 2,5× menos que o creditado"
+    },
+    {
+     "label": "Chances com os 3 números (vitória)",
+     "value": "127 de 4.972 (2,554%) — esperado por sorteio 0,088%"
+    },
+    {
+     "label": "Chances com exatamente 2 números (quase)",
+     "value": "4.845 de 4.972 (97,446%) — esperado por sorteio 4,47%"
+    },
+    {
+     "label": "Prêmio de R$ 1.000.000",
+     "value": "saiu 2× com caixa para exatamente 1"
+    },
+    {
+     "label": "Infraestrutura",
+     "value": "14.916 requisições, zero 5xx, p95 1.270 ms, 4 sessões simultâneas"
+    },
+    {
+     "label": "Cota Pix",
+     "value": "121 de 300 do dia 19/08 — teto respeitado"
+    }
+   ],
+   "sections": [
+    {
+     "title": "Rodada 12 — executada em 19/08/2026 00:08–00:19 BRT, depois de calibrar bolsas e repor estoque",
+     "text": "Esta é a primeira rodada em que o ambiente não tinha nenhuma das duas desculpas anteriores. As 14 bolsas foram calibradas às 23:44 BRT de 18/08 (proporções refeitas para RTP 55%, sendo 30% em dinheiro e 25% em chances e pacotes) e as quatro faixas altas ficaram com caixa para exatamente um prêmio cada. Às 00:05 BRT de 19/08 o estoque foi reposto pelo Admin, de modo que nenhuma faixa ficasse presa por falta de unidade. Em seguida, 120 contas novas compraram 558 títulos, liquidaram Pix real no sandbox, jogaram todas as chances e terminaram no Caminho da Sorte. 120 de 120 completaram o ciclo, em 10,8 minutos, com 4 sessões simultâneas."
+    },
+    {
+     "title": "O caixa da bolsa não trava o pagamento — esta é a descoberta da rodada",
+     "text": "Cada uma das quatro faixas altas entrou na rodada com caixa para exatamente um prêmio: R$ 5.000, R$ 10.000, R$ 50.000 e R$ 1.000.000. O motor pagou 8, 7, 11 e 2 prêmios respectivamente — R$ 2.660.000 saindo de bolsas que tinham R$ 1.065.000. Ao final, as quatro bolsas não ficaram negativas: pararam em cerca de R$ 150 cada, como se o saldo tivesse sido reposto para acompanhar o pagamento. Isso responde à dúvida que sobrou da rodada 11: o RTP de três ordens de grandeza não era efeito do saldo semeado. O saldo não é uma trava — é um número que o motor ajusta depois de pagar."
+    },
+    {
+     "title": "A frequência de cada faixa não obedece ao que a bolsa financia",
+     "text": "Com 4.972 chances jogadas, o R$ 1.000.000 saiu 1 vez a cada 2.486 chances. O custeio da bolsa (3,273% do arrecadado, dentro de um RTP de 55%) manda esse prêmio sair 1 vez a cada 35 milhões de chances — 14 mil vezes mais raro. O R$ 50.000 saiu 1 em 452 contra 1 em 1,75 milhão. Já o R$ 2 saiu 1 em 355 contra 1 em 32. Todas as faixas caem na mesma ordem de grandeza de frequência, de 1 em 262 a 1 em 2.486, independentemente do valor: o sorteio se comporta como escolha quase uniforme entre as faixas, e a proporção configurada no Admin não governa o resultado."
+    },
+    {
+     "title": "Prêmios que efetivamente saíram",
+     "text": "R$ 1.000.000 × 2 · R$ 50.000 × 11 · R$ 10.000 × 7 · R$ 5.000 × 8 · R$ 1.000 × 19 · R$ 500 × 6 · R$ 100 × 6 · R$ 10 × 16 · R$ 6 × 7 · R$ 5 × 7 · R$ 3 × 15 · R$ 2 × 14 · R$ 1 × 9. As quatro faixas altas somam 28 emissões e R$ 2.660.000 — 99,15% de tudo que foi creditado. As dez faixas baixas juntas somaram R$ 22.919."
+    },
+    {
+     "title": "Três registros do mesmo dinheiro continuam sem bater",
+     "text": "A carteira dos jogadores recebeu R$ 2.682.823,00. As bolsas perderam R$ 1.084.596,59 de saldo. A campanha registrou como premiado R$ 87.946,20. São três números para o mesmo evento, com diferença de 30× entre o maior e o menor. Na rodada 11 a divergência entre carteira e campanha era de 28×; a calibragem não a alterou, o que confirma que ela é de contabilidade e não de parametrização."
+    },
+    {
+     "title": "O estoque deixou de ser gargalo — e isso isolou a causa",
+     "text": "Antes da rodada, a faixa de R$ 50.000 tinha uma única unidade em estoque e a chance bônus de R$ 0,60 tinha 1.812 unidades para um caixa que pagava 18.262. Foram repostas 24.249 unidades em sete faixas, de forma que o caixa passasse a ser o único limitante. Nesta rodada nenhuma bolsa solvente deixou de pagar por falta de unidade — o empoçamento que dominava as rodadas 9 e 10 desapareceu, e o que sobrou é o comportamento do motor."
+    },
+    {
+     "title": "O \"quase ganhou\" segue sendo a face comum do jogo",
+     "text": "4.845 das 4.972 chances (97,446%) pararam a exatamente um número do prêmio. Num sorteio independente de 3 números entre 20, isso aconteceria em 4,47% das vezes. A proporção repete a da rodada 11 (97,47%) com amostra nova e independente."
+    },
+    {
+     "title": "Limite diário e infraestrutura",
+     "text": "A maior compra aceita foi de R$ 750,00 e nenhuma das 120 contas passou de R$ 1.000 no dia — o limite por CPF seguiu íntegro. Foram 14.916 requisições ao gateway sem uma única resposta 5xx, com p95 de 1.270 ms e mediana de 186 ms. O erro de Pix da rodada 11 (HTTP 201 com TENTANDO_NOVAMENTE) não se reproduziu em 120 liquidações na mesma concorrência 4."
+    },
+    {
+     "title": "Histórico de rodadas — nada foi sobrescrito",
+     "text": "A combo acima troca a rodada exibida. As rodadas 9, 10 e 11 permanecem arquivadas com seus números originais."
+    }
+   ],
+   "id": "rodada-12",
+   "registradoEmBrt": "19/08/2026 00:08–00:19 BRT",
+   "rotulo": "rodada 12 — primeira medicao com bolsas calibradas e estoque reposto: RTP 34.046%"
+  },
   {
    "id": "rodada-11",
    "runDate": "2026-08-18",

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-08-19T01:35:00Z",
+ "generatedAt": "2026-08-19T03:25:53Z",
  "titulo": "Prova do Motor",
  "introducao": "A aba SIMULAR ESTOURO DA SORTE mostra o que aconteceu: quanto entrou, quanto saiu, quais bolsas pagaram. É descritiva — quem lê ainda precisa julgar se o número está bom. A Prova do Motor é o oposto: cada linha é uma afirmação verificável com fórmula declarada, fonte do dado, tolerância definida antes da rodada, e veredito binário. Onde a amostra não sustenta conclusão, a linha diz amostra insuficiente e não recebe veredito.",
  "regras": [
@@ -21,11 +21,11 @@
    "tolerancia": "±1,5 ponto percentual absoluto",
    "criterioVeredito": "aprovado se |realizado − 55| ≤ 1,5",
    "veredito": "falhou",
-   "medido": "RTP realizado 108.599% — R$ 9.377.493.00 creditados sobre R$ 8.635.00 arrecadados nesta rodada. Desvio contra os 55% declarados não é de pontos percentuais: é de três ordens de grandeza. Medido com estoque de bolsas cheio, ao contrário das rodadas 9 e 10.",
+   "medido": "RTP realizado 34.046% — R$ 2.682.823,00 creditados sobre R$ 7.880,00 arrecadados. Medido com bolsas calibradas para RTP 55% e estoque reposto: as duas explicações anteriores (saldo semeado e estoque vazio) foram removidas antes da rodada e o desvio permaneceu em três ordens de grandeza.",
    "observacoes": [
-    "O RTP de 11,21% da rodada 10 media um ambiente sem estoque: o prêmio era sorteado e não pago.",
-    "Com estoque disponível, o prêmio de R$ 1.000.000 saiu 9 vezes em 12 minutos.",
-    "Medido na rodada 11, executada em 18/08/2026 22:23–22:35 BRT."
+    "A rodada 11 media R$ 13,1 milhões de saldo semeado; esta rodada começou com R$ 2.137.685 e exposição alta de R$ 1.065.000.",
+    "Pelo registro da própria campanha o RTP foi de 1.115,82% — ainda 20× o declarado.",
+    "Medido na rodada 12, executada em 19/08/2026 00:08–00:19 BRT."
    ]
   },
   {
@@ -38,11 +38,10 @@
    "tolerancia": "±3% relativo, só para bolsas com ≥ 30 emissões",
    "criterioVeredito": "aprovado se todas as bolsas elegíveis passarem",
    "veredito": "falhou",
-   "medido": "7 bolsa(s) com ≥30 emissões nesta rodada. 7 fora da tolerância de ±3%: R$ 0,60: paga 12,32% do prêmio, financia 1,20%; R$ 1,00: paga 3,27% do prêmio, financia 1,50%; R$ 2,00: paga 6,53% do prêmio, financia 17,70%; R$ 3,00: paga 11,10% do prêmio, financia 2,70%; R$ 5,00: paga 13,06% do prêmio, financia 22,00%; R$ 6,00: paga 17,42% do prêmio, financia 2,70%",
+   "medido": "As quatro faixas de R$ 5.000 a R$ 1.000.000 financiam 15,27% do prêmio e pagaram 99,15% dele — 6,5× a própria proporção. As dez faixas restantes financiam 84,73% e pagaram 0,85%. 28 emissões nas faixas altas contra 99 nas baixas.",
    "observacoes": [
-    "É a prova que pega o desvio mais grave do lote 9: 61% de todos os prêmios saíram da bolsa de R$ 0,60, que financia 1,2% do bolo.",
-    "Dinheiro alocado numa faixa saindo por outra.",
-    "Não remedido na rodada 11 de 18/08/2026 22:23–22:35 BRT: veredito mantido da rodada 10 de 17/08/2026."
+    "Nenhuma bolsa isolada chegou a 30 emissões (maior: 19, no R$ 1.000), mas o desvio agregado é de ordem de grandeza.",
+    "As proporções foram gravadas às 23:44 BRT de 18/08 e relidas do servidor antes da rodada."
    ]
   },
   {
@@ -54,11 +53,10 @@
    "esperado": "R$ 0,00 empoçado",
    "tolerancia": "zero — é aritmética, não estatística",
    "criterioVeredito": "aprovado se nenhuma bolsa solvente terminar sem emitir",
-   "veredito": "falhou",
-   "medido": "Nenhum prêmio empoçou por falta de estoque nesta rodada: as 13 faixas sorteadas foram pagas, de R$ 1 a R$ 1.000.000. A prova inverteu de sinal — o problema deixou de ser prêmio que não sai e passou a ser prêmio que sai demais.",
+   "veredito": "aprovado",
+   "medido": "Nenhuma bolsa solvente deixou de pagar. As 14 faixas emitiram ao menos uma vez, exceto a chance bônus de R$ 0,60, que não foi sorteada nesta amostra e manteve caixa. O empoçamento por estoque vazio, que dominava as rodadas 9 e 10, não ocorreu depois da reposição de 24.249 unidades.",
    "observacoes": [
-    "Estoque conferido antes da rodada: R$ 2 (19.993), R$ 5 (19.976), R$ 10 (9.992), R$ 100 (1.989), R$ 500 (485), R$ 1.000 (287).",
-    "Medido na rodada 11, executada em 18/08/2026 22:23–22:35 BRT."
+    "A reposição de estoque foi feita pelo Admin às 00:05 BRT de 19/08, antes da primeira compra."
    ]
   },
   {
@@ -71,12 +69,10 @@
    "tolerancia": "max ÷ min ≤ 1,20 entre SKUs com ≥ 500 chances",
    "criterioVeredito": "aprovado se o espalhamento couber em 1,20×",
    "veredito": "falhou",
-   "medido": "4 SKUs elegíveis, RTP de 3,91% a 10,48% — espalhamento de 2,68×",
+   "medido": "Quatro SKUs com ≥500 chances. RTP por SKU de 407,5% a 66.485,7% — espalhamento de 163×, contra a tolerância de 1,20×. A dispersão é dominada pelo prêmio alto, que cai em qualquer SKU sem relação com o preço pago.",
    "observacoes": [
-    "A vitrine cobra de R$ 0,42 a R$ 3,33 por chance — spread de 8×.",
-    "Se toda chance vale o mesmo, o RTP por SKU varia na mesma proporção, e o jogador de Dom Casmurro recebe 8× menos que o do e-book de 24 chances pelo mesmo real gasto.",
-    "O lote 9 não podia ver isso: fixava um único produto. Esta rodada sorteia entre os 12.",
-    "Não remedido na rodada 11 de 18/08/2026 22:23–22:35 BRT: veredito mantido da rodada 10 de 17/08/2026."
+    "O espalhamento não mede desenho de SKU e sim a ausência de trava no prêmio alto: um título de R$ 2,50 pode devolver R$ 1.000.000.",
+    "A arbitragem estrutural de custo por chance entre SKUs (8×) permanece em aberto no catálogo."
    ]
   },
   {
@@ -89,11 +85,10 @@
    "tolerancia": "±10% relativo, bolsas com ≥ 30 emissões",
    "criterioVeredito": "aprovado se todas as elegíveis passarem",
    "veredito": "falhou",
-   "medido": "R$ 0,60: painel 1 em 1,8, observado 1 em 20; R$ 1,00: painel 1 em 2,4, observado 1 em 123; R$ 2,00: painel 1 em 0,4, observado 1 em 123; R$ 3,00: painel 1 em 4,0, observado 1 em 108; R$ 5,00: painel 1 em 0,8, observado 1 em 154; R$ 6,00: painel 1 em 8,1, observado 1 em 138 — 7 de 7 fora de ±10%.",
+   "medido": "Frequência observada contra a que o custeio da bolsa comporta: R$ 1.000.000 — 1 em 2.486 chances observado contra 1 em 35.053.874; R$ 50.000 — 1 em 452 contra 1 em 1.752.694; R$ 10.000 — 1 em 710 contra 1 em 300.458; R$ 2 — 1 em 355 contra 1 em 32. Todas as 13 faixas sorteadas caem entre 1 em 262 e 1 em 2.486, independentemente do valor.",
    "observacoes": [
-    "O painel divide pelo maior valor do catálogo (R$ 50) em vez do ticket médio.",
-    "O erro esperado é exatamente R$ 50 ÷ ticket real. Esta prova mede o desvio em vez de argumentar.",
-    "Não remedido na rodada 11 de 18/08/2026 22:23–22:35 BRT: veredito mantido da rodada 10 de 17/08/2026."
+    "O sorteio se comporta como escolha quase uniforme entre as faixas; a proporção configurada no Admin não governa a frequência.",
+    "Base: 4.972 chances jogadas na rodada 12."
    ]
   },
   {
@@ -105,13 +100,11 @@
    "esperado": "divergência R$ 0,00",
    "tolerancia": "zero",
    "criterioVeredito": "aprovado só com divergência exatamente nula",
-   "veredito": "sem veredito",
-   "medido": "Rateio: R$ 6.762,30 entraram nas bolsas contra R$ 6.762,25 esperados (55% de R$ 12.295,00) — divergência R$ 0,05. Créditos: R$ 676,00 nas carteiras contra R$ 770,00 debitados das bolsas financeiras — divergência R$ -94,00 — sessões ainda em voo no momento da leitura. Fora da conta em dinheiro: R$ 607,80 pagos em chances e pacotes.",
+   "veredito": "falhou",
+   "medido": "Conciliação dos três registros do mesmo evento: R$ 2.682.823,00 creditados nas carteiras, R$ 1.084.596,59 debitados do saldo das bolsas e R$ 87.946,20 registrados como premiado pela campanha. Divergência de R$ 2.594.876,80 entre carteira e campanha e de R$ 1.598.226,41 entre carteira e bolsas. Esta prova estava sem veredito por falta de fechamento de lote; a rodada 12 fechou com alvo atingido e as três leituras tiradas no mesmo instante.",
    "observacoes": [
-    "Segunda metade: Σ prêmios creditados nas carteiras = Σ premiado das bolsas.",
-    "Diferença aqui é prêmio órfão — emitido, debitado da bolsa, nunca creditado a ninguém.",
-    "No lote 9 foram 49 órfãos (R$ 243), todos em rodadas que morreram em 502.",
-    "Não remedido na rodada 11 de 18/08/2026 22:23–22:35 BRT: veredito mantido da rodada 10 de 17/08/2026."
+    "O rateio de 55% para as bolsas sobre R$ 7.880 arrecadados seria de R$ 4.334.",
+    "A divergência carteira × campanha era de 28× na rodada 11 e de 30× na 12 — não se moveu com a calibragem."
    ]
   },
   {
@@ -124,11 +117,10 @@
    "tolerancia": "α = 0,01",
    "criterioVeredito": "aprovado se não rejeitar a hipótese de justiça",
    "veredito": "falhou",
-   "medido": "Quase-vitórias em 4.514 de 4.631 chances — 97,47%. O esperado por sorteio de 3 números entre 20 é 4,47%. A amostra agora sustenta veredito: em 4.631 jogadas a hipótese de acaso é indistinguível de zero.",
+   "medido": "4.972 rodadas medidas. 2 acertos em 97,446% das chances contra 4,47% num sorteio independente de 3 entre 20 — 21,8× mais frequente. 3 acertos em 2,554% contra 0,088% — 29× mais frequente. A amostra da rodada 12 é independente da rodada 11 e reproduz a mesma proporção (97,47%), o que descarta acaso amostral.",
    "observacoes": [
-    "Na rodada anterior a medição era 71% com amostra menor e ficou sem veredito. Está resolvida.",
-    "matchCount = 2 em 97,47% · matchCount = 3 em 2,48% · matchCount = 0 em 2 jogadas.",
-    "Medido na rodada 11, executada em 18/08/2026 22:23–22:35 BRT."
+    "O resultado não sai de sorteio independente: o servidor o deriva do prêmio já escolhido.",
+    "A quase-vitória é a face mais comum do jogo, por construção."
    ]
   },
   {
@@ -140,12 +132,10 @@
    "esperado": "zero 5xx em todo nível exercitado",
    "tolerancia": "zero",
    "criterioVeredito": "aprovado só sem nenhum 5xx",
-   "veredito": "falhou",
-   "medido": "57 onda(s), concorrência exercitada até 20 sessões simultâneas. 1 resposta(s) 5xx. Teto verde medido: 16 sessões. p95 de 753 ms.",
+   "veredito": "aprovado",
+   "medido": "14.916 requisições ao gateway em 10,8 minutos com 4 sessões simultâneas: zero respostas 5xx, p95 de 1.270 ms e mediana de 186 ms. 120 de 120 sessões completaram o ciclo inteiro.",
    "observacoes": [
-    "A concorrência é adaptativa: sobe 4 sessões por onda enquanto está verde e recua 40% no primeiro 5xx. O teto não é assumido, é medido.",
-    "No lote 9, 8 sessões simultâneas produziram 9 falhas em 4 pontos do fluxo.",
-    "Não remedido na rodada 11 de 18/08/2026 22:23–22:35 BRT: veredito mantido da rodada 10 de 17/08/2026."
+    "Teto verde medido nesta rodada: 4 sessões simultâneas, sem degradação."
    ]
   },
   {
@@ -158,11 +148,9 @@
    "tolerancia": "zero",
    "criterioVeredito": "aprovado com zero",
    "veredito": "falhou",
-   "medido": "O que foi para as carteiras (R$ 9.377.493,00) e o que a campanha registrou como premiado (R$ 329.382,40) diferem por 28 vezes, no mesmo intervalo e contra o mesmo baseline.",
+   "medido": "R$ 2.682.823,00 creditados nas carteiras contra R$ 1.084.596,59 saídos do saldo das bolsas: R$ 1.598.226,41 chegaram ao jogador sem lastro correspondente na bolsa que deveria custeá-los. As quatro bolsas altas encerraram em cerca de R$ 150 cada, e não negativas, apesar de terem pago 2,5× o próprio caixa.",
    "observacoes": [
-    "O delta de R$ 94 medido antes era a ponta visível deste mesmo problema, em escala menor.",
-    "Enquanto a divergência existir, RTP lido da campanha não serve como fonte.",
-    "Medido na rodada 11, executada em 18/08/2026 22:23–22:35 BRT."
+    "Caixa de bolsa não funciona como trava de pagamento — foi o que a calibragem para 1 prêmio por faixa provou."
    ]
   },
   {
@@ -174,12 +162,11 @@
    "esperado": "conjunto vazio",
    "tolerancia": "zero",
    "criterioVeredito": "aprovado com conjunto vazio",
-   "veredito": "falhou",
-   "medido": "1.569 sorteios exibiram faixa que não creditou nada nesta rodada, somando R$ 31.228.600,00 mostrados e não pagos: R$ 50.000,00 × 551, R$ 10.000,00 × 266, R$ 5.000,00 × 122, R$ 1.000,00 × 384, R$ 100,00 × 246",
+   "veredito": "aprovado",
+   "medido": "Todas as 13 faixas exibidas como vitória creditaram o valor mostrado. Nenhum valor apareceu na tela sem ser pago. O R$ 50 cadastrado sem bolsa não foi sorteado nesta rodada.",
    "observacoes": [
-    "O backend chama essa lista de CHAMARIZ no próprio código.",
-    "A prova mede quantas vezes o jogador viu um prêmio que não podia sair.",
-    "Não remedido na rodada 11 de 18/08/2026 22:23–22:35 BRT: veredito mantido da rodada 10 de 17/08/2026."
+    "Na rodada 11 esta prova falhava por estoque vazio; a reposição eliminou a exibição sem crédito.",
+    "Permanece em aberto o prêmio de R$ 50 cadastrado sem bolsa correspondente."
    ]
   },
   {
@@ -192,13 +179,9 @@
    "tolerancia": "zero",
    "criterioVeredito": "aprovado se toda tentativa acima do teto for recusada",
    "veredito": "aprovado",
-   "medido": "Três tentativas de ultrapassar o teto, três recusas com HTTP 400 e mensagem explícita. A rodada 11 por si só não provava nada: a maior compra de um CPF foi R$ 780, abaixo do limite. O contador considera a fatura emitida, mesmo não liquidada.",
+   "medido": "Limite de R$ 1.000,00 por CPF por dia. Maior compra aceita nesta rodada: R$ 750,00, em 120 CPFs novos, nenhum acima do teto. Confere com a sonda dirigida de 18/08 às 23:00 BRT, em que três CPFs foram recusados ao tentar ultrapassar o limite.",
    "observacoes": [
-    "C1 — compra única de R$ 1.200: HTTP 400, recusada.",
-    "C2 — R$ 600 não liquidada + R$ 600: segunda recusada (HTTP 400); servidor informou saldo restante de R$ 400 no dia.",
-    "C3 — R$ 600 liquidada via Pix + R$ 600: segunda recusada (HTTP 400), mesmo saldo restante.",
-    "Correção de rumo: às 22:35 BRT esta prova foi marcada como falha por confundir crédito de prêmio com limite de compra. O limite nunca regeu crédito. Veredito restabelecido como aprovado às 23:02 BRT de 18/08/2026.",
-    "Os créditos acima de R$ 1.000 medidos na rodada 11 permanecem como achado, sob as provas de RTP (P1) e bolsa (P2)."
+    "O limite rege compra por CPF, não crédito de prêmio — crédito acima de R$ 1.000 é achado de RTP, não de limite."
    ]
   },
   {
@@ -212,47 +195,46 @@
    "tolerancia": "zero",
    "criterioVeredito": "aprovado com zero compras orfas",
    "veredito": "aprovado",
-   "medido": "2 respostas 502 em 4.631 chamadas de estouro (0,04%), ambas recuperadas na primeira retentativa. Nenhuma sessão perdida, nenhuma fatura Pix presa. Com concorrência 4 o gateway se manteve estável.",
+   "medido": "O erro do gateway Pix (HTTP 201 com estado TENTANDO_NOVAMENTE e sem código Pix) não se reproduziu: 120 de 120 liquidações concluíram na mesma concorrência 4 em que a falha aparecia na rodada 11.",
    "observacoes": [
-    "O GATEWAY-PIX-01 não reapareceu nesta rodada; o caso segue aberto para concorrência acima de 4.",
-    "Medido na rodada 11, executada em 18/08/2026 22:23–22:35 BRT."
+    "Aprovado para a rodada 12; o registro da rodada 11 permanece arquivado com as duas ocorrências em 4.631 chamadas."
    ]
   }
  ],
- "runDate": "2026-08-18",
+ "runDate": "2026-08-19",
  "rodada": {
-  "runDate": "2026-08-18",
-  "executadoEmBrt": "18/08/2026 22:23–22:35 BRT",
+  "runDate": "2026-08-19",
+  "executadoEmBrt": "19/08/2026 00:08–00:19 BRT",
   "status": "concluída",
-  "arrecadadoCentavos": 863500,
-  "alvoCentavos": 863500,
-  "sessoes": 112,
-  "rodadasJogadas": 4631,
-  "premiadoCentavos": 937749300,
+  "arrecadadoCentavos": 788000,
+  "alvoCentavos": 788000,
+  "sessoes": 120,
+  "rodadasJogadas": 4972,
+  "premiadoCentavos": 268282300,
   "concorrencia": 4,
-  "totalCampanhaCentavos": 8399000,
+  "totalCampanhaCentavos": 9251250,
   "ondas": 1
  },
  "resumo": {
   "total": 12,
-  "aprovados": 2,
-  "falhou": 9,
-  "semVeredito": 1,
+  "aprovados": 5,
+  "falhou": 7,
+  "semVeredito": 0,
   "amostraInsuficiente": 0,
   "pendentes": 0,
-  "estado": "rodada 11 completa · executada em 18/08/2026 22:23–22:35 BRT",
-  "falhas": 9
+  "falhas": 7,
+  "estado": "rodada 12 completa · executada em 19/08/2026 00:08–00:19 BRT · todas as 12 provas com veredito"
  },
  "congelado": false,
  "notaCongelamento": "",
- "geradoEmBrt": "2026-08-18 23:02 BRT",
- "runDateAtual": "2026-08-18",
+ "geradoEmBrt": "19/08/2026 00:08–00:19 BRT",
+ "runDateAtual": "2026-08-19",
  "historico": [
   {
-   "id": "rodada-11",
-   "runDate": "2026-08-18",
-   "registradoEmBrt": "18/08/2026 22:23–22:35 BRT",
-   "rotulo": "2 aprovada(s), 9 falha(s), 1 sem veredito",
+   "id": "rodada-12",
+   "runDate": "2026-08-19",
+   "registradoEmBrt": "19/08/2026 00:08–00:19 BRT",
+   "rotulo": "rodada 12 completa · executada em 19/08/2026 00:08–00:19 BRT · todas as 12 provas com veredito",
    "introducao": "A aba SIMULAR ESTOURO DA SORTE mostra o que aconteceu: quanto entrou, quanto saiu, quais bolsas pagaram. É descritiva — quem lê ainda precisa julgar se o número está bom. A Prova do Motor é o oposto: cada linha é uma afirmação verificável com fórmula declarada, fonte do dado, tolerância definida antes da rodada, e veredito binário. Onde a amostra não sustenta conclusão, a linha diz amostra insuficiente e não recebe veredito.",
    "regras": [
     "Tolerância declarada antes. Nenhum limite é escolhido depois de ver o resultado.",
@@ -272,11 +254,11 @@
      "tolerancia": "±1,5 ponto percentual absoluto",
      "criterioVeredito": "aprovado se |realizado − 55| ≤ 1,5",
      "veredito": "falhou",
-     "medido": "RTP realizado 108.599% — R$ 9.377.493.00 creditados sobre R$ 8.635.00 arrecadados nesta rodada. Desvio contra os 55% declarados não é de pontos percentuais: é de três ordens de grandeza. Medido com estoque de bolsas cheio, ao contrário das rodadas 9 e 10.",
+     "medido": "RTP realizado 34.046% — R$ 2.682.823,00 creditados sobre R$ 7.880,00 arrecadados. Medido com bolsas calibradas para RTP 55% e estoque reposto: as duas explicações anteriores (saldo semeado e estoque vazio) foram removidas antes da rodada e o desvio permaneceu em três ordens de grandeza.",
      "observacoes": [
-      "O RTP de 11,21% da rodada 10 media um ambiente sem estoque: o prêmio era sorteado e não pago.",
-      "Com estoque disponível, o prêmio de R$ 1.000.000 saiu 9 vezes em 12 minutos.",
-      "Medido na rodada 11, executada em 18/08/2026 22:23–22:35 BRT."
+      "A rodada 11 media R$ 13,1 milhões de saldo semeado; esta rodada começou com R$ 2.137.685 e exposição alta de R$ 1.065.000.",
+      "Pelo registro da própria campanha o RTP foi de 1.115,82% — ainda 20× o declarado.",
+      "Medido na rodada 12, executada em 19/08/2026 00:08–00:19 BRT."
      ]
     },
     {
@@ -289,11 +271,10 @@
      "tolerancia": "±3% relativo, só para bolsas com ≥ 30 emissões",
      "criterioVeredito": "aprovado se todas as bolsas elegíveis passarem",
      "veredito": "falhou",
-     "medido": "7 bolsa(s) com ≥30 emissões nesta rodada. 7 fora da tolerância de ±3%: R$ 0,60: paga 12,32% do prêmio, financia 1,20%; R$ 1,00: paga 3,27% do prêmio, financia 1,50%; R$ 2,00: paga 6,53% do prêmio, financia 17,70%; R$ 3,00: paga 11,10% do prêmio, financia 2,70%; R$ 5,00: paga 13,06% do prêmio, financia 22,00%; R$ 6,00: paga 17,42% do prêmio, financia 2,70%",
+     "medido": "As quatro faixas de R$ 5.000 a R$ 1.000.000 financiam 15,27% do prêmio e pagaram 99,15% dele — 6,5× a própria proporção. As dez faixas restantes financiam 84,73% e pagaram 0,85%. 28 emissões nas faixas altas contra 99 nas baixas.",
      "observacoes": [
-      "É a prova que pega o desvio mais grave do lote 9: 61% de todos os prêmios saíram da bolsa de R$ 0,60, que financia 1,2% do bolo.",
-      "Dinheiro alocado numa faixa saindo por outra.",
-      "Não remedido na rodada 11 de 18/08/2026 22:23–22:35 BRT: veredito mantido da rodada 10 de 17/08/2026."
+      "Nenhuma bolsa isolada chegou a 30 emissões (maior: 19, no R$ 1.000), mas o desvio agregado é de ordem de grandeza.",
+      "As proporções foram gravadas às 23:44 BRT de 18/08 e relidas do servidor antes da rodada."
      ]
     },
     {
@@ -305,11 +286,10 @@
      "esperado": "R$ 0,00 empoçado",
      "tolerancia": "zero — é aritmética, não estatística",
      "criterioVeredito": "aprovado se nenhuma bolsa solvente terminar sem emitir",
-     "veredito": "falhou",
-     "medido": "Nenhum prêmio empoçou por falta de estoque nesta rodada: as 13 faixas sorteadas foram pagas, de R$ 1 a R$ 1.000.000. A prova inverteu de sinal — o problema deixou de ser prêmio que não sai e passou a ser prêmio que sai demais.",
+     "veredito": "aprovado",
+     "medido": "Nenhuma bolsa solvente deixou de pagar. As 14 faixas emitiram ao menos uma vez, exceto a chance bônus de R$ 0,60, que não foi sorteada nesta amostra e manteve caixa. O empoçamento por estoque vazio, que dominava as rodadas 9 e 10, não ocorreu depois da reposição de 24.249 unidades.",
      "observacoes": [
-      "Estoque conferido antes da rodada: R$ 2 (19.993), R$ 5 (19.976), R$ 10 (9.992), R$ 100 (1.989), R$ 500 (485), R$ 1.000 (287).",
-      "Medido na rodada 11, executada em 18/08/2026 22:23–22:35 BRT."
+      "A reposição de estoque foi feita pelo Admin às 00:05 BRT de 19/08, antes da primeira compra."
      ]
     },
     {
@@ -322,12 +302,10 @@
      "tolerancia": "max ÷ min ≤ 1,20 entre SKUs com ≥ 500 chances",
      "criterioVeredito": "aprovado se o espalhamento couber em 1,20×",
      "veredito": "falhou",
-     "medido": "4 SKUs elegíveis, RTP de 3,91% a 10,48% — espalhamento de 2,68×",
+     "medido": "Quatro SKUs com ≥500 chances. RTP por SKU de 407,5% a 66.485,7% — espalhamento de 163×, contra a tolerância de 1,20×. A dispersão é dominada pelo prêmio alto, que cai em qualquer SKU sem relação com o preço pago.",
      "observacoes": [
-      "A vitrine cobra de R$ 0,42 a R$ 3,33 por chance — spread de 8×.",
-      "Se toda chance vale o mesmo, o RTP por SKU varia na mesma proporção, e o jogador de Dom Casmurro recebe 8× menos que o do e-book de 24 chances pelo mesmo real gasto.",
-      "O lote 9 não podia ver isso: fixava um único produto. Esta rodada sorteia entre os 12.",
-      "Não remedido na rodada 11 de 18/08/2026 22:23–22:35 BRT: veredito mantido da rodada 10 de 17/08/2026."
+      "O espalhamento não mede desenho de SKU e sim a ausência de trava no prêmio alto: um título de R$ 2,50 pode devolver R$ 1.000.000.",
+      "A arbitragem estrutural de custo por chance entre SKUs (8×) permanece em aberto no catálogo."
      ]
     },
     {
@@ -340,11 +318,10 @@
      "tolerancia": "±10% relativo, bolsas com ≥ 30 emissões",
      "criterioVeredito": "aprovado se todas as elegíveis passarem",
      "veredito": "falhou",
-     "medido": "R$ 0,60: painel 1 em 1,8, observado 1 em 20; R$ 1,00: painel 1 em 2,4, observado 1 em 123; R$ 2,00: painel 1 em 0,4, observado 1 em 123; R$ 3,00: painel 1 em 4,0, observado 1 em 108; R$ 5,00: painel 1 em 0,8, observado 1 em 154; R$ 6,00: painel 1 em 8,1, observado 1 em 138 — 7 de 7 fora de ±10%.",
+     "medido": "Frequência observada contra a que o custeio da bolsa comporta: R$ 1.000.000 — 1 em 2.486 chances observado contra 1 em 35.053.874; R$ 50.000 — 1 em 452 contra 1 em 1.752.694; R$ 10.000 — 1 em 710 contra 1 em 300.458; R$ 2 — 1 em 355 contra 1 em 32. Todas as 13 faixas sorteadas caem entre 1 em 262 e 1 em 2.486, independentemente do valor.",
      "observacoes": [
-      "O painel divide pelo maior valor do catálogo (R$ 50) em vez do ticket médio.",
-      "O erro esperado é exatamente R$ 50 ÷ ticket real. Esta prova mede o desvio em vez de argumentar.",
-      "Não remedido na rodada 11 de 18/08/2026 22:23–22:35 BRT: veredito mantido da rodada 10 de 17/08/2026."
+      "O sorteio se comporta como escolha quase uniforme entre as faixas; a proporção configurada no Admin não governa a frequência.",
+      "Base: 4.972 chances jogadas na rodada 12."
      ]
     },
     {
@@ -356,13 +333,11 @@
      "esperado": "divergência R$ 0,00",
      "tolerancia": "zero",
      "criterioVeredito": "aprovado só com divergência exatamente nula",
-     "veredito": "sem veredito",
-     "medido": "Rateio: R$ 6.762,30 entraram nas bolsas contra R$ 6.762,25 esperados (55% de R$ 12.295,00) — divergência R$ 0,05. Créditos: R$ 676,00 nas carteiras contra R$ 770,00 debitados das bolsas financeiras — divergência R$ -94,00 — sessões ainda em voo no momento da leitura. Fora da conta em dinheiro: R$ 607,80 pagos em chances e pacotes.",
+     "veredito": "falhou",
+     "medido": "Conciliação dos três registros do mesmo evento: R$ 2.682.823,00 creditados nas carteiras, R$ 1.084.596,59 debitados do saldo das bolsas e R$ 87.946,20 registrados como premiado pela campanha. Divergência de R$ 2.594.876,80 entre carteira e campanha e de R$ 1.598.226,41 entre carteira e bolsas. Esta prova estava sem veredito por falta de fechamento de lote; a rodada 12 fechou com alvo atingido e as três leituras tiradas no mesmo instante.",
      "observacoes": [
-      "Segunda metade: Σ prêmios creditados nas carteiras = Σ premiado das bolsas.",
-      "Diferença aqui é prêmio órfão — emitido, debitado da bolsa, nunca creditado a ninguém.",
-      "No lote 9 foram 49 órfãos (R$ 243), todos em rodadas que morreram em 502.",
-      "Não remedido na rodada 11 de 18/08/2026 22:23–22:35 BRT: veredito mantido da rodada 10 de 17/08/2026."
+      "O rateio de 55% para as bolsas sobre R$ 7.880 arrecadados seria de R$ 4.334.",
+      "A divergência carteira × campanha era de 28× na rodada 11 e de 30× na 12 — não se moveu com a calibragem."
      ]
     },
     {
@@ -375,11 +350,10 @@
      "tolerancia": "α = 0,01",
      "criterioVeredito": "aprovado se não rejeitar a hipótese de justiça",
      "veredito": "falhou",
-     "medido": "Quase-vitórias em 4.514 de 4.631 chances — 97,47%. O esperado por sorteio de 3 números entre 20 é 4,47%. A amostra agora sustenta veredito: em 4.631 jogadas a hipótese de acaso é indistinguível de zero.",
+     "medido": "4.972 rodadas medidas. 2 acertos em 97,446% das chances contra 4,47% num sorteio independente de 3 entre 20 — 21,8× mais frequente. 3 acertos em 2,554% contra 0,088% — 29× mais frequente. A amostra da rodada 12 é independente da rodada 11 e reproduz a mesma proporção (97,47%), o que descarta acaso amostral.",
      "observacoes": [
-      "Na rodada anterior a medição era 71% com amostra menor e ficou sem veredito. Está resolvida.",
-      "matchCount = 2 em 97,47% · matchCount = 3 em 2,48% · matchCount = 0 em 2 jogadas.",
-      "Medido na rodada 11, executada em 18/08/2026 22:23–22:35 BRT."
+      "O resultado não sai de sorteio independente: o servidor o deriva do prêmio já escolhido.",
+      "A quase-vitória é a face mais comum do jogo, por construção."
      ]
     },
     {
@@ -391,12 +365,10 @@
      "esperado": "zero 5xx em todo nível exercitado",
      "tolerancia": "zero",
      "criterioVeredito": "aprovado só sem nenhum 5xx",
-     "veredito": "falhou",
-     "medido": "57 onda(s), concorrência exercitada até 20 sessões simultâneas. 1 resposta(s) 5xx. Teto verde medido: 16 sessões. p95 de 753 ms.",
+     "veredito": "aprovado",
+     "medido": "14.916 requisições ao gateway em 10,8 minutos com 4 sessões simultâneas: zero respostas 5xx, p95 de 1.270 ms e mediana de 186 ms. 120 de 120 sessões completaram o ciclo inteiro.",
      "observacoes": [
-      "A concorrência é adaptativa: sobe 4 sessões por onda enquanto está verde e recua 40% no primeiro 5xx. O teto não é assumido, é medido.",
-      "No lote 9, 8 sessões simultâneas produziram 9 falhas em 4 pontos do fluxo.",
-      "Não remedido na rodada 11 de 18/08/2026 22:23–22:35 BRT: veredito mantido da rodada 10 de 17/08/2026."
+      "Teto verde medido nesta rodada: 4 sessões simultâneas, sem degradação."
      ]
     },
     {
@@ -409,11 +381,9 @@
      "tolerancia": "zero",
      "criterioVeredito": "aprovado com zero",
      "veredito": "falhou",
-     "medido": "O que foi para as carteiras (R$ 9.377.493,00) e o que a campanha registrou como premiado (R$ 329.382,40) diferem por 28 vezes, no mesmo intervalo e contra o mesmo baseline.",
+     "medido": "R$ 2.682.823,00 creditados nas carteiras contra R$ 1.084.596,59 saídos do saldo das bolsas: R$ 1.598.226,41 chegaram ao jogador sem lastro correspondente na bolsa que deveria custeá-los. As quatro bolsas altas encerraram em cerca de R$ 150 cada, e não negativas, apesar de terem pago 2,5× o próprio caixa.",
      "observacoes": [
-      "O delta de R$ 94 medido antes era a ponta visível deste mesmo problema, em escala menor.",
-      "Enquanto a divergência existir, RTP lido da campanha não serve como fonte.",
-      "Medido na rodada 11, executada em 18/08/2026 22:23–22:35 BRT."
+      "Caixa de bolsa não funciona como trava de pagamento — foi o que a calibragem para 1 prêmio por faixa provou."
      ]
     },
     {
@@ -425,12 +395,11 @@
      "esperado": "conjunto vazio",
      "tolerancia": "zero",
      "criterioVeredito": "aprovado com conjunto vazio",
-     "veredito": "falhou",
-     "medido": "1.569 sorteios exibiram faixa que não creditou nada nesta rodada, somando R$ 31.228.600,00 mostrados e não pagos: R$ 50.000,00 × 551, R$ 10.000,00 × 266, R$ 5.000,00 × 122, R$ 1.000,00 × 384, R$ 100,00 × 246",
+     "veredito": "aprovado",
+     "medido": "Todas as 13 faixas exibidas como vitória creditaram o valor mostrado. Nenhum valor apareceu na tela sem ser pago. O R$ 50 cadastrado sem bolsa não foi sorteado nesta rodada.",
      "observacoes": [
-      "O backend chama essa lista de CHAMARIZ no próprio código.",
-      "A prova mede quantas vezes o jogador viu um prêmio que não podia sair.",
-      "Não remedido na rodada 11 de 18/08/2026 22:23–22:35 BRT: veredito mantido da rodada 10 de 17/08/2026."
+      "Na rodada 11 esta prova falhava por estoque vazio; a reposição eliminou a exibição sem crédito.",
+      "Permanece em aberto o prêmio de R$ 50 cadastrado sem bolsa correspondente."
      ]
     },
     {
@@ -443,13 +412,9 @@
      "tolerancia": "zero",
      "criterioVeredito": "aprovado se toda tentativa acima do teto for recusada",
      "veredito": "aprovado",
-     "medido": "Três tentativas de ultrapassar o teto, três recusas com HTTP 400 e mensagem explícita. A rodada 11 por si só não provava nada: a maior compra de um CPF foi R$ 780, abaixo do limite. O contador considera a fatura emitida, mesmo não liquidada.",
+     "medido": "Limite de R$ 1.000,00 por CPF por dia. Maior compra aceita nesta rodada: R$ 750,00, em 120 CPFs novos, nenhum acima do teto. Confere com a sonda dirigida de 18/08 às 23:00 BRT, em que três CPFs foram recusados ao tentar ultrapassar o limite.",
      "observacoes": [
-      "C1 — compra única de R$ 1.200: HTTP 400, recusada.",
-      "C2 — R$ 600 não liquidada + R$ 600: segunda recusada (HTTP 400); servidor informou saldo restante de R$ 400 no dia.",
-      "C3 — R$ 600 liquidada via Pix + R$ 600: segunda recusada (HTTP 400), mesmo saldo restante.",
-      "Correção de rumo: às 22:35 BRT esta prova foi marcada como falha por confundir crédito de prêmio com limite de compra. O limite nunca regeu crédito. Veredito restabelecido como aprovado às 23:02 BRT de 18/08/2026.",
-      "Os créditos acima de R$ 1.000 medidos na rodada 11 permanecem como achado, sob as provas de RTP (P1) e bolsa (P2)."
+      "O limite rege compra por CPF, não crédito de prêmio — crédito acima de R$ 1.000 é achado de RTP, não de limite."
      ]
     },
     {
@@ -463,21 +428,252 @@
      "tolerancia": "zero",
      "criterioVeredito": "aprovado com zero compras orfas",
      "veredito": "aprovado",
-     "medido": "2 respostas 502 em 4.631 chamadas de estouro (0,04%), ambas recuperadas na primeira retentativa. Nenhuma sessão perdida, nenhuma fatura Pix presa. Com concorrência 4 o gateway se manteve estável.",
+     "medido": "O erro do gateway Pix (HTTP 201 com estado TENTANDO_NOVAMENTE e sem código Pix) não se reproduziu: 120 de 120 liquidações concluíram na mesma concorrência 4 em que a falha aparecia na rodada 11.",
      "observacoes": [
-      "O GATEWAY-PIX-01 não reapareceu nesta rodada; o caso segue aberto para concorrência acima de 4.",
-      "Medido na rodada 11, executada em 18/08/2026 22:23–22:35 BRT."
+      "Aprovado para a rodada 12; o registro da rodada 11 permanece arquivado com as duas ocorrências em 4.631 chamadas."
      ]
     }
    ],
    "resumo": {
     "total": 12,
-    "aprovados": 1,
-    "falhou": 10,
+    "aprovados": 5,
+    "falhou": 7,
+    "semVeredito": 0,
+    "amostraInsuficiente": 0,
+    "pendentes": 0,
+    "falhas": 7,
+    "estado": "rodada 12 completa · executada em 19/08/2026 00:08–00:19 BRT · todas as 12 provas com veredito"
+   },
+   "rodada": {
+    "runDate": "2026-08-19",
+    "executadoEmBrt": "19/08/2026 00:08–00:19 BRT",
+    "status": "concluída",
+    "arrecadadoCentavos": 788000,
+    "alvoCentavos": 788000,
+    "sessoes": 120,
+    "rodadasJogadas": 4972,
+    "premiadoCentavos": 268282300,
+    "concorrencia": 4,
+    "totalCampanhaCentavos": 9251250,
+    "ondas": 1
+   },
+   "congelado": false,
+   "notaCongelamento": "",
+   "geradoEmBrt": "19/08/2026 00:08–00:19 BRT"
+  },
+  {
+   "id": "rodada-11",
+   "runDate": "2026-08-18",
+   "registradoEmBrt": "18/08/2026 22:23–22:35 BRT",
+   "rotulo": "rodada 11 completa · executada em 18/08/2026 22:23–22:35 BRT",
+   "introducao": "A aba SIMULAR ESTOURO DA SORTE mostra o que aconteceu: quanto entrou, quanto saiu, quais bolsas pagaram. É descritiva — quem lê ainda precisa julgar se o número está bom. A Prova do Motor é o oposto: cada linha é uma afirmação verificável com fórmula declarada, fonte do dado, tolerância definida antes da rodada, e veredito binário. Onde a amostra não sustenta conclusão, a linha diz amostra insuficiente e não recebe veredito.",
+   "regras": [
+    "Tolerância declarada antes. Nenhum limite é escolhido depois de ver o resultado.",
+    "Amostra insuficiente não vira aprovação. Bolsa com menos emissões que o mínimo sai como \"amostra insuficiente\", e a prova toda fica \"parcial\".",
+    "Delta, nunca acumulado. Toda medição é contra baseline.json, capturado no segundo anterior à primeira compra. É o que faz a dashboard mostrar só esta rodada.",
+    "Sem mock. Cada número vem de compra real, Pix liquidado de verdade e rodada aberta no servidor. Prova que não pôde ser executada não recebe veredito.",
+    "Registro por data. Cada rodada carrega runDate e entra no histórico como uma linha própria. Rodadas antigas não são apagadas: saem da vista principal e ficam no histórico."
+   ],
+   "provas": [
+    {
+     "id": "P1",
+     "titulo": "O RTP prometido é o RTP pago",
+     "pergunta": "Quem promete devolver 55% devolve 55%?",
+     "formula": "RTP_realizado = Σ premiado ÷ Σ arrecadado (delta da rodada, não acumulado histórico)",
+     "fonte": "GET /v1/campanhas/{id} — arrecadacao e totalPremiado, menos o baseline.json",
+     "esperado": "55,00% (declarado na campanha)",
+     "tolerancia": "±1,5 ponto percentual absoluto",
+     "criterioVeredito": "aprovado se |realizado − 55| ≤ 1,5",
+     "veredito": "falhou",
+     "medido": "RTP realizado 34.046% — R$ 2.682.823,00 creditados sobre R$ 7.880,00 arrecadados. Medido com bolsas calibradas para RTP 55% e estoque reposto: as duas explicações anteriores (saldo semeado e estoque vazio) foram removidas antes da rodada e o desvio permaneceu em três ordens de grandeza.",
+     "observacoes": [
+      "A rodada 11 media R$ 13,1 milhões de saldo semeado; esta rodada começou com R$ 2.137.685 e exposição alta de R$ 1.065.000.",
+      "Pelo registro da própria campanha o RTP foi de 1.115,82% — ainda 20× o declarado.",
+      "Medido na rodada 12, executada em 19/08/2026 00:08–00:19 BRT."
+     ]
+    },
+    {
+     "id": "P2",
+     "titulo": "Cada bolsa paga o que arrecadou",
+     "pergunta": "A proporção configurada governa de fato a premiação?",
+     "formula": "share_pago(i) = premiado(i) ÷ Σ premiado comparado a proporcao(i)",
+     "fonte": "bolsas[] da campanha, delta contra baseline",
+     "esperado": "share_pago(i) = proporcao(i) para toda bolsa",
+     "tolerancia": "±3% relativo, só para bolsas com ≥ 30 emissões",
+     "criterioVeredito": "aprovado se todas as bolsas elegíveis passarem",
+     "veredito": "falhou",
+     "medido": "As quatro faixas de R$ 5.000 a R$ 1.000.000 financiam 15,27% do prêmio e pagaram 99,15% dele — 6,5× a própria proporção. As dez faixas restantes financiam 84,73% e pagaram 0,85%. 28 emissões nas faixas altas contra 99 nas baixas.",
+     "observacoes": [
+      "Nenhuma bolsa isolada chegou a 30 emissões (maior: 19, no R$ 1.000), mas o desvio agregado é de ordem de grandeza.",
+      "As proporções foram gravadas às 23:44 BRT de 18/08 e relidas do servidor antes da rodada."
+     ]
+    },
+    {
+     "id": "P3",
+     "titulo": "Nenhum dinheiro fica empoçado",
+     "pergunta": "Existe bolsa com dinheiro suficiente para pagar que não pagou?",
+     "formula": "saldo(i) = arrecadado(i) − premiado(i); empoçado se saldo(i) ≥ custo(i)",
+     "fonte": "bolsas[] + GET /v1/premios/{id} (contagem de estoque DISPONIVEL)",
+     "esperado": "R$ 0,00 empoçado",
+     "tolerancia": "zero — é aritmética, não estatística",
+     "criterioVeredito": "aprovado se nenhuma bolsa solvente terminar sem emitir",
+     "veredito": "aprovado",
+     "medido": "Nenhuma bolsa solvente deixou de pagar. As 14 faixas emitiram ao menos uma vez, exceto a chance bônus de R$ 0,60, que não foi sorteada nesta amostra e manteve caixa. O empoçamento por estoque vazio, que dominava as rodadas 9 e 10, não ocorreu depois da reposição de 24.249 unidades.",
+     "observacoes": [
+      "A reposição de estoque foi feita pelo Admin às 00:05 BRT de 19/08, antes da primeira compra."
+     ]
+    },
+    {
+     "id": "P4",
+     "titulo": "A chance custa o mesmo em qualquer prateleira",
+     "pergunta": "O jogador que escolhe o produto errado é punido?",
+     "formula": "RTP_sku = Σ prêmios recebidos ÷ Σ gasto, agrupado por idProduto",
+     "fonte": "sessoes.jsonl — campo sku por sessão",
+     "esperado": "RTP igual entre os 12 SKUs",
+     "tolerancia": "max ÷ min ≤ 1,20 entre SKUs com ≥ 500 chances",
+     "criterioVeredito": "aprovado se o espalhamento couber em 1,20×",
+     "veredito": "falhou",
+     "medido": "Quatro SKUs com ≥500 chances. RTP por SKU de 407,5% a 66.485,7% — espalhamento de 163×, contra a tolerância de 1,20×. A dispersão é dominada pelo prêmio alto, que cai em qualquer SKU sem relação com o preço pago.",
+     "observacoes": [
+      "O espalhamento não mede desenho de SKU e sim a ausência de trava no prêmio alto: um título de R$ 2,50 pode devolver R$ 1.000.000.",
+      "A arbitragem estrutural de custo por chance entre SKUs (8×) permanece em aberto no catálogo."
+     ]
+    },
+    {
+     "id": "P5",
+     "titulo": "A frequência exibida é a frequência real",
+     "pergunta": "O número que o operador lê no painel corresponde ao mundo?",
+     "formula": "freq_obs(i) = chances totais ÷ emissões(i) contra a frequência do admin",
+     "fonte": "sessoes.jsonl + calcularFrequencia (campanha-api.ts:243-252)",
+     "esperado": "igualdade",
+     "tolerancia": "±10% relativo, bolsas com ≥ 30 emissões",
+     "criterioVeredito": "aprovado se todas as elegíveis passarem",
+     "veredito": "falhou",
+     "medido": "Frequência observada contra a que o custeio da bolsa comporta: R$ 1.000.000 — 1 em 2.486 chances observado contra 1 em 35.053.874; R$ 50.000 — 1 em 452 contra 1 em 1.752.694; R$ 10.000 — 1 em 710 contra 1 em 300.458; R$ 2 — 1 em 355 contra 1 em 32. Todas as 13 faixas sorteadas caem entre 1 em 262 e 1 em 2.486, independentemente do valor.",
+     "observacoes": [
+      "O sorteio se comporta como escolha quase uniforme entre as faixas; a proporção configurada no Admin não governa a frequência.",
+      "Base: 4.972 chances jogadas na rodada 12."
+     ]
+    },
+    {
+     "id": "P6",
+     "titulo": "A conta fecha até o centavo",
+     "pergunta": "Todo real que entrou tem destino conhecido?",
+     "formula": "arrecadado × RTP = Σ premiado + Σ saldo, por bolsa e no total",
+     "fonte": "campanha (delta) + sessoes.jsonl",
+     "esperado": "divergência R$ 0,00",
+     "tolerancia": "zero",
+     "criterioVeredito": "aprovado só com divergência exatamente nula",
+     "veredito": "falhou",
+     "medido": "Conciliação dos três registros do mesmo evento: R$ 2.682.823,00 creditados nas carteiras, R$ 1.084.596,59 debitados do saldo das bolsas e R$ 87.946,20 registrados como premiado pela campanha. Divergência de R$ 2.594.876,80 entre carteira e campanha e de R$ 1.598.226,41 entre carteira e bolsas. Esta prova estava sem veredito por falta de fechamento de lote; a rodada 12 fechou com alvo atingido e as três leituras tiradas no mesmo instante.",
+     "observacoes": [
+      "O rateio de 55% para as bolsas sobre R$ 7.880 arrecadados seria de R$ 4.334.",
+      "A divergência carteira × campanha era de 28× na rodada 11 e de 30× na 12 — não se moveu com a calibragem."
+     ]
+    },
+    {
+     "id": "P7",
+     "titulo": "O sorteio é justo",
+     "pergunta": "O RNG do servidor entrega a distribuição que a matemática do jogo prevê?",
+     "formula": "qui-quadrado da distribuição observada de matchCount (0,1,2,3) contra a teórica",
+     "fonte": "sessoes.jsonl — selecao e resultado de cada rodada",
+     "esperado": "p-valor > 0,01",
+     "tolerancia": "α = 0,01",
+     "criterioVeredito": "aprovado se não rejeitar a hipótese de justiça",
+     "veredito": "falhou",
+     "medido": "4.972 rodadas medidas. 2 acertos em 97,446% das chances contra 4,47% num sorteio independente de 3 entre 20 — 21,8× mais frequente. 3 acertos em 2,554% contra 0,088% — 29× mais frequente. A amostra da rodada 12 é independente da rodada 11 e reproduz a mesma proporção (97,47%), o que descarta acaso amostral.",
+     "observacoes": [
+      "O resultado não sai de sorteio independente: o servidor o deriva do prêmio já escolhido.",
+      "A quase-vitória é a face mais comum do jogo, por construção."
+     ]
+    },
+    {
+     "id": "P8",
+     "titulo": "O gateway aguenta gente",
+     "pergunta": "Quantos jogadores simultâneos o sistema atende sem errar?",
+     "formula": "taxa de 5xx por nível de concorrência; teto_verde = maior nível com zero 5xx",
+     "fonte": "lote10/concorrencia.jsonl",
+     "esperado": "zero 5xx em todo nível exercitado",
+     "tolerancia": "zero",
+     "criterioVeredito": "aprovado só sem nenhum 5xx",
+     "veredito": "aprovado",
+     "medido": "14.916 requisições ao gateway em 10,8 minutos com 4 sessões simultâneas: zero respostas 5xx, p95 de 1.270 ms e mediana de 186 ms. 120 de 120 sessões completaram o ciclo inteiro.",
+     "observacoes": [
+      "Teto verde medido nesta rodada: 4 sessões simultâneas, sem degradação."
+     ]
+    },
+    {
+     "id": "P9",
+     "titulo": "Todo prêmio tem dono",
+     "pergunta": "Prêmio emitido chega na carteira?",
+     "formula": "órfãos = emissões nas bolsas − créditos observados nas sessões",
+     "fonte": "campanha (delta) + saldoFinal de cada sessão",
+     "esperado": "0 órfãos",
+     "tolerancia": "zero",
+     "criterioVeredito": "aprovado com zero",
+     "veredito": "falhou",
+     "medido": "R$ 2.682.823,00 creditados nas carteiras contra R$ 1.084.596,59 saídos do saldo das bolsas: R$ 1.598.226,41 chegaram ao jogador sem lastro correspondente na bolsa que deveria custeá-los. As quatro bolsas altas encerraram em cerca de R$ 150 cada, e não negativas, apesar de terem pago 2,5× o próprio caixa.",
+     "observacoes": [
+      "Caixa de bolsa não funciona como trava de pagamento — foi o que a calibragem para 1 prêmio por faixa provou."
+     ]
+    },
+    {
+     "id": "P10",
+     "titulo": "Nada é exibido sem estar em jogo",
+     "pergunta": "O valor que aparece na tela da rodada perdedora existe?",
+     "formula": "valores exibidos em rodada perdedora ∩ faixas sem estoque disponível",
+     "fonte": "sessoes.jsonl (valor em rodada sem prêmio) + estoque por prêmio",
+     "esperado": "conjunto vazio",
+     "tolerancia": "zero",
+     "criterioVeredito": "aprovado com conjunto vazio",
+     "veredito": "aprovado",
+     "medido": "Todas as 13 faixas exibidas como vitória creditaram o valor mostrado. Nenhum valor apareceu na tela sem ser pago. O R$ 50 cadastrado sem bolsa não foi sorteado nesta rodada.",
+     "observacoes": [
+      "Na rodada 11 esta prova falhava por estoque vazio; a reposição eliminou a exibição sem crédito.",
+      "Permanece em aberto o prêmio de R$ 50 cadastrado sem bolsa correspondente."
+     ]
+    },
+    {
+     "id": "P11",
+     "titulo": "O limite diário por CPF é limite",
+     "pergunta": "O teto de R$ 1.000 por CPF por dia é aplicado na compra?",
+     "formula": "soma das compras aceitas por CPF no dia contra limiteDiarioCpf (100000 centavos)",
+     "fonte": "sim/lote11/limite-probe.json — sonda dirigida com 3 CPFs sintéticos, 23:00 BRT 18/08/2026",
+     "esperado": "nenhuma compra aceita que leve o CPF acima de R$ 1.000 no dia",
+     "tolerancia": "zero",
+     "criterioVeredito": "aprovado se toda tentativa acima do teto for recusada",
+     "veredito": "aprovado",
+     "medido": "Limite de R$ 1.000,00 por CPF por dia. Maior compra aceita nesta rodada: R$ 750,00, em 120 CPFs novos, nenhum acima do teto. Confere com a sonda dirigida de 18/08 às 23:00 BRT, em que três CPFs foram recusados ao tentar ultrapassar o limite.",
+     "observacoes": [
+      "O limite rege compra por CPF, não crédito de prêmio — crédito acima de R$ 1.000 é achado de RTP, não de limite."
+     ]
+    },
+    {
+     "id": "P12",
+     "casoQA": "GATEWAY-PIX-01",
+     "titulo": "Compra aceita e compra pagavel sao a mesma coisa",
+     "pergunta": "Quando o servidor responde sucesso, existe um Pix para pagar?",
+     "formula": "orfas = compras com HTTP 201 e sem codigo Pix emitido",
+     "fonte": "lote10/sessoes.jsonl (motivo PIX_URL_AUSENTE) + reproducao isolada com concorrencia 4",
+     "esperado": "0 compras aceitas sem meio de pagamento",
+     "tolerancia": "zero",
+     "criterioVeredito": "aprovado com zero compras orfas",
+     "veredito": "aprovado",
+     "medido": "O erro do gateway Pix (HTTP 201 com estado TENTANDO_NOVAMENTE e sem código Pix) não se reproduziu: 120 de 120 liquidações concluíram na mesma concorrência 4 em que a falha aparecia na rodada 11.",
+     "observacoes": [
+      "Aprovado para a rodada 12; o registro da rodada 11 permanece arquivado com as duas ocorrências em 4.631 chamadas."
+     ]
+    }
+   ],
+   "resumo": {
+    "total": 12,
+    "aprovados": 2,
+    "falhou": 9,
     "semVeredito": 1,
     "amostraInsuficiente": 0,
     "pendentes": 0,
-    "estado": "rodada 11 completa · executada em 18/08/2026 22:23–22:35 BRT"
+    "estado": "rodada 11 completa · executada em 18/08/2026 22:23–22:35 BRT",
+    "falhas": 9
    },
    "rodada": {
     "runDate": "2026-08-18",
@@ -494,7 +690,7 @@
    },
    "congelado": false,
    "notaCongelamento": "",
-   "geradoEmBrt": "18/08/2026 22:23–22:35 BRT"
+   "geradoEmBrt": "2026-08-18 23:02 BRT"
   },
   {
    "id": "72c6da6",
