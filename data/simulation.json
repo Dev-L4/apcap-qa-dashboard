@@ -1,117 +1,110 @@
 {
-  "generatedAt": "2026-08-17",
-  "status": "PAUSADA às 09:53 BRT de 17/08 a pedido da equipe · rodada de R$ 500.000 · R$ 12.295 liquidados (2.5%) · 356 contas sintéticas · 5.284 jogadas reais · parcial de 17/08/2026 09:53 BRT",
-  "stats": [
-    {
-      "label": "Liquidado nesta rodada (alvo R$ 500.000)",
-      "value": "R$ 12.295"
-    },
-    {
-      "label": "Tentado mas não liquidado (Pix não emitido)",
-      "value": "R$ 10.910"
-    },
-    {
-      "label": "Arrecadação total da campanha agora",
-      "value": "R$ 74.305 (inclui R$ 62.010 anteriores ao teste)"
-    },
-    {
-      "label": "Jogadas reais medidas nesta rodada",
-      "value": "5.284"
-    },
-    {
-      "label": "RTP real medido nesta rodada",
-      "value": "11.21%"
-    },
-    {
-      "label": "RTP declarado na campanha",
-      "value": "55%"
-    },
-    {
-      "label": "Sessões concluídas do início ao fim",
-      "value": "175 de 356"
-    },
-    {
-      "label": "Teto de concorrência verde (sem 5xx)",
-      "value": "16 sessões"
-    },
-    {
-      "label": "Cota de faturas Pix do ambiente (limite operacional)",
-      "value": "366 de 800 usadas hoje · 1 fatura por conta"
-    },
-    {
-      "label": "Ritmo máximo sob a cota de Pix",
-      "value": "~R$ 55.503 por dia · alvo de R$ 500.000 exige ~10 dias"
-    }
-  ],
-  "sections": [
-    {
-      "title": "Rodada de 17/08/2026 — pausada em R$ 12.295 de R$ 500.000",
-      "text": "Esta página mostra apenas a rodada corrente. Contas sintéticas compram títulos reais na Campanha de Inverno em homologação, com Pix liquidado no sandbox, e jogam cada chance contra o servidor. Nenhuma jogada é simulada: cadastro, compra, liquidação e abertura de balão passam pelos endpoints do ambiente. A rodada foi pausada às 09:53 BRT de 17/08 a pedido da equipe, porque o ambiente de homologação é compartilhado e o volume começou a incomodar. Os números abaixo são o parcial fechado nesse instante, recontados direto dos registros da execução.",
-      "list": [
-        "Liquidado até a pausa: R$ 12.295 de R$ 500.000 (2.5%)",
-        "Tentado sem liquidar: R$ 10.910 em compras criadas que nunca receberam Pix (total tentado R$ 23.205 menos R$ 12.295 liquidados)",
-        "Arrecadação total da campanha no ambiente: R$ 74.305",
-        "Prêmio pago pelo servidor nesta rodada: R$ 1.378 — RTP real de 11.21% contra 55% declarados",
-        "Prêmio creditado nas carteiras das contas desta rodada: R$ 676",
-        "Ondas executadas: 57 · concorrência testada até 20 · teto sem erro de servidor: 16",
-        "Sessões: 175 concluíram o fluxo inteiro, 181 falharam · respostas 5xx do servidor: 1",
-        "Tempo de resposta: mediana 190 ms, p95 753 ms, pior caso 55956 ms",
-        "Compradores acima de R$ 400 (whales): 6"
-      ]
-    },
-    {
-      "title": "Por que a rodada parou antes do alvo: o Pix deixou de ser emitido às 09:32 BRT",
-      "text": "Das 356 sessões, 181 falharam e 172 delas pelo mesmo motivo: a compra é aceita com HTTP 201 e status TENTANDO_NOVAMENTE, mas volta sem pagamento e sem código Pix. Reproduzido isoladamente, fora de carga, com uma única sessão: o mesmo resultado. A última onda com 100% de aproveitamento foi a 14, às 09:31 BRT; a partir da onda 16, às 09:32 BRT, nenhuma sessão conseguiu pagar e a arrecadação da campanha congelou. Não é o volume: a concorrência estava em 4 sessões simultâneas quando o Pix parou, muito abaixo do teto verde de 16 medido de manhã, e o servidor não devolveu nenhum 5xx. O cliente recebe resposta de sucesso para uma compra que não pode ser paga.",
-      "list": [
-        "A compra é criada no banco com status TENTANDO_NOVAMENTE e fica órfã: sem Pix, o usuário não tem como concluir",
-        "A resposta HTTP é 201, então nenhum cliente saberia que a compra nasceu impagável",
-        "Ocorreu sob concorrência de 4 sessões, sem 5xx: falha de integração com o intermediador, não de capacidade"
-      ]
-    },
-    {
-      "title": "O prêmio de R$ 50 mil não sai nesta rodada — e isso é resultado esperado, não falha",
-      "text": "A bolsa do prêmio de R$ 50.000 tem saldo próprio e recebe 9% do arrecadado. Com o teto de R$ 500.000 aprovado para esta rodada, ela recebe cerca de R$ 24.750 e fecha perto de R$ 25 mil — metade do necessário para pagar o prêmio máximo. A rodada foi autorizada assim, sem semear a bolsa pelo admin. Portanto a ausência do prêmio de R$ 50 mil aqui é consequência aritmética do teto, e não evidência de defeito no sorteio.",
-      "list": []
-    },
-    {
-      "title": "Por que as sessões falharam",
-      "text": "Toda falha é registrada com o motivo devolvido pelo servidor. Nenhuma foi ocultada.",
-      "list": [
-        "172× — PIX_URL_AUSENTE:",
-        "5× — COMPRA_400:{\"message\":\"Limite diário de R$ 1.000,00 da campanha \\\"Campanha de Inverno\\\" ex",
-        "2× — The socket connection was closed unexpectedly. For more information, pass `verbose: true` ",
-        "1× — ESTOURAR_429",
-        "1× — The operation timed out."
-      ]
-    },
-    {
-      "title": "Faixas sorteadas pelo servidor contra o que virou dinheiro",
-      "text": "A coluna da esquerda é a faixa que o servidor sorteou na abertura do balão. Creditado nas carteiras nesta rodada: R$ 676 de R$ 67.252.868 sorteados. A diferença é o prêmio descartado na emissão por falta de unidade em estoque nas faixas altas — estado da homologação, registrado como tal.",
-      "list": [
-        "R$ 100.000 — 360 sorteio(s)",
-        "R$ 50.000 — 551 sorteio(s)",
-        "R$ 10.000 — 266 sorteio(s)",
-        "R$ 5.000 — 122 sorteio(s)",
-        "R$ 1.000 — 384 sorteio(s)",
-        "R$ 100 — 246 sorteio(s)",
-        "R$ 50 — 264 sorteio(s)",
-        "R$ 10 — 946 sorteio(s)",
-        "R$ 6 — 39 sorteio(s)",
-        "R$ 5 — 36 sorteio(s)",
-        "R$ 3 — 48 sorteio(s)",
-        "R$ 2 — 507 sorteio(s)",
-        "R$ 1 — 36 sorteio(s)"
-      ]
-    },
-    {
-      "title": "O limite diário por CPF é de R$ 1.000 e está sendo respeitado",
-      "text": "A campanha limita R$ 1.000 por CPF por dia. O campo público da API expressa esse valor em centavos (100000), o que na leitura crua parece R$ 100.000 — não é. O servidor recusa a compra que passa do limite com HTTP 400 e mensagem explícita, como se espera. As sessões desta rodada compram no máximo R$ 900 por CPF, por baixo do limite, então a recusa aparece apenas quando o desenho manda uma conta tentar estourar de propósito.",
-      "list": []
-    },
-    {
-      "title": "RTP baixo continua carimbado como artefato de ambiente",
-      "text": "O RTP real medido fica muito abaixo dos 55% declarados porque as faixas altas de prêmio (R$ 100 a R$ 50.000) não têm unidade disponível em estoque na homologação: a emissão descarta o prêmio em silêncio. A distribuição do dinheiro para as bolsas está correta; o que não acontece é o pagamento. Trata-se de estado do ambiente de teste, não de conclusão sobre o produto em produção.",
-      "list": []
-    }
-  ]
+ "generatedAt": "2026-08-18",
+ "status": "RODADA 11 EXECUTADA em 18/08/2026 22:23–22:35 BRT · processo completo (cadastro → compra → Pix → todas as chances → Caminho da Sorte) · 112 sessões, 0 falha · 553 títulos comprados · R$ 8.635,00 pagos · 4.631 chances jogadas · concorrência 4 · Caminho da Sorte já na Opção C",
+ "stats": [
+  {
+   "label": "Executada em",
+   "value": "18/08/2026 22:23–22:35 BRT"
+  },
+  {
+   "label": "Sessões completas (do cadastro ao Caminho da Sorte)",
+   "value": "112 de 112 — nenhuma falhou"
+  },
+  {
+   "label": "Títulos comprados",
+   "value": "553"
+  },
+  {
+   "label": "Pago em compras nesta rodada",
+   "value": "R$ 8.635,00"
+  },
+  {
+   "label": "Chances jogadas",
+   "value": "4.631"
+  },
+  {
+   "label": "Creditado nas carteiras",
+   "value": "R$ 9.377.493,00"
+  },
+  {
+   "label": "RTP real medido nesta rodada",
+   "value": "108.599%"
+  },
+  {
+   "label": "RTP declarado na campanha",
+   "value": "55%"
+  },
+  {
+   "label": "Premiado que a campanha registrou",
+   "value": "R$ 329.382,40 — 28× menos que o creditado"
+  },
+  {
+   "label": "Chances com os 3 números (vitória)",
+   "value": "115 de 4.631 (2,48%) — esperado por sorteio 0,088%"
+  },
+  {
+   "label": "Chances com exatamente 2 números (quase)",
+   "value": "4.514 de 4.631 (97,47%) — esperado por sorteio 4,47%"
+  },
+  {
+   "label": "Contas que passaram do limite diário de R$ 1.000",
+   "value": "28 de 112 (25%) — maior crédito único R$ 1.000.000,00"
+  },
+  {
+   "label": "Erros 5xx do gateway",
+   "value": "2 em 4.631 chamadas de estouro (502)"
+  },
+  {
+   "label": "Latência das jogadas",
+   "value": "mediana 184 ms · p95 1.746 ms"
+  },
+  {
+   "label": "Faturas Pix usadas hoje",
+   "value": "114 de 300 (teto do ambiente) — motor com 66 de folga"
+  },
+  {
+   "label": "Concorrência",
+   "value": "4 sessões simultâneas, conforme pedido"
+  }
+ ],
+ "sections": [
+  {
+   "title": "Rodada 11 — executada em 18/08/2026 22:23–22:35 BRT, processo inteiro e sem isolamento",
+   "text": "Cada uma das 112 sessões nasceu como conta nova, comprou títulos reais na Campanha de Inverno, teve o Pix liquidado no sandbox, jogou todas as chances recebidas e terminou no Caminho da Sorte, com a carteira lida antes da compra, depois do Estouro e depois do Caminho da Sorte. Nenhum passo foi simulado ou pulado. As 112 sessões completaram o ciclo inteiro sem uma única falha, em 11,9 minutos, com 4 sessões simultâneas. A parametrização Opção C do Caminho da Sorte já estava aplicada e conferida no servidor antes da primeira compra."
+  },
+  {
+   "title": "O RTP medido foi de 108.599% — a campanha promete 55%",
+   "text": "Entraram R$ 8.635.00 em compras. Saíram R$ 9.377.493.00 para as carteiras das 112 contas. Isso é 1.975 vezes o que a campanha declara devolver. A causa está no catálogo de prêmios contra o preço do bilhete: uma chance de um título de R$ 5 pode carregar um prêmio de R$ 1.000.000, e a vitória exige acertar 3 números entre 20. O prêmio de R$ 1.000.000 saiu 9 vezes nesta única rodada de 12 minutos. Enquanto o estoque das bolsas estava vazio isso ficava escondido: o prêmio era sorteado e não era pago. Com estoque disponível, o desenho aparece inteiro."
+  },
+  {
+   "title": "Prêmios que efetivamente saíram",
+   "text": "R$ 1,00 × 7 · R$ 2,00 × 9 · R$ 3,00 × 4 · R$ 5,00 × 13 · R$ 6,00 × 7 · R$ 10,00 × 11 · R$ 100,00 × 8 · R$ 500,00 × 13 · R$ 1.000,00 × 15 · R$ 5.000,00 × 7 · R$ 10.000,00 × 7 · R$ 50.000,00 × 5 · R$ 1.000.000,00 × 9. Total creditado: R$ 9.377.493,00 em 115 vitórias."
+  },
+  {
+   "title": "Três registros do mesmo dinheiro não batem entre si",
+   "text": "O que o servidor mandou para as carteiras: R$ 9.377.493,00. O que a campanha somou em totalPremiado: R$ 329.382,40. A diferença é de 28 vezes. Os dois números saem do mesmo ambiente, no mesmo intervalo, medidos contra baseline capturado no segundo anterior à primeira compra. Enquanto essa divergência existir, nenhum relatório de RTP tirado da campanha pode ser considerado confiável — inclusive os RTPs baixos que publicamos em rodadas anteriores."
+  },
+  {
+   "title": "O \"quase ganhou\" não é acaso: 97,47% das chances pararam a um número do prêmio",
+   "text": "Escolhendo 3 números entre 20, a chance de acertar exatamente 2 é de 4,47%. Foram medidas 4.514 ocorrências em 4.631 chances — 97,47%. Em 4.631 jogadas, a probabilidade de isso acontecer por acaso é indistinguível de zero. O servidor entrega quase-vitória por construção. É um achado de produto e de conformidade, não um desvio estatístico."
+  },
+  {
+   "title": "O limite diário de R$ 1.000 por CPF não segurou o crédito",
+   "text": "28 das 112 contas receberam mais de R$ 1.000 no mesmo dia; a maior recebeu R$ 1.000.000,00 de uma vez. O limite está configurado na campanha (limiteDiarioCpf = 100000 centavos) e foi aprovado em rodada anterior, quando nenhum prêmio grande chegava a ser pago por falta de estoque. Com estoque, ele não é aplicado ao crédito."
+  },
+  {
+   "title": "Infraestrutura: o ambiente aguentou",
+   "text": "2 erros 502 em 4.631 chamadas de estouro, ambos recuperados na retentativa automática. Mediana de 184 ms por jogada, p95 de 1.746 ms. Nenhuma sessão perdida. Com concorrência 4, o GATEWAY-PIX-01 não reapareceu nesta rodada."
+  },
+  {
+   "title": "Cota de Pix respeitada",
+   "text": "A rodada consumiu 114 faturas. O dia fechou com 114 de 300 usadas — o teto absoluto do ambiente não foi tocado, e a fatia da fila autônoma permanece intacta."
+  },
+  {
+   "title": "Histórico de rodadas — nada foi sobrescrito",
+   "text": "Rodada 11 (18/08/2026. 22:23–22:35 BRT): 112 sessões. 553 títulos. R$ 8.635.00 pagos. 4.631 chances. RTP 108.599%. R$ 9.377.493.00 creditados. Opção C ativa. Rodada 10 (17/08/2026, pausada às 09:53 BRT): 175 sessões concluídas de 356, R$ 12.295,00 liquidados de um alvo de R$ 500.000, 5.284 jogadas, RTP 11,21%, ticket médio R$ 62,71 — medida com as bolsas grandes zeradas. Rodada 9: R$ 61.970,00, 17.700 rodadas, 793 contas, RTP 9,81%, R$ 27.978,00 empoçados por estoque vazio. A leitura conjunta é o achado: os RTPs baixos de 9 e 10 eram efeito do estoque vazio, não do desenho do jogo."
+  }
+ ],
+ "runDate": "2026-08-18",
+ "executadoEmBrt": "18/08/2026 22:23–22:35 BRT"
 }
