@@ -37,7 +37,7 @@ return h+'</article>'}
 /* ---- Combo de rodada (rastreabilidade: nada e sobrescrito) ---- */
 function fmtRunDate(r){if(r.registradoEmBrt)return r.registradoEmBrt;const d=r.runDate||'';const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d);return m?`${m[3]}/${m[2]}/${m[1]}`:(d||'sem data')}
 function mountRuns(data,selId,metaId,render){data=data||{};const runs=(Array.isArray(data.historico)&&data.historico.length)?data.historico:[data];const sel=$(selId),meta=$(metaId);
- const show=r=>{if(meta)meta.textContent=`${runs.length} rodada(s) arquivada(s) — exibindo ${fmtRunDate(r)}`;render(Object.assign({},data,r,{historico:null}))};
+ const show=r=>{if(meta)meta.textContent=`${runs.length} medição(ões) arquivada(s) — exibindo ${fmtRunDate(r)}`;render(Object.assign({},data,r,{historico:null}))};
  if(sel){sel.innerHTML=runs.map((r,i)=>`<option value="${i}">${esc(fmtRunDate(r))} · ${esc(String(r.rotulo||'').slice(0,90))}</option>`).join('');sel.value='0';sel.onchange=()=>show(runs[Number(sel.value)]||runs[0])}
  show(runs[0])}
 function renderSimulation(sim){$('simStats').innerHTML=(sim.stats||[]).map(s=>statCard(s.value,s.label)).join('');
