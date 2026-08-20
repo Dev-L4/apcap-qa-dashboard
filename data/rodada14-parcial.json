@@ -3,7 +3,7 @@
   "generatedAt": "2026-08-20T10:28:00-03:00",
   "run": {
     "runDate": "2026-08-20-r14-parcial-0905BRT",
-    "rotulo": "Rodada 14 — parcial real: 7 aprovadas, 1 falhou",
+    "rotulo": "Rodada 14 — parcial real: 7 sessões concluídas, 1 sessão falhou",
     "status": "interrompida",
     "source": "sim/lote14-d-20260820-sonda/sessoes.jsonl; sim/lote14-d-20260820/sessoes.jsonl (artefatos privados sanitizados na publicação)",
     "environment": "HML real · Pix sandbox liquidado · demo desligado",
@@ -22,15 +22,15 @@
       }
     },
     "notes": [
-      "Evidência produtiva parcial, sem mock: 1 sonda e 6 sessões principais concluíram compra, crédito de chances e Estouro da Sorte. A 7ª sessão principal falhou antes de gravar compra/jogo por conexão HTTP fechada. A bateria alvo de 180 foi interrompida; esta amostra não certifica RTP, distribuição, EV ou ciclo do Caminho da Sorte.",
-      "Cota local: 9 Pix registrados em 20/08/2026; os artefatos desta publicação identificam 8 sessões (7 aprovadas e 1 falha). A unidade adicional permanece pendente de reconciliação.",
+      "Evidência produtiva parcial, sem mock: 1 sonda e 6 sessões principais concluíram compra, crédito de chances e Estouro da Sorte. A 7ª sessão principal falhou por conexão HTTP fechada; seu registro contém R$ 50,00, 120 chances e 44 rodadas, sem confirmação de conclusão da sessão. A bateria alvo de 180 foi interrompida; esta amostra não certifica RTP, distribuição, EV ou ciclo do Caminho da Sorte.",
+      "Cota local: 9 Pix registrados em 20/08/2026; os artefatos desta publicação identificam 8 sessões (7 concluídas e 1 falha). A unidade adicional permanece pendente de reconciliação.",
       "Limitação de rastreabilidade: HML não expôs versão/commit em endpoint consultado."
     ],
     "cases": [
       {
         "id": "R14-SONDA-01",
         "title": "Sonda real pós-virada",
-        "execution": "20/08/2026 09:05:16 BRT · 1 sessão serial · compra, chances e Estouro concluídos",
+        "execution": "20/08/2026 09:05:16 BRT · 1 sessão serial · R$ 20,00 · 6 chances · 6 rodadas de Estouro concluídas",
         "status": "passed",
         "projects": [
           "Motor",
@@ -46,7 +46,7 @@
       {
         "id": "R14-PARCIAL-01",
         "title": "Sessões reais concluídas na sequência serial",
-        "execution": "20/08/2026 2026-08-20 09:05:16–2026-08-20 09:31:49 BRT · 6 sessões principais serializadas · R$ 210.00 gasto nas 7 concluídas · 78 chances · 78 rodadas",
+        "execution": "20/08/2026 09:05:16–09:31:49 BRT · 6 sessões principais serializadas · R$ 190,00 · 72 chances · 72 rodadas de Estouro",
         "status": "passed",
         "projects": [
           "Motor",
@@ -55,14 +55,14 @@
         "lote": "Rodada 14",
         "priority": "P0",
         "evidence": [
-          "7 sessões reais concluídas (1 sonda + 6 principais), sem 5xx registrado; saldo de prêmios observado ao término: R$ 1032.00.",
+          "7 sessões reais concluídas (1 sonda + 6 principais) · R$ 210,00 · 78 chances · 78 rodadas de Estouro; nenhum HTTP 5xx registrado nas sessões concluídas. Saldo de prêmios observado ao término: R$ 1.032,00.",
           "Endpoint operacional: POST /test/pay e fluxos de compra/Estouro executados pelo driver privado."
         ]
       },
       {
         "id": "R14-CONEXAO-01",
         "title": "Continuidade da bateria serial de 180 sessões",
-        "execution": "20/08/2026 09:31:50 BRT · 7ª sessão principal",
+        "execution": "20/08/2026 09:31:49 BRT · 7ª sessão principal",
         "status": "failed",
         "projects": [
           "Infraestrutura HML",
