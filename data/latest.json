@@ -49,7 +49,7 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/AUTH-HOME-01.png",
+            "evidence/R15-20260821/auth-home-01.png",
             "Esperado: tela-inicio. Observado: tela-inicio.",
             "Overflow horizontal: não."
           ]
@@ -67,7 +67,7 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/AUTH-COMPRAR-01.png",
+            "evidence/R15-20260821/auth-comprar-01.png",
             "Esperado: tela-comprar. Observado: tela-comprar.",
             "Overflow horizontal: não."
           ]
@@ -85,7 +85,7 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/AUTH-WALLET-EMPTY-01.png",
+            "evidence/R15-20260821/auth-wallet-empty-01.png",
             "Esperado: tela-carteira. Observado: tela-comprar, tela-carteira.",
             "Overflow horizontal: não."
           ]
@@ -103,7 +103,7 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/AUTH-ESTOURO-BLOCKED-01.png",
+            "evidence/R15-20260821/auth-estouro-blocked-01.png",
             "Esperado: tela-estouro. Observado: tela-estouro-da-sorte.",
             "Overflow horizontal: não."
           ]
@@ -121,7 +121,7 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/AUTH-MAIS-01.png",
+            "evidence/R15-20260821/auth-mais-01.png",
             "Esperado: tela-mais. Observado: nenhuma tela ativa.",
             "Overflow horizontal: não."
           ]
@@ -139,7 +139,7 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/AUTH-PERFIL-01.png",
+            "evidence/R15-20260821/auth-perfil-01.png",
             "Esperado: tela-perfil. Observado: tela-perfil.",
             "Overflow horizontal: não."
           ]
@@ -157,7 +157,7 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/AUTH-CAMINHO-CATALOGO-01.png",
+            "evidence/R15-20260821/auth-caminho-catalogo-01.png",
             "Esperado: tela-caminho-sorte. Observado: tela-caminho-sorte.",
             "Overflow horizontal: não."
           ]
@@ -175,7 +175,7 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/NAV-HOME.png",
+            "evidence/R15-20260821/nav-home.png",
             "Tela ativa: tela-inicio.",
             "Overflow horizontal: não."
           ]
@@ -193,7 +193,7 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/NAV-COMPRAR.png",
+            "evidence/R15-20260821/nav-comprar.png",
             "Tela ativa: tela-comprar.",
             "Overflow horizontal: não."
           ]
@@ -211,7 +211,7 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/NAV-HOME-RETORNO-1.png",
+            "evidence/R15-20260821/nav-home-retorno-1.png",
             "Tela ativa: tela-inicio.",
             "Overflow horizontal: não."
           ]
@@ -229,7 +229,7 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/NAV-ESTOURO.png",
+            "evidence/R15-20260821/nav-estouro.png",
             "Tela ativa: tela-estouro-da-sorte.",
             "Overflow horizontal: não."
           ]
@@ -332,20 +332,20 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/RESP-384x832-inicio-pos-consentimento.png",
-            "evidence/R15-20260821/RESP-384x832-retorno-cta.png",
-            "evidence/R15-20260821/RESP-412x915-inicio-pos-consentimento.png",
-            "evidence/R15-20260821/RESP-412x915-retorno-cta.png",
-            "evidence/R15-20260821/RESP-390x844-inicio-pos-consentimento.png",
-            "evidence/R15-20260821/RESP-390x844-retorno-cta.png",
-            "evidence/R15-20260821/RESP-360x800-inicio-pos-consentimento.png",
-            "evidence/R15-20260821/RESP-360x800-retorno-cta.png",
-            "evidence/R15-20260821/RESP-414x896-inicio-pos-consentimento.png",
-            "evidence/R15-20260821/RESP-414x896-retorno-cta.png",
-            "evidence/R15-20260821/RESP-432x960-inicio-pos-consentimento.png",
-            "evidence/R15-20260821/RESP-432x960-retorno-cta.png",
-            "evidence/R15-20260821/RESP-393x873-inicio-pos-consentimento.png",
-            "evidence/R15-20260821/RESP-393x873-retorno-cta.png",
+            "evidence/R15-20260821/resp-384x832-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/resp-384x832-retorno-cta.png",
+            "evidence/R15-20260821/resp-412x915-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/resp-412x915-retorno-cta.png",
+            "evidence/R15-20260821/resp-390x844-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/resp-390x844-retorno-cta.png",
+            "evidence/R15-20260821/resp-360x800-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/resp-360x800-retorno-cta.png",
+            "evidence/R15-20260821/resp-414x896-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/resp-414x896-retorno-cta.png",
+            "evidence/R15-20260821/resp-432x960-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/resp-432x960-retorno-cta.png",
+            "evidence/R15-20260821/resp-393x873-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/resp-393x873-retorno-cta.png",
             "Visual aprovado e sem overflow horizontal nos sete viewports; jornada falhou em retorno-cta: a tela de login interceptou o ponteiro no botão Voltar."
           ]
         },
@@ -362,13 +362,13 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/AUTHRESP-384x832-cadastro-validacoes.png",
-            "evidence/R15-20260821/AUTHRESP-412x915-cadastro-validacoes.png",
-            "evidence/R15-20260821/AUTHRESP-390x844-cadastro-validacoes.png",
-            "evidence/R15-20260821/AUTHRESP-360x800-cadastro-validacoes.png",
-            "evidence/R15-20260821/AUTHRESP-414x896-cadastro-validacoes.png",
-            "evidence/R15-20260821/AUTHRESP-432x960-cadastro-validacoes.png",
-            "evidence/R15-20260821/AUTHRESP-393x873-cadastro-validacoes.png",
+            "evidence/R15-20260821/authresp-384x832-cadastro-validacoes.png",
+            "evidence/R15-20260821/authresp-412x915-cadastro-validacoes.png",
+            "evidence/R15-20260821/authresp-390x844-cadastro-validacoes.png",
+            "evidence/R15-20260821/authresp-360x800-cadastro-validacoes.png",
+            "evidence/R15-20260821/authresp-414x896-cadastro-validacoes.png",
+            "evidence/R15-20260821/authresp-432x960-cadastro-validacoes.png",
+            "evidence/R15-20260821/authresp-393x873-cadastro-validacoes.png",
             "Login, cadastro vazio e validações capturados nas sete resoluções; overflow horizontal: não em todas."
           ]
         },
@@ -385,9 +385,9 @@
           "lote": "R15",
           "priority": "P0",
           "evidence": [
-            "evidence/R15-20260821/REGISTER-login.png",
-            "evidence/R15-20260821/REGISTER-cadastro-vazio.png",
-            "evidence/R15-20260821/REGISTER-cadastro-autenticado.png",
+            "evidence/R15-20260821/register-login.png",
+            "evidence/R15-20260821/register-cadastro-vazio.png",
+            "evidence/R15-20260821/register-cadastro-autenticado.png",
             "Resultado da jornada de registro: aprovado. Nenhum dado de credencial foi publicado."
           ]
         }
