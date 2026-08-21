@@ -1,12 +1,73 @@
 {
-  "generatedAt": "2026-08-20T10:28:00-03:00",
-  "runDate": "2026-08-20-r14-parcial-0905BRT",
+  "generatedAt": "2026-08-21T08:43:00-03:00",
+  "runDate": "2026-08-21-r14-fechamento-janela",
   "executadoEmBrt": "20/08/2026 09:05–09:31 BRT",
-  "status": "Rodada 14 parcial real interrompida",
-  "stats": [],
-  "sections": [],
-  "runDateAtual": "2026-08-20-r14-parcial-0905BRT",
+  "status": "não reconciliado; não é prova estatística",
+  "stats": [
+    {
+      "label": "Terminais OK",
+      "value": "178"
+    },
+    {
+      "label": "Lacunas não reconciliadas",
+      "value": "2"
+    },
+    {
+      "label": "Gasto terminal",
+      "value": "R$ 13.252,50"
+    },
+    {
+      "label": "Veredito estatístico",
+      "value": "não aplicável"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Fechamento factual",
+      "text": "A janela financeira de 21/08 teve 178 sessões terminais OK e blocos 03–06 reconciliados individualmente. O fechamento consolidado falhou: qa14-11 não tem pagamento/terminal e qa14-66 tem pagamento sem terminal.",
+      "list": [
+        "Não usar a rodada para RTP, EV ou distribuição.",
+        "A diferença de arrecadação inclui R$ 100,00 das duas lacunas e não é convertida em sucesso."
+      ]
+    }
+  ],
+  "runDateAtual": "2026-08-21-r14-fechamento-janela",
   "historico": [
+    {
+      "id": "r14-21-fechamento",
+      "runDate": "2026-08-21-r14-fechamento-janela",
+      "registradoEmBrt": "21/08/2026 08:43 BRT",
+      "rotulo": "R14 — janela de 21/08: 178 terminais OK; fechamento não reconciliado",
+      "status": "não reconciliado; não é prova estatística",
+      "stats": [
+        {
+          "label": "Terminais OK",
+          "value": "178"
+        },
+        {
+          "label": "Lacunas não reconciliadas",
+          "value": "2"
+        },
+        {
+          "label": "Gasto terminal",
+          "value": "R$ 13.252,50"
+        },
+        {
+          "label": "Veredito estatístico",
+          "value": "não aplicável"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Fechamento factual",
+          "text": "A janela financeira de 21/08 teve 178 sessões terminais OK e blocos 03–06 reconciliados individualmente. O fechamento consolidado falhou: qa14-11 não tem pagamento/terminal e qa14-66 tem pagamento sem terminal.",
+          "list": [
+            "Não usar a rodada para RTP, EV ou distribuição.",
+            "A diferença de arrecadação inclui R$ 100,00 das duas lacunas e não é convertida em sucesso."
+          ]
+        }
+      ]
+    },
     {
       "id": "rodada14-parcial-0905",
       "runDate": "2026-08-20-r14-parcial-0905BRT",
@@ -11995,5 +12056,6 @@
       ]
     }
   ],
-  "notaHistorico": "Cada rodada fica arquivada com a data de execucao. A combo acima troca a rodada exibida; nenhuma medicao anterior e sobrescrita."
+  "notaHistorico": "Cada rodada fica arquivada com a data de execucao. A combo acima troca a rodada exibida; nenhuma medicao anterior e sobrescrita.",
+  "geradoEmBrt": "21/08/2026 08:43 BRT"
 }

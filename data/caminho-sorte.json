@@ -1,11 +1,26 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-20T10:28:00-03:00",
-  "geradoEmBrt": "20/08/2026 10:28 BRT",
+  "generatedAt": "2026-08-21T08:43:00-03:00",
+  "geradoEmBrt": "21/08/2026 08:43 BRT",
   "titulo": "Simular Caminho da Sorte",
-  "status": "Rodada 14 parcial real: D1 sem-jogo observado",
-  "estado": "Evidência real parcial; sem certificação de ciclo ou payout.",
-  "secoes": [],
+  "status": "parcial",
+  "estado": "A tela Caminho da Sorte abriu em conta sintética; não houve jogo, emissão, crédito ou medição produtiva nesta jornada.",
+  "secoes": [
+    {
+      "titulo": "O que foi testado",
+      "itens": [
+        "Acesso autenticado à tela Caminho da Sorte em Chromium 393×873: aprovado.",
+        "Nenhum overflow horizontal observado na tela capturada."
+      ]
+    },
+    {
+      "titulo": "Limites",
+      "itens": [
+        "O acesso de UI não prova ciclo, payout, EV, distribuição ou crédito produtivo.",
+        "A configuração D1 sem-jogo publicada na rodada anterior permanece uma leitura de configuração, não uma medição produtiva."
+      ]
+    }
+  ],
   "tabela": {
     "titulo": "Configuração vigente observada — D1, 20/08/2026 09:05 BRT",
     "colunas": [
@@ -28,6 +43,30 @@
   "porQueBloqueado": [],
   "condicoesParaDestravar": [],
   "historico": [
+    {
+      "id": "r15-acesso-caminho-ui",
+      "runDate": "2026-08-21-r15-publicacao-factual",
+      "registradoEmBrt": "21/08/2026 08:43 BRT",
+      "rotulo": "R15 — acesso visual ao Caminho da Sorte no HML",
+      "status": "parcial",
+      "estado": "A tela Caminho da Sorte abriu em conta sintética; não houve jogo, emissão, crédito ou medição produtiva nesta jornada.",
+      "secoes": [
+        {
+          "titulo": "O que foi testado",
+          "itens": [
+            "Acesso autenticado à tela Caminho da Sorte em Chromium 393×873: aprovado.",
+            "Nenhum overflow horizontal observado na tela capturada."
+          ]
+        },
+        {
+          "titulo": "Limites",
+          "itens": [
+            "O acesso de UI não prova ciclo, payout, EV, distribuição ou crédito produtivo.",
+            "A configuração D1 sem-jogo publicada na rodada anterior permanece uma leitura de configuração, não uma medição produtiva."
+          ]
+        }
+      ]
+    },
     {
       "id": "rodada14-parcial-0905",
       "runDate": "2026-08-20-r14-parcial-0905BRT",
@@ -403,5 +442,6 @@
     }
   ],
   "notaHistorico": "Cada medicao do Caminho da Sorte fica arquivada com a data de execucao. A combo troca a medicao exibida; nada e sobrescrito.",
-  "runDateAtual": "2026-08-20-r14-parcial-0905BRT"
+  "runDateAtual": "2026-08-21-r15-publicacao-factual",
+  "runDate": "2026-08-21-r15-publicacao-factual"
 }

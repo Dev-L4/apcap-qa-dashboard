@@ -1,8 +1,459 @@
 {
   "schemaVersion": 7,
-  "generatedAt": "2026-08-20T10:28:00-03:00",
-  "runDateAtual": "2026-08-20-r14-parcial-0905BRT",
+  "generatedAt": "2026-08-21T08:43:00-03:00",
+  "runDateAtual": "2026-08-21-r15-publicacao-factual",
   "runs": [
+    {
+      "runDate": "2026-08-21-r15-publicacao-factual",
+      "rotulo": "R15 — jornada funcional real e responsiva (publicação factual)",
+      "status": "parcial",
+      "source": "Artefatos privados sanitizados: r15-20260820/restart-2113/*/results.json",
+      "environment": "HML real · https://apcap-v5-hml.web.app/ · Chromium",
+      "generatedAt": "2026-08-21T08:43:00-03:00",
+      "summary": {
+        "total": 19,
+        "passed": 11,
+        "failed": 8,
+        "blocked": 0,
+        "executed": 19
+      },
+      "browserCoverage": {
+        "chromium": "7 resoluções móveis",
+        "mobileViewports": [
+          "384×832",
+          "412×915",
+          "390×844",
+          "360×800",
+          "414×896",
+          "432×960",
+          "393×873"
+        ]
+      },
+      "notes": [
+        "Publicação factual e acumulativa: inclui somente jornadas observadas no HML real; não há mocks ou stubs.",
+        "R15 permanece parcial: áreas não descobertas/exercitadas não foram inferidas como aprovadas.",
+        "As falhas de navegação após Estouro e do retorno de CTA foram preservadas individualmente; uma falha não encerrou as demais jornadas.",
+        "Screenshots são viewport inteiro e sem ocultação; não há credenciais, tokens, CPF ou payload financeiro publicados."
+      ],
+      "cases": [
+        {
+          "id": "R15-AUTH-HOME-01",
+          "title": "Início autenticado",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "passed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/AUTH-HOME-01.png",
+            "Esperado: tela-inicio. Observado: tela-inicio.",
+            "Overflow horizontal: não."
+          ]
+        },
+        {
+          "id": "R15-AUTH-COMPRAR-01",
+          "title": "Catálogo/Comprar autenticado",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "passed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/AUTH-COMPRAR-01.png",
+            "Esperado: tela-comprar. Observado: tela-comprar.",
+            "Overflow horizontal: não."
+          ]
+        },
+        {
+          "id": "R15-AUTH-WALLET-EMPTY-01",
+          "title": "Carteira sem saldo",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "passed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/AUTH-WALLET-EMPTY-01.png",
+            "Esperado: tela-carteira. Observado: tela-comprar, tela-carteira.",
+            "Overflow horizontal: não."
+          ]
+        },
+        {
+          "id": "R15-AUTH-ESTOURO-BLOCKED-01",
+          "title": "Acesso ao Estouro sem chances",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "failed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/AUTH-ESTOURO-BLOCKED-01.png",
+            "Esperado: tela-estouro. Observado: tela-estouro-da-sorte.",
+            "Overflow horizontal: não."
+          ]
+        },
+        {
+          "id": "R15-AUTH-MAIS-01",
+          "title": "Menu Mais autenticado",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "failed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/AUTH-MAIS-01.png",
+            "Esperado: tela-mais. Observado: nenhuma tela ativa.",
+            "Overflow horizontal: não."
+          ]
+        },
+        {
+          "id": "R15-AUTH-PERFIL-01",
+          "title": "Perfil autenticado",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "passed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/AUTH-PERFIL-01.png",
+            "Esperado: tela-perfil. Observado: tela-perfil.",
+            "Overflow horizontal: não."
+          ]
+        },
+        {
+          "id": "R15-AUTH-CAMINHO-CATALOGO-01",
+          "title": "Caminho da Sorte no catálogo",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "passed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/AUTH-CAMINHO-CATALOGO-01.png",
+            "Esperado: tela-caminho-sorte. Observado: tela-caminho-sorte.",
+            "Overflow horizontal: não."
+          ]
+        },
+        {
+          "id": "R15-NAV-HOME",
+          "title": "Navegação autenticada — HOME",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "passed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/NAV-HOME.png",
+            "Tela ativa: tela-inicio.",
+            "Overflow horizontal: não."
+          ]
+        },
+        {
+          "id": "R15-NAV-COMPRAR",
+          "title": "Navegação autenticada — COMPRAR",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "passed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/NAV-COMPRAR.png",
+            "Tela ativa: tela-comprar.",
+            "Overflow horizontal: não."
+          ]
+        },
+        {
+          "id": "R15-NAV-HOME-RETORNO-1",
+          "title": "Navegação autenticada — HOME-RETORNO-1",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "passed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/NAV-HOME-RETORNO-1.png",
+            "Tela ativa: tela-inicio.",
+            "Overflow horizontal: não."
+          ]
+        },
+        {
+          "id": "R15-NAV-ESTOURO",
+          "title": "Navegação autenticada — ESTOURO",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "passed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/NAV-ESTOURO.png",
+            "Tela ativa: tela-estouro-da-sorte.",
+            "Overflow horizontal: não."
+          ]
+        },
+        {
+          "id": "R15-NAV-HOME-RETORNO-2",
+          "title": "Navegação autenticada — HOME-RETORNO-2",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "failed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "O elemento da barra inferior foi resolvido, porém não estava visível; clique expirou.",
+            "Reprodução: autenticar, abrir Estouro da Sorte e acionar Início."
+          ]
+        },
+        {
+          "id": "R15-NAV-CUPONS",
+          "title": "Navegação autenticada — CUPONS",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "failed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "O elemento da barra inferior foi resolvido, porém não estava visível; clique expirou.",
+            "Reprodução: autenticar, abrir Estouro da Sorte e acionar Cupons."
+          ]
+        },
+        {
+          "id": "R15-NAV-HOME-RETORNO-3",
+          "title": "Navegação autenticada — HOME-RETORNO-3",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "failed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "O elemento da barra inferior foi resolvido, porém não estava visível; clique expirou.",
+            "Reprodução: autenticar, abrir Estouro da Sorte e acionar Início."
+          ]
+        },
+        {
+          "id": "R15-NAV-MAIS",
+          "title": "Navegação autenticada — MAIS",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "failed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "O elemento da barra inferior foi resolvido, porém não estava visível; clique expirou.",
+            "Reprodução: autenticar, abrir Estouro da Sorte e acionar Mais."
+          ]
+        },
+        {
+          "id": "R15-AUTH-SORTEIOS-01",
+          "title": "Atalho Sorteios na superfície autenticada",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "failed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P1",
+          "evidence": [
+            "[aria-label=\"Sorteios\"] não foi localizado em 30 s.",
+            "A atualização substituiu a superfície por tela-estouro-da-sorte; não houve reutilização de seletor antigo."
+          ]
+        },
+        {
+          "id": "R15-RESPONSIVO-01",
+          "title": "Início, consentimento e CTA nas sete resoluções",
+          "execution": "21/08/2026 · Chromium · 384×832, 412×915, 390×844, 360×800, 414×896, 432×960 e 393×873",
+          "status": "failed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/RESP-384x832-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/RESP-384x832-retorno-cta.png",
+            "evidence/R15-20260821/RESP-412x915-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/RESP-412x915-retorno-cta.png",
+            "evidence/R15-20260821/RESP-390x844-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/RESP-390x844-retorno-cta.png",
+            "evidence/R15-20260821/RESP-360x800-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/RESP-360x800-retorno-cta.png",
+            "evidence/R15-20260821/RESP-414x896-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/RESP-414x896-retorno-cta.png",
+            "evidence/R15-20260821/RESP-432x960-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/RESP-432x960-retorno-cta.png",
+            "evidence/R15-20260821/RESP-393x873-inicio-pos-consentimento.png",
+            "evidence/R15-20260821/RESP-393x873-retorno-cta.png",
+            "Visual aprovado e sem overflow horizontal nos sete viewports; jornada falhou em retorno-cta: a tela de login interceptou o ponteiro no botão Voltar."
+          ]
+        },
+        {
+          "id": "R15-AUTH-RESPONSIVO-01",
+          "title": "Login e validações de cadastro nas sete resoluções",
+          "execution": "21/08/2026 · Chromium · 384×832, 412×915, 390×844, 360×800, 414×896, 432×960 e 393×873",
+          "status": "passed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/AUTHRESP-384x832-cadastro-validacoes.png",
+            "evidence/R15-20260821/AUTHRESP-412x915-cadastro-validacoes.png",
+            "evidence/R15-20260821/AUTHRESP-390x844-cadastro-validacoes.png",
+            "evidence/R15-20260821/AUTHRESP-360x800-cadastro-validacoes.png",
+            "evidence/R15-20260821/AUTHRESP-414x896-cadastro-validacoes.png",
+            "evidence/R15-20260821/AUTHRESP-432x960-cadastro-validacoes.png",
+            "evidence/R15-20260821/AUTHRESP-393x873-cadastro-validacoes.png",
+            "Login, cadastro vazio e validações capturados nas sete resoluções; overflow horizontal: não em todas."
+          ]
+        },
+        {
+          "id": "R15-CADASTRO-01",
+          "title": "Cadastro sintético e autenticação não financeira",
+          "execution": "21/08/2026 · Chromium 393×873 · HML real",
+          "status": "passed",
+          "projects": [
+            "R15",
+            "Chromium",
+            "HML"
+          ],
+          "lote": "R15",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R15-20260821/REGISTER-login.png",
+            "evidence/R15-20260821/REGISTER-cadastro-vazio.png",
+            "evidence/R15-20260821/REGISTER-cadastro-autenticado.png",
+            "Resultado da jornada de registro: aprovado. Nenhum dado de credencial foi publicado."
+          ]
+        }
+      ]
+    },
+    {
+      "runDate": "2026-08-21-r14-fechamento-janela",
+      "rotulo": "R14 — janela de 21/08: 178 terminais OK; fechamento não reconciliado",
+      "status": "interrompida",
+      "source": "Artefatos privados sanitizados: sim/lote14-20260821/**/{resumo.json,RECONCILIACAO.md,fechamento-janela-20260821.json,reconciliacao-interrupcao.json}",
+      "environment": "HML real · Pix sandbox · execução serial CONC=1",
+      "generatedAt": "2026-08-21T08:43:00-03:00",
+      "summary": {
+        "total": 2,
+        "passed": 1,
+        "failed": 1,
+        "blocked": 0,
+        "executed": 2
+      },
+      "browserCoverage": {
+        "chromium": "não aplicável — telemetria API real"
+      },
+      "notes": [
+        "180 reservas do motor consumidas; 178 sessões terminais OK; 169 pagamentos sandbox confirmados; gasto terminal R$ 13.252,50.",
+        "Delta de arrecadação da campanha: R$ 13.352,50. A diferença de R$ 100,00 corresponde às lacunas qa14-11 e qa14-66 e não é tratada como sessão concluída.",
+        "Blocos 03–06 foram reconciliados individualmente. A janela consolidada permanece NAO_RECONCILIADO: qa14-11 sem pagamento/terminal e qa14-66 com pagamento confirmado sem telemetria terminal.",
+        "Não certifica RTP, EV, distribuição ou ciclo do Caminho da Sorte."
+      ],
+      "cases": [
+        {
+          "id": "R14-21-FLUXOS-TERMINAIS-01",
+          "title": "Jornadas financeiras seriais com terminal persistido",
+          "execution": "21/08/2026 · HML real · CONC=1 · 178 sessões terminais",
+          "status": "passed",
+          "projects": [
+            "Motor",
+            "Pix sandbox",
+            "Estouro da Sorte"
+          ],
+          "lote": "R14",
+          "priority": "P0",
+          "evidence": [
+            "178 sessões terminais OK; 0 falhas terminais; 169 pagamentos sandbox confirmados; R$ 13.252,50 de gasto terminal.",
+            "Blocos 03–06: 30 + 30 + 30 + 24 sessões, reconciliados individualmente."
+          ]
+        },
+        {
+          "id": "R14-21-RECONCILIACAO-01",
+          "title": "Reconciliação consolidada da janela financeira",
+          "execution": "21/08/2026 · HML real · fechamento da janela",
+          "status": "failed",
+          "projects": [
+            "Motor",
+            "Pix sandbox",
+            "Reconciliação"
+          ],
+          "lote": "R14",
+          "priority": "P0",
+          "evidence": [
+            "Fechamento consolidado: NAO_RECONCILIADO.",
+            "qa14-11: reserva sem pagamento confirmado e sem terminal. qa14-66: pagamento sandbox confirmado sem registro terminal.",
+            "A lista de sessões aprovadas não inclui as duas lacunas."
+          ]
+        }
+      ]
+    },
     {
       "runDate": "2026-08-20-r14-parcial-0905BRT",
       "rotulo": "Rodada 14 — parcial real: 7 sessões concluídas, 1 sessão falhou",
