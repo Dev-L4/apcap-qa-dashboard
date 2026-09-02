@@ -1,8 +1,240 @@
 {
   "schemaVersion": 7,
-  "generatedAt": "2026-08-21T08:43:00-03:00",
-  "runDateAtual": "2026-08-21-r15-publicacao-factual",
+  "generatedAt": "2026-09-02T01:14:00-03:00",
+  "runDateAtual": "2026-09-02-r16-qa-indisponivel-hml-validacao",
   "runs": [
+    {
+      "runDate": "2026-09-02-r16-qa-indisponivel-hml-validacao",
+      "rotulo": "R16 — QA 502; cadastro/OTP HML aprovados; PIX não emitido",
+      "status": "bloqueado",
+      "source": "Chromium real + caixa de e-mail autorizada + estado vivo da Campanha 300K de 01/09/2026",
+      "environment": "QA novo: Front acessível e API HTTP 502 · HML: validação funcional isolada autorizada",
+      "generatedAt": "2026-09-02T01:14:00-03:00",
+      "summary": {
+        "total": 14,
+        "passed": 5,
+        "failed": 3,
+        "blocked": 6,
+        "executed": 8
+      },
+      "browserCoverage": {
+        "chromium": {
+          "status": "parcial",
+          "note": "Uma sessão real; os sete viewports obrigatórios não foram executados nesta tentativa."
+        }
+      },
+      "notes": [
+        "Veredito executivo: NÃO aprovado para lançamento, massa estatística ou ativação financeira.",
+        "O QA novo não foi substituído pelo HML: a validação HML é identificada separadamente e serve apenas para comprovar cadastro, OTP, autenticação e seleção de produto.",
+        "Nenhuma fatura foi paga. Não houve débito, crédito, número de título, prêmio, recompra com saldo ou alteração de Admin/banco.",
+        "A indisponibilidade HTTP 502 é bloqueio de infraestrutura QA, não defeito funcional atribuído ao produto.",
+        "O gate da Campanha 300K segue reprovado até reset canônico, reconciliação integral e prova viva de reserva, entrega, idempotência e ledger.",
+        "Sem os gates, não houve sonda do Motor nem execução em massa."
+      ],
+      "cases": [
+        {
+          "id": "R16-QA-FRONT-01",
+          "title": "Front QA público carrega",
+          "execution": "02/09/2026 01:05 BRT · Chromium real · URL nova",
+          "status": "passed",
+          "projects": [
+            "Front QA"
+          ],
+          "lote": "R16",
+          "priority": "P0",
+          "evidence": []
+        },
+        {
+          "id": "R16-QA-API-502-01",
+          "title": "Disponibilidade da API QA",
+          "execution": "02/09/2026 01:05 BRT · GET / e GET /health retornaram HTTP 502",
+          "status": "blocked",
+          "projects": [
+            "Infraestrutura QA",
+            "API"
+          ],
+          "lote": "R16",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R16-20260902/qa-api-502.png"
+          ]
+        },
+        {
+          "id": "R16-QA-PIX-01",
+          "title": "Geração controlada de PIX no novo Front QA",
+          "execution": "Fluxo interrompido antes do cadastro terminal porque a API QA estava indisponível",
+          "status": "blocked",
+          "projects": [
+            "Front QA",
+            "PIX"
+          ],
+          "lote": "R16",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R16-20260902/qa-api-502.png"
+          ]
+        },
+        {
+          "id": "R16-GATE-300K-01",
+          "title": "Gate econômico da Campanha Padrão 300K",
+          "execution": "Última leitura viva em 01/09/2026: RTP 55%, 17 bolsas, proporções 100%, aporte R$ 300.000,00, arrecadação R$ 0,00 e total premiado R$ 25.252,00; reset canônico não executado",
+          "status": "failed",
+          "projects": [
+            "Campanhas",
+            "Motor Matemático"
+          ],
+          "lote": "R16",
+          "priority": "P0",
+          "evidence": []
+        },
+        {
+          "id": "R16-HML-CADASTRO-01",
+          "title": "Cadastro sintético em quatro etapas no HML",
+          "execution": "02/09/2026 · identificação, contato, endereço e senha descartável aceitos; sem guardar senha",
+          "status": "passed",
+          "projects": [
+            "HML",
+            "Cadastro"
+          ],
+          "lote": "R16 · validação isolada autorizada",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R16-20260902/hml-conta-autenticada.png"
+          ]
+        },
+        {
+          "id": "R16-HML-OTP-01",
+          "title": "OTP real por e-mail",
+          "execution": "Código de seis caracteres emitido, recuperado na caixa autorizada e aplicado automaticamente; conteúdo não publicado",
+          "status": "passed",
+          "projects": [
+            "HML",
+            "Cadastro",
+            "E-mail"
+          ],
+          "lote": "R16 · validação isolada autorizada",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R16-20260902/hml-conta-autenticada.png"
+          ]
+        },
+        {
+          "id": "R16-HML-SESSAO-01",
+          "title": "Criação de conta e autenticação após OTP",
+          "execution": "Conta nova entrou em sessão autenticada, com carteira R$ 0,00",
+          "status": "passed",
+          "projects": [
+            "HML",
+            "Autenticação"
+          ],
+          "lote": "R16 · validação isolada autorizada",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R16-20260902/hml-conta-autenticada.png"
+          ]
+        },
+        {
+          "id": "R16-HML-CARRINHO-01",
+          "title": "Seleção de pacote mínimo no HML",
+          "execution": "HiperXCAP R$ 10,00 selecionado; interface mostrou 1 pacote, 1 título e total R$ 10,00",
+          "status": "passed",
+          "projects": [
+            "HML",
+            "Compra"
+          ],
+          "lote": "R16 · validação isolada autorizada",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R16-20260902/hml-pacote-selecionado.png"
+          ]
+        },
+        {
+          "id": "R16-HML-PIX-01",
+          "title": "Chegada à emissão do PIX no HML",
+          "execution": "Conta nova recebeu aviso de limite diário com contador --:--:--; carrinho não exibiu CTA de finalização e nenhum PIX foi emitido",
+          "status": "failed",
+          "projects": [
+            "HML",
+            "Compra",
+            "PIX"
+          ],
+          "lote": "R16 · validação isolada autorizada",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R16-20260902/hml-pacote-selecionado.png"
+          ]
+        },
+        {
+          "id": "R16-FINANCEIRO-01",
+          "title": "Jornada financeira terminal",
+          "execution": "Sem fatura, /test/pay, números, crédito de prêmio ou recompra com saldo; jornada não fechou",
+          "status": "failed",
+          "projects": [
+            "PIX",
+            "Carteira",
+            "Motor"
+          ],
+          "lote": "R16",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R16-20260902/hml-pacote-selecionado.png"
+          ]
+        },
+        {
+          "id": "R16-ESTOURO-01",
+          "title": "Estouro da Sorte com decisão/reserva/ledger",
+          "execution": "Não iniciado: depende de compra financeira reconciliada e do gate econômico aprovado",
+          "status": "blocked",
+          "projects": [
+            "Estouro da Sorte",
+            "Motor"
+          ],
+          "lote": "R16",
+          "priority": "P0",
+          "evidence": []
+        },
+        {
+          "id": "R16-CS-01",
+          "title": "Caminho da Sorte D1–D7 integrado ao Motor",
+          "execution": "Não iniciado: implementação centralizada e deploy QA identificável ainda não comprovados",
+          "status": "blocked",
+          "projects": [
+            "Caminho da Sorte",
+            "Motor"
+          ],
+          "lote": "R16",
+          "priority": "P0",
+          "evidence": [
+            "evidence/R16-20260902/hml-conta-autenticada.png"
+          ]
+        },
+        {
+          "id": "R16-MOTOR-MASSA-01",
+          "title": "Sonda e massa estatística do Motor",
+          "execution": "Bloqueada: reset 300K, ledger e primeira jornada financeira reconciliada permanecem pendentes",
+          "status": "blocked",
+          "projects": [
+            "Motor Matemático"
+          ],
+          "lote": "R16",
+          "priority": "P0",
+          "evidence": []
+        },
+        {
+          "id": "R16-RESP-01",
+          "title": "Matriz responsiva Chromium nos sete viewports obrigatórios",
+          "execution": "Não executada nesta tentativa controlada; nenhuma cobertura de viewport foi inferida da captura atual",
+          "status": "blocked",
+          "projects": [
+            "Front QA",
+            "Responsividade"
+          ],
+          "lote": "R16",
+          "priority": "P1",
+          "evidence": []
+        }
+      ]
+    },
     {
       "runDate": "2026-08-21-r15-publicacao-factual",
       "rotulo": "R15 — jornada funcional real e responsiva (publicação factual)",
@@ -2763,5 +2995,5 @@
       ]
     }
   ],
-  "runDate": "2026-08-20-r14-parcial-0905BRT"
+  "runDate": "2026-09-02-r16-qa-indisponivel-hml-validacao"
 }

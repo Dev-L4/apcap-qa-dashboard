@@ -1,23 +1,35 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-21T08:43:00-03:00",
-  "geradoEmBrt": "21/08/2026 08:43 BRT",
+  "generatedAt": "2026-09-02T01:14:00-03:00",
+  "geradoEmBrt": "02/09/2026 01:14 BRT",
   "titulo": "Simular Caminho da Sorte",
-  "status": "parcial",
-  "estado": "A tela Caminho da Sorte abriu em conta sintética; não houve jogo, emissão, crédito ou medição produtiva nesta jornada.",
+  "status": "bloqueado",
+  "estado": "Conta sintética autenticada exibiu o Caminho da Sorte no HML; D1–D7, decisão do Motor, reserva, entrega, ledger e cross-campanha não foram executados.",
   "secoes": [
     {
-      "titulo": "O que foi testado",
+      "titulo": "Aprovado nesta tentativa",
       "itens": [
-        "Acesso autenticado à tela Caminho da Sorte em Chromium 393×873: aprovado.",
-        "Nenhum overflow horizontal observado na tela capturada."
+        "Cadastro sintético em quatro etapas.",
+        "OTP real por e-mail recuperado automaticamente.",
+        "Sessão autenticada e acesso visual ao card do Caminho da Sorte."
       ]
     },
     {
-      "titulo": "Limites",
+      "titulo": "Falhou ou permaneceu bloqueado",
       "itens": [
-        "O acesso de UI não prova ciclo, payout, EV, distribuição ou crédito produtivo.",
-        "A configuração D1 sem-jogo publicada na rodada anterior permanece uma leitura de configuração, não uma medição produtiva."
+        "PIX não emitido; jornada financeira não fechou.",
+        "D1 de boas-vindas não foi acionado nem validado.",
+        "Nenhuma prova de prêmio decidido e entregue exclusivamente pelo Motor.",
+        "Deploy QA centralizado e catálogo D1 canônico ainda não comprovados."
+      ]
+    },
+    {
+      "titulo": "Critério de desbloqueio",
+      "itens": [
+        "API QA disponível.",
+        "Reset 300K validado.",
+        "Contrato único Kleber/Eduardo aceito e implementado.",
+        "Sonda financeira reconciliada de ponta a ponta."
       ]
     }
   ],
@@ -43,6 +55,42 @@
   "porQueBloqueado": [],
   "condicoesParaDestravar": [],
   "historico": [
+    {
+      "id": "r16-20260902",
+      "runDate": "2026-09-02-r16-qa-indisponivel-hml-validacao",
+      "registradoEmBrt": "02/09/2026 01:14 BRT",
+      "rotulo": "R16 — CS visível no HML, integração financeira não validada",
+      "status": "bloqueado",
+      "estado": "Conta sintética autenticada exibiu o Caminho da Sorte no HML; D1–D7, decisão do Motor, reserva, entrega, ledger e cross-campanha não foram executados.",
+      "secoes": [
+        {
+          "titulo": "Aprovado nesta tentativa",
+          "itens": [
+            "Cadastro sintético em quatro etapas.",
+            "OTP real por e-mail recuperado automaticamente.",
+            "Sessão autenticada e acesso visual ao card do Caminho da Sorte."
+          ]
+        },
+        {
+          "titulo": "Falhou ou permaneceu bloqueado",
+          "itens": [
+            "PIX não emitido; jornada financeira não fechou.",
+            "D1 de boas-vindas não foi acionado nem validado.",
+            "Nenhuma prova de prêmio decidido e entregue exclusivamente pelo Motor.",
+            "Deploy QA centralizado e catálogo D1 canônico ainda não comprovados."
+          ]
+        },
+        {
+          "titulo": "Critério de desbloqueio",
+          "itens": [
+            "API QA disponível.",
+            "Reset 300K validado.",
+            "Contrato único Kleber/Eduardo aceito e implementado.",
+            "Sonda financeira reconciliada de ponta a ponta."
+          ]
+        }
+      ]
+    },
     {
       "id": "r15-acesso-caminho-ui",
       "runDate": "2026-08-21-r15-publicacao-factual",
@@ -442,6 +490,6 @@
     }
   ],
   "notaHistorico": "Cada medicao do Caminho da Sorte fica arquivada com a data de execucao. A combo troca a medicao exibida; nada e sobrescrito.",
-  "runDateAtual": "2026-08-21-r15-publicacao-factual",
-  "runDate": "2026-08-21-r15-publicacao-factual"
+  "runDateAtual": "2026-09-02-r16-qa-indisponivel-hml-validacao",
+  "runDate": "2026-09-02-r16-qa-indisponivel-hml-validacao"
 }

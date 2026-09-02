@@ -1,38 +1,181 @@
 {
-  "generatedAt": "2026-08-21T08:43:00-03:00",
-  "runDate": "2026-08-21-r14-fechamento-janela",
+  "generatedAt": "2026-09-02T01:14:00-03:00",
+  "runDate": "2026-09-02-r16-qa-indisponivel-hml-validacao",
   "executadoEmBrt": "20/08/2026 09:05–09:31 BRT",
-  "status": "não reconciliado; não é prova estatística",
+  "status": "bloqueado por infraestrutura QA e pré-condições econômicas",
   "stats": [
     {
-      "label": "Terminais OK",
-      "value": "178"
+      "value": "0",
+      "label": "decisões válidas"
     },
     {
-      "label": "Lacunas não reconciliadas",
-      "value": "2"
+      "value": "0",
+      "label": "PIX emitidos"
     },
     {
-      "label": "Gasto terminal",
-      "value": "R$ 13.252,50"
+      "value": "502",
+      "label": "API QA"
     },
     {
-      "label": "Veredito estatístico",
-      "value": "não aplicável"
+      "value": "R$ 25.252,00",
+      "label": "premiado antes do reset"
+    },
+    {
+      "value": "100%",
+      "label": "proporções das bolsas"
+    },
+    {
+      "value": "Não",
+      "label": "certifica RTP/EV"
     }
   ],
   "sections": [
     {
-      "title": "Fechamento factual",
-      "text": "A janela financeira de 21/08 teve 178 sessões terminais OK e blocos 03–06 reconciliados individualmente. O fechamento consolidado falhou: qa14-11 não tem pagamento/terminal e qa14-66 tem pagamento sem terminal.",
+      "title": "Diagnóstico",
       "list": [
-        "Não usar a rodada para RTP, EV ou distribuição.",
-        "A diferença de arrecadação inclui R$ 100,00 das duas lacunas e não é convertida em sucesso."
+        "Front QA carregou; API QA retornou HTTP 502 em / e /health.",
+        "Campanha 300K: aporte R$ 300.000,00, vendas R$ 0,00 e premiado R$ 25.252,00 antes do reset canônico.",
+        "Validação HML não substitui o QA e não entra na amostra matemática."
+      ]
+    },
+    {
+      "title": "Esperado × medido",
+      "table": {
+        "head": [
+          "Controle",
+          "Esperado para sonda/massa",
+          "Medido",
+          "Veredito"
+        ],
+        "rows": [
+          [
+            "API QA",
+            "Disponível, sem 5xx",
+            "HTTP 502",
+            "Falhou (infra)"
+          ],
+          [
+            "Baseline 300K",
+            "Premiado R$ 0,00 após reset",
+            "R$ 25.252,00 na última leitura",
+            "Falhou"
+          ],
+          [
+            "Jornada financeira",
+            "100% reconciliada",
+            "Nenhuma fatura emitida",
+            "Falhou"
+          ],
+          [
+            "Decisões válidas",
+            "≥10.000 iniciais",
+            "0",
+            "Não iniciado"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Próximo gate",
+      "list": [
+        "Restaurar a API QA.",
+        "Executar e validar o reset canônico da Campanha 300K.",
+        "Fechar uma jornada PIX sequencial com reconciliação de 100%.",
+        "Somente então iniciar rampa 1 → 5 → 10 → 20 RPS e amostra matemática justificada."
       ]
     }
   ],
-  "runDateAtual": "2026-08-21-r14-fechamento-janela",
+  "runDateAtual": "2026-09-02-r16-qa-indisponivel-hml-validacao",
   "historico": [
+    {
+      "id": "r16-20260902-gate",
+      "runDate": "2026-09-02-r16-qa-indisponivel-hml-validacao",
+      "registradoEmBrt": "02/09/2026 01:14 BRT",
+      "rotulo": "R16 — gate reprovado; nenhuma massa executada",
+      "status": "bloqueado por infraestrutura QA e pré-condições econômicas",
+      "stats": [
+        {
+          "value": "0",
+          "label": "decisões válidas"
+        },
+        {
+          "value": "0",
+          "label": "PIX emitidos"
+        },
+        {
+          "value": "502",
+          "label": "API QA"
+        },
+        {
+          "value": "R$ 25.252,00",
+          "label": "premiado antes do reset"
+        },
+        {
+          "value": "100%",
+          "label": "proporções das bolsas"
+        },
+        {
+          "value": "Não",
+          "label": "certifica RTP/EV"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Diagnóstico",
+          "list": [
+            "Front QA carregou; API QA retornou HTTP 502 em / e /health.",
+            "Campanha 300K: aporte R$ 300.000,00, vendas R$ 0,00 e premiado R$ 25.252,00 antes do reset canônico.",
+            "Validação HML não substitui o QA e não entra na amostra matemática."
+          ]
+        },
+        {
+          "title": "Esperado × medido",
+          "table": {
+            "head": [
+              "Controle",
+              "Esperado para sonda/massa",
+              "Medido",
+              "Veredito"
+            ],
+            "rows": [
+              [
+                "API QA",
+                "Disponível, sem 5xx",
+                "HTTP 502",
+                "Falhou (infra)"
+              ],
+              [
+                "Baseline 300K",
+                "Premiado R$ 0,00 após reset",
+                "R$ 25.252,00 na última leitura",
+                "Falhou"
+              ],
+              [
+                "Jornada financeira",
+                "100% reconciliada",
+                "Nenhuma fatura emitida",
+                "Falhou"
+              ],
+              [
+                "Decisões válidas",
+                "≥10.000 iniciais",
+                "0",
+                "Não iniciado"
+              ]
+            ]
+          }
+        },
+        {
+          "title": "Próximo gate",
+          "list": [
+            "Restaurar a API QA.",
+            "Executar e validar o reset canônico da Campanha 300K.",
+            "Fechar uma jornada PIX sequencial com reconciliação de 100%.",
+            "Somente então iniciar rampa 1 → 5 → 10 → 20 RPS e amostra matemática justificada."
+          ]
+        }
+      ]
+    },
     {
       "id": "r14-21-fechamento",
       "runDate": "2026-08-21-r14-fechamento-janela",
@@ -12057,5 +12200,5 @@
     }
   ],
   "notaHistorico": "Cada rodada fica arquivada com a data de execucao. A combo acima troca a rodada exibida; nenhuma medicao anterior e sobrescrita.",
-  "geradoEmBrt": "21/08/2026 08:43 BRT"
+  "geradoEmBrt": "02/09/2026 01:14 BRT"
 }

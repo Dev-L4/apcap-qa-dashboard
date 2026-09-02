@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-21T08:43:00-03:00",
+  "generatedAt": "2026-09-02T01:14:00-03:00",
   "titulo": "Prova do Motor",
-  "introducao": "Fechamento factual da janela financeira de 21/08. Há 178 terminais OK, mas a janela consolidada não reconciliou qa14-11 e qa14-66; portanto não há certificação estatística.",
+  "introducao": "R16 separa disponibilidade, configuração econômica, jornada financeira e estatística. Não houve simulação nem inferência a partir do HML.",
   "regras": [
     "Tolerância declarada antes. Nenhum limite é escolhido depois de ver o resultado.",
     "Amostra insuficiente não vira aprovação. Bolsa com menos emissões que o mínimo sai como \"amostra insuficiente\", e a prova toda fica \"parcial\".",
@@ -12,59 +12,205 @@
   ],
   "provas": [
     {
-      "id": "R14-21-TERMINAL-01",
-      "titulo": "Persistência terminal das jornadas",
-      "pergunta": "As jornadas com terminal persistido concluíram?",
-      "formula": "178 terminais OK / 178 terminais persistidos",
-      "fonte": "Telemetria sanitizada R14 de 21/08",
-      "esperado": "Registro terminal consistente",
-      "tolerancia": "0 falhas terminais",
-      "criterioVeredito": "Aprova se todos os terminais persistidos forem OK",
-      "medido": "178/178 OK",
-      "veredicto": "aprovado",
+      "id": "MOT-R16-01",
+      "titulo": "Disponibilidade da API QA",
+      "pergunta": "A API aceita iniciar a sonda?",
+      "formula": "Comparação direta do estado vivo contra o critério de aceite",
+      "fonte": "QA/HML real e artefatos sanitizados da R16",
+      "esperado": "HTTP 2xx sem 5xx",
+      "tolerancia": "Zero divergência para gate financeiro",
+      "criterioVeredito": "Aprovado somente se o esperado for integralmente observado",
+      "medido": "HTTP 502 em / e /health",
+      "veredito": "falhou",
       "observacoes": [
-        "Não inclui qa14-11 nem qa14-66."
+        "Bloqueio classificado como infraestrutura, não falha funcional do produto."
       ]
     },
     {
-      "id": "R14-21-RECONCILIACAO-01",
-      "titulo": "Reconciliação integral da janela",
-      "pergunta": "Toda reserva/pagamento possui terminal reconciliado?",
-      "formula": "lacunas não reconciliadas = 0",
-      "fonte": "Fechamento sanitizado R14 de 21/08",
-      "esperado": "0 lacunas",
-      "tolerancia": "0",
-      "criterioVeredito": "Falha se existir reserva/pagamento sem terminal",
-      "medido": "2 lacunas: qa14-11 e qa14-66",
-      "veredicto": "falhou",
+      "id": "MOT-R16-02",
+      "titulo": "Retornável configurado",
+      "pergunta": "As proporções das 17 bolsas fecham em 100%?",
+      "formula": "Comparação direta do estado vivo contra o critério de aceite",
+      "fonte": "QA/HML real e artefatos sanitizados da R16",
+      "esperado": "100%",
+      "tolerancia": "Zero divergência para gate financeiro",
+      "criterioVeredito": "Aprovado somente se o esperado for integralmente observado",
+      "medido": "100% na leitura de 01/09",
+      "veredito": "aprovado",
       "observacoes": [
-        "qa14-11: reserva sem pagamento/terminal; qa14-66: pagamento sem terminal."
+        "A soma isolada não prova repartição 44% Estouro + 11% CS nem ledger."
+      ]
+    },
+    {
+      "id": "MOT-R16-03",
+      "titulo": "Baseline canônico 300K",
+      "pergunta": "O estado de launch foi resetado?",
+      "formula": "Comparação direta do estado vivo contra o critério de aceite",
+      "fonte": "QA/HML real e artefatos sanitizados da R16",
+      "esperado": "Vendas R$ 0,00 e premiado R$ 0,00, preservando aporte e histórico",
+      "tolerancia": "Zero divergência para gate financeiro",
+      "criterioVeredito": "Aprovado somente se o esperado for integralmente observado",
+      "medido": "Vendas R$ 0,00; premiado R$ 25.252,00 na última leitura; reset não executado",
+      "veredito": "falhou",
+      "observacoes": [
+        "Estatística permanece bloqueada."
+      ]
+    },
+    {
+      "id": "MOT-R16-04",
+      "titulo": "Reconciliação financeira",
+      "pergunta": "Existe uma jornada nova que fecha fatura, títulos, bolsas, reserva, entrega, carteira e ledger?",
+      "formula": "Comparação direta do estado vivo contra o critério de aceite",
+      "fonte": "QA/HML real e artefatos sanitizados da R16",
+      "esperado": "100% reconciliada",
+      "tolerancia": "Zero divergência para gate financeiro",
+      "criterioVeredito": "Aprovado somente se o esperado for integralmente observado",
+      "medido": "Nenhuma fatura emitida nesta tentativa",
+      "veredito": "falhou",
+      "observacoes": [
+        "HML parou antes do PIX; QA estava 502."
+      ]
+    },
+    {
+      "id": "MOT-R16-05",
+      "titulo": "Amostra de Motor",
+      "pergunta": "Há amostra suficiente para RTP/EV com IC 95%?",
+      "formula": "Comparação direta do estado vivo contra o critério de aceite",
+      "fonte": "QA/HML real e artefatos sanitizados da R16",
+      "esperado": "Começar com 10.000 decisões válidas e aumentar conforme variância/tolerância",
+      "tolerancia": "Zero divergência para gate financeiro",
+      "criterioVeredito": "Aprovado somente se o esperado for integralmente observado",
+      "medido": "0 decisões válidas",
+      "veredito": "pendente",
+      "observacoes": [
+        "Não iniciar massa antes dos gates."
       ]
     }
   ],
-  "runDate": "2026-08-21-r14-fechamento-janela",
+  "runDate": "2026-09-02-r16-qa-indisponivel-hml-validacao",
   "rodada": {
-    "runDate": "2026-08-21-r14-fechamento-janela",
-    "executadoEmBrt": "21/08/2026",
-    "status": "não reconciliado",
-    "sessoes": 178,
-    "concorrencia": 1
+    "runDate": "2026-09-02-r16-qa-indisponivel-hml-validacao",
+    "executadoEmBrt": "02/09/2026",
+    "status": "bloqueada",
+    "sessoes": 0,
+    "concorrencia": 0
   },
   "resumo": {
-    "total": 2,
+    "total": 5,
     "aprovados": 1,
-    "falhou": 1,
-    "semVeredito": 0,
+    "falhou": 3,
+    "semVeredito": 1,
     "amostraInsuficiente": 1,
-    "pendentes": 0,
-    "falhas": 1,
-    "estado": "fechamento factual; não certifica RTP, EV ou distribuição"
+    "pendentes": 1,
+    "falhas": 3,
+    "estado": "gate reprovado; não certifica RTP, EV ou distribuição"
   },
-  "congelado": false,
-  "notaCongelamento": "",
-  "geradoEmBrt": "21/08/2026 08:43 BRT",
-  "runDateAtual": "2026-08-21-r14-fechamento-janela",
+  "congelado": true,
+  "notaCongelamento": "Zero decisões válidas: a medição foi interrompida no gate.",
+  "geradoEmBrt": "02/09/2026 01:14 BRT",
+  "runDateAtual": "2026-09-02-r16-qa-indisponivel-hml-validacao",
   "historico": [
+    {
+      "id": "r16-20260902",
+      "runDate": "2026-09-02-r16-qa-indisponivel-hml-validacao",
+      "registradoEmBrt": "02/09/2026 01:14 BRT",
+      "rotulo": "R16 — prova do Motor bloqueada no gate",
+      "introducao": "R16 separa disponibilidade, configuração econômica, jornada financeira e estatística. Não houve simulação nem inferência a partir do HML.",
+      "rodada": {
+        "runDate": "2026-09-02-r16-qa-indisponivel-hml-validacao",
+        "executadoEmBrt": "02/09/2026",
+        "status": "bloqueada",
+        "sessoes": 0,
+        "concorrencia": 0
+      },
+      "resumo": {
+        "total": 5,
+        "aprovados": 1,
+        "falhou": 3,
+        "semVeredito": 1,
+        "amostraInsuficiente": 1,
+        "pendentes": 1,
+        "falhas": 3,
+        "estado": "gate reprovado; não certifica RTP, EV ou distribuição"
+      },
+      "provas": [
+        {
+          "id": "MOT-R16-01",
+          "titulo": "Disponibilidade da API QA",
+          "pergunta": "A API aceita iniciar a sonda?",
+          "formula": "Comparação direta do estado vivo contra o critério de aceite",
+          "fonte": "QA/HML real e artefatos sanitizados da R16",
+          "esperado": "HTTP 2xx sem 5xx",
+          "tolerancia": "Zero divergência para gate financeiro",
+          "criterioVeredito": "Aprovado somente se o esperado for integralmente observado",
+          "medido": "HTTP 502 em / e /health",
+          "veredito": "falhou",
+          "observacoes": [
+            "Bloqueio classificado como infraestrutura, não falha funcional do produto."
+          ]
+        },
+        {
+          "id": "MOT-R16-02",
+          "titulo": "Retornável configurado",
+          "pergunta": "As proporções das 17 bolsas fecham em 100%?",
+          "formula": "Comparação direta do estado vivo contra o critério de aceite",
+          "fonte": "QA/HML real e artefatos sanitizados da R16",
+          "esperado": "100%",
+          "tolerancia": "Zero divergência para gate financeiro",
+          "criterioVeredito": "Aprovado somente se o esperado for integralmente observado",
+          "medido": "100% na leitura de 01/09",
+          "veredito": "aprovado",
+          "observacoes": [
+            "A soma isolada não prova repartição 44% Estouro + 11% CS nem ledger."
+          ]
+        },
+        {
+          "id": "MOT-R16-03",
+          "titulo": "Baseline canônico 300K",
+          "pergunta": "O estado de launch foi resetado?",
+          "formula": "Comparação direta do estado vivo contra o critério de aceite",
+          "fonte": "QA/HML real e artefatos sanitizados da R16",
+          "esperado": "Vendas R$ 0,00 e premiado R$ 0,00, preservando aporte e histórico",
+          "tolerancia": "Zero divergência para gate financeiro",
+          "criterioVeredito": "Aprovado somente se o esperado for integralmente observado",
+          "medido": "Vendas R$ 0,00; premiado R$ 25.252,00 na última leitura; reset não executado",
+          "veredito": "falhou",
+          "observacoes": [
+            "Estatística permanece bloqueada."
+          ]
+        },
+        {
+          "id": "MOT-R16-04",
+          "titulo": "Reconciliação financeira",
+          "pergunta": "Existe uma jornada nova que fecha fatura, títulos, bolsas, reserva, entrega, carteira e ledger?",
+          "formula": "Comparação direta do estado vivo contra o critério de aceite",
+          "fonte": "QA/HML real e artefatos sanitizados da R16",
+          "esperado": "100% reconciliada",
+          "tolerancia": "Zero divergência para gate financeiro",
+          "criterioVeredito": "Aprovado somente se o esperado for integralmente observado",
+          "medido": "Nenhuma fatura emitida nesta tentativa",
+          "veredito": "falhou",
+          "observacoes": [
+            "HML parou antes do PIX; QA estava 502."
+          ]
+        },
+        {
+          "id": "MOT-R16-05",
+          "titulo": "Amostra de Motor",
+          "pergunta": "Há amostra suficiente para RTP/EV com IC 95%?",
+          "formula": "Comparação direta do estado vivo contra o critério de aceite",
+          "fonte": "QA/HML real e artefatos sanitizados da R16",
+          "esperado": "Começar com 10.000 decisões válidas e aumentar conforme variância/tolerância",
+          "tolerancia": "Zero divergência para gate financeiro",
+          "criterioVeredito": "Aprovado somente se o esperado for integralmente observado",
+          "medido": "0 decisões válidas",
+          "veredito": "pendente",
+          "observacoes": [
+            "Não iniciar massa antes dos gates."
+          ]
+        }
+      ]
+    },
     {
       "id": "r14-21-fechamento",
       "runDate": "2026-08-21-r14-fechamento-janela",
