@@ -1,6 +1,6 @@
 {
  "schemaVersion": 7,
- "generatedAt": "2026-08-19T17:19:45Z",
+ "generatedAt": "2026-09-08T21:40:00Z",
  "policy": {
   "scope": "O catalogo mapeia 225 casos, sendo 18 acrescentados em 19/08/2026 com os achados das rodadas 11 e 12 e da revisão de rumo. Recebem veredito apenas os executados do inicio ao fim contra o HML real. 63 estao na fila autonoma apos a reclassificacao de 17/08/2026. 22 sao decisoes humanas e saem da contagem de QA. 14 foram aposentados por dependerem de mock ou por medição invalidada. 15 seguem bloqueados por acesso de BI ou hardware fisico.",
   "evidence": "Screenshots cruas, sem mascaramento, na resolucao real da viewport. Texto nao registra dados sensiveis.",
@@ -19,17 +19,17 @@
   "blocked_external": "Bloqueado por acesso externo: falta credencial de BI ou hardware fisico. Nao depende de esforco do agente."
  },
  "summary": {
-  "total": 225,
+  "total": 250,
   "by_status": {
-   "failed": 52,
-   "approved": 59,
+   "failed": 65,
+   "approved": 68,
    "queued": 63,
-   "blocked_external": 15,
+   "blocked_external": 18,
    "retired": 14,
    "decision_pending": 22
   },
-  "executed": 111,
-  "verdicts": 111,
+  "executed": 133,
+  "verdicts": 133,
   "screenshots": 201,
   "by_area": {
    "Navegação autenticada": 1,
@@ -41,7 +41,7 @@
    "Compra": 9,
    "Landing": 3,
    "Cartão": 1,
-   "Caminho da Sorte": 20,
+   "Caminho da Sorte": 21,
    "Pix": 11,
    "Perfil e LGPD": 1,
    "PWA": 5,
@@ -108,15 +108,21 @@
    "Disponibilidade": 1,
    "Observabilidade": 1,
    "Cálculo e decisão de negócio": 1,
-   "Campanha e bolsas": 2
+   "Campanha e bolsas": 2,
+   "Ambiente QA": 3,
+   "Parametrizacao economica": 6,
+   "Motor e bolsas": 9,
+   "Jornada financeira": 4,
+   "Seguranca e governanca": 2
   },
-  "approved": 59,
-  "failed": 52,
+  "approved": 68,
+  "failed": 65,
   "executedNota": "Executado = caso levado do inicio ao fim contra o HML real (ou provado por leitura do codigo publicado) e por isso com veredito. Numero contado dos proprios casos, nunca escrito a mao.",
   "by_scope": {
    "autonomo": 177,
    "fora_do_escopo": 26,
-   "decisao": 22
+   "decisao": 22,
+   "agente": 25
   },
   "queued": 63,
   "pixEstimadoFila": 160
@@ -6607,6 +6613,556 @@
    "observed": "codigo-fonte",
    "lastRunAt": "2026-08-19",
    "batch": "revisao-19-08-2026"
+  },
+  {
+   "id": "R17-ENV-01",
+   "title": "API QA responde e sai do HTTP 502",
+   "priority": "P0",
+   "area": "Ambiente QA",
+   "channel": "API autenticada / estado vivo",
+   "status": "approved",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "GET https://apcapv5-qa.duckdns.org/health retornou HTTP 200. O bloqueio de infraestrutura que interrompeu a R16 deixou de existir.",
+   "evidence": []
+  },
+  {
+   "id": "R17-ENV-02",
+   "title": "Branch qa alinhada com main",
+   "priority": "P1",
+   "area": "Ambiente QA",
+   "channel": "API autenticada / estado vivo",
+   "status": "approved",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "qa 34414dab e main 09a415c9 sem gap de codigo de aplicacao. Ressalva registrada: merge nao prova deploy, e o commit de release declara republicacao em HML, nao em QA.",
+   "evidence": []
+  },
+  {
+   "id": "R17-ENV-03",
+   "title": "Versao viva da API QA comprovavel por endpoint",
+   "priority": "P1",
+   "area": "Ambiente QA",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "Nao existe endpoint publico de versao na API QA. Nao e possivel provar qual build esta viva no ambiente sob teste, o que enfraquece qualquer veredito de rodada.",
+   "evidence": []
+  },
+  {
+   "id": "R17-PARAM-01",
+   "title": "Campanha vigente unica no QA",
+   "priority": "P0",
+   "area": "Parametrizacao economica",
+   "channel": "API autenticada / estado vivo",
+   "status": "approved",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "Campanha de Verao estava ativo=true com dtEncerramento=2026-07-31. Desativada via PATCH /v1/campanhas/:id. GET /v1/campanhas passou a retornar uma unica campanha ativa: Campanha Padrao 300K 01a05922-9edb-764c-ae88-197651623548.",
+   "evidence": []
+  },
+  {
+   "id": "R17-PARAM-02",
+   "title": "Estoque semeado nas 9 bolsas PACOTE de Numeros da Sorte",
+   "priority": "P0",
+   "area": "Parametrizacao economica",
+   "channel": "API autenticada / estado vivo",
+   "status": "approved",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "Os 9 premios PACOTE tinham DISPONIVEL=0 e RESERVADO=10. Cada um recebeu 500 unidades via POST /v1/premios/:id/estoque. 9 de 9 com sucesso.",
+   "evidence": []
+  },
+  {
+   "id": "R17-PARAM-03",
+   "title": "Lastro canonico de R$ 300.000 distribuido por proporcao",
+   "priority": "P0",
+   "area": "Parametrizacao economica",
+   "channel": "API autenticada / estado vivo",
+   "status": "approved",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "R$ 300.000,00 aplicados em 17 bolsas conforme a proporcao vigente de cada uma, motivo R16 LASTRO CANONICO 300K proporcional, via POST /v1/campanhas/:id/bolsas/:idBolsa/arrecadacao. 17 de 17 com sucesso.",
+   "evidence": []
+  },
+  {
+   "id": "R17-PARAM-04",
+   "title": "Suplemento de testabilidade isolado e identificavel",
+   "priority": "P1",
+   "area": "Parametrizacao economica",
+   "channel": "API autenticada / estado vivo",
+   "status": "approved",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "R$ 1.190.363,80 aplicados em 13 bolsas onde o lastro canonico nao financiava sequer uma unidade, com motivo proprio QA-TESTABILIDADE suplemento estornavel R16. Total injetado na rodada: R$ 1.490.363,80. 13 de 13 com sucesso.",
+   "evidence": []
+  },
+  {
+   "id": "R17-PARAM-05",
+   "title": "Rastreabilidade de cada ajuste economico",
+   "priority": "P0",
+   "area": "Parametrizacao economica",
+   "channel": "API autenticada / estado vivo",
+   "status": "approved",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "As 40 acoes gravaram registro em campanha_bolsa_ajuste com valor, motivo e admin, consultaveis em GET /v1/campanhas/:id/bolsas/:idBolsa/ajustes. 40 de 40 acoes com sucesso e nenhuma exclusao de historico.",
+   "evidence": []
+  },
+  {
+   "id": "R17-PARAM-06",
+   "title": "Reset destrutivo do Admin nao acionado",
+   "priority": "P0",
+   "area": "Parametrizacao economica",
+   "channel": "API autenticada / estado vivo",
+   "status": "approved",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "O botao de reset disponibilizado pelo dev apaga compras, cupons, chances, historico do Caminho da Sorte, aportes e movimentos de carteira. Como destroi historico auditavel, foi deliberadamente nao acionado e a parametrizacao seguiu por via aditiva.",
+   "evidence": []
+  },
+  {
+   "id": "R17-ECON-01",
+   "title": "Fila de premiacao represada nao possui gate de liberacao",
+   "priority": "P0",
+   "area": "Motor e bolsas",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "Antes do lastro, totalPremiado era R$ 0,00 nas 26 bolsas. Segundos depois do lastro, sem nenhuma compra confirmada, o total premiado saltou para R$ 1.209.126,00, consumindo 81,1% do lastro. O padrao de 10 unidades por premio corresponde ao RESERVADO=10 observado antes. Uma unidade de R$ 1.000.000 foi liquidada no mesmo instante. Nao existe etapa de revisao entre bolsa receber saldo e premio ser liquidado.",
+   "evidence": []
+  },
+  {
+   "id": "R17-ECON-02",
+   "title": "Cupom emitido em campanha inativa e fora de vigencia",
+   "priority": "P0",
+   "area": "Motor e bolsas",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "A compra 01a00d91-0555-719e-a34d-d97fb2137914 de R$ 2,50 foi confirmada administrativamente e retornou HTTP 201. O cupom APC-CD84D08EC4 nasceu vinculado a idCampanha 019ef210-0002-7000-8000-000000000002, a Campanha de Inverno, com ativo=false. Confirma em ambiente vivo o fallback de campanha fora da vigencia identificado estaticamente em caminho-sorte.service.ts:171-176, commit d5df7ee.",
+   "evidence": []
+  },
+  {
+   "id": "R17-ECON-03",
+   "title": "Isolamento economico entre campanhas",
+   "priority": "P0",
+   "area": "Motor e bolsas",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "A Campanha de Inverno esta com ativo=false e mantem 25 bolsas com R$ 14.368.890,36 de arrecadacao somada e R$ 13.471.898,00 de total premiado, e continua recebendo cupons novos. O isolamento historico e economico entre campanhas nao esta provado.",
+   "evidence": []
+  },
+  {
+   "id": "R17-ECON-04",
+   "title": "Admin distingue arrecadacao bruta de arrecadacao em bolsa",
+   "priority": "P1",
+   "area": "Motor e bolsas",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "GET /v1/campanhas e GET /v1/campanhas/:id retornam arrecadacao=0 para a 300K enquanto a soma das bolsas e R$ 1.490.363,80. E coerente com ajustar-arrecadacao-bolsa.service.ts:14-18, que trata Campanha.arrecadacao como bruto vendido, mas o Admin nao separa os dois conceitos e um operador le arrecadacao zero com R$ 1,49 milhao em bolsa.",
+   "evidence": []
+  },
+  {
+   "id": "R17-ECON-05",
+   "title": "Premios com verba suficiente para ao menos uma unidade",
+   "priority": "P0",
+   "area": "Motor e bolsas",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "Com o lastro canonico de R$ 300.000 isolado, R$ 10.000 financia 0,30 unidade com 1,0000%, R$ 50.000 financia 0,045 unidade com 0,7500% e R$ 1.000.000 financia 0,0024 unidade com 0,7954%. Sob acumula e paga os tres aparecem na vitrine e nunca podem ser entregues.",
+   "evidence": []
+  },
+  {
+   "id": "R17-ECON-06",
+   "title": "Inversao de verba entre R$ 1.000.000 e R$ 50.000",
+   "priority": "P1",
+   "area": "Motor e bolsas",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "O premio de R$ 1.000.000 recebe 0,7954% da arrecadacao e o de R$ 50.000 recebe 0,7500%. O premio 20 vezes maior recebe mais verba, o que torna o de R$ 50.000 ainda menos alcancavel que o de R$ 1.000.000.",
+   "evidence": []
+  },
+  {
+   "id": "R17-ECON-07",
+   "title": "Proporcao positiva em todas as bolsas",
+   "priority": "P0",
+   "area": "Motor e bolsas",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "As 9 bolsas PACOTE de Numeros da Sorte permanecem com proporcao 0. Elas nunca acumulam e, sob acumula e paga, Numeros da Sorte nunca ficam pagaveis por arrecadacao. A correcao exige PATCH com soma 1 redistribuindo as demais, o que e decisao de negocio ainda nao tomada. A bolsa x9 continua ausente.",
+   "evidence": []
+  },
+  {
+   "id": "R17-ECON-08",
+   "title": "R$ 15 e R$ 20 com peso zero conforme decisao do Lote 10",
+   "priority": "P1",
+   "area": "Motor e bolsas",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "R$ 15 esta com 5,5% e R$ 20 com 4,5%, somando 10% de toda a arrecadacao. A decisao do Lote 10 fixou peso zero para ambos. Ou a decisao mudou, ou a parametrizacao nunca foi aplicada.",
+   "evidence": []
+  },
+  {
+   "id": "R17-ECON-09",
+   "title": "Soma das proporcoes das bolsas fecha em 100%",
+   "priority": "P0",
+   "area": "Motor e bolsas",
+   "channel": "API autenticada / estado vivo",
+   "status": "approved",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "A soma das proporcoes das bolsas da campanha vigente fecha em 100,0000%. Ressalva economica registrada: 36,36% do RTP vai para tres bolsas de chance bonus, que devolvem jogada e nao valor, e apenas 54,55% financia premio em dinheiro.",
+   "evidence": []
+  },
+  {
+   "id": "R17-FIN-01",
+   "title": "Distribuicao da arrecadacao para as bolsas e duravel (P0-B)",
+   "priority": "P0",
+   "area": "Jornada financeira",
+   "channel": "API autenticada / estado vivo",
+   "status": "blocked_external",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "Prova inconclusiva. O delta nas 26 bolsas da 300K foi zero, mas isso era esperado porque a compra usada pertencia a Campanha de Inverno. A chamada continua sendo void ... .catch() fora da transacao e sem await em confirma-compra.service.ts:143-155, com o outbox premiacaoPendente comentado em :136-138. Pendente repetir com compra da campanha vigente e medir delta.",
+   "evidence": []
+  },
+  {
+   "id": "R17-FIN-02",
+   "title": "Credito de premio seguido de compra com saldo",
+   "priority": "P0",
+   "area": "Jornada financeira",
+   "channel": "API autenticada / estado vivo",
+   "status": "blocked_external",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "A jornada financeira obrigatoria nao fecha. O premio credita no bucket PREMIOS e o checkout debita CARTEIRA. A migracao para carteira Nexus criou caminho, mas os buckets locais seguem divergentes e o fechamento e assincrono.",
+   "evidence": []
+  },
+  {
+   "id": "R17-FIN-03",
+   "title": "PIX real emitido com valor e titulo fieis",
+   "priority": "P0",
+   "area": "Jornada financeira",
+   "channel": "API autenticada / estado vivo",
+   "status": "blocked_external",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "IUGU exige acao humana e nao escala automatizado. O PIX Nexus e emitido como apcapvip a R$ 0,01 por unidade em emitir-pix-nexus.service.ts:12-19, ou seja, o titulo registrado nao e o titulo vendido, e o teto de R$ 0,59 por compra nao tem trava no codigo.",
+   "evidence": []
+  },
+  {
+   "id": "R17-FIN-04",
+   "title": "Split de premio nao trava em ENVIADA",
+   "priority": "P0",
+   "area": "Jornada financeira",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "Em recusa deterministica o Split permanece ENVIADA em executar-split.service.ts:165-181: nao cancela, nao estorna e nao reenvia, e a compra trava. Nao existe worker nem endpoint que varra esse estado. Premios antigos foram migrados para ENVIADA com LEGADO_REQUER_CONCILIACAO em migration.sql:68-70 e sumiram do saldo do usuario.",
+   "evidence": []
+  },
+  {
+   "id": "R17-CS-01",
+   "title": "Vitrine do Caminho da Sorte com premios elegiveis em D1",
+   "priority": "P0",
+   "area": "Caminho da Sorte",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "D1 a D6 estao com vitrine vazia e somente D7 tem 2 itens. D1 tem qtdPremios=1 e nenhum premio elegivel. Esta e a origem viva do premio de R$ 0 no D1: nao e apenas defeito de codigo, o catalogo de boas-vindas nao existe na configuracao do QA.",
+   "evidence": []
+  },
+  {
+   "id": "R17-SEC-01",
+   "title": "Segredos nao versionados em arquivos de exemplo",
+   "priority": "P0",
+   "area": "Seguranca e governanca",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "O arquivo carrega bloco duplicado nas linhas 124-133 com 7 chaves sensiveis preenchidas, enquanto as linhas 89-107 trazem as mesmas variaveis corretamente vazias. Introduzido pelo commit 13e264bf, PR #320. Presente tanto em main 09a415c9 quanto em qa 34414dab: a promocao ocorreu sem rotacao nem limpeza. Rotacao segue obrigatoria, pois o valor permanece no historico das duas branches.",
+   "evidence": []
+  },
+  {
+   "id": "R17-SEC-02",
+   "title": "Confirmacao administrativa exige pagamento real ou trava de ambiente",
+   "priority": "P0",
+   "area": "Seguranca e governanca",
+   "channel": "API autenticada / estado vivo",
+   "status": "failed",
+   "scope": "agente",
+   "execution_profiles": [
+    "api-qa"
+   ],
+   "preconditions": [
+    "QA exclusivo",
+    "Sessao admin autenticada na API QA",
+    "Rodada R17"
+   ],
+   "notes": [
+    "Caso da rodada R17. Evidencia por estado vivo de API, nao por screenshot."
+   ],
+   "observed": "POST /v1/admin/compras/:id/confirmar confirma qualquer compra PENDENTE sem verificar pagamento, protegido apenas por login de admin e sem trava de ambiente. compra-admin.controller.ts:47-50 chama ConfirmarCompra direto, pulando o guard ConfirmarSePago. Autorizado como instrumento de QA nesta rodada, permanece defeito P0 de produto.",
+   "evidence": []
   }
  ]
 }
