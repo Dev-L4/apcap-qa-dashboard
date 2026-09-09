@@ -10,7 +10,7 @@ function renderCatalog(){const q=$('search').value.trim().toLowerCase(),status=$
 function updateSelection(){$('selection').hidden=!selected.size;$('selectionCount').textContent=`${selected.size} caso${selected.size===1?'':'s'} selecionado${selected.size===1?'':'s'}`}
 function toast(msg){$('toast').textContent=msg;$('toast').hidden=false;setTimeout(()=>$('toast').hidden=true,2400)}
 async function copyRequest(){const ids=[...selected].sort();const lines=ids.map(id=>{const c=catalog.cases.find(x=>x.id===id);return `${id} — ${c.title}`});const text=`Solicito preparação/execução dos casos APCAP abaixo, respeitando pré-condições, segurança, encerramento autônomo e evidências sanitizadas:\n\n${lines.join('\n')}\n\nInforme primeiro quais podem rodar imediatamente e quais dependem de infraestrutura ou autorização.`;try{await navigator.clipboard.writeText(text);toast('Solicitação copiada. Envie na conversa com o agente.')}catch{toast('O navegador bloqueou a cópia. Copie os IDs selecionados manualmente.')}}
-function safeEvidence(v){return Array.isArray(v)?v.filter(p=>/^evidence\/[A-Z0-9-]+\/[a-z0-9-]+\.png$/.test(p)):[]}
+const EVID_RE=/^https:\/\/raw\.githubusercontent\.com\/Dev-L4\/apcap-qa-dashboard\/[0-9a-f]{40}\/evidence\/[A-Z0-9-]+\/[a-z0-9-]+\.png$/;function safeEvidence(v){return Array.isArray(v)?v.filter(p=>EVID_RE.test(p)):[]}
 /* ---- Resultados por rodada (registro por data) ---- */
 let allRuns=[],runDateAtual=null;
 function normalizeRuns(report){report=report||{};if(Array.isArray(report.runs)&&report.runs.length)return{runs:report.runs,runDateAtual:report.runDateAtual||report.runs[0].runDate};
@@ -65,7 +65,7 @@ function findCase(id){return ((catalog&&catalog.cases)||[]).find(c=>c.id===id)}
 function fixHtml(c){if(!c)return '';const f=c.fix;const p=[];
 if(c.reason)p.push('<h4>O que foi medido</h4><p>'+esc(c.reason)+'</p>');
 if(c.expected)p.push('<h4>Comportamento esperado</h4><p>'+esc(c.expected)+'</p>');
-const med=(Array.isArray(c.evidence)?c.evidence:[]).filter(x=>typeof x==='string'&&!/^evidence\//.test(x));
+const med=(Array.isArray(c.evidence)?c.evidence:[]).filter(x=>typeof x==='string'&&!EVID_RE.test(x));
 if(med.length)p.push('<h4>Medições</h4><ul>'+med.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>');
 if(f){if(f.rootCause)p.push('<h4>Causa provável'+(f.confidence?' <span class="conf conf-'+esc(f.confidence)+'">confiança '+esc(f.confidence)+'</span>':'')+'</h4><p>'+esc(f.rootCause)+'</p>');
 if((f.files||[]).length)p.push('<h4>Onde corrigir · '+esc(f.repo||'')+'</h4><ul class="fixlist">'+f.files.map(x=>'<li><code>'+esc(x.path||'')+(x.lines?':'+esc(x.lines):'')+'</code>'+(x.symbol?' <b>'+esc(x.symbol)+'</b>':'')+(x.what?'<br><span>'+esc(x.what)+'</span>':'')+'</li>').join('')+'</ul>');
