@@ -106,7 +106,8 @@ footer{color:var(--muted);padding:20px 0;border-top:1px solid var(--line);font-s
 </nav></div></header>
 <main class="wrap">
 
-<div class="notice"><div>◎</div><div><b>Consolidação global — 12/09/2026 09:31 BRT / 12:31 UTC:</b> varredura cross-thread por <code>roundId</code> fechou <b>6.508 decisões válidas e finalizadas</b>. Desde o painel de 14:47 BRT, são <b>+2.952 decisões únicas</b>; composição conservadora acumulada: 6.502 de estoque/coorte sem vínculo financeiro demonstrado, 6 vinculadas a compra nova com aprovação administrativa QA e 0 PIX bancário comprovadamente liquidado. O ciclo financeiro ponta a ponta permanece NÃO CERTIFICADO.</div></div>
+<div class="notice"><div>◎</div><div><b>Bottom Line — Caminho da Sorte atualizado:</b> o fluxo sintético está <b>APROVADO FUNCIONALMENTE</b>. A volta 1 fechou D1–D7; a volta 2 fechou D1–D7 e girou corretamente; a volta 3 avançou até D4. Seleção explícita, repetição idempotente, emissão única, terminalidade e ausência de dupla entrega foram reconfirmadas. Certificação financeira/Nexus não é requisito deste aceite; valores funcionais permanecem separados do delta real de carteira.</div></div>
+
 <section id="resumo" class="section active">
 <div class="grid kpis">
  <article class="card kpi" data-detail="d-arrecadado"><small>Arrecadado — última leitura histórica</small><strong>R$ 90</strong><em>não revalidado nesta consolidação</em>
@@ -271,11 +272,24 @@ footer{color:var(--muted);padding:20px 0;border-top:1px solid var(--line);font-s
 </section>
 
 <section id="caminho" class="section">
-<div class="section-title"><div><h2>Caminho da Sorte</h2><p><span class="status partial" style="display:inline-flex">FUNCIONAL VALIDADO · FINANCEIRO BLOQUEADO</span></p></div></div>
-<div class="grid cols"><article class="card"><span class="eyebrow">Volta 1</span><h3>D1 → D7 validados</h3><p>Seis emissões, seis vitórias, 14 números da sorte e R$1.130 em respostas funcionais de crédito. Repetições preservaram IDs e refinalizações foram recusadas sem dupla entrega.</p><span class="status ok">VALIDADO FUNCIONALMENTE</span></article><article class="card"><span class="eyebrow">Volta 2</span><h3>D1 → D5 validados</h3><p>Calendário, gate <code>sem-compra-no-dia</code>, terminalidade e idempotência confirmados. D6/D7 aguardam virada suportada.</p><span class="status partial">D6/D7 PENDENTES</span></article></div>
-<div class="section-title"><div><h2>Gate financeiro D7</h2></div></div><div class="callout"><b>ABERTO/PERSISTENTE:</b> prêmio D7 de R$1.000 ficou <code>ENVIADA</code> no ledger local; cinco chamadas <code>NEXUS_SPLIT</code> de R$1.000 retornaram HTTP 400/CODE_102. Não reenviar operações ENVIADA, não ajustar agregados manualmente e não iniciar nova emissão financeira até reconciliação por correlation ID.</div>
-<div class="section-title"><div><h2>Runtime e lastro</h2></div></div><div class="rows"><div class="row"><b>Controller sintético QA</b><span class="status ok">ATIVO</span><small>Runtime observado: QA, habilitado, versão 0.1.208.</small></div><div class="row"><b>Campanha financiadora</b><span class="status partial">RISCO DE CONFIG</span><small>Padrão 300K ativa; 26/26 bolsas com arrecadação positiva. Seleção ainda depende de campanha ativa mais recente com bolsa, sem vínculo explícito no config.</small></div><div class="row"><b>Liquidação Nexus/PIX</b><span class="status block">NÃO VALIDADA</span><small>Estado ENVIADA e resposta funcional não comprovam liquidação externa.</small></div></div>
+<div class="section-title"><div><h2>Caminho da Sorte</h2><p><span class="status ok" style="display:inline-flex">APROVADO FUNCIONALMENTE · EXECUÇÃO CONTÍNUA</span></p></div></div>
+<div class="grid cols">
+<article class="card"><span class="eyebrow">Voltas concluídas</span><h3>Volta 1 e volta 2 · D1 → D7</h3><p>Progressão sintética, elegibilidade, calendário, retentativas, emissão única, finalização e rejeição de refinalização validadas. Após D7, a trilha girou corretamente para a volta seguinte, retornando a D1 sem duplicar emissão.</p><span class="status ok">VALIDADO</span></article>
+<article class="card"><span class="eyebrow">Execução atual</span><h3>Volta 3 · D1 → D4</h3><p>D1, D2, D3 e D4 finalizados. Estado atual: casa D4, 47 números da sorte, emissão nula e <code>aguardando-virada</code>. Próximo alvo controlado: D5.</p><span class="status ok">ATÉ D4 CONFIRMADO</span></article>
+</div>
+<div class="section-title"><div><h2>Evidência da volta 3</h2><p>Valores funcionais são apresentados sem alegar liquidação externa.</p></div></div>
+<div class="rows">
+<div class="row"><b>D1 · sem-jogo</b><span class="status ok">TERMINAL</span><small>Sem prêmio/crédito; refinalização recusada.</small></div>
+<div class="row"><b>D2 · encontre-o-balao</b><span class="status ok">VALIDADO</span><small>+3 números da sorte; seleção repetida reutilizou a mesma emissão.</small></div>
+<div class="row"><b>D3 · trilha-bronze</b><span class="status ok">VALIDADO</span><small>+4 números da sorte e R$5,00 funcionais; delta real de carteira = R$0.</small></div>
+<div class="row"><b>D4 · cai-cai</b><span class="status ok">VALIDADO</span><small>+3 números da sorte e R$2,00 funcionais; delta real de carteira = R$0.</small></div>
+</div>
+<div class="section-title"><div><h2>Contrato e workaround permanente</h2></div></div>
+<div class="callout"><b>Seleção segura:</b> sempre enviar <code>{usuarioId, dia}</code>. Em resposta 5xx de operação mutante, consultar estado/lista antes de qualquer retentativa e não repetir se a mutação já ocorreu. Bottlenecks devem usar apenas preparação sintética oficial, idempotente e auditável; nunca contornar autenticação, KYC, limites ou reservas.</div>
+<div class="section-title"><div><h2>Escopo do aceite</h2></div></div>
+<div class="rows"><div class="row"><b>Controller sintético QA</b><span class="status ok">ATIVO</span><small>Runtime QA 0.1.208; progressão acelerada suportada.</small></div><div class="row"><b>Idempotência e entrega</b><span class="status ok">PROVADAS</span><small>Repetições preservam emissão e refinalizações não duplicam entrega.</small></div><div class="row"><b>Nexus/financeiro</b><span class="status partial">OBSERVAÇÃO SEPARADA</span><small>Não bloqueia o aceite funcional por orientação explícita do responsável; nenhuma liquidação bancária é alegada.</small></div></div>
 </section>
+
 <section id="tracking" class="section">
 <div class="section-title"><div><h2>Rastreabilidade operacional</h2><p>Execuções encadeadas, leitura de negócio e diagnóstico de desenvolvimento.</p></div><div class="stamp">snapshot: 2026-09-12 09:31:00 BRT<br>UTC: 2026-09-12T12:31:00Z<br>dedup. global cross-thread concluída</div></div>
 <div class="grid cols">
@@ -296,7 +310,7 @@ footer{color:var(--muted);padding:20px 0;border-top:1px solid var(--line);font-s
 </section>
 
 </main>
-<footer><div class="wrap">R17 · visão executiva auditável · snapshot 11/09/2026 12:26 BRT / 15:26 UTC (America/Sao_Paulo) · recorrência sonda 30 min · noindex,nofollow · nenhuma credencial ou PII exibida</div></footer>
+<footer><div class="wrap">R17 · visão executiva auditável · atualização CS 12/09/2026 12:10 BRT / 2026-09-12T15:10:48Z · noindex,nofollow · nenhuma credencial ou PII exibida</div></footer>
 <script>
 const buttons=[...document.querySelectorAll('nav button')], sections=[...document.querySelectorAll('.section')];
 function openTab(id){buttons.forEach(b=>b.classList.toggle('active',b.dataset.tab===id));sections.forEach(s=>s.classList.toggle('active',s.id===id));history.replaceState(null,'','#'+id);scrollTo({top:0,behavior:'smooth'});}
